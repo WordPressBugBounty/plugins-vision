@@ -1,9 +1,10616 @@
-!function(v){"use strict";Object.is||(Object.is=function(e,t){return e===t?0!==e||1/e==1/t:e!=e&&t!=t}),"function"!=typeof DataTransfer.prototype.setDragImage&&(DataTransfer.prototype.setDragImage=function(e,t,n){});function m(e){return e*Math.PI/180}function l(e){return(e<0?360:0)+e%360}var n=function(){var l="object"==typeof window&&window.window===window?window:"object"==typeof self&&self.self===self?self:"object"==typeof global&&global.global===global?global:this;function c(e,t,n){var i=new XMLHttpRequest;i.open("GET",e),i.responseType="blob",i.onload=function(){o(i.response,t,n)},i.onerror=function(){console.error("could not download file")},i.send()}function a(e){var t=new XMLHttpRequest;t.open("HEAD",e,!1);try{t.send()}catch(e){}return 200<=t.status&&t.status<=299}function r(t){try{t.dispatchEvent(new MouseEvent("click"))}catch(e){var n=document.createEvent("MouseEvents");n.initMouseEvent("click",!0,!0,window,0,0,0,80,20,!1,!1,!1,!1,0,null),t.dispatchEvent(n)}}var o=l.saveAs||("object"!=typeof window||window!==l?function(){}:"download"in HTMLAnchorElement.prototype?function(e,t,n){var i=l.URL||l.webkitURL,o=document.createElement("a");t=t||e.name||"download",o.download=t,o.rel="noopener","string"==typeof e?(o.href=e,o.origin!==location.origin?a(o.href)?c(e,t,n):r(o,o.target="_blank"):r(o)):(o.href=i.createObjectURL(e),setTimeout(function(){i.revokeObjectURL(o.href)},4e4),setTimeout(function(){r(o)},0))}:"msSaveOrOpenBlob"in navigator?function(e,t,n){var i;t=t||e.name||"download","string"==typeof e?a(e)?c(e,t,n):((i=document.createElement("a")).href=e,i.target="_blank",setTimeout(function(){r(i)})):navigator.msSaveOrOpenBlob((e=e,void 0===(n=n)?n={autoBom:!1}:"object"!=typeof n&&(console.warn("Deprecated: Expected third argument to be a object"),n={autoBom:!n}),n.autoBom&&/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(e.type)?new Blob([String.fromCharCode(65279),e],{type:e.type}):e),t)}:function(e,t,n,i){if((i=i||open("","_blank"))&&(i.document.title=i.document.body.innerText="downloading..."),"string"==typeof e)return c(e,t,n);var o,a,r,t="application/octet-stream"===e.type,n=/constructor/i.test(l.HTMLElement)||l.safari,s=/CriOS\/[\d]+/.test(navigator.userAgent);(s||t&&n)&&"object"==typeof FileReader?((o=new FileReader).onloadend=function(){var e=o.result,e=s?e:e.replace(/^data:[^;]*;/,"data:attachment/file;");i?i.location.href=e:location=e,i=null},o.readAsDataURL(e)):(a=l.URL||l.webkitURL,r=a.createObjectURL(e),i?i.location=r:location.href=r,i=null,setTimeout(function(){a.revokeObjectURL(r)},4e4))});return l.saveAs=o.saveAs=o}(),e="undefined"!=typeof Float32Array?Float32Array:Array;function g(e,t){this.reset().set(e,t)}var t,i,o,a,r;function s(e,t){this.plugin=null,this.$container=null,this.dom={},this.area=v.extend(!0,{},this.defaultArea),this.visible=!1,this.drag=!1,this.points=[new g,new g,new g,new g,new g,new g,new g,new g,new g,new g],this.type=null,this.tl_off=null,this.tr_off=null,this.br_off=null,this.bl_off=null,this.center_off=null,this.dblclick={clicks:0,timer:0,time:300},this._init(e,t)}function c(){var t={alight:null,rootScope:null,wpFileFrameImage:null,transformTool:null,wp_base_url:null,wp_upload_url:null,wp_plugin_url:null,wp_ajax_url:null,wp_ajax_nonce:null,wp_ajax_action_update:null,wp_ajax_action_get:null,wp_ajax_action_modal:null,wp_ajax_msg_error:null,wp_item_id:null,themes:null,fonts:null,image:new Image,embedCodeWithId:null,embedCodeWithSlug:null,settings:{themeJavaScript:null,themeCSS:null},config:null,ui:{fullscreen:!1,sidebar:!0,sidebarWidth:400,canvas:{zoomStep:.1,zoom:1,x:0,y:0},prevCanvas:{zoom:1,x:0,y:0},moveCanvas:{initX:null,initY:null,lastX:null,lastY:null},sidebarResize:{initX:null,lastX:null,width:null},mapLayers:new Map,activeLayer:null,tabs:{general:!0,layers:!1,customCSS:!1,customJS:!1,shortcode:!1},generalTab:{main:!1,container:!1},layersTabs:{layers:!0,layer:!1,popover:!1,tooltip:!1},layerTab:{general:!0,data:!0,appearance:!1},tooltipTab:{data:!1,appearance:!0},popoverTab:{data:!1,appearance:!0}},defaultConfig:{active:!0,title:null,slug:null,image:{relative:!1,url:null},imageWidth:0,imageHeight:0,autoWidth:!0,autoHeight:!0,containerWidth:null,containerHeight:null,theme:"light",class:null,containerId:null,background:{color:null,image:{relative:!1,url:null},size:null,repeat:null,position:null},customCSS:{active:!1,data:null},customJS:{active:!1,data:null},layers:[]},defaultLayer:{guid:null,id:null,type:"link",title:null,x:0,y:0,width:150,height:100,angle:0,autoWidth:!1,autoHeight:!1,lock:!1,visible:!0,scaling:!0,noevents:!1,className:null,url:null,urlNewWindow:!1,urlNoFollow:!0,contentData:null,userData:null,link:{normalColor:null,hoverColor:null,radius:0},text:{data:null,font:null,color:"#000",size:18,lineHeight:18,align:null,letterSpacing:null,background:{file:{url:null},color:null,size:"contain",repeat:"no-repeat",position:"50% 50%"}},image:{background:{file:{url:null,inlineEmbed:!1},color:null,size:"contain",repeat:"no-repeat",position:"50% 50%"}},svg:{file:{url:null,relative:!1}},tooltip:{active:!1,data:null,placement:"top",offset:{x:0,y:0},width:null,widthFromCSS:!1,trigger:"hover",followCursor:!1,scaling:!1,interactive:!0,smart:!1,showOnInit:!1,className:null,showAnimation:null,hideAnimation:null,duration:null},popover:{active:!1,data:null,type:"inbox",placement:"top",offset:{x:0,y:0},width:null,widthFromCSS:!1,trigger:"click",followCursor:!1,scaling:!1,interactive:!0,smart:!1,showOnInit:!1,mobileType:"inbox",className:null}},fn:{init:function(i){i.fn.enableLoading(i);var e,t=v("#vision-app-item");if((t.removeAttr("style"),v(window).on("resize",v.proxy(i.fn.onResize,this,i)),i.plan=vision_globals.plan,i.transformTool=new s(i,v("#vision-layers-canvas-wrap")),i.wp_base_url=vision_globals.wp_base_url,i.wp_upload_url=vision_globals.upload_base_url,i.wp_plugin_url=vision_globals.plugin_base_url,i.wp_ajax_url=vision_globals.ajax_url,i.wp_ajax_nonce=vision_globals.ajax_nonce,i.wp_ajax_action_update=vision_globals.ajax_action_update,i.wp_ajax_action_get=vision_globals.ajax_action_get,i.wp_ajax_action_modal=vision_globals.ajax_action_modal,i.wp_ajax_msg_error=vision_globals.ajax_msg_error,i.msg_pro_title=vision_globals.msg_pro_title,i.msg_edit_text=vision_globals.msg_edit_text,i.msg_custom_js_error=vision_globals.msg_custom_js_error,i.msg_layer_id_error=vision_globals.msg_layer_id_error,i.wp_item_id=vision_globals.ajax_item_id,vision_globals.config)&&(e=v.extend(!0,{},i.defaultConfig,vision_globals.config))){for(var n in e)i.config.hasOwnProperty(n)&&(i.config[n]=e[n]);for(n=0;n<i.config.layers.length;n++){var o=v.extend(!0,{},i.defaultLayer,i.config.layers[n]);o.image.hasOwnProperty("backgroundImage")&&(o.image.background.file.url=o.image.backgroundImage.url,o.image.background.file.relative=o.image.backgroundImage.relative,o.image.background.position=o.image.backgroundPosition,o.image.background.repeat=o.image.backgroundRepeat,o.image.background.size=o.image.backgroundSize,delete o.image.backgroundImage,delete o.image.backgroundPosition,delete o.image.backgroundRepeat,delete o.image.backgroundSize),o.link.hasOwnProperty("url")&&(o.url=o.link.url,o.urlNewWindow=o.link.newWindow,delete o.link.url,delete o.link.newWindow,delete o.link.clickColor),o.guid||(o.guid=i.fn.uuid()),o.id||(o.id=i.fn.uuid(8)),(o.tooltip.offset.hasOwnProperty("x")||o.tooltip.offset.hasOwnProperty("y"))&&(o.tooltip.offset.top=o.tooltip.offset.y,o.tooltip.offset.left=o.tooltip.offset.x),(o.popover.offset.hasOwnProperty("x")||o.popover.offset.hasOwnProperty("y"))&&(o.popover.offset.top=o.popover.offset.y,o.popover.offset.left=o.popover.offset.x),i.config.layers[n]=o}}if(vision_globals.settings&&(e=v.extend(!0,{},vision_globals.settings)))for(var n in e)i.settings.hasOwnProperty(n)&&(i.settings[n]=e[n]);i.image.onload=function(e){var t=v("#vision-layers-image"),n=this;i.config.imageWidth=n.width,i.config.imageHeight=n.height,t.css({"background-image":"url("+n.src+")",width:n.width,height:n.height}),t.get(0).offsetHeight,i.fn.canvasZoomDefault(i),i.rootScope.scan()},i.image.onerror=function(e){var t=v("#vision-layers-image");i.config.imageWidth=0,i.config.imageHeight=0,t.css({"background-image":"url("+this.src+")",width:0,height:0}),i.fn.canvasZoomFit(i),i.rootScope.scan()},i.rootScope.watch("appData.config.image",function(e){e=i.fn.getImageUrl(i,e);i.image.src="",i.image.src=e},{deep:2}),i.rootScope.watch("appData.ui.canvas",function(e){v("#vision-layers-canvas").css({transform:"translate3d("+e.x+"px,"+e.y+"px,0) scale("+e.zoom+")"}),i.fn.updateTransformTool()},{deep:2}),i.rootScope.watch("appData.ui.activeLayer",function(e,t){t&&(v("#wp-vision-tooltip-editor-wrap").hasClass("html-active")?t.tooltip.data=v("#vision-tooltip-editor").val():null!==(n=tinyMCE.get("vision-tooltip-editor"))&&(t.tooltip.data=n.getContent()),v("#wp-vision-popover-editor-wrap").hasClass("html-active")?t.popover.data=v("#vision-popover-editor").val():null!==(n=tinyMCE.get("vision-popover-editor"))&&(t.popover.data=n.getContent()));t=e&&e.tooltip.data?e.tooltip.data:"";v("#wp-vision-tooltip-editor-wrap").hasClass("html-active")?v("#vision-tooltip-editor").val(t):null!==(n=tinyMCE.get("vision-tooltip-editor"))&&n.setContent(t);var n,t=e&&e.popover.data?e.popover.data:"";v("#wp-vision-popover-editor-wrap").hasClass("html-active")?v("#vision-popover-editor").val(t):null!==(n=tinyMCE.get("vision-popover-editor"))&&n.setContent(t)}),i.rootScope.watch("appData.ui.activeLayer",function(e,t){e&&t&&(e.x!=t.x||e.y!=t.y||e.width!=t.width||e.height!=t.height||e.angle!=t.angle)&&i.fn.updateTransformTool()},{deep:2}),i.fn.loadData(i,"fonts").done(function(e){i.fonts=e.list}).always(function(){i.fn.loadData(i,"themes").done(function(e){i.themes=e.list}).always(function(){i.rootScope.scan(),i.fn.disableLoading(i)})})},enableLoading:function(e){v("#vision-app-item").removeClass("vision-active")},disableLoading:function(e){setTimeout(function(){v("#vision-app-item").addClass("vision-active")},1e3)},loadData:function(i,e,t){var o=v.Deferred();return v.ajax({url:i.wp_ajax_url,type:"POST",dataType:"json",data:{nonce:i.wp_ajax_nonce,action:i.wp_ajax_action_get,type:e,id:t},success:function(e){e&&e.success?o.resolve(e.data):this.error()},error:function(e,t,n){i.fn.showNotice(i,i.wp_ajax_msg_error,"notice-error"),o.resolve(null)}}),o.promise()},getPrewiewPageUrl:function(e){return new Url(e.wp_base_url+"/vision/map/"+e.wp_item_id+"?preview=1").toString()},preview:function(e){window.open(e.fn.getPrewiewPageUrl(e),"_blank")},getPluginConfig:function(t){var e={};e.title=t.config.title,e.imgSrc=t.fn.getImageUrl(t,t.config.image),!t.config.autoWidth&&t.config.containerWidth&&(e.width=t.config.containerWidth),!t.config.autoHeight&&t.config.containerHeight&&(e.height=t.config.containerHeight),e.theme=t.config.theme,e.className=t.config.class,e.flags={customCSS:t.config.customCSS.active,effects:!1};for(var n=[],i=[],o=0;o<t.config.layers.length;o++){var a=t.config.layers[o];a.visible&&(i.push({id:a.id,type:a.type,title:a.title,x:t.config.imageWidth?a.x/(t.config.imageWidth/2)*100:0,y:t.config.imageHeight?a.y/(t.config.imageHeight/2)*100:0,width:a.width,height:a.height,angle:a.angle,autoWidth:a.autoWidth,autoHeight:a.autoHeight,scaling:a.scaling,noevents:a.noevents,className:a.className,url:a.url,urlNewWindow:a.urlNewWindow,urlNoFollow:a.urlNoFollow,userData:a.userData,tooltip:{active:a.tooltip.active,trigger:a.tooltip.trigger,placement:a.tooltip.placement,offset:{top:a.tooltip.offset.top,left:a.tooltip.offset.left},width:a.tooltip.width,widthFromCSS:a.tooltip.widthFromCSS,followCursor:a.tooltip.followCursor,scaling:a.tooltip.scaling,interactive:a.tooltip.interactive,smart:a.tooltip.smart,showOnInit:a.tooltip.showOnInit,showAnimation:a.tooltip.showAnimation,hideAnimation:a.tooltip.hideAnimation,duration:a.tooltip.duration,className:a.tooltip.className},popover:{active:a.popover.active,type:a.popover.type,mobileType:a.popover.mobileType,trigger:a.popover.trigger,placement:a.popover.placement,offset:{top:a.popover.offset.top,left:a.popover.offset.left},width:a.popover.width,widthFromCSS:a.popover.widthFromCSS,followCursor:a.popover.followCursor,scaling:a.popover.scaling,interactive:a.popover.interactive,smart:a.popover.smart,showOnInit:a.popover.showOnInit,className:a.popover.className}}),"text"==a.type&&a.text.font&&n.push(a.text.font),(a.tooltip.showAnimation||a.tooltip.hideAnimation)&&(e.flags.effects=!0))}if(e.fonts=0<n.length?n:null,e.layers=0<i.length?i:null,t.config.customJS.active){e.onLoad=t.config.customJS.data;try{new Function(e.onLoad)}catch(e){t.fn.showNotice(t,t.msg_custom_js_error+": "+e.message,"notice-error")}}return e},saveConfig:function(t){t.fn.enableLoading(t),t.fn.saveEditorsData(t);for(var e=v.extend(!0,{},t.config),n=JSON.stringify(e),e=t.fn.getPluginConfig(t),e=JSON.stringify(e),i=0;i<t.config.layers.length;i++)for(var o=t.config.layers[i].id,a=i+1;a<t.config.layers.length;a++)if(t.config.layers[a].id==o)return t.fn.showNotice(t,t.msg_layer_id_error,"notice-error"),t.fn.showNotice(t,"layer.id = "+o,"notice-error"),void t.fn.disableLoading(t);v.ajax({url:t.wp_ajax_url,type:"POST",dataType:"json",data:{nonce:t.wp_ajax_nonce,action:t.wp_ajax_action_update,id:t.wp_item_id,data:n,config:e}}).done(function(e){return e?(t.wp_item_id=e.data.id,t.fn.showNotice(t,e.data.msg,e.success?"notice-success":"notice-error"),void t.rootScope.scan()):void t.fn.showNotice(t,t.wp_ajax_msg_error,"notice-error")}).fail(function(){t.fn.showNotice(t,t.wp_ajax_msg_error,"notice-error")}).always(function(){t.fn.disableLoading(t)})},loadConfigFromJson:function(e,t){t&&(t=JSON.parse(t),e.config=v.extend(!0,{},t),e.rootScope.scan())},loadConfigFromFile:function(e){var t=v("#vision-load-config-from-file").off("change");t.one("change",v.proxy(function(t,e){var n=e.target.files[0];e.target.value="",n&&((e=new FileReader).onload=v.proxy(function(e){e=e.target.result;t.fn.loadConfigFromJson(t,e)},this),e.readAsText(n))},this,e)),t.click()},saveConfigToFile:function(e){var t=v.extend(!0,{},e.config),t=JSON.stringify(t),e=e.wp_item_id?"vision_config_"+e.wp_item_id+".json":"vision_config.json",e=new File([t],e,{type:"application/json;charset=utf-8"});n(e)},showNotice:function(e,t,n){var i=v("#vision-messages"),o=v("<div></div>").addClass("notice is-dismissible").addClass(n),n=v("<p></p>").html(t),t=v("<button></button>").attr("type","button").addClass("notice-dismiss").html('<span class="screen-reader-text">Dismiss this notice.</span>');function a(){clearTimeout(o.data("timer")),o.fadeTo(100,0,function(){o.slideUp(100,function(){o.remove()})})}o.data("timer",setTimeout(a,5e3)),t.click(function(e){e.preventDefault(),a()}),o.append(n,t),i.append(o)},createBlob:function(e,t,n){return new Blob([t],{type:n})},createObjectURL:function(e,t,n){n=e.fn.createBlob(e,t,n);return URL.createObjectURL(n)},reverse:function(e,t){const n=[];for(let e=0;e<t.length;e++)n.unshift(t[e]);return n},getImageUrl:function(e,t,n){var i="";return t&&t.url&&0<t.url.length&&(i=t.relative?e.wp_upload_url+t.url:t.url,"style"==n&&(i="url("+i+")")),i},selectImage:function(n,i,o){n.wpFileFrameImage&&(n.wpFileFrameImage.detach(),n.wpFileFrameImage=null),n.wpFileFrameImage=wp.media.frames.file_frame=wp.media({library:{type:["image"]},multiple:!1}),n.wpFileFrameImage.on("select",function(e){var t=n.wpFileFrameImage.state().get("selection").first().toJSON().url;-1!==t.indexOf(n.wp_upload_url)?(t=t.replace(n.wp_upload_url,""),o.relative=!0):o.relative=!1,o.url=t,i.scan()}),n.wpFileFrameImage.open()},saveEditorsData:function(e){e.ui.activeLayer&&(v("#wp-vision-tooltip-editor-wrap").hasClass("html-active")?e.ui.activeLayer.tooltip.data=v("#vision-tooltip-editor").val():null!==(t=tinyMCE.get("vision-tooltip-editor"))&&(e.ui.activeLayer.tooltip.data=t.getContent()),v("#wp-vision-popover-editor-wrap").hasClass("html-active")?e.ui.activeLayer.popover.data=v("#vision-popover-editor").val():null!==(t=tinyMCE.get("vision-popover-editor"))&&(e.ui.activeLayer.popover.data=t.getContent()));var t=v("#vision-notepad-css");t.length&&(n=ace.edit(t.get(0)),e.config.customCSS.data=n.getSession().getValue());var n=v("#vision-notepad-js");n.length&&(n=ace.edit(n.get(0)),e.config.customJS.data=n.getSession().getValue())},onTab:function(e,t){if(!e.ui.tabs[t]){var n,i=e.ui.tabs;for(n in i)i.hasOwnProperty(n)&&(i[n]=!1);switch(e.ui.tabs[t]=!0,e.fn.saveEditorsData(e),e.rootScope.scan(),t){case"general":case"layers":break;case"customCSS":var o=v("#vision-notepad-css"),o=ace.edit(o.get(0));o.$blockScrolling=1/0,o.setTheme("ace/theme/monokai"),o.session.setMode("ace/mode/css"),e.settings.themeCSS&&o.setTheme("ace/theme/"+e.settings.themeCSS),e.config.customCSS.data&&o.getSession().setValue(e.config.customCSS.data);break;case"customJS":o=v("#vision-notepad-js"),o=ace.edit(o.get(0));o.$blockScrolling=1/0,o.setTheme("ace/theme/monokai"),o.session.setMode("ace/mode/javascript"),e.settings.themeJavaScript&&o.setTheme("ace/theme/"+e.settings.themeJavaScript),e.config.customJS.data&&o.getSession().setValue(e.config.customJS.data)}}},onLayersTab:function(e,t){if(!e.ui.layersTabs[t]){var n,i=e.ui.layersTabs;for(n in i)i.hasOwnProperty(n)&&(i[n]=!1);e.ui.layersTabs[t]=!0}},onGeneralTab:function(e,t){e.ui.generalTab[t]=!e.ui.generalTab[t]},onLayerTab:function(e,t){e.ui.layerTab[t]=!e.ui.layerTab[t]},onTooltipTab:function(e,t){e.ui.tooltipTab[t]=!e.ui.tooltipTab[t]},onPopoverTab:function(e,t){e.ui.popoverTab[t]=!e.ui.popoverTab[t]},onResize:function(e,t){},toggleSidebarPanel:function(e){e.ui.sidebar=!e.ui.sidebar,e.rootScope.scan()},canvasZoomIn:function(e){var t=e.ui.canvas.zoom+e.ui.canvas.zoomStep,t=parseFloat(parseFloat(t).toFixed(2));e.ui.prevCanvas.zoom=e.ui.canvas.zoom,e.ui.canvas.zoom=t},canvasZoomOut:function(e){var t=e.ui.canvas.zoom-e.ui.canvas.zoomStep,t=parseFloat(parseFloat(t).toFixed(2));e.ui.prevCanvas.zoom=e.ui.canvas.zoom,e.ui.canvas.zoom=t<0?0:t},canvasZoomDefault:function(e){e.ui.prevCanvas.zoom=e.ui.canvas.zoom,e.ui.canvas.zoom=1},canvasZoomFit:function(e){var t=v("#vision-layers-image"),n=v("#vision-layers-canvas-wrap"),i=t.width()?n.width()/t.width():0,n=t.height()?n.height()/t.height():0,t=1,t=n<i?n:i;e.ui.prevCanvas.zoom=e.ui.canvas.zoom,e.ui.canvas.zoom=t,e.ui.prevCanvas.x=e.ui.canvas.x,e.ui.prevCanvas.y=e.ui.canvas.y,e.ui.canvas.x=e.ui.canvas.y=0},canvasMoveDefault:function(e){e.ui.prevCanvas.x=e.ui.canvas.x,e.ui.prevCanvas.y=e.ui.canvas.y,e.ui.canvas.x=0,e.ui.canvas.y=0},getCanvasZoomForLabel:function(e){e=parseFloat(parseFloat(100*e.ui.canvas.zoom).toFixed(2));return parseInt(e,10)},getCanvasZoom:function(e){return e.ui.canvas.zoom},getCanvasPosition:function(e){return{x:e.ui.canvas.x,y:e.ui.canvas.y}},initLayer:function(e,t,n){e.ui.mapLayers.set(t,v(n))},initLayerInner:function(e,t,n){"text"==t.type&&t.text.data&&v(n).html(t.text.data)},selectLayer:function(e,t){e.ui.activeLayer=t,e.rootScope.scan();var n=e.ui.mapLayers.get(t);n&&n.trigger("focus"),e.fn.hideTransformTool(),t.lock||!t.visible||n.hasClass("vision-editing")||e.fn.showTransformTool(t)},isLayerActive:function(e,t){return Object.is(e.ui.activeLayer,t)},onLayerItemClick:function(e,t){console.log(t),e.fn.isLayerActive(e,t)?e.ui.activeLayer=null:e.fn.selectLayer(e,t)},onLayerClick:function(e,t){var n;e.fn.isLayerActive(e,t)?(n=e.ui.mapLayers.get(t))&&n.trigger("focus"):e.fn.selectLayer(e,t)},editLayerText:function(n,i){if(!i.lock&&"text"==i.type){const a=n.ui.mapLayers.get(i),r=a.find(".vision-layer-inner");let t=!1;r.text()==n.msg_edit_text&&(t=!0,r.text("")),a.addClass("vision-editing"),r.attr("contenteditable",!0).trigger("focus");let e=window.getSelection();function o(e){t=!1,i.text.data=r.html()}e.selectAllChildren(r.get(0)),e.collapseToEnd(),r.on("input",o),r.one("blur",function(e){a.removeClass("vision-editing"),r.attr("contenteditable",!1),r.off("input",o),t&&r.text(n.msg_edit_text)})}},onLayerKeyDown:function(e,t,n){var i=e.ui.mapLayers.get(t);if(!t.lock&&!i.hasClass("vision-editing")){var o=!1;switch(n.which){case 37:--t.x,o=!0;break;case 38:--t.y,o=!0;break;case 39:t.x+=1,o=!0;break;case 40:t.y+=1,o=!0;break;case 13:n.preventDefault(),n.stopPropagation(),e.fn.editLayerText(e,t)}o&&(n.preventDefault(),n.stopPropagation(),e.rootScope.scan())}},prevLayer:function(e){if(0!=e.config.layers.length)if(e.ui.activeLayer){for(var t=e.config.layers.length-1;0<t&&!Object.is(e.config.layers[t],e.ui.activeLayer);t--);t=t-1<0?e.config.layers.length-1:t-1,e.fn.selectLayer(e,e.config.layers[t])}else 0<e.config.layers.length&&e.fn.selectLayer(e,e.config.layers[e.config.layers.length-1])},nextLayer:function(e){if(0!=e.config.layers.length)if(e.ui.activeLayer){for(var t=0;t<e.config.layers.length&&!Object.is(e.config.layers[t],e.ui.activeLayer);t++);t=t+1>=e.config.layers.length?0:t+1,e.fn.selectLayer(e,e.config.layers[t])}else 0<e.config.layers.length&&e.fn.selectLayer(e,e.config.layers[0])},addLayerLink:function(e){var t=v.extend(!0,{},e.defaultLayer);t.guid=e.fn.uuid(),t.id=e.fn.uuid(8),t.type="link",e.config.layers.push(t),e.fn.selectLayer(e,t)},addLayerText:function(e){var t=v.extend(!0,{},e.defaultLayer);t.guid=e.fn.uuid(),t.id=e.fn.uuid(8),t.type="text",t.text.data=e.msg_edit_text,e.config.layers.push(t),e.fn.selectLayer(e,t)},addLayerImage:function(e){var t=v.extend(!0,{},e.defaultLayer);t.guid=e.fn.uuid(),t.id=e.fn.uuid(8),t.type="image",e.config.layers.push(t),e.fn.selectLayer(e,t)},addLayerSVG:function(e){var t=v.extend(!0,{},e.defaultLayer);t.guid=e.fn.uuid(),t.id=e.fn.uuid(8),t.type="svg",e.config.layers.push(t),e.fn.selectLayer(e,t)},copyLayer:function(e){if(null!=e.ui.activeLayer){for(var t=null,n=e.config.layers.length,i=null,o=0;o<n;o++)if(i=e.config.layers[o],Object.is(e.ui.activeLayer,i)){t=o;break}null!=t&&((i=v.extend(!0,{},i)).guid=e.fn.uuid(),i.id=e.fn.uuid(8),i.title=i.title||i.type,i.title=i.title+(i.title.includes("[copy]")?"":" [copy]"),e.config.layers.splice(t+1,0,i),e.fn.selectLayer(e,i))}},updownLayer:function(e,t){if(null!=e.ui.activeLayer){for(var n=null,i=e.config.layers.length,o=null,a=0;a<i;a++)if(o=e.config.layers[a],Object.is(e.ui.activeLayer,o)){n=a;break}null!=n&&("up"==t&&0<n?(e.config.layers[n]=e.config.layers[n-1],e.config.layers[n-1]=o):"down"==t&&n<i-1&&(e.config.layers[n]=e.config.layers[n+1],e.config.layers[n+1]=o))}},deleteLayer:function(e){if(null!=e.ui.activeLayer){for(var t,n=null,i=e.config.layers.length,o=0;o<i;o++){var a=e.config.layers[o];if(Object.is(e.ui.activeLayer,a)){n=o;break}}null!=n&&(0<=(t=n)&&n<i&&(e.config.layers.splice(n,1),n==i-1&&1<i?t=i-2:1==i&&(t=null)),e.fn.selectLayer(e,e.config.layers[t]))}},editLayerAlign:function(e,t){if(null!=e.ui.activeLayer){var n=e.ui.activeLayer;switch(t){case"top":n.y=-e.config.imageHeight/2+n.height/2;break;case"middle":n.y=0;break;case"bottom":n.y=e.config.imageHeight/2-n.height/2;break;case"left":n.x=-e.config.imageWidth/2+n.width/2;break;case"center":n.x=0;break;case"right":n.x=e.config.imageWidth/2-n.width/2}}},toggleLayerPopover:function(e,t){t.popover.active=!t.popover.active},toggleLayerTooltip:function(e,t){t.tooltip.active=!t.tooltip.active},toggleLayerVisible:function(e,t){t.visible=!t.visible,e.ui.activeLayer&&e.ui.activeLayer.guid==t.guid&&(t.visible?e.fn.showTransformTool(t):e.fn.hideTransformTool())},toggleLayerLock:function(e,t){t.lock=!t.lock,e.ui.activeLayer&&e.ui.activeLayer.guid==t.guid&&(t.lock?e.fn.hideTransformTool():e.fn.showTransformTool(t))},getLayerStyle:function(e,t,n){switch(n){case"x":return t.x-t.width/2+"px";case"y":return t.y-t.height/2+"px";case"width":return t.width+"px";case"height":return t.height+"px";case"angle":return t.angle?"rotate("+t.angle+"deg)":"rotate(0deg)";case"border-radius":return"link"===t.type?t.link.radius||"":null;case"background-color":switch(t.type){case"link":return t.link.normalColor||"";case"image":return t.image.background.color||"";case"text":return t.text.background.color||""}return null;case"background-image":switch(t.type){case"image":return e.fn.getImageUrl(e,t.image.background.file,"style");case"text":return e.fn.getImageUrl(e,t.text.background.file,"style");case"svg":return e.fn.getImageUrl(e,t.svg.file,"style")}return null;case"background-size":switch(t.type){case"image":return t.image.background.size||"";case"text":return t.text.background.size||"";case"svg":return"100% 100%"}return null;case"background-repeat":switch(t.type){case"image":return t.image.background.repeat||"";case"text":return t.text.background.repeat||""}return null;case"background-position":switch(t.type){case"image":return t.image.background.position||"";case"text":return t.text.background.position||""}return null;case"color":return"text"===t.type?t.text.color:null;case"font-family":if("text"!=t.type)return null;if(t.text.font){var i,o,a=t.text.font.replace(new RegExp("[+]|[:]","g"),"");return 0==v("#"+a).length&&(i=document.getElementsByTagName("head")[0],(o=document.createElement("link")).setAttribute("id",a),o.setAttribute("rel","stylesheet"),o.setAttribute("href","https://fonts.googleapis.com/css?family="+t.text.font),i.appendChild(o)),'"'+t.text.font.replace(new RegExp("[+]","g")," ")+'", sans-serif'}return"sans-serif";case"font-size":return"text"==t.type?(0<t.text.size?t.text.size:0)+"px":null;case"line-height":return"text"==t.type?(0<t.text.lineHeight?t.text.lineHeight:0)+"px":null;case"letter-spacing":return"text"==t.type?(0<t.text.letterSpacing?t.text.letterSpacing:0)+"px":null;case"text-align":if("text"==t.type)return t.text.align||""}return null},getLayerCoord:function(e,t,n){switch(n){case"x":return parseFloat(parseFloat(t.x).toFixed(2));case"y":return parseFloat(parseFloat(t.y).toFixed(2));case"w":return parseFloat(parseFloat(t.width).toFixed(2));case"h":return parseFloat(parseFloat(t.height).toFixed(2));case"angle":return Math.floor(t.angle)}return""},showTransformTool:function(e){t.transformTool.init(e),t.transformTool.start()},hideTransformTool:function(){t.transformTool.end()},updateTransformTool:function(){t.transformTool.isVisible()&&t.transformTool.update()},onMoveCanvasStart:function(e,t){t.preventDefault(),t.stopPropagation(),e.ui.moveCanvas.initX=t.pageX,e.ui.moveCanvas.initY=t.pageY,e.ui.moveCanvas.lastX=t.pageX,e.ui.moveCanvas.lastY=t.pageY,v("body").on("mousemove",v.proxy(e.fn.onMoveCanvas,this,e)),v("body").on("mouseup",v.proxy(e.fn.onMoveCanvasEnd,this,e)),v("body").on("mouseleave",v.proxy(e.fn.onMoveCanvasEnd,this,e))},onMoveCanvas:function(e,t){t.preventDefault(),t.stopPropagation();var n=t.pageX-e.ui.moveCanvas.lastX,i=t.pageY-e.ui.moveCanvas.lastY;e.ui.moveCanvas.lastX=t.pageX,e.ui.moveCanvas.lastY=t.pageY,e.ui.prevCanvas.x=e.ui.canvas.x,e.ui.prevCanvas.y=e.ui.canvas.y,e.ui.canvas.x+=n,e.ui.canvas.y+=i,e.rootScope.scan()},onMoveCanvasEnd:function(e,t){t.preventDefault(),t.stopPropagation(),v("body").off("mousemove",v.proxy(e.fn.onMoveCanvas,this,e)),v("body").off("mouseup",v.proxy(e.fn.onMoveCanvasEnd,this,e)),v("body").off("mouseleave",v.proxy(e.fn.onMoveCanvasEnd,this,e)),e.ui.moveCanvas.initX=null,e.ui.moveCanvas.initY=null,e.ui.moveCanvas.lastX=null,e.ui.moveCanvas.lastY=null},onSidebarResizeStart:function(e,t){t.preventDefault(),t.stopPropagation(),e.ui.sidebarResize.initX=t.pageX,e.ui.sidebarResize.lastX=t.pageX,e.ui.sidebarResize.width=e.ui.sidebarWidth,v("body").on("mousemove",v.proxy(e.fn.onSidebarResize,this,e)),v("body").on("mouseup",v.proxy(e.fn.onSidebarResizeEnd,this,e)),v("body").on("mouseleave",v.proxy(e.fn.onSidebarResizeEnd,this,e))},onSidebarResize:function(e,t){t.preventDefault(),t.stopPropagation();var n=t.pageX-e.ui.sidebarResize.lastX;e.ui.sidebarResize.lastX=t.pageX,e.ui.sidebarResize.width-=n,400<=e.ui.sidebarResize.width&&e.ui.sidebarResize.width<=800&&(e.ui.sidebarWidth=e.ui.sidebarResize.width,e.rootScope.scan()),e.fn.updateTransformTool()},onSidebarResizeEnd:function(e,t){t.preventDefault(),t.stopPropagation(),v("body").off("mousemove",v.proxy(e.fn.onSidebarResize,this,e)),v("body").off("mouseup",v.proxy(e.fn.onSidebarResizeEnd,this,e)),v("body").off("mouseleave",v.proxy(e.fn.onSidebarResizeEnd,this,e)),e.ui.sidebarResize.initX=null,e.ui.sidebarResize.lastX=null,e.ui.sidebarResize.width=null},selectShowAnimation:function(t,n){var i={selectedClass:null};t.modal.fn.show(t,"show-effects",i,t.fn.selectAnimationCallback).then(function(e){t.modal.fn.close(t,i.id),"close"!=e&&e&&(n.showAnimation=i.selectedClass,t.rootScope.scan())})},selectHideAnimation:function(t,n){var i={selectedClass:null};t.modal.fn.show(t,"hide-effects",i,t.fn.selectAnimationCallback).then(function(e){t.modal.fn.close(t,i.id),"close"!=e&&e&&(n.hideAnimation=i.selectedClass,t.rootScope.scan())})},selectAnimationCallback:function(i){v("#vision-modal-"+i.id).find(".vision-modal-effect[data-fx-name]").on("click",function(e){var t=v(this),n=t.data("fx-name");t.removeClass(n).addClass(n),i.selectedClass=n,i.rootScope.scan()}),v("#vision-modal-"+i.id).find(".vision-modal-effect[data-fx-name]").on("dblclick",function(e){var t=v(this).data("fx-name");i.selectedClass=t,i.deferred.resolve(!0)}),v("#vision-modal-"+i.id).find(".vision-modal-effect[data-fx-name]").on(function(){var e,t=document.createElement("fakeelement"),n={animation:"animationend",MSAnimationEnd:"msAnimationEnd",OAnimation:"oAnimationEnd",MozAnimation:"mozAnimationEnd",WebkitAnimation:"webkitAnimationEnd"};for(e in n)if(void 0!==t.style[e])return n[e]}(),function(e){var t=v(this),n=t.data("fx-name");t.hasClass(n)&&t.removeClass(n)})},floor:function(e,t){return Math.floor(t)},assignObject:function(e,t,n){for(var i in t)n.hasOwnProperty(i)&&(n[i]=t[i])},copyToClipboard:function(e,t){var n=v(t);if(0!=n.length){var i=n.val();if(window.clipboardData&&window.clipboardData.setData)return clipboardData.setData("Text",i);if(document.queryCommandSupported&&document.queryCommandSupported("copy")){t=document.createElement("textarea");t.textContent=i,t.style.position="fixed",document.body.appendChild(t),t.select();try{document.execCommand("copy")}catch(e){console.warn("Copy to clipboard failed.",e)}finally{document.body.removeChild(t)}}n.select()}},generateLayerId:function(n,e,t){for(var i=n.fn.uuid(8);!function(e){for(var t=0;t<n.config.layers.length;t++)if(n.config.layers[t].id==e)return;return 1}(i);)i=n.fn.uuid();t.id=i,e.scan()},uuid:function(e){var t="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(e){var t=16*Math.random()|0;return("x"==e?t:3&t|8).toString(16)});return 0<e?t.substring(0,e):t}},modal:{count:0,items:[],fn:{resize:function(e){var t=v("#vision-modal-"+e.id),n=(t.find(".vision-modal-dialog"),t.find(".vision-modal-header")),e=t.find(".vision-modal-data"),t=t.find(".vision-modal-footer"),n=n.outerHeight()+t.outerHeight()+50,t=v(window).height();t-n<e.height()&&e.outerHeight(t-n)},show:function(i,e,n,t){var o=++i.modal.count,a=v.Deferred();return i.modal.items.push(o),i.inprocess++,v.ajax({url:i.wp_ajax_url,type:"GET",dataType:"html",data:{nonce:i.wp_ajax_nonce,action:i.wp_ajax_action_modal,name:e}}).done(function(e){v("body").addClass("vision-modal-open");var e=v(e),t={};t.modalData=n,t.modalData.id=o,t.modalData.deferred=a,t.modalData.appData=i,null!=n.easyClose&&!n.easyClose||e.on("click",function(e){t.modalData.deferred.resolve("close")}),v("#vision-modals").append(e),e.find(".vision-modal-dialog").on("click",function(e){return!1}),n.rootScope=i.alight(e.get(0),t),i.modal.fn.resize(n)}).fail(function(e,t,n){i.fn.showNotice(i,i.wp_ajax_msg_error,"notice-error")}).always(function(){t&&"function"==typeof t&&t.call(this,n),i.inprocess--}),a.promise()},close:function(e,t){v("#vision-modal-"+t).remove();t=e.modal.items.indexOf(t);e.modal.items.splice(t,1),0==e.modal.items.length&&jQuery("body").removeClass("vision-modal-open")}}}};window.alightInitCallback=function(e){delete window.alightInitCallback,e.directives.al.uuid={restrict:"EA",link:function(i,e,o,a){var r=v(e),s=v(e);s.on("input change",function(e){var t=s.val(),n=!0;!function(e){return!e||/^\s*$/.test(e)}(t)&&t.match("^[a-zA-Z0-9_-]+$")||(n=!1);n?(a.setValue(o,t),a.scan(),function(){var e=r.data("callback");e&&a.changeDetector.compile(e)(i)}(),r.removeClass("vision-invalid")):r.addClass("vision-invalid")}),a.watch(o,function(e){null==e?s.val(null):s.val(e)},{readOnly:!0})}},e.directives.al.text={restrict:"EA",link:function(n,e,i,o){var a=v(e),r=v(e);r.on("input change",function(e){var t=r.val();!function(e){return!e||/^\s*$/.test(e)}(t)||(t=null);o.setValue(i,t),o.scan(),function(){var e=a.data("callback");e&&o.changeDetector.compile(e)(n)}()}),o.watch(i,function(e){null==e?r.val(null):r.val(e)},{readOnly:!0})}},e.directives.al.textarea={restrict:"EA",link:function(n,e,i,o){var a=v(e),r=v(e);a.addClass("vision-textarea"),r.on("input change",function(e){var t=r.val();!function(e){return!e||/^\s*$/.test(e)}(t)||(t=null);o.setValue(i,t),o.scan(),function(){var e=a.data("callback");e&&o.changeDetector.compile(e)(n)}()}),o.watch(i,function(e){null==e?r.val(null):r.val(e)},{readOnly:!0})}},e.directives.al.integer={restrict:"EA",link:function(i,e,o,a){var r=v(e),s=v(e);s.on("input change",function(e){var t=s.val(),n=!0;!function(e){return!e||/^\s*$/.test(e)}(t)?t.match("^([+-]?[1-9]+[0-9]*|0)$")?t=parseInt(t,10):n=!1:t=null;n?(a.setValue(o,t),a.scan(),function(){var e=r.data("callback");e&&a.changeDetector.compile(e)(i)}(),r.removeClass("vision-invalid")):r.addClass("vision-invalid")}),a.watch(o,function(e){r.removeClass("vision-invalid"),null==e?s.val(null):s.val(e)},{readOnly:!0})}},e.directives.al.float={restrict:"EA",link:function(i,e,o,a){var r=v(e),s=v(e);s.on("input change",function(e){var t=s.val(),n=!0;!function(e){return!e||/^\s*$/.test(e)}(t)?t.match("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$")?t=parseFloat(t):n=!1:t=null;n?(a.setValue(o,t),a.scan(),function(){var e=r.data("callback");e&&a.changeDetector.compile(e)(i)}(),r.removeClass("vision-invalid")):r.addClass("vision-invalid")}),a.watch(o,function(e){r.removeClass("vision-invalid"),null==e?s.val(null):s.val(e)},{readOnly:!0})}},e.directives.al.toggle={restrict:"EA",link:function(t,e,n,i){var o=v(e);o.addClass("vision-toggle").html("&nbsp;"),o.on("mousedown touchstart",function(e){i.setValue(n,!i.getValue(n)),i.scan(),function(){var e=o.data("callback");e&&i.changeDetector.compile(e)(t)}()}),i.watch(n,function(e){e?o.addClass("vision-checked").removeClass("vision-unchecked"):o.removeClass("vision-checked").addClass("vision-unchecked")},{readOnly:!0})}},e.directives.al.checkbox={restrict:"EA",link:function(t,e,n,i){var o=v(e);o.addClass("vision-checkbox").html('<i class="vision-icon vision-icon-check"></i>'),o.on("mousedown touchstart",function(e){i.setValue(n,!i.getValue(n)),i.scan(),function(){var e=o.data("callback");e&&i.changeDetector.compile(e)(t)}()}),i.watch(n,function(e){e?o.addClass("vision-checked").removeClass("vision-unchecked"):o.removeClass("vision-checked").addClass("vision-unchecked")},{readOnly:!0})}},e.directives.al.unit={restrict:"EA",link:function(t,e,i,o){var n=v(e),a=v("<input/>").addClass("vision-unit-value"),r=v("<select/>").addClass("vision-unit-type");function s(){var e=n.data("callback");e&&o.changeDetector.compile(e)(t)}r.append('<option value="px">px</li>'),r.append('<option value="%">%</li>'),r.append('<option value="em">em</li>'),r.append('<option value="cm">cm</li>'),r.append('<option value="mm">mm</li>'),r.append('<option value="in">in</li>'),r.append('<option value="pt">pt</li>'),r.append('<option value="pc">pc</li>'),r.append('<option value="ex">ex</li>'),r.append('<option value="ch">ch</li>'),r.append('<option value="rem">rem</li>'),r.append('<option value="vw">vw</li>'),r.append('<option value="vh">vh</li>'),r.append('<option value="vmin">vmin</li>'),r.append('<option value="vmax">vmax</li>'),n.append(a,r),a.on("input change",function(e){var t=a.val(),n=!0;!function(e){return!e||/^\s*$/.test(e)}(t)?t.match("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$")?t={value:parseFloat(t),type:r.val()}:n=!1:t={value:null,type:r.val()};n?(o.setValue(i,t),o.scan(),s(),a.removeClass("vision-invalid")):a.addClass("vision-invalid")}),r.on("change",function(e){var t=r.val(),n=o.getValue(i);n&&(n.type=t,o.setValue(i,n),o.scan(),s())}),o.watch(i,function(e){a.removeClass("vision-invalid"),null==e?(a.val(null),r.val("px")):(a.val(e.value),r.val(e.type))},{readOnly:!0})}},e.directives.al.style={restrict:"EA",link:function(e,t,n,i){var o,a;i.attrArgument&&(o=v(t),a=i.attrArgument.split(".")[0],i.watch(n,function(e){o.css(a,e)},{readOnly:!0}))}},e.directives.al.backgroundrepeat={restrict:"EA",link:function(e,t,n,i){var t=v(t),o=v("<select/>").addClass(t.get(0).className);o.append('<option value="none">none</option>'),o.append('<option value="repeat">repeat</option>'),o.append('<option value="repeat-x">repeat-x</option>'),o.append('<option value="repeat-y">repeat-y</option>'),o.append('<option value="no-repeat">no-repeat</option>'),t.append(o),o.unwrap(),o.on("change",function(e){var t=o.val();"none"==t&&(t=null);i.setValue(n,t),i.scan()}),i.watch(n,function(e){null==e?o.val("none"):o.val(e)},{readOnly:!0})}},e.directives.al.backgroundsize={restrict:"EA",link:function(e,t,n,i){var t=v(t),o=v("<select/>").addClass(t.get(0).className);o.append('<option value="none">none</option>'),o.append('<option value="auto">auto</option>'),o.append('<option value="cover">cover</option>'),o.append('<option value="contain">contain</option>'),o.append('<option value="100% 100%">stretch</option>'),t.append(o),o.unwrap(),o.on("change",function(e){var t=o.val();"none"==t&&(t=null);i.setValue(n,t),i.scan()}),i.watch(n,function(e){null==e?o.val("none"):o.val(e)},{readOnly:!0})}},e.directives.al.textfont={restrict:"EA",link:function(e,t,n,i){for(var t=v(t),o=v("<select/>").addClass(t.get(0).className),a=i.getValue(t.data("fonts")),r=0;r<a.length;r++){var s=a[r].fontname.replace(new RegExp("[+]","g")," "),l=a[r].fontname;o.append('<option value="'+l+'">'+s+"</option>")}t.append(o),o.unwrap(),o.on("change",function(e){var t=o.val();"none"==t&&(t=null);i.setValue(n,t),i.scan()}),i.watch(n,function(e){null==e?o.val("none"):o.val(e)},{readOnly:!0})}},e.directives.al.textalign={restrict:"EA",link:function(e,t,n,i){var t=v(t),o=v("<select/>").addClass(t.get(0).className);o.append('<option value="none">none</option>'),o.append('<option value="left">left</option>'),o.append('<option value="right">right</option>'),o.append('<option value="center">center</option>'),o.append('<option value="justify">justify</option>'),t.append(o),o.unwrap(),o.on("change",function(e){var t=o.val();"none"==t&&(t=null);i.setValue(n,t),i.scan()}),i.watch(n,function(e){null==e?o.val("none"):o.val(e)},{readOnly:!0})}},e.directives.al.color={restrict:"EA",link:function(t,i,o,a){var n=v(i),r=v("<div></div>").addClass("vision-color-btn").append("<div><div></div></div>"),s=v("<input/>").addClass("vision-color-value");n.append(r,s),r.on("click touchend",function(e){u.show(r,a.getValue(o))}),s.on("input change",function(e){var t=v(this).val(),n=!0;!function(e){return!e||/^\s*$/.test(e)}(t)?(new c).setColor(t)||(n=!1):t=null;n?(a.setValue(o,t),a.scan(),p(),v(i).removeClass("vision-invalid")):v(i).addClass("vision-invalid")});var l=[{re:/rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,parse:function(e){return[e[1],e[2],e[3],e[4]]}},{re:/rgba?\(\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,parse:function(e){return[2.55*e[1],2.55*e[2],2.55*e[3],e[4]]}},{re:/#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/,parse:function(e){return[parseInt(e[1],16),parseInt(e[2],16),parseInt(e[3],16)]}}];function c(){this.rgb={r:0,g:0,b:0},this.hsb={h:0,s:0,b:0},this.alpha=1}function e(e){this.config=null,this.color=new c,this.controls={},this.inputEdit={enabled:!1,pageY:0,value:0,type:null},this._init(e)}c.prototype={rgb:function(){return"rgb("+this.rgb.r+","+this.rgb.g+","+this.rgb.b+")"},rgba:function(){return"rgba("+this.rgb.r+","+this.rgb.g+","+this.rgb.b+","+this.alpha+")"},hex:function(){return this.toHex()},RGBAtoHSBA:function(e,t,n,i){var o,a,r=0,s=Math.max(e,t,n),l=s-Math.min(e,t,n),c=s/255,u=0!=s?l/s:0;return u&&(o=(s-e)/l,a=(s-t)/l,l=(s-n)/l,r=e==s?l-a:t==s?2+o-l:4+a-o,(r/=6)<0&&r++),{h:Math.round(360*r),s:Math.round(100*u),b:Math.round(100*c),a:i||1}},HSBAtoRGBA:function(e,t,n,i){var o,a,r;return e=(e=e)%360/60,n=o=a=(n=n/100)-(r=n*(t=t/100)),n+=[r,t=r*(1-Math.abs(e%2-1)),0,0,t,r][e=~~e],o+=[t,r,r,t,0,0][e],a+=[0,0,t,r,r,t][e],{r:Math.round(255*n),g:Math.round(255*o),b:Math.round(255*a),a:i||1}},setColor:function(e){for(var t in e=e.toLowerCase(),l)if(l.hasOwnProperty(t)){var n=l[t],t=n.re.exec(e),n=t&&n.parse(t);if(n){t=this.RGBAtoHSBA.apply(null,n);return this.hsb={h:t.h,s:t.s,b:t.b},this.rgb={r:n[0],g:n[1],b:n[2]},this.alpha=t.a,!0}}return!1},setRed:function(e){255<e?e=255:e<0&&(e=0),this.rgb.r=e;e=this.RGBAtoHSBA(this.rgb.r,this.rgb.g,this.rgb.b);this.hsb={h:e.h,s:e.s,b:e.b}},setGreen:function(e){255<e?e=255:e<0&&(e=0),this.rgb.g=e;e=this.RGBAtoHSBA(this.rgb.r,this.rgb.g,this.rgb.b);this.hsb={h:e.h,s:e.s,b:e.b}},setBlue:function(e){255<e?e=255:e<0&&(e=0),this.rgb.b=e;e=this.RGBAtoHSBA(this.rgb.r,this.rgb.g,this.rgb.b);this.hsb={h:e.h,s:e.s,b:e.b}},setHue:function(e){360<e?e=360:e<0&&(e=0),this.hsb.h=e;e=this.HSBAtoRGBA(this.hsb.h,this.hsb.s,this.hsb.b);this.rgb={r:e.r,g:e.g,b:e.b}},setSaturation:function(e){100<e?e=100:e<0&&(e=0),this.hsb.s=e;e=this.HSBAtoRGBA(this.hsb.h,this.hsb.s,this.hsb.b);this.rgb={r:e.r,g:e.g,b:e.b}},setBrightness:function(e){100<e?e=100:e<0&&(e=0),this.hsb.b=e;e=this.HSBAtoRGBA(this.hsb.h,this.hsb.s,this.hsb.b);this.rgb={r:e.r,g:e.g,b:e.b}},setAlpha:function(e){1<(e=parseInt(100*e,10)/100)?e=1:e<0&&(e=0),this.alpha=e},toRGBA:function(){return{r:this.rgb.r,g:this.rgb.g,b:this.rgb.b,a:this.alpha}},toHSBA:function(){return{h:this.hsb.h,s:this.hsb.s,b:this.hsb.b,a:this.alpha}},toHex:function(){return"#"+(1<<24|parseInt(this.rgb.r,10)<<16|parseInt(this.rgb.g,10)<<8|parseInt(this.rgb.b,10)).toString(16).substr(1)}},e.prototype={defaults:{onSelect:null},_init:function(e){this.config=v.extend(!0,{},this.defaults,e),this._create()},_create:function(){this._buildDOM(),this._bind(),this._refresh()},_buildDOM:function(){var e=v("<div></div>").addClass("vision-data"),t=v("<div></div>").addClass("vision-color-picker"),n=v("<div></div>").addClass("vision-thumb"),i=v("<div></div>").addClass("vision-pallete").append(n),o=v("<div></div>").addClass("vision-thumb"),a=v("<div></div>").addClass("vision-hue").append(o),r=v("<div></div>").addClass("vision-panel"),s=v("<div></div>").addClass("vision-input").append('<span>R<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),l=v("<div></div>").addClass("vision-input").append('<span>G<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),c=v("<div></div>").addClass("vision-input").append('<span>B<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),u=v("<div></div>").addClass("vision-line"),p=v("<div></div>").addClass("vision-input").append('<span>H<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),h=v("<div></div>").addClass("vision-input").append('<span>S<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),d=v("<div></div>").addClass("vision-input").append('<span>B<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>');r.append(s,l,c,u,p,h,d),t.append(e.append(i,a,r)),this.controls.$picker=t,this.controls.$pallete=i,this.controls.$pallete_thumb=n,this.controls.$hue=a,this.controls.$hue_thumb=o,this.controls.$input_rgb_r=s.find("input"),this.controls.$input_rgb_g=l.find("input"),this.controls.$input_rgb_b=c.find("input"),this.controls.$input_hsb_h=p.find("input"),this.controls.$input_hsb_s=h.find("input"),this.controls.$input_hsb_b=d.find("input"),this.controls.$input_rgb_r_thumb=s.find(".vision-thumb"),this.controls.$input_rgb_g_thumb=l.find(".vision-thumb"),this.controls.$input_rgb_b_thumb=c.find(".vision-thumb"),this.controls.$input_hsb_h_thumb=p.find(".vision-thumb"),this.controls.$input_hsb_s_thumb=h.find(".vision-thumb"),this.controls.$input_hsb_b_thumb=d.find(".vision-thumb");e=v("<div></div>").addClass("vision-data"),c=v("<div></div>").addClass("vision-thumb"),p=v("<div></div>").addClass("vision-gradient"),h=v("<div></div>").addClass("vision-alpha").append(p,c),r=v("<div></div>").addClass("vision-panel"),d=v("<div></div>").addClass("vision-input").append('<span>A<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>');r.append(d),t.append(e.append(h,r)),this.controls.$alpha=h,this.controls.$alpha_thumb=c,this.controls.$alpha_gradient=p,this.controls.$input_alpha=d.find("input"),this.controls.$input_alpha_thumb=d.find(".vision-thumb");e=v("<div></div>").addClass("vision-data"),c=v("<div></div>").addClass("vision-preview").append("<div><div></div></div>"),p=v("<input readonly />").addClass("vision-input-color"),d=v("<div></div>").addClass("vision-submit").text("OK");t.append(e.append(c,p,d)),this.controls.$preview=c.find("> div > div"),this.controls.$input_color=p,this.controls.$submit=d,t.appendTo("body")},_bind:function(){this.controls.$pallete.on("mousedown",v.proxy(this._onPalleteEditStart,this)),this.controls.$pallete.on("click",v.proxy(this._onPalleteEditMove,this)),this.controls.$hue.on("mousedown",v.proxy(this._onHueEditStart,this)),this.controls.$hue.on("click",v.proxy(this._onHueEditMove,this)),this.controls.$alpha.on("mousedown",v.proxy(this._onAlphaEditStart,this)),this.controls.$alpha.on("click",v.proxy(this._onAlphaEditMove,this)),this.controls.$input_rgb_r_thumb.on("mousedown",v.proxy(this._onInputEditStart,this,"rgb_r")),this.controls.$input_rgb_g_thumb.on("mousedown",v.proxy(this._onInputEditStart,this,"rgb_g")),this.controls.$input_rgb_b_thumb.on("mousedown",v.proxy(this._onInputEditStart,this,"rgb_b")),this.controls.$input_hsb_h_thumb.on("mousedown",v.proxy(this._onInputEditStart,this,"hsb_h")),this.controls.$input_hsb_s_thumb.on("mousedown",v.proxy(this._onInputEditStart,this,"hsb_s")),this.controls.$input_hsb_b_thumb.on("mousedown",v.proxy(this._onInputEditStart,this,"hsb_b")),this.controls.$input_alpha_thumb.on("mousedown",v.proxy(this._onInputEditStart,this,"alpha")),this.controls.$input_rgb_r.on("input",v.proxy(this._onInput,this,"rgb_r")),this.controls.$input_rgb_g.on("input",v.proxy(this._onInput,this,"rgb_g")),this.controls.$input_rgb_b.on("input",v.proxy(this._onInput,this,"rgb_b")),this.controls.$input_hsb_h.on("input",v.proxy(this._onInput,this,"hsb_h")),this.controls.$input_hsb_s.on("input",v.proxy(this._onInput,this,"hsb_s")),this.controls.$input_hsb_b.on("input",v.proxy(this._onInput,this,"hsb_b")),this.controls.$input_alpha.on("input",v.proxy(this._onInput,this,"alpha")),this.controls.$submit.on("click",v.proxy(this._onSubmit,this))},_refresh:function(){var e=this.color.toRGBA(),t=this.color.toHSBA(),n=this.controls.$pallete.outerHeight()-2,i=this.controls.$pallete.outerWidth()-2;this.controls.$pallete.css({"background-color":"hsl("+t.h+", 100%, 50%)"}),this.controls.$pallete_thumb.css({top:parseInt(n-n*t.b/100,10)}),this.controls.$pallete_thumb.css({left:parseInt(i-i*(100-t.s)/100,10)});n=this.controls.$hue.outerHeight()-2;this.controls.$hue_thumb.css({top:parseInt(n-n*t.h/360,10)});i=this.controls.$alpha.outerWidth()-2;this.controls.$alpha_thumb.css({left:parseInt(i-i*(1-t.a),10)}),this.controls.$alpha_gradient.css({background:"linear-gradient(to left,"+this.color.hex()+",rgba(0,0,0,0))"}),this.controls.$input_rgb_r.val(e.r),this.controls.$input_rgb_g.val(e.g),this.controls.$input_rgb_b.val(e.b),this.controls.$input_hsb_h.val(t.h),this.controls.$input_hsb_s.val(t.s),this.controls.$input_hsb_b.val(t.b),this.controls.$input_alpha.val(parseInt(100*e.a,10)),this.controls.$preview.css({"background-color":this.color.rgba()}),this.controls.$input_color.val(1!=e.a?this.color.rgba():this.color.hex())},_show:function(e){var t=e.offset(),n=e.outerWidth(),i=e.outerHeight(),o=this.controls.$picker.outerWidth(),a=this.controls.$picker.outerHeight(),r=t.top-a-1,e=t.left;this.controls.$picker.offset({top:r,left:e});a=this.controls.$picker.get(0).getBoundingClientRect();a.y<0&&(r=t.top+i+offsetH+1,this.controls.$picker.offset({top:r})),a.x+a.width>window.innerWidth&&(e=t.left+n-o,this.controls.$picker.offset({left:e})),this.controls.$picker.addClass("vision-active"),v("body").on("mousedown touchstart",v.proxy(this._onBodyClick,this))},_hide:function(){this.controls.$picker.removeClass("vision-active").css({top:"",left:""}),v("body").off("mousedown touchstart",v.proxy(this._onBodyClick,this))},_destroy:function(){this.controls.$picker&&this.controls.$picker.remove(),this.config=null,this.color=new c,this.controls={}},_onPalleteEditStart:function(e){v("body").on("mouseup",v.proxy(this._onPalleteEditEnd,this)),v("body").on("mousemove",v.proxy(this._onPalleteEditMove,this))},_onPalleteEditMove:function(e){var t=this.controls.$pallete.outerHeight(),n=this.controls.$pallete.outerWidth(),n=100-parseInt(100*(n-Math.max(0,Math.min(n,e.pageX-this.controls.$pallete.offset().left)))/n,10),t=parseInt(100*(t-Math.max(0,Math.min(t,e.pageY-this.controls.$pallete.offset().top)))/t,10);return this.color.setSaturation(n),this.color.setBrightness(t),this._refresh(),!1},_onPalleteEditEnd:function(e){return v("body").off("mouseup",v.proxy(this._onPalleteEditEnd,this)),v("body").off("mousemove",v.proxy(this._onPalleteEditMove,this)),this._refresh(),!1},_onHueEditStart:function(e){v("body").on("mouseup",v.proxy(this._onHueEditEnd,this)),v("body").on("mousemove",v.proxy(this._onHueEditMove,this))},_onHueEditMove:function(e){var t=this.controls.$hue.outerHeight(),t=parseInt(360*(t-Math.max(0,Math.min(t,e.pageY-this.controls.$hue.offset().top)))/t,10);return this.color.setHue(t),this._refresh(),!1},_onHueEditEnd:function(e){return v("body").off("mouseup",v.proxy(this._onHueEditEnd,this)),v("body").off("mousemove",v.proxy(this._onHueEditMove,this)),this._refresh(),!1},_onAlphaEditStart:function(e){v("body").on("mouseup",v.proxy(this._onAlphaEditEnd,this)),v("body").on("mousemove",v.proxy(this._onAlphaEditMove,this))},_onAlphaEditMove:function(e){var t=this.controls.$alpha.outerWidth(),t=1-(t-Math.max(0,Math.min(t,e.pageX-this.controls.$alpha.offset().left)))/t;return this.color.setAlpha(t),this._refresh(),!1},_onAlphaEditEnd:function(e){return v("body").off("mouseup",v.proxy(this._onAlphaEditEnd,this)),v("body").off("mousemove",v.proxy(this._onAlphaEditMove,this)),this._refresh(),!1},_onInputEditStart:function(e,t){v("body").on("mouseup",v.proxy(this._onInputEditEnd,this)),v("body").on("mousemove",v.proxy(this._onInputEditMove,this)),this.inputEdit.enabled=!0,this.inputEdit.pageY=t.pageY,this.inputEdit.value=parseInt(v(t.target).siblings("input").val(),10),this.inputEdit.type=e},_onInputEditMove:function(e){if(this.inputEdit.enabled){var e=e.pageY-this.inputEdit.pageY,t=this.inputEdit.value+e;switch(this.inputEdit.type){case"rgb_r":this.color.setRed(t);break;case"rgb_g":this.color.setGreen(t);break;case"rgb_b":this.color.setBlue(t);break;case"hsb_h":this.color.setHue(t);break;case"hsb_s":this.color.setSaturation(t);break;case"hsb_b":this.color.setBrightness(t);break;case"alpha":this.color.setAlpha(t/100)}}return this._refresh(),!1},_onInputEditEnd:function(e){return v("body").off("mouseup",v.proxy(this._onInputEditEnd,this)),v("body").off("mousemove",v.proxy(this._onInputEditMove,this)),this.inputEdit.enabled=!1,this.inputEdit.pageY=0,this.inputEdit.value=0,this.inputEdit.type=null,this._refresh(),!1},_onInput:function(e,t){var n=v(t.target).val(),n=parseInt(n,10)||0;switch(e){case"rgb_r":this.color.setRed(n);break;case"rgb_g":this.color.setGreen(n);break;case"rgb_b":this.color.setBlue(n);break;case"hsb_h":this.color.setHue(n);break;case"hsb_s":this.color.setSaturation(n);break;case"hsb_b":this.color.setBrightness(n);break;case"alpha":this.color.setAlpha(n/100)}return this._refresh(),!1},_onSubmit:function(e){this._hide(),"function"==typeof this.config.onSelect&&this.config.onSelect.call(this,this.color)},_onBodyClick:function(e){0!==this.controls.$picker.has(e.target).length||v(e.target).hasClass("vision-color-picker")||this._hide()},show:function(e,t){t&&(this.color.setColor(t),this._refresh()),this._show(e)},hide:function(){this._hide()},destroy:function(){this._destroy()}};var u=new e({onSelect:function(e){e=1==e.alpha?e.hex():e.rgba();a.setValue(o,e),a.scan(),p(),s.val(e)}});function p(){var e=n.data("callback");e&&a.changeDetector.compile(e)(t)}a.changeDetector.watch("$destroy",function(){u.destroy()}),a.watch(o,function(e){var t;v(i).removeClass("vision-invalid"),null==e?(s.val(null),r.find("> div > div").css({"background-color":""})):((t=new c).setColor(e)?r.find("> div > div").css({"background-color":t.rgba()}):r.find("> div > div").css({"background-color":""}),s.val(e))},{readOnly:!0})}},e.directives.al.tooltipplacement={restrict:"EA",link:function(e,t,n,i){var t=v(t),o=v("<select/>").addClass(t.get(0).className);o.append('<option value="none">none</option>'),o.append('<option value="top">top</option>'),o.append('<option value="right">right</option>'),o.append('<option value="bottom">bottom</option>'),o.append('<option value="left">left</option>'),o.append('<option value="top-left">top-left</option>'),o.append('<option value="top-right">top-right</option>'),o.append('<option value="right-top">right-top</option>'),o.append('<option value="right-bottom">right-bottom</option>'),o.append('<option value="bottom-left">bottom-left</option>'),o.append('<option value="bottom-right">bottom-right</option>'),o.append('<option value="left-top">left-top</option>'),o.append('<option value="left-bottom">left-bottom</option>'),t.append(o),o.unwrap(),o.on("change",function(e){var t=o.val();"none"==t&&(t=null);i.setValue(n,t),i.scan()}),i.watch(n,function(e){null==e?o.val("none"):o.val(e)},{readOnly:!0})}},e.directives.al.tooltiptrigger={restrict:"EA",link:function(e,t,n,i){var t=v(t),o=v("<select/>").addClass(t.get(0).className);o.append('<option value="none">none</option>'),o.append('<option value="hover">hover</option>'),o.append('<option value="focus">focus</option>'),o.append('<option value="click">click</option>'),o.append('<option value="clickbody">click & body</option>'),o.append('<option value="sticky">sticky</option>'),t.append(o),o.unwrap(),o.on("change",function(e){var t=o.val();"none"==t&&(t=null);i.setValue(n,t),i.scan()}),i.watch(n,function(e){null==e?o.val("none"):o.val(e)},{readOnly:!0})}},e.directives.al.popovertype={restrict:"EA",link:function(e,t,n,i){var t=v(t),o=v("<select/>").addClass(t.get(0).className);o.append('<option value="tooltip">tooltip</option>'),o.append('<option value="inbox">inbox</option>'),o.append('<option value="lightbox">lightbox</option>'),t.append(o),o.unwrap(),o.on("change",function(e){var t=o.val();"default"==t&&(t=null);i.setValue(n,t),i.scan()}),i.watch(n,function(e){null==e?o.val("default"):o.val(e)},{readOnly:!0})}},e.directives.al.popoverplacement={restrict:"EA",link:function(e,t,n,i){var t=v(t),o=v("<select/>").addClass(t.get(0).className);o.append('<option value="none">none</option>'),o.append('<option value="top-left">top-left</option>'),o.append('<option value="top">top</option>'),o.append('<option value="top-right">top-right</option>'),o.append('<option value="right-top">right-top</option>'),o.append('<option value="right">right</option>'),o.append('<option value="right-bottom">right-bottom</option>'),o.append('<option value="bottom-right">bottom-right</option>'),o.append('<option value="bottom">bottom</option>'),o.append('<option value="bottom-left">bottom-left</option>'),o.append('<option value="left-bottom">left-bottom</option>'),o.append('<option value="left">left</option>'),o.append('<option value="left-top">left-top</option>'),t.append(o),o.unwrap(),o.on("change",function(e){var t=o.val();"none"==t&&(t=null);i.setValue(n,t),i.scan()}),i.watch(n,function(e){null==e?o.val("none"):o.val(e)},{readOnly:!0})}},e.directives.al.popovertrigger={restrict:"EA",link:function(e,t,n,i){var t=v(t),o=v("<select/>").addClass(t.get(0).className);o.append('<option value="none">none</option>'),o.append('<option value="hover">hover</option>'),o.append('<option value="focus">focus</option>'),o.append('<option value="click">click</option>'),o.append('<option value="dblclick">dblclick</option>'),t.append(o),o.unwrap(),o.on("change",function(e){var t=o.val();"none"==t&&(t=null);i.setValue(n,t),i.scan()}),i.watch(n,function(e){null==e?o.val("none"):o.val(e)},{readOnly:!0})}},t.config=v.extend(!0,{},t.defaultConfig),t.alight=e,t.rootScope=t.alight(document.querySelectorAll("#vision-app-item")[0],{appData:t}),t.fn.init(t)}}function u(){var t={alight:null,rootScope:null,wp_ajax_url:null,wp_ajax_nonce:null,wp_ajax_action_update:null,wp_ajax_action_get:null,wp_ajax_action_delete_data:null,wp_ajax_action_modal:null,wp_ajax_msg_error:null,themes:null,roles:null,config:null,defaultConfig:{themeJavaScript:null,themeCSS:null,roles:null},fn:{init:function(e){v("#vision-app-settings").removeAttr("style"),e.plan=vision_globals.plan,e.wp_ajax_url=vision_globals.ajax_url,e.wp_ajax_nonce=vision_globals.ajax_nonce,e.wp_ajax_action_update=vision_globals.ajax_action_update,e.wp_ajax_action_get=vision_globals.ajax_action_get,e.wp_ajax_action_delete_data=vision_globals.ajax_action_delete_data,e.wp_ajax_action_modal=vision_globals.ajax_action_modal,e.wp_ajax_msg_error=vision_globals.ajax_msg_error,e.fn.initConfig(e)},enableLoading:function(e){v("#vision-app-settings").removeClass("vision-active")},disableLoading:function(e){setTimeout(function(){v("#vision-app-settings").addClass("vision-active")},1e3)},loadData:function(i,e){var o=v.Deferred();return v.ajax({url:i.wp_ajax_url,type:"POST",dataType:"json",data:{nonce:i.wp_ajax_nonce,action:i.wp_ajax_action_get,type:e},success:function(e){e&&e.success?o.resolve(e.data):this.error()},error:function(e,t,n){i.fn.showNotice(i,i.wp_ajax_msg_error,"notice-error"),o.reject()}}),o.promise()},initConfig:function(t){t.fn.enableLoading(t);var e=v.extend(!0,{},t.defaultConfig,vision_globals.config?JSON.parse(vision_globals.config):null);if(t.config=e,t.config)for(var n in t.config)t.defaultConfig.hasOwnProperty(n)||delete t.config[n];t.fn.loadData(t,"editor-themes").done(function(e){t.themes=e.list}).always(function(){t.rootScope.scan(),t.fn.disableLoading(t)}),t.fn.loadData(t,"roles").done(function(e){t.roles=e.list}).always(function(){t.rootScope.scan(),t.fn.disableLoading(t)})},saveConfig:function(t){t.fn.enableLoading(t);var e=v.extend(!0,{},t.config),e=JSON.stringify(e);v.ajax({url:t.wp_ajax_url,type:"POST",dataType:"json",data:{nonce:t.wp_ajax_nonce,action:t.wp_ajax_action_update,config:e}}).done(function(e){e?t.fn.showNotice(t,e.data.msg,e.success?"notice-success":"notice-error"):t.fn.showNotice(t,t.wp_ajax_msg_error,"notice-error")}).fail(function(){t.fn.showNotice(t,t.wp_ajax_msg_error,"notice-error")}).always(function(){t.fn.disableLoading(t)})},deleteAllData:function(t,e){var n={text:e};t.modal.fn.show(t,"confirm",n).then(function(e){t.modal.fn.close(t,n.id),"close"!=e&&e&&(t.fn.enableLoading(t),v.ajax({url:t.wp_ajax_url,type:"POST",dataType:"json",data:{nonce:t.wp_ajax_nonce,action:t.wp_ajax_action_delete_data}}).done(function(e){e?t.fn.showNotice(t,e.data.msg,e.success?"notice-success":"notice-error"):t.fn.showNotice(t,t.wp_ajax_msg_error,"notice-error")}).fail(function(){t.fn.showNotice(t,t.wp_ajax_msg_error,"notice-error")}).always(function(){t.fn.disableLoading(t)}),t.rootScope.scan())})},showNotice:function(e,t,n){var i=v("#vision-messages"),o=v("<div></div>").addClass("notice is-dismissible").addClass(n),n=v("<p></p>").html(t),t=v("<button></button>").attr("type","button").addClass("notice-dismiss").html('<span class="screen-reader-text">Dismiss this notice.</span>');function a(){clearTimeout(o.data("timer")),o.fadeTo(100,0,function(){o.slideUp(100,function(){o.remove()})})}o.data("timer",setTimeout(a,5e3)),t.click(function(e){e.preventDefault(),a()}),o.append(n,t),i.append(o)}},modal:{count:0,items:[],fn:{resize:function(e){var t=v("#vision-modal-"+e.id),n=(t.find(".vision-modal-dialog"),t.find(".vision-modal-header")),e=t.find(".vision-modal-data"),t=t.find(".vision-modal-footer"),n=n.outerHeight()+t.outerHeight()+50,t=v(window).height();t-n<e.height()&&e.outerHeight(t-n)},show:function(i,e,n,t){var o=++i.modal.count,a=v.Deferred();return i.modal.items.push(o),i.inprocess++,v.ajax({url:i.wp_ajax_url,type:"GET",dataType:"html",data:{nonce:i.wp_ajax_nonce,action:i.wp_ajax_action_modal,name:e}}).done(function(e){v("body").addClass("vision-modal-open");var e=v(e),t={};t.modalData=n,t.modalData.id=o,t.modalData.deferred=a,t.modalData.appData=i,null!=n.easyClose&&!n.easyClose||e.on("click",function(e){t.modalData.deferred.resolve("close")}),v("#vision-modals").append(e),e.find(".vision-modal-dialog").on("click",function(e){return!1}),n.rootScope=i.alight(e.get(0),t),i.modal.fn.resize(n)}).fail(function(e,t,n){i.fn.showNotice(i,i.wp_ajax_msg_error,"notice-error")}).always(function(){t&&"function"==typeof t&&t.call(this,n),i.inprocess--}),a.promise()},close:function(e,t){v("#vision-modal-"+t).remove();t=e.modal.items.indexOf(t);e.modal.items.splice(t,1),0==e.modal.items.length&&jQuery("body").removeClass("vision-modal-open")}}}};window.alightInitCallback=function(e){delete window.alightInitCallback,e.directives.al.toggle={restrict:"EA",link:function(t,e,n,i){var o=v(e);o.addClass("vision-toggle").html("&nbsp;"),o.on("mousedown touchstart",function(e){i.setValue(n,!i.getValue(n)),i.scan(),function(){var e=o.data("callback");e&&i.changeDetector.compile(e)(t)}()}),i.watch(n,function(e){e?o.addClass("vision-checked").removeClass("vision-unchecked"):o.removeClass("vision-checked").addClass("vision-unchecked")},{readOnly:!0})}},e.directives.al.checkboxlist={restrict:"EA",link:function(l,e,c,u){var p=v(e),h=v("<ul>"),d=p.data("predefined"),f=p.data("src");p.addClass("vision-checkboxlist").append(h),p.on("click",".vision-checkbox",function(e){for(var t=v(this),n=t.parent().data("id"),i=u.getValue(f),o=0;o<i.length;o++)if(i[o].id==n){var a=u.getValue(c);if(a){for(var r=!0,s=0;s<a.length;s++)if(a[s]==n){r=!1,a.splice(s,1),t.removeClass("vision-checked"),0==a.length&&(a=null);break}r&&(a.push(n),t.addClass("vision-checked"))}else(a=[]).push(n),t.addClass("vision-checked");u.setValue(c,a),u.scan(),function(){var e=p.data("callback");e&&u.changeDetector.compile(e)(l)}();break}}),f&&u.watch(f,function(e){var t=u.getValue(f),n=u.getValue(c);if(h.empty(),t instanceof Array)for(var i=0;i<t.length;i++){var o=v("<li>").attr({"data-id":t[i].id}),a=v("<div>").addClass("vision-checkbox"),r=v("<div>").addClass("vision-name").text(t[i].name);if(d==t[i].id&&a.addClass("vision-checked vision-readonly"),n instanceof Array)for(var s=0;s<n.length;s++)if(n[s]==t[i].id){a.addClass("vision-checked");break}o.append(a,r),h.append(o)}},{readOnly:!0})}},t.config=v.extend(!0,{},t.defaultConfig),t.alight=e,t.rootScope=t.alight(document.querySelectorAll("#vision-app-settings")[0],{appData:t}),t.fn.init(t)}}function p(){var K=function(e,t){return K.bootstrap(e,t)};K.version="0.14.0",K.filters={},K.text={},K.core={},K.utils={},K.option={globalController:!1,removeAttribute:!0,domOptimization:!0,domOptimizationRemoveEmpty:!0,fastBinding:!0},K.debug={scan:0,directive:!1,watch:!1,watchText:!1,parser:!1},K.ctrl=K.controllers={},K.d=K.directives={al:{},bo:{},$global:{}},K.hooks={directive:[],binding:[]},K.priority={al:{app:2e3,checked:20,class:30,css:30,focused:20,if:700,ifnot:700,model:25,radio:25,repeat:1e3,select:20,stop:-10,value:20,on:10},$component:5,$attribute:-5};function k(e,t){0<=(t=e.indexOf(t))?e.splice(t,1):console.warn("trying to remove not exist item")}var e,t,n,i,u,b,o,a,x,T,l,p,w,c,r,_,C,A,L,h,d,j,f,B,O,s,v,m,g,y,$,S,D,E,M,N,I,F,H,R,z,V,P,W,U,X,G,J,Y,q,Z,Q,ee,te,ne,ie,oe,ae,re,se,le,ce=K.f$={};function ue(t,e){var n,i,o,a,r=[],s=!1,l=e.cd,c=e.callback;return e.filterConf.args.length?(i=[],e.filterConf.args.forEach(function(e,t){e=l.watch(e,function(e){r[t+1]=e,a()});e.$.isStatic||i.push(e)}),o=!1,a=function(){o||(o=!0,l.watch("$onScanOnce",function(){var e;o=!1,s&&(e=t.apply(null,r),ce.isPromise(e)?e.then(function(e){c(e),l.scan()}):c(e))}))},i.length&&(n=function(){i.forEach(function(e){return e.stop()})})):a=function(){var e=t(r[0]);ce.isPromise(e)?e.then(function(e){c(e),l.scan()}):c(e)},{onChange:function(e){s=!0,r[0]=e,a()},onStop:n,watchMode:e.watchMode}}function pe(e,t,n,i,o,a){i.callback.apply(null,a);t=t._properties.root;t&&t.topCD&&t.topCD.scan({zone:!0})}function he(e,t,n,i){i.setValue(i.attrArgument,t)}function de(e){return e.replace(/(-\w)/g,function(e){return e.substring(1).toUpperCase()})}function fe(e){var t,n=e.listener,i=e.childCD,o=e.name,a=e.parentName,r=e.parentCD,e={},o=de(o);if(n&&!0!==n)if(le.isFunction(n))t=n;else{if(t=n.onChange,"copy"===n||"copy"===n.watchMode)return void(t?t(a):i.scope[o]=a);"array"!==n&&"array"!==n.watchMode||(e.isArray=!0),"deep"!==n&&"deep"!==n.watchMode||(e.deep=!0)}r.watch(a,t=t||function(e){i.scope[o]=e,i.scan()},e)}return ce.before=function(e,t){e.parentNode.insertBefore(t,e)},ce.after=function(e,t){var n=e.parentNode,e=e.nextSibling;e?n.insertBefore(t,e):n.appendChild(t)},ce.remove=function(e){var t=e.parentNode;t&&t.removeChild(e)},ce.on=function(e,t,n){e.addEventListener(t,n,!1)},ce.off=function(e,t,n){e.removeEventListener(t,n,!1)},ce.isFunction=function(e){return e&&"[object Function]"===Object.prototype.toString.call(e)},ce.isObject=function(e){return e&&"[object Object]"===Object.prototype.toString.call(e)},ce.isPromise=function(e){return e&&window.Promise&&e instanceof window.Promise},ce.isElement=function(e){return e instanceof HTMLElement},ce.addClass=function(e,t){e.classList?e.classList.add(t):e.className+=" "+t},ce.removeClass=function(e,t){e.classList?e.classList.remove(t):e.className=e.className.replace(new RegExp("(^| )"+t.split(" ").join("|")+"( |$)","gi")," ")},ce.rawAjax=function(e){var t,n=new XMLHttpRequest;for(t in n.open(e.type||"GET",e.url,!0,e.username,e.password),e.headers)n.setRequestHeader(t,e.headers[t]);e.success&&(n.onload=function(){200<=n.status&&n.status<400?e.success(n.responseText):e.error&&e.error()}),e.error&&(n.onerror=e.error),n.send(e.data||null)},ce.ajaxCache={},ce.ajax=function(e){if(e.username||e.password||e.headers||e.data||!e.cache)return ce.rawAjax(e);var t=e.type||"GET",n=t+":"+e.url,i=ce.ajaxCache[n];i||(ce.ajaxCache[n]=i={callback:[]}),i.result?e.success&&e.success(i.result):(i.callback.push(e),i.loading||(i.loading=!0,ce.rawAjax({type:t,url:e.url,success:function(e){i.loading=!1,i.result=e;for(var t=0;t<i.callback.length;t++)i.callback[t].success&&i.callback[t].success(e);i.callback.length=0},error:function(){i.loading=!1;for(var e=0;e<i.callback.length;e++)i.callback[e].error&&i.callback[e].error();i.callback.length=0}})))},e='@charset "UTF-8";[al-cloak],[hidden],.al-hide{display:none !important;}',t=document.querySelectorAll("head")[0],(oe=document.createElement("style")).setAttribute("type","text/css"),oe.styleSheet?oe.styleSheet.cssText=e:oe.appendChild(document.createTextNode(e)),t.appendChild(oe),ce.ready=(i=!(n=[]),ce.on(document,"DOMContentLoaded",function e(){i=!0,ce.off(document,"DOMContentLoaded",e);for(var t=0;t<n.length;t++)n[t]();n.length=0}),function(e){i?e():n.push(e)}),window.jQuery&&(window.jQuery.fn.alight=function(e){var n=[];if(this.each(function(e,t){return n.push(t)}),n.length)return K(n,e)}),K.core.getFilter=function(e,t){t=t.locals[e];if(t&&(ce.isFunction(t)||t.init||t.fn))return t;if(t=K.filters[e])return t;throw"Filter not found: "+e},K.core.buildFilterNode=function(e,t,n,i){if(ce.isFunction(n))return ue(n,{cd:e,filterConf:t,callback:i});if(n.init)return n.init.call(e,e.scope,t.raw,{setValue:i,conf:t,changeDetector:e});if(ce.isFunction(n.fn))return ue(n.fn,{cd:e,filterConf:t,callback:i,watchMode:n.watchMode});throw"Wrong filter: "+t.name},K.ChangeDetector=function(e){var t=new o,e=new u(t,e||{});return t.topCD=e},(o=function(){return this.watchers={any:[],finishBinding:[],finishScan:[],finishScanOnce:[],onScanOnce:[]},this.status=null,this.extraLoop=!1,this.finishBinding_lock=!1,this.lateScan=!1,this.topCD=null,this}).prototype.destroy=function(){if(this.watchers.any.length=0,this.watchers.finishBinding.length=0,this.watchers.finishScan.length=0,this.watchers.finishScanOnce.length=0,this.watchers.onScanOnce.length=0,this.topCD)return this.topCD.destroy()},(u=function(e,t){this.scope=t,this.locals=t,this.root=e,this.watchList=[],this.destroy_callbacks=[],this.parent=null,this.children=[],this.rwatchers={any:[],finishScan:[],elEvents:[]}}).prototype.new=function(e,t){var n,i;return t=t||{},i=this,null==e&&(e=i.scope),(n=new u(i.root,e)).parent=i,e===i.scope&&(t.locals?((t=i._ChildLocals)||(i._ChildLocals=t=function(){return this.$$root=e,this},t.prototype=i.locals),n.locals=new t):n.locals=i.locals),i.children.push(n),n},u.prototype.destroy=function(){var e,t,n,i,o,a,r,s,l,c,u,p,h,d,f,v,m,g,y,b,x,w=this,_=w.root;for(w.scope=null,w.parent&&k(w.parent.children,w),n=0,a=(f=w.destroy_callbacks).length;n<a;n++)(0,f[n])();for(i=0,r=(v=w.children.slice()).length;i<r;i++)v[i].destroy();for(o=w.destroy_callbacks.length=0,s=(m=w.watchList).length;o<s;o++)(e=m[o]).onStop&&e.onStop();for(p=w.watchList.length=0,l=(g=w.rwatchers.any).length;p<l;p++)x=g[p],k(_.watchers.any,x);for(h=w.rwatchers.any.length=0,c=(y=w.rwatchers.finishScan).length;h<c;h++)x=y[h],k(_.watchers.finishScan,x);for(d=w.rwatchers.finishScan.length=0,u=(b=this.rwatchers.elEvents).length;d<u;d++)t=b[d],ce.off(t[0],t[1],t[2]);this.rwatchers.elEvents.length=0,_.topCD===w&&(_.topCD=null,_.destroy())},a=function(e){return this.cb=e},r=function(e,t,n){var i=e.root,o=new a(n);return e.rwatchers[t].push(o),i.watchers[t].push(o),{stop:function(){return k(e.rwatchers[t],o),k(i.watchers[t],o)}}},u.prototype.on=function(e,t,n){return ce.on(e,t,n),this.rwatchers.elEvents.push([e,t,n])},p={$any:function(e,t){return r(e,"any",t)},$finishScan:function(e,t){return r(e,"finishScan",t)},$finishScanOnce:function(e,t){e.root.watchers.finishScanOnce.push(t)},$onScanOnce:function(e,t){e.root.watchers.onScanOnce.push(t)},$destroy:function(e,t){e.destroy_callbacks.push(t)},$finishBinding:function(e,t){e.root.watchers.finishBinding.push(t)}},_=function(){},u.prototype.watch=function(t,n,e){var i,o,a,r,s,l,c,u=p[t];if(u)return u(this,n);if((e=!0===(e=e||{})?{isArray:!0}:e).init&&console.warn("watch.init is depricated"),(i=this).root,c=i.scope,ce.isFunction(t)?(a=t,s=K.utils.getId(),r=!0):(r=!1,a=null,"::"===(t=t.trim()).slice(0,2)&&(t=t.slice(2),e.oneTime=!0),s=t,s=e.deep?"d#"+s:e.isArray?"a#"+s:"v#"+s),K.debug.watch&&console.log("$watch",t),s=!1,!r)if(e.watchText)a=e.watchText.fn;else{if((r=K.utils.compile.expression(t)).filter)return function(t,e,n,i){var o,a=null,r=i.oneTime;i.isArray?a="array":i.deep&&(a="deep"),n||(o={el:i.element,ea:i.elementAttr},n=function(e){T(t.scope,o,e)});for(var s=K.utils.parsFilter(e.filter),l=[],c=s.result.length-1;0<=c;c--){var u=K.core.getFilter(s.result[c].name,t),u=K.core.buildFilterNode(t,s.result[c],u,n);u.watchMode&&(a=u.watchMode),u.onStop&&l.push(u.onStop),n=u.onChange}return i={oneTime:r},"array"===a?i.isArray=!0:"deep"===a&&(i.deep=!0),l.length&&(i.onStop=function(){l.forEach(function(e){return e()}),l.length=0}),t.watch(e.expression,n,i)}(i,r,n,e);s=r.isSimple&&0===r.simpleVariables.length,a=r.fn}return e.deep&&(e.isArray=!1),o={isStatic:s,isArray:Boolean(e.isArray),extraLoop:!e.readOnly,deep:!0===e.deep?10:e.deep,value:_,callback:n,exp:a,src:""+t,onStop:e.onStop||null,el:e.element||null,ea:e.elementAttr||null},s?i.watch("$onScanOnce",function(){return T(c,o,o.exp(c))}):i.watchList.push(o),l={$:o,stop:function(){if(e.onStop)try{e.onStop()}catch(e){K.exceptionHandler(e,"Error in onStop of watcher: "+t,t)}if(!o.isStatic)return k(i.watchList,o)},refresh:function(){var e=o.exp(i.locals);return e&&o.deep?o.value=K.utils.clone(e,o.deep):e&&o.isArray?o.value=e.slice():o.value=e}},e.oneTime&&(o.callback=function(e){if(void 0!==e)return l.stop(),n(e)}),l},u.prototype.watchGroup=function(e,t){var n,i,o,a,r,s=this;if(!t&&ce.isFunction(e)&&(t=e,e=null),r=!1,n=function(){if(!r)return r=!0,s.watch("$onScanOnce",function(){return r=!1,t()})},e)for(i=0,a=e.length;i<a;i++)o=e[i],s.watch(o,n);return n},l=window.performance?function(){return Math.floor(performance.now())}:function(){return(new Date).getTime()},w=function(e,t){var n,i,o,a;if(null===e||null===t)return!0;if((a=typeof e)!=typeof t)return!0;if("object"==a){if(e.length!==t.length)return!0;for(n=i=0,o=e.length;i<o;n=++i)if(e[n]!==t[n])return!0}return!1},T=function(e,t,n){t.el?t.ea?t.el.setAttribute(t.ea,n):t.el.nodeValue=n:t.callback.call(e,n)},x=function(e,t,n,i){t={src:n.src,scope:t.scope,locals:t.locals};return n.el&&(t.element=n.el),K.exceptionHandler(e,(1===i?"$scan, error in callback: ":"$scan, error in expression: ")+n.src,t)},b=function(){},c=function(e,t){e.root;var n,i,o,a,r,s,l,c,u,p,h,d,f,v,m=!1,g=0,y=0;if(e){for(h=[],r=0,o=e;o;){for(u=o.locals,y+=o.watchList.length,s=0,c=(d=o.watchList.slice()).length;s<c;s++){l=(v=d[s]).value;try{f=v.exp(u)}catch(e){a=e,f=b}if(l!==f){if(p=!1,v.isArray?(n=Array.isArray(l))===(i=Array.isArray(f))?n?w(l,f)&&(p=!0,v.value=f.slice()):(p=!0,v.value=f):(p=!0,v.value=i?f.slice():f):v.deep?K.utils.equal(l,f,v.deep)||(p=!0,v.value=K.utils.clone(f,v.deep)):(p=!0,v.value=f),p)if(p=!1,f===b)x(a,o,v);else{g++;try{v.el?v.ea?null!=f?v.el.setAttribute(v.ea,f):v.el.removeAttribute(v.ea):v.el.nodeValue=f:(l===_&&(l=void 0),"$scanNoChanges"!==v.callback.call(o.scope,f,l)&&v.extraLoop&&(m=!0))}catch(e){x(a=e,o,v,1)}}1<K.debug.scan&&console.log("changed:",v.src)}}h.push.apply(h,o.children),o=h[r++]}t.total=y,t.changes=g,t.extraLoop=m}},u.prototype.digest=function(){var e,t,n,i,o,a=this.root,r=10,s=0;for(K.debug.scan&&(o=l()),i={total:0,changes:0,extraLoop:!1,src:"",scope:null,element:null};r;){if(r--,a.extraLoop=!1,a.watchers.onScanOnce.length)for(n=a.watchers.onScanOnce.slice(),e=a.watchers.onScanOnce.length=0,t=n.length;e<t;e++)n[e].call(a);if(c(this,i),s+=i.changes,!i.extraLoop&&!a.extraLoop&&!a.watchers.onScanOnce.length)break}return K.debug.scan&&(o=l()-o,console.log("$scan: loops: ("+(10-r)+"), last-loop changes: "+i.changes+", watches: "+i.total+" / "+o+"ms")),i.mainLoop=r,i.totalChanges=s,i},u.prototype.scan=function(e){var t,n,i,o,a,r,s,l,c,u=this.root;if(e=e||{},!K.option.zone||e.zone){if((e=ce.isFunction(e)?{callback:e}:e).callback&&u.watchers.finishScanOnce.push(e.callback),e.late)return u.lateScan?void 0:(u.lateScan=!0,void K.nextTick(function(){if(u.lateScan)return u.topCD.scan()}));if("scaning"!==u.status){if(u.lateScan=!1,u.status="scaning",(e=u.topCD?u.topCD.digest():{}).totalChanges)for(n=0,a=(l=u.watchers.any).length;n<a;n++)(0,l[n])();for(u.status=null,i=0,r=(c=u.watchers.finishScan).length;i<r;i++)(0,c[i])();for(t=u.watchers.finishScanOnce.slice(),o=u.watchers.finishScanOnce.length=0,s=t.length;o<s;o++)t[o].call(u);if(0===e.mainLoop)throw"Infinity loop detected";return e}u.extraLoop=!0}},(K.core.ChangeDetector=u).prototype.compile=function(e,t){return K.utils.compile.expression(e,t).fn},u.prototype.setValue=function(t,n){var i,o,a,r,s,l,c,u,p=this.compile(t+" = $value",{input:["$value"],no_return:!0});try{return p(this.locals,n)}catch(e){if(i=e,l="can't set variable: "+t,K.debug.parser&&console.warn(l),0<=(""+i).indexOf("TypeError")&&(u=t.match(/^([\w\d\.]+)\.[\w\d]+$/))&&u[1]){for(s=this.locals,o=0,r=(c=u[1].split(".")).length;o<r;o++)void 0===s[a=c[o]]&&(s[a]={}),s=s[a];try{return void p(this.locals,n)}catch(e){}}return K.exceptionHandler(i,l,{name:t,value:n})}},u.prototype.eval=function(e){return this.compile(e)(this.locals)},u.prototype.getValue=function(e){return this.eval(e)},K.text.$base=function(t){var n=t.point,e=t.cd,i=e.scope,o=(i.$ns&&i.$ns.text?i.$ns:K).text[t.name];if(!o)throw"No directive alight.text."+t.name;return o.call(e,(e={changeDetector:e,setter:function(e){if(t.update)return n.value=null===e?"":""+e,t.update()},setterRaw:function(e){if(t.updateRaw)return n.value=null===e?"":""+e,t.updateRaw()},finally:function(e){if(t.finally)return n.value=null===e?"":""+e,n.type="text",t.finally(),t.update=null,t.finally=null}}).setter,t.exp,i,e)},u.prototype.watchText=function(e,t,n){var i,o,a,r,s,l,c,u,p,h,d,f,v,m,g,y,b,x,w,_,k,C,$,S,D,E,A;if(n=n||{},o=this,K.debug.watchText&&console.log("$watchText",e),C=K.utils.compile.buildSimpleText(e,null))o.watch(e,t,{watchText:C,element:n.element,elementAttr:n.elementAttr});else{for(r=K.utils.parsText(e),_=!(i=!(E=0)),l=c=s=function(){},f=0,g=r.length;f<g;f++)if("expression"===(a=r[f]).type)if(x=(u=a.list.join("|")).match(/^([^\w\d\s\$"'\(\u0410-\u044F\u0401\u0451]+)/))a.isDir=!0,w=x[1],u="#"===w?(d=u.indexOf(" "))<0?(w=u.substring(1),""):(w=u.slice(1,d),u.slice(d)):u.substring(w.length),K.text.$base({name:w,exp:u,cd:o,point:a,update:function(){return l()},updateRaw:function(){return c()},finally:function(){return l(),s()}}),_=!0,"text"!==a.type&&(i=!1);else if((w=K.utils.compile.expression(u,{string:!0})).filter)E++,a.watched=!(i=!1),function(t){o.watch(u,function(e){return t.value=e=null==e?"":e,l()})}(a);else{if(a.fn=w.fn,!w.rawExpression)throw"Error";w.isSimple&&0===w.simpleVariables.length?(a.type="text",a.value=a.fn()):(a.re=w.rawExpression,E++)}if(i){if(E)return C=_?K.utils.compile.buildSimpleText(null,r):K.utils.compile.buildSimpleText(e,r),void o.watch(e,t,{watchText:{fn:C.fn},element:n.element,elementAttr:n.elementAttr});for(S="",v=0,y=r.length;v<y;v++)a=r[v],S+=a.value;o.watch("$onScanOnce",function(){return T(o.scope,{callback:t,el:n.element,ea:n.elementAttr},S)})}else if(A={callback:t,el:n.element,ea:n.elementAttr},r.scope=o.scope,h=K.utils.compile.buildText(e,r),c=function(){return T(o.scope,A,h())},E){for(D=null,k="",l=function(){k=h()},s=function(){var e,t;for(d=!0,e=0,t=r.length;e<t;e++)if("expression"===(a=r[e]).type){d=!1;break}d&&(o.watch("$finishScanOnce",function(){return D.stop()}),n.onStatic&&n.onStatic())},e=function(){return k},m=0,b=r.length;m<b;m++)"expression"===(a=r[m]).type&&(a.isDir||a.watched||(a.watched=!0,function(t,e){o.watch(e,function(e){return t.value=e=null==e?"":e,l()})}(a,a.list.join(" | "))));l(),D=o.watch(e,t,{element:n.element,elementAttr:n.elementAttr})}else $=!1,p=function(){return $=!1,c()},(l=function(){if(!$)return $=!0,o.watch("$onScanOnce",p)})()}},C={TR:1,TD:1,LI:1},K.utils.optmizeElement=function(e,t){var n,i,o,a,r,s,l,c,u,p,h,d,f,v,m,g,y,b,x;if(1===e.nodeType){for(t=t||!K.option.domOptimizationRemoveEmpty,"PRE"===e.nodeName&&(t=!0),!(a=e.firstChild)||3!==a.nodeType||a.nodeValue.trim()||t||(ce.remove(a),a=e.firstChild),m=!1;a;)f=a.nextSibling,!m||3!==a.nodeType||a.nodeValue.trim()||t?(m=1===a.nodeType&&C[a.nodeName],K.utils.optmizeElement(a,t)):ce.remove(a),a=f;!(a=e.lastChild)||3!==a.nodeType||a.nodeValue.trim()||t||ce.remove(a)}else if(3===e.nodeType&&(b=e.data,h=K.utils.pars_start_tag,!((s=b.indexOf(h))<0||b.slice(s+h.length).indexOf(h)<0))){for(v="t",y=[n={value:""}],l=0,u=(o=K.utils.parsText(b)).length;l<u;l++)"text"===(i=o[l]).type?n.value+=i.value:(r=i.list.join("|"),x=K.utils.pars_start_tag+r+K.utils.pars_finish_tag,r.match(/^([^\w\d\s\$"'\(\u0410-\u044F\u0401\u0451]+)/)?("t"===v||"d"===v?n.value+=x:y.push(n={value:x}),v="d"):1===i.list.length?("t"===v||"v"===v?n.value+=x:y.push(n={value:x}),v="v"):"t"===v?n.value+=x:y.push(n={value:x}));if(!(y.length<2))for((a=e).data=y[0].value,c=0,p=(g=y.slice(1)).length;c<p;c++)i=g[c],d=document.createTextNode(i.value),ce.after(a,d),a=d}},K.hooks.attribute=oe=[],oe.push({code:"dataPrefix",fn:function(){"data-"===this.attrName.slice(0,5)&&(this.attrName=this.attrName.slice(5))}}),oe.push({code:"colonNameSpace",fn:function(){var e,t;this.directive||this.name||((t=(e=(t=this.attrName.match(/^(\w+)[\-\:](.+)$/))?(this.ns=t[1],t[2]):(this.ns="$global",this.attrName)).match(/^([^\.]+)\.(.*)$/))&&(e=t[1],this.attrArgument=t[2]),this.name=e.replace(/(-\w)/g,function(e){return e.substring(1).toUpperCase()}))}}),oe.push({code:"getGlobalDirective",fn:function(){var e;if(!this.directive){if(!(e=K.d[this.ns]))return this.result="noNS",void(this.stop=!0);this.directive=e[this.name],this.directive||("$global"===this.ns?this.result="noNS":this.result="noDirective",this.stop=!0)}}}),oe.push({code:"cloneDirective",fn:function(){var e,t,n=this.directive,i=this.ns,o=this.name,a={};if(ce.isFunction(n))a.init=n;else{if(!ce.isObject(n))throw"Wrong directive: "+i+"."+o;for(e in n)t=n[e],a[e]=t}if(a.priority=n.priority||K.priority[i]&&K.priority[i][o]||0,a.restrict=n.restrict||"A",a.restrict.indexOf(this.attrType)<0)throw"Directive has wrong binding (attribute/element): "+o;this.directive=a}}),oe.push({code:"preprocessor",fn:function(){var r=this.ns,s=this.name,l=this.directive;l.$init=function(e,t,n,i){var o=function(){for(var e,t=a.procLine,n=e=0,i=t.length;e<i;n=++e)if(t[n].fn.call(a),a.isDeferred){a.procLine=t.slice(n+1);break}return a.async=!0,null},a={element:t,value:n,cd:e,env:i,ns:r,name:s,doBinding:!1,directive:l,isDeferred:!1,procLine:K.hooks.directive,makeDeferred:function(){return a.isDeferred=!0,a.doBinding=!0,a.retStopBinding=!0,a.async=!1,function(){if(a.isDeferred=!1,a.async)return o()}}};if(l.stopBinding&&(i.stopBinding=!0),o(),a.retStopBinding)return"stopBinding"}}}),(oe=K.hooks.directive).push({code:"init",fn:function(){var e;this.directive.init&&(K.debug.directive&&this.directive.scope&&console.warn(this.ns+"-"+this.name+" uses scope and init together, probably you need use link instead of init"),this.env.changeDetector=this.cd,(e=this.directive.init.call(this.env,this.cd.scope,this.element,this.value,this.env))&&e.start&&e.start())}}),oe.push({code:"templateUrl",fn:function(){var t,n=this;this.directive.templateUrl&&(t=this.makeDeferred(),ce.ajax({cache:!0,url:this.directive.templateUrl,success:function(e){return n.directive.template=e,t()},error:t}))}}),oe.push({code:"template",fn:function(){var e;this.directive.template&&(1===this.element.nodeType?this.element.innerHTML=this.directive.template:8===this.element.nodeType&&((e=document.createElement("p")).innerHTML=this.directive.template.trim(),e=e.firstChild,ce.after(this.element,e),this.element=e,this.doBinding=!0))}}),oe.push({code:"scope",fn:function(){var e,t;if(this.directive.scope){switch(t=this.cd,this.directive.scope){case!0:e=t.new({$parent:t.scope});break;case"root":e=K.ChangeDetector({$parent:t.scope}),t.watch("$destroy",function(){return e.destroy()});break;default:throw"Wrong scope value: "+this.directive.scope}this.env.parentChangeDetector=t,this.cd=e,this.doBinding=!0,this.retStopBinding=!0}}}),oe.push({code:"link",fn:function(){var e;this.directive.link&&(this.env.changeDetector=this.cd,(e=this.directive.link.call(this.env,this.cd.scope,this.element,this.value,this.env))&&e.start&&e.start())}}),oe.push({code:"scopeBinding",fn:function(){this.doBinding&&!this.env.stopBinding&&K.bind(this.cd,this.element,{skip_attr:this.env.skippedAttr()})}}),s=function(e,t,n){var i;"A"===t.attr_type?((i=n||{}).priority=K.priority.$attribute,i.is_attr=!0,i.name=e,i.attrName=e,i.element=t.element,t.list.push(i)):"M"===t.attr_type&&t.list.push(n)},O=function(e,t){var n,i,o,a;if(0<=t.skip_attr.indexOf(e))return s(e,t,{skip:!0});for(n={attrName:e,attrType:t.attr_type,element:t.element,cd:t.cd,result:null},i=0,o=(a=K.hooks.attribute).length;i<o&&(a[i].fn.call(n),!n.stop);i++);if("noNS"!==n.result)return"noDirective"===n.result?"E"===t.attr_type?void t.list.push({name:e,priority:-10,attrName:e,noDirective:!0}):void s(e,t,{noDirective:!0}):void t.list.push({name:e,directive:n.directive,priority:n.directive.priority,attrName:e,attrArgument:n.attrArgument});s(e,t)},B=function(e,t){return e.priority===t.priority?0:e.priority>t.priority?-1:1},L=function(e,t,n,i){if(!(n.indexOf(K.utils.pars_start_tag)<0))return e.watchText(n,null,{element:t,elementAttr:i}),!0},f=function(e,t,n){var i=t.data;if(!(i.indexOf(K.utils.pars_start_tag)<0))return e.watchText(i,null,{element:t}),i},h=function(t,n,e){var i,o,a,r=n.nodeValue.trim();if("directive:"===r.slice(0,10)){if(a=0<=(o=(r=r.slice(10).trim()).indexOf(" "))?(i=r.slice(0,+(o-1)+1||9e9),r.slice(o+1)):(i=r,""),r={list:o=[],element:n,attr_type:"M",cd:t,skip_attr:[]},O(i,r),(r=o[0]).noDirective)throw"Comment directive not found: "+i;i=r.directive,o=new A({element:n,attrName:r.attrName,attributes:o}),K.debug.directive&&console.log("bind",r.attrName,a,r);try{i.$init(t,n,a,o)}catch(e){K.exceptionHandler(e,"Error in directive: "+r.name,{value:a,env:o,cd:t,scope:t.scope,element:n})}return o.skipToElement?{directive:1,skipToElement:o.skipToElement}:{directive:1,skipToElement:null}}},(A=function(e){var t,n;for(t in e)n=e[t],this[t]=n;return this}).prototype.takeAttr=function(e,t){var n,i,o,a;for(1===arguments.length&&(t=!0),i=0,o=(a=this.attributes).length;i<o;i++)if((n=a[i]).attrName===e)return t&&(n.skip=!0),this.element.getAttribute(e)||!0},A.prototype.skippedAttr=function(){for(var e,t=this.attributes,n=[],i=0,o=t.length;i<o;i++)(e=t[i]).skip&&n.push(e.attrName);return n},A.prototype.scan=function(e){return this.changeDetector.scan(e)},A.prototype.on=function(e,t,n){return this.changeDetector.on(e,t,n)},A.prototype.watch=function(e,t,n){return this.changeDetector.watch(e,t,n)},A.prototype.watchGroup=function(e,t){return this.changeDetector.watchGroup(e,t)},A.prototype.watchText=function(e,t,n){return this.changeDetector.watchText(e,t,n)},A.prototype.getValue=function(e){return this.changeDetector.getValue(e)},A.prototype.setValue=function(e,t){return this.changeDetector.setValue(e,t)},A.prototype.eval=function(e){return this.changeDetector.eval(e)},A.prototype.new=function(e,t){return!0===t?t={locals:!0}:!0===e&&null==t&&(t={locals:!(e=null)}),this.changeDetector.new(e,t)},A.prototype.bind=function(e,t,n){var i,o,a,r,s,l,c;for(this.stopBinding=!0,s=a=0,l=arguments.length;s<l;s++)(i=arguments[s])instanceof u&&(o=i,a+=1),ce.isElement(i)&&(r=i,a+=1);return c=(c=arguments[a])||{skip:this.skippedAttr()},r=r||this.element,o=o||this.changeDetector,K.bind(o,r,c)},d=function(t,o,e){var n,i,a,r,s,l,c,u,p,h,d,f,v,m,g,y,b,x,w,_,k,C,$,S={attr:[],dir:[],children:[]},D={directive:0,hook:0,skipToElement:null,fb:S},E=(e=e||{}).skip_attr;if(!(k=!1)===e.skip?e.skip_top=!0:E=E||(e.skip||[]),E instanceof Array||(E=[E]),!e.skip_top){for(n={list:g=[],element:o,skip_attr:E,attr_type:"E",cd:t},a=o.nodeName.toLowerCase(),O(a,n),"script"!==a&&"style"!==a||(k=!0),n.attr_type="A",d=0,f=(w=o.attributes).length;d<f;d++)i=w[d],O(i.name,n);if(e.attachDirective)for(a in _=e.attachDirective)_[a],O(a,n);for(y=0,v=(g=g.sort(B)).length;y<v;y++)if(!(c=g[y]).skip){if(c.noDirective)throw"Directive not found: "+c.name;if(c.skip=!0,$=e.attachDirective&&e.attachDirective[c.attrName]?e.attachDirective[c.attrName]:o.getAttribute(c.attrName),c.is_attr)L(t,o,$,c.attrName)&&S.attr.push({attrName:c.attrName,value:$});else{p=c.directive,u=new A({element:o,attrName:c.attrName,attrArgument:c.attrArgument||null,attributes:g,stopBinding:!1,elementCanBeRemoved:e.elementCanBeRemoved,fbElement:e.fbElement}),K.debug.directive&&console.log("bind",c.attrName,$,c);try{"stopBinding"===p.$init(t,o,$,u)&&(k=!0)}catch(e){K.exceptionHandler(e,"Error in directive: "+c.attrName,{value:$,env:u,cd:t,scope:t.scope,element:o})}if(u.fastBinding?(p=ce.isFunction(u.fastBinding)?u.fastBinding:p.init,S.dir.push({fb:p,attrName:c.attrName,value:$,attrArgument:u.attrArgument,fbData:u.fbData})):D.directive++,u.stopBinding){k=!0;break}u.skipToElement&&(D.skipToElement=u.skipToElement)}}}if(!k)for(C=null,h=b=0,m=(s=function(){for(var e=o.childNodes,t=[],n=0,i=e.length;n<i;n++)r=e[n],t.push(r);return t}()).length;b<m;h=++b)(r=s[h])&&(C?C===r&&(C=null):(e.fbElement&&(l={fbElement:e.fbElement.childNodes[h]}),x=j(t,r,l),D.directive+=x.directive,D.hook+=x.hook,C=x.skipToElement,x.fb&&(x.fb.text||x.fb.attr&&x.fb.attr.length||x.fb.dir&&x.fb.dir.length||x.fb.children&&x.fb.children.length)&&S.children.push({index:h,fb:x.fb})));return D},j=function(e,t,n){var i,o,a,r,s,l,c={directive:0,hook:0,skipToElement:null,fb:null};if(K.hooks.binding.length)for(o=0,a=(s=K.hooks.binding).length;o<a;o++)if(i=s[o],c.hook+=1,(r=i.fn(e,t,n))&&r.owner)return c;return 1===t.nodeType?(r=d(e,t,n),c.directive+=r.directive,c.hook+=r.hook,c.skipToElement=r.skipToElement,c.fb=r.fb):3===t.nodeType?(l=f(e,t))&&(c.fb={text:l}):8===t.nodeType&&(r=h(e,t))&&(c.directive+=r.directive,c.skipToElement=r.skipToElement),c},K.nextTick=(v=null,m=[],g=function(){var t,e,n,i,o;for(v=null,e=m.slice(),n=m.length=0,i=e.length;n<i;n++){t=(o=e[n])[0],o=o[1];try{t.call(o)}catch(e){K.exceptionHandler(e,"$nextTick, error in function",{fn:t,self:o})}}return null},function(e){if(m.push([e,this]),!v)return v=setTimeout(g,0)}),K.bind=function(e,t,n){var i,o,a,r,s;if(!e)throw"No changeDetector";if(!t)throw"No element";if(n=n||{},K.option.domOptimization&&!n.noDomOptimization&&K.utils.optmizeElement(t),(i=!(s=e.root).finishBinding_lock)&&(s.finishBinding_lock=!0,s.bindingResult={directive:0,hook:0}),n=j(e,t,n),s.bindingResult.directive+=n.directive,s.bindingResult.hook+=n.hook,e.digest(),i){for(s.finishBinding_lock=!1,r=s.watchers.finishBinding.slice(),o=s.watchers.finishBinding.length=0,a=r.length;o<a;o++)(0,r[o])();n.total=s.bindingResult}return n},y=K.bind,K.bind=function(e,t,n){var i=e.root,o=K.option.zone;if(o){var a=!0===o?Zone:o,o=i.zone;if(o||(i.zone=o=a.current.fork({name:a.current.name+".x",properties:{root:i},onInvokeTask:pe})),a.current!==o)return i.zone.run(y,null,[e,t,n])}return y(e,t,n)},K.bootstrap=function(e,t){if(!e)return K.bootstrap("[al-app]"),K.bootstrap("[al\\:app]"),void K.bootstrap("[data-al-app]");var n,i;if(e instanceof K.core.ChangeDetector?(i=e,e=t):t instanceof K.core.ChangeDetector?i=t:ce.isFunction(t)?(i=K.ChangeDetector(n={}),t.call(i,n)):t&&(i=K.ChangeDetector(t)),Array.isArray(e)){for(var o=void 0,a=0,r=e;a<r.length;a++){var s=r[a];o=K.bootstrap(s,i)}return o}if("string"==typeof e){for(var o=void 0,l=0,c=document.querySelectorAll(e);l<c.length;l++){var u=c[l];o=K.bootstrap(u,i)}return o}if(i=i||K.ChangeDetector(),ce.isElement(e)){for(var p,h,d,f=0,v=["al-app","al:app","data-al-app"];f<v.length&&(h=e.getAttribute(p=v[f]),e.removeAttribute(p),!h);f++);return h&&(d={skip_attr:[p],attachDirective:{}},K.d.al.ctrl?d.attachDirective["al-ctrl"]=h:d.attachDirective[h+"!"]=""),K.bind(i,e,d),i}K.exceptionHandler("Error in bootstrap","Error input arguments",{input:e})},K.utils.getId=(D=function(){for(var e,t,n="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),i=Math.floor((new Date).valueOf()/1e3)-1388512800,o="";0<i;)t=i-62*(e=Math.floor(i/62)),i=e,o=n[t]+o;return o}(),E=1,function(){return D+"#"+E++}),K.utils.clone=$=function(i,o){var a,e,t,n;if((o=null==o?128:o)<1)return null;if(!i)return i;if("object"!=typeof i)return i;if(i instanceof Array)return t=function(){for(var e=[],t=0,n=i.length;t<n;t++)a=i[t],e.push($(a,o-1));return e}();if(i instanceof Date)return new Date(i.valueOf());if(i.nodeType&&"function"==typeof i.cloneNode)return i;for(e in t={},i)n=i[e],"$"!==e[0]&&(t[e]=$(n,o-1));return t},K.utils.equal=S=function(e,t,n){var i,o,a,r,s,l,c;if((n=null==n?128:n)<1)return!0;if(!e||!t)return e===t;if((l=typeof e)!=typeof t)return!1;if("object"!=l)return e===t;if(e instanceof Array){if(e.length!==t.length)return!1;for(i=o=0,r=e.length;o<r;i=++o)if(c=e[i],!S(c,t[i],n-1))return!1;return!0}if(e instanceof Date)return e.valueOf()===t.valueOf();if(e.nodeType&&"function"==typeof e.cloneNode)return e===t;for(a in s={},e)if(c=e[a],"$"!==a[0]&&(s[a]=!0,!S(c,t[a],n-1)))return!1;for(a in t)if(c=t[a],"$"!==a[0]&&!s[a]&&!S(c,e[a],n-1))return!1;return!0},K.exceptionHandler=function(e,t,n){var i=[];return t&&i.push(t),e&&e.message&&i.push(e.message),n&&i.push(n),e&&i.push(e.stack||e),console.error.apply(console,i)},V=(z=function(){for(var e={},t=0,n=arguments.length;t<n;t++)e[arguments[t]]=!0;return e})("instanceof","typeof","in","null","true","false","undefined","return"),H=/[a-zA-Z\u0410-\u044F\u0401\u0451_\.\$]/,N=function(e){return e.match(H)},I=function(e){return 48<=e.charCodeAt()&&e.charCodeAt()<=57},R=z("+","-",">","<","=","&","|","^","!","~"),F=function(e){return R[e]||!1},M=z("=","+=","-=","++","--","|=","^=","&=","!=","<<=",">>="),K.utils.parsExpression=function(e,t){var d,f,c,_,v,u,m=z.apply(null,(t=t||{}).input||[]),k=1,t=(_=function(e){for(var t,n,i,o,a=e.line,r=e.result||[],s=e.index||0,l=e.level||0,c=e.stopKey||null,u="",p=null,h=[],d="",f="",v=!1,m="",g="",y="",b=0,x=null,w=function(){return y&&r.push({type:"free",value:y}),y=""};s<=a.length;)if(i=a[s-1],t=a[s++]||"",n=a[s],(v&&y||!t)&&w(),"string"!==v){if("key"===v){if(N(t)||I(t)){u+=t;continue}if("["===t){if(u+=t,!(o=_({line:a,index:s,level:l+1,stopKey:"]"})).stopKeyOk)throw"Error expression";s=o.index,u+="###"+o.uniq+"###]",h.push(o);continue}if("?"===t&&("."===n||"("===n||"["===n)){u+=t;continue}if("("===t){if(u+=t,!(o=_({line:a,index:s,level:l+1,stopKey:")"})).stopKeyOk)throw"Error expression";s=o.index,u+="###"+o.uniq+"###)",h.push(o);continue}p={type:"key",value:u,start:s-u.length-1,finish:s-1,children:h},r.push(p),u=v="",h=[]}else if("sign"===v){if(F(t)){d+=t;continue}if("|"===d&&0===l&&0===b){x=a.substring(s-1),s=a.length+1;continue}(M[d]||"="===d[0]&&"="!==d[1])&&(p.assignment=!0),r.push({type:"sign",value:d}),d=v=""}else if("digit"===v){if(I(t)||"."===t){f+=t;continue}r.push({type:"digit",value:f}),f=""}if(N(t))v="key",u+=t;else if(F(t))v="sign",d+=t;else if(I(t))v="digit",f+=t;else if('"'!==t&&"'"!==t){if(t===c)return w(),{result:r,index:s,stopKeyOk:!0,uniq:k++};"("===t&&b++,")"===t&&b--,"{"!==t?(":"===t&&"}"===c&&(p.type="free"),y+=t):(w(),o=_({line:a,index:s,level:l+1,stopKey:"}"}),r.push({type:"{}",child:o}),s=o.index)}else v="string",g+=m=t}else t!==m||"\\"===i?g+=t:(r.push({type:"string",value:g+=t}),v=m=g="");return w(),{result:r,index:s,filter:x}})({line:e}),g={isSimple:!t.filter,simpleVariables:[]};return t.filter?(g.expression=e.substring(0,e.length-t.filter.length-1),g.filter=t.filter):g.expression=e,v=function(e){e=e.split(/[\.\[\(\?]/);return{count:e.length,firstPart:e[0]}},u=function(e,t){return t?"($$="+e+",$$==null)?undefined:":"($$=$$"+e+",$$==null)?undefined:"},c=function(e){return e.split(/[\.\[\(\?]/)[0]},f=function(e){var t,n,i,o,a,r,s,l;if("this"===e)return"$$scope";if(r=c(e),i=V[r]||m[r],"this"===r&&(e="$$scope"+e.slice(4),i=!0),1===(r=e.split("?")).length)return i?e:"$$scope."+e;for(t=i?(l=u(r[0],!0),r[0]):(l=u("scope."+r[0]),"scope."+r[0]),n=0,o=(s=r.slice(1,r.length-1)).length;n<o;n++)"("===(a=s[n])[0]?l+=u(t+a,i):(l+=u(a),t+=a);return"("===(r=r[r.length-1])[0]?(i||(l+="$$"),l+=t+r):l+="$$"+r,"("+l+")"},d=function(e){for(var t,n,i,o,a,r,s,l,c="",u=e.result,p=0,h=u.length;p<h;p++)if("key"!==(n=u[p]).type)"{}"!==n.type?c+=n.value:c+="{"+d(n.child)+"}";else{if(n.assignment?(r="this"===(l=v(n.value)).firstPart?"$$scope"+n.value.substring(4):m[l.firstPart]?n.value:l.count<2?"($$scope.$$root || $$scope)."+n.value:"$$scope."+n.value,g.isSimple=!1):V[n.value]?r=n.value:(r=f(n.value),g.simpleVariables.push(r)),n.children.length)for(i=0,a=(s=n.children).length;i<a;i++)o="###"+(t=s[i]).uniq+"###",t=d(t),r=r.split(o).join(t);c+=r}return c},g.result=d(t),K.debug.parser&&console.log(e,g),g},K.utils.parsFilter=function(e){var t,n,i=[];for(e=e.trim();e;){if(!(t=e.match(/^(\w+)([^\w])(.*)$/))){if(!(t=e.match(/^(\w+)$/)))return null;i.push({name:t[1],args:[],raw:""});break}e="|"===t[2]?(i.push({name:t[1],args:[],raw:""}),t[3]):(n=K.utils.parsArguments(t[3],{stop:"|"}),i.push({name:t[1],args:n.result,raw:t[3].slice(0,n.length)}),t[3].slice(n.length+1).trim())}return{result:i}},K.utils.parsArguments=function(e,t){var n,i,o,a,r,s,l,c;for(t=t||{},i="",a=r=0,c=l=!(o=[]),s=function(){i&&(o.push(i),i="")};r<=e.length;)if(n=e[r]||"",r++,l)i+=n,'"'===n&&(l=!1);else if(c)i+=n,"'"===n&&(c=!1);else if('"'!==n)if("'"!==n)if(a)i+=n,"("===n&&a++,")"===n&&a--;else if(" "!==n&&","!==n){if(t.stop&&t.stop===n){s();break}"("===n&&(a=1),i+=n}else s();else i+=n,c=!0;else i+=n,l=!0;return s(),{result:o,length:r-1}},K.utils.pars_start_tag="{{",K.utils.pars_finish_tag="}}",U=function(r){var i=K.utils.pars_start_tag,s=K.utils.pars_finish_tag,l=[],c=0,t=0,u=function(e){e=r.substring(t,c-(e=e||1));return t=c,e},p=null,h=function(e,t,n){var i,o,a;for(e||(p={type:"expression",list:[]},l.push(p)),i=null;c<r.length;){if(o=i+(i=r[c]),a=r[c+=1],i===t)return;if(!n){if(o===s&&0===e)return p.list.push(u(2)),!0;"("===i?h(e+1,")"):"{"===i?h(e+1,"}"):'"'===i?h(e+1,'"',!0):"'"===i?h(e+1,"'",!0):"|"===i&&0===e&&("|"===a?c+=1:p.list.push(u()))}}};return function(){for(var e,t,n=null;c<r.length;)if(t=n,n=r[c],c+=1,t+n===i){if((t=u(2))&&l.push({type:"text",value:t}),!h(0))throw"Wrong expression"+r;n=null}if(e=u(-1))return l.push({type:"text",value:e})}(),K.debug.parser&&console.log("parsText",l),l},P={},W=function(i){var o,a;return function(){for(var e=[],t=0,n=i.length;t<n;t++)o=i[t],a={type:o.type,value:o.value},o.list&&(a.list=o.list.slice()),e.push(a);return e}()},K.utils.parsText=function(e){var t=P[e];return t||(P[e]=t=U(e)),W(t)},K.utils.compile=X={},X.cache={},X.Function=Function,X.expression=function(t,n){var e,i,o,a,r,s;if(n=n||{},r=(t=t.trim())+"#",r+=n.no_return?"+":"-",r+=n.string?"s":"v",n.input&&(r+=n.input.join(",")),a=X.cache[r])return a;i=(a=K.utils.parsExpression(t,{input:n.input})).result,n.no_return||!1?s="var $$;"+i:n.string&&!a.filter?(s="var $$, __ = ("+i+"); return '' + (__ || (__ == null?'':__))",a.rawExpression="(__="+i+") || (__ == null?'':__)"):s="var $$;return ("+i+")";try{o=n.input?((e=n.input.slice()).unshift("$$scope"),e.push(s),X.Function.apply(null,e)):X.Function("$$scope",s)}catch(e){throw K.exceptionHandler(e,"Wrong expression: "+t,{src:t,cfg:n}),"Wrong expression: "+i}return a.fn=o,X.cache[r]=a},X.cacheText={},X.buildText=function(e,t){var n,i,o,a,r,s=X.cacheText[e];if(s)return function(){return s.call(t)};for(r=[],o=i=0,a=t.length;i<a;o=++i)"expression"===(n=t[o]).type?n.fn?r.push("this["+o+"].fn(this.scope)"):r.push("((x=this["+o+"].value) || (x == null?'':x))"):n.value&&(n=n.value.replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\n/g,"\\n"),r.push('"'+n+'"'));return r=r.join(" + "),s=X.Function("var x; return ("+r+")"),X.cacheText[e]=s,function(){return s.call(t)}},X.cacheSimpleText={},X.buildSimpleText=function(e,t){var n,i,o,a,r,s,l=e?X.cacheSimpleText[e]:null;if(l||!t)return l||null;for(r=[],s=[],o=i=0,a=t.length;i<a;o=++i)"expression"===(n=t[o]).type?(r.push("("+n.re+")"),n.simpleVariables&&s.push.apply(s,n.simpleVariables)):n.value&&(n=n.value.replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\n/g,"\\n"),r.push('"'+n+'"'));return r=r.join(" + "),l={fn:X.Function("$$scope","var $$, __; return ("+r+")"),simpleVariables:s},e&&(X.cacheSimpleText[e]=l),l},Y=function(e){var t,n,i;if(!e.length)return"el";for(i="el",t=0,n=e.length;t<n;t++)i+=".childNodes["+e[t]+"]";return i},J=function(e){for(var t,n,i=K.utils.parsText(e),o=0,a=i.length;o<a;o++)if("expression"===(t=i[o]).type){if(1<t.list.length)return null;if("#"===(n=t.list[0])[0])return null;if("="===n[0])return null;if("::"===n.slice(0,2))return null;if(!(n=K.utils.compile.expression(n,{string:!0})).rawExpression)throw"Error";t.re=n.rawExpression}return K.utils.compile.buildSimpleText(e,i).fn},K.core.fastBinding=function(e){if(K.option.fastBinding&&!e.directive&&!e.hook&&e.fb)return new G(e)},(G=function(e){var y,b,x=this,w=[];return x.fastWatchFn=[],y=[],(b=function(e,t){var n,i,o,a,r,s,l,c,u,p,h,d,f,v,m,g;if(e.dir)for(v=Y(y),a=0,c=(h=e.dir).length;a<c;a++)n=h[a],w.push("s.dir("+x.fastWatchFn.length+", "+v+");"),x.fastWatchFn.push(n);if(e.attr)for(r=0,u=(d=e.attr).length;r<u;r++)g=(o=d[r]).value,s=o.attrName,v=Y(y),i=J(g),m=g.replace(/"/g,'\\"').replace(/\n/g,"\\n"),i?(w.push('s.fw("'+m+'", '+x.fastWatchFn.length+", "+v+', "'+s+'");'),x.fastWatchFn.push(i)):w.push("s.wt('"+m+"', "+v+", '"+s+"');");if(e.text&&(v=Y(y),i=J(e.text),m=e.text.replace(/"/g,'\\"').replace(/\n/g,"\\n"),i?(w.push('s.fw("'+m+'", '+x.fastWatchFn.length+", "+v+");"),x.fastWatchFn.push(i)):w.push('s.wt("'+m+'", '+v+");")),e.children)for(l=0,p=(f=e.children).length;l<p;l++)o=f[l],y.length=t+1,y[t]=o.index,b(o.fb,t+1)})(e.fb,0),w=w.join("\n"),x.resultFn=K.utils.compile.Function("s","el","f$",w),this}).prototype.bind=function(e,t){this.currentCD=e,this.resultFn(this,t,ce)},G.prototype.dir=function(e,t){var n=this.fastWatchFn[e],i=this.currentCD,e=new A({attrName:n.attrName,attrArgument:n.attrArgument,changeDetector:i,fbData:n.fbData}),e=n.fb.call(e,i.scope,t,n.value,e);e&&e.start&&e.start()},G.prototype.fw=function(e,t,n,i){var o=this.currentCD,a=this.fastWatchFn[t],t=a(o.locals),i={isStatic:!1,isArray:!1,extraLoop:!1,deep:!1,value:t,callback:null,exp:a,src:e,onStop:null,el:n,ea:i||null};o.watchList.push(i),T(o.scope,i,t)},G.prototype.wt=function(e,t,n){this.currentCD.watchText(e,null,{element:t,elementAttr:n})},K.hooks.attribute.unshift({code:"events",fn:function(){var e=this.attrName.match(/^\@([\w\.\-]+)$/);e&&(this.ns="al",this.name="on",this.attrArgument=e[1])}}),K.hooks.eventModifier={},(oe=function(e,n){return K.hooks.eventModifier[e]={event:["keydown","keypress","keyup"],fn:function(e,t){e[n]||(t.stop=!0)}}})("alt","altKey"),oe("control","ctrlKey"),oe("ctrl","ctrlKey"),oe("meta","metaKey"),oe("shift","shiftKey"),K.hooks.eventModifier.self=function(e,t){if(e.target!==t.element)return t.stop=!0},K.hooks.eventModifier.once={beforeExec:function(e,t){return t.unbind()}},Q=function(e,t){var n,i,o,a,r,s={};if("string"==typeof e?s.event=e:"object"==typeof e&&e.event&&(s.event=e.event),"string"==typeof s.event&&(s.event=s.event.split(/\s+/)),t&&s.event){for(o=!1,i=0,a=(r=s.event).length;i<a;i++)if(n=r[i],0<=t.indexOf(n)){o=!0;break}if(!o)return null}return ce.isFunction(e)?s.fn=e:e.fn&&(s.fn=e.fn),e.beforeExec&&(s.beforeExec=e.beforeExec),e.init&&(s.init=e.init),s},K.d.al.on=function(e,t,n,i){var u,o;i.attrArgument&&(K.option.removeAttribute&&(t.removeAttribute(i.attrName),i.fbElement&&i.fbElement.removeAttribute(i.attrName)),o=i.attrArgument.split(".")[0],(u=function(){}).prototype=ie(i.attrArgument,q[o]),n&&(u.prototype.fn=i.changeDetector.compile(n,{no_return:!0,input:["$event","$element","$value"]})),u.prototype.expression=n,i.fastBinding=function(e,i,t,n){var o,a,r,s,l,c=new u;for(c.scope=e,c.element=i,c.cd=n.changeDetector,o=function(e){return te(c,e)},r=0,s=(l=c.eventList).length;r<s;r++)a=l[r],ce.on(i,a,o);c.initFn&&c.initFn(e,i,t,n),c.unbind=function(){for(var e=c.eventList,t=0,n=e.length;t<n;t++)a=e[t],ce.off(i,a,o)},n.changeDetector.watch("$destroy",c.unbind)},i.fastBinding(e,t,n,i))},ne={enter:13,tab:9,delete:46,backspace:8,esc:27,space:32,up:38,down:40,left:37,right:39},q={click:{stop:!0,prevent:!0},dblclick:{stop:!0,prevent:!0},submit:{stop:!0,prevent:!0},keyup:{filterByKey:!0},keypress:{filterByKey:!0},keydown:{filterByKey:!0}},ie=function(e,t){var n,i,o,a,r,s,l={attrArgument:e,throttle:null,throttleTime:0,debounce:null,debounceId:null,initFn:null,eventList:null,stop:(t=t||{}).stop||!1,prevent:t.prevent||!1,scan:!0,modifiers:[]},e=(n=e.split("."))[0],c=null;for((r=K.hooks.eventModifier[e])&&(r=Q(r)).event&&(l.eventList=r.event,r.fn&&l.modifiers.push(r),r.init&&(l.initFn=r.init)),l.eventList||(l.eventList=[e]),i=0,a=(s=n.slice(1)).length;i<a;i++)"stop"!==(o=s[i])?"prevent"!==o?"nostop"!==o?"noprevent"!==o?"noscan"!==o?"throttle-"!==o.substring(0,9)?"debounce-"!==o.substring(0,9)?(r=K.hooks.eventModifier[o])?(r=Q(r,l.eventList))&&l.modifiers.push(r):t.filterByKey&&((c=null===c?{}:c)[o=ne[o]?ne[o]:o]=!0):l.debounce=Number(o.substring(9)):l.throttle=Number(o.substring(9)):l.scan=!1:l.prevent=!1:l.stop=!1:l.prevent=!0:l.stop=!0;return l.filterByKey=c,l},ee=function(e,t){e=e.element;return"checkbox"===e.type?e.checked:"radio"===e.type?e.value||e.checked:(t.component?t:e).value},Z=function(t,n){for(var e,i=t.modifiers,o=0,a=i.length;o<a;o++)(e=i[o]).beforeExec&&e.beforeExec(n,t);if(t.fn)try{t.fn(t.cd.locals,n,t.element,ee(t,n))}catch(e){K.exceptionHandler(e,"Error in event: "+t.attrArgument+" = "+t.expression,{attr:t.attrArgument,exp:t.expression,scope:t.scope,cd:t.cd,element:t.element,event:n})}t.scan&&t.cd.scan()},te=function(e,t){var n,i,o,a,r,s;if(!e.filterByKey||e.filterByKey[t.keyCode]){if(e.modifiers.length)for((n=function(){}).prototype=e,(i=new n).stop=!1,o=0,a=(s=e.modifiers).length;o<a;o++)if((r=s[o]).fn&&(r.fn(t,i),i.stop))return;e.prevent&&t.preventDefault(),e.stop&&t.stopPropagation(),e.debounce?(e.debounceId&&clearTimeout(e.debounceId),e.debounceId=setTimeout(function(){return e.debounceId=null,Z(e,t)},e.debounce)):e.throttle?e.throttleTime<Date.now()&&(e.throttleTime=Date.now()+e.throttle,Z(e,t)):Z(e,t)}},K.hooks.attribute.unshift({code:"directDirective",fn:function(){var l,e=this.attrName.match(/^(.*)\!$/);e&&(e=e[1].replace(/(-\w)/g,function(e){return e.substring(1).toUpperCase()}),l=this.cd.locals[e]||K.ctrl[e]||K.option.globalController&&window[e],ce.isFunction(l)?this.directive=function(e,t,n,i){var o=i.changeDetector;if(n){for(var a=K.utils.parsArguments(n),r=Array(a.result.length),s=0;s<a.result.length;s++)r[s]=K.utils.compile.expression(a.result[s],{input:["$element","$env"]}).fn(o.locals,t,i);l.apply(o,r)}else l.call(o,e,t,n,i)}:(this.result="noDirective",this.stop=!0))}}),K.hooks.attribute.unshift({code:"elementVariable",fn:function(){var e=this.attrName.match(/^#([\w\.]*)$/);e&&(this.directive=he,this.attrArgument=e[1])}}),K.d.al.value=function(e,t,n,i){var o,a;return i.fastBinding=!0,i.on(t,"input",o=function(){i.setValue(n,t.value),a.refresh(),i.scan()}),i.on(t,"change",o),a=i.watch(n,function(e){return t.value=e=null==e?"":e,"$scanNoChanges"})},K.d.al.checked=function(e,n,t,i){var o=i.fbData={opt:{},watch:[]};function a(e){var t=i.takeAttr(e);return K.option.removeAttribute&&(n.removeAttribute(e),i.fbElement&&i.fbElement.removeAttribute(e)),t}function r(e,t){var n=a(t);if(n)return o.opt[e]=n,1;t=a(":"+t)||a("al-attr."+t);return t&&(o.watch.push([t,e]),1)}function l(n,i,o){for(var e in i.fbData.opt)n[e]=i.fbData.opt[e];for(var t=0,a=i.fbData.watch;t<a.length;t++)!function(e){var t=e[1];i.watch(e[0],function(e){n[t]=e,o()})}(a[t])}r("value","value")?i.fastBinding=function(e,t,n,i){var o,a=null;function r(){return t.checked=a&&0<=a.indexOf(s.value),"$scanNoChanges"}var s={};l(s,i,r),o=i.watch(n,function(e){a=e,Array.isArray(a)||(a=null),r()},{isArray:!0}),i.on(t,"change",function(){var e;a||(a=[],i.setValue(n,a)),t.checked?a.indexOf(s.value)<0&&a.push(s.value):0<=(e=a.indexOf(s.value))&&a.splice(e,1),o.refresh(),i.scan()})}:(r("true","true-value"),r("false","false-value"),i.fastBinding=function(e,t,n,i){var o,a,r={true:!0,false:!1};function s(){return t.checked=o===r.true,"$scanNoChanges"}l(r,i,s),a=i.watch(n,function(e){o=e,s()}),i.on(t,"change",function(){o=t.checked?r.true:r.false,i.setValue(n,o),a.refresh(),i.scan()})}),i.fastBinding(e,n,t,i)},K.d.al.if=function(e,t,n,i){var o;return i.elementCanBeRemoved?(K.exceptionHandler(null,i.attrName+" can't control element because of "+i.elementCanBeRemoved,{scope:e,element:t,value:n,env:i}),{}):(i.stopBinding=!0,o={item:null,childCD:null,base_element:null,top_element:null,start:function(){o.prepare(),o.watchModel()},prepare:function(){o.base_element=t,o.top_element=document.createComment(" "+i.attrName+": "+n+" "),ce.before(t,o.top_element),ce.remove(t)},updateDom:function(e){e?o.insertBlock(e):o.removeBlock()},removeBlock:function(){o.childCD&&(o.childCD.destroy(),o.childCD=null,o.removeDom(o.item),o.item=null)},insertBlock:function(){o.childCD||(o.item=o.base_element.cloneNode(!0),o.insertDom(o.top_element,o.item),o.childCD=i.changeDetector.new(),K.bind(o.childCD,o.item,{skip_attr:i.skippedAttr(),elementCanBeRemoved:i.attrName}))},watchModel:function(){i.watch(n,o.updateDom)},removeDom:function(e){ce.remove(e)},insertDom:function(e,t){ce.after(e,t)}})},K.d.al.ifnot=function(e,t,n,i){var o=K.d.al.if(e,t,n,i);return o.updateDom=function(e){e?o.removeBlock():o.insertBlock()},o},K.directives.al.repeat={restrict:"AM",init:function(e,C,a,W){var s,U;return W.elementCanBeRemoved?(K.exceptionHandler(null,W.attrName+" can't control element because of "+W.elementCanBeRemoved,{scope:e,element:C,value:a,env:W}),{}):(W.stopBinding=!0,s=W.changeDetector,U={start:function(){U.parsExpression(),U.prepareDom(),U.buildUpdateDom(),U.watchModel()},parsExpression:function(){var e,t=a.trim();if("("===t[0])if(U.objectMode=!0,e=t.match(/\((\w+),\s*(\w+)\)\s+in\s+(.+)\s+orderBy:(.+)\s*$/))U.objectKey=e[1],U.objectValue=e[2],U.expression=e[3]+(" | toArray:"+U.objectKey+","+U.objectValue+" | orderBy:"+e[4]),U.nameOfKey="$item",U.trackExpression="$item."+U.objectKey;else{if(!(e=t.match(/\((\w+),\s*(\w+)\)\s+in\s+(.+)\s*$/)))throw"Wrong repeat: "+a;U.objectKey=e[1],U.objectValue=e[2],U.expression=e[3]+(" | toArray:"+U.objectKey+","+U.objectValue),U.nameOfKey="$item",U.trackExpression="$item."+U.objectKey}else{if((e=t.match(/(.*) track by ([\w\.\$\(\)]+)/))&&(U.trackExpression=e[2],t=e[1]),!(e=t.match(/\s*(\w+)\s+in\s+(.+)/)))throw"Wrong repeat: "+a;U.nameOfKey=e[1],U.expression=e[2]}},watchModel:function(){var e=U.objectMode?{deep:!0}:{isArray:!0};U.watch=s.watch(U.expression,U.updateDom,e)},prepareDom:function(){var e,t,n,i,o;if(8===C.nodeType){for(U.top_element=C,U.element_list=t=[],e=C.nextSibling;e;){if(8===e.nodeType&&"/directive:"===(o=e.nodeValue.trim().split(/\s+/))[0]&&"al-repeat"===o[1]){W.skipToElement=e;break}t.push(e),e=e.nextSibling}for(n=0,i=t.length;n<i;n++)e=t[n],ce.remove(e)}else U.base_element=C,U.top_element=document.createComment(" "+a+" "),ce.before(C,U.top_element),ce.remove(C),K.option.removeAttribute&&C.removeAttribute(W.attrName)},makeChild:function(e,t,n){var i=s.new(null,{locals:!0});return U.updateLocals(i,e,t,n),i},updateLocals:function(e,t,n,i){e=e.locals;U.objectMode?(e[U.objectKey]=t[U.objectKey],e[U.objectValue]=t[U.objectValue]):e[U.nameOfKey]=t,e.$index=n,e.$first=0===n,e.$last=n===i.length-1},rawUpdateDom:function(e,t){for(var n,i,o,a,r=0,s=e.length;r<s;r++)n=e[r],ce.remove(n);for(o=0,a=t.length;o<a;o++)i=t[o],ce.after(i.after,i.element)},buildUpdateDom:function(){return U.updateDom=(H=[],_=null,k=R=0,z=W.skippedAttr(),V="$index"===U.trackExpression?(o={},F=function(e){return o[R]||null},I=function(e){null!=e.$id&&delete o[e.$id]},function(e,t){t.$id=R,o[R]=t}):U.trackExpression?(o={},a=s.compile(U.trackExpression,{input:["$id",U.nameOfKey]}),n=function(e,t){return a(s.scope,e,t)},i=function(e){var t=e.$alite_id;return t=t||(e.$alite_id=K.utils.getId())},F=function(e){e=n(i,e);return null!=e?o[e]:null},I=function(e){e=e.$id;null!=e&&delete o[e]},function(e,t){e=n(i,e);t.$id=e,o[e]=t}):window.Map?(o=new Map,F=function(e){return o.get(e)},I=function(e){o.delete(e.item)},function(e,t){o.set(e,t)}):(o={},F=function(e){return"object"!=typeof e?o[e]||null:(e=e.$alite_id)?o[e]:null},I=function(e){var t=e.$id;o[t]&&(e.$id=null,delete o[t])},function(e,t){var n;"object"==typeof e?(n=K.utils.getId(),e.$alite_id=n,t.$id=n,o[n]=t):(t.$id=e,o[e]=t)}),r=[],P=function(e){var t,n=typeof e;if("object"==n)return e&&e.length?e:[];if("number"==n)t=Math.floor(e);else if("string"==n&&(t=Math.floor(e),isNaN(t)))return[];if(t<r.length)r.length=t;else for(;r.length<t;)r.push(r.length);return r},U.element_list?function(e){for(var o,a,r,t,s,n,i,l,c,u,p,h,d,f,v,m,g,y,b,x,w,_,k,C,$,S,D,E,A,T,L=P(e),j=U.top_element,B=[],O=[],M=0,N=H.length;M<N;M++)(k=H[M]).active=!1;for(R=u=0,d=L.length;u<d;R=++u)l=L[R],(k=F(l))&&(k.active=!0);for(t=[],p=0,f=H.length;p<f;p++)if(!(k=H[p]).active){for(k.prev&&(k.prev.next=k.next),k.next&&(k.next.prev=k.prev),I(k),k.CD.destroy(),h=0,v=(E=k.element_list).length;h<v;h++)s=E[h],t.push(s);k.next=null,k.prev=null,k.element_list=null}for(D=null,S=!(o=[]),n=U.element_list.length-1,R=x=0,m=L.length;x<m;R=++x)if(l=L[R],k=F(c=l))if(U.updateLocals(k.CD,l,R,L),k.prev!==D){for((k.prev=D)&&(D.next=k),C=0,y=(T=k.element_list).length;C<y;C++)s=T[C],B.push({element:s,after:j}),j=s;(D=k).active=S=!0,O.push(k)}else{if(S)for(w=0,g=(A=k.element_list).length;w<g;w++)s=A[w],B.push({element:s,after:j}),j=s;j=(D=k).element_list[n],k.active=!0,O.push(k)}else r=U.makeChild(c,R,L),c=function(){for(var e=U.element_list,t=[],n=0,i=e.length;n<i;n++)a=e[n],s=a.cloneNode(!0),o.push({cd:r,el:s}),B.push({element:s,after:j}),t.push(j=s);return t}(),V(l,k={CD:r,element_list:c,prev:D,next:null,active:!0,item:l}),D?(_=D.next,((D.next=k).next=_)&&(_.prev=k)):0===R&&H[0]&&(_=H[0],(k.next=_).prev=k),D=k,O.push(k);for(H=O,U.rawUpdateDom(t,B),t.length=0,$=B.length=0,b=o.length;$<b;$++)i=o[$],K.bind(i.cd,i.el,{skip_attr:z,elementCanBeRemoved:W.attrName,noDomOptimization:!0})}:function(e){var t,n,i,o,a,r,s,l,c,u,p,h,d,f,v,m,g,y,b,x=P(e),w=U.top_element;for(k++,i=[],m=[],y=null,g=!(t=[]),R=r=0,p=x.length;r<p;R=++r)l=x[R],(v=F(b=l))?(U.updateLocals(v.CD,l,R,x),v.prev!==y?((v.prev=y)&&(y.next=v),i.push({element:v.element,after:w}),g=!0,w=v.element,(y=v).version=k):(g&&i.push({element:v.element,after:y.element}),w=(y=v).element,v.version=k),m.push(v)):(n=U.makeChild(b,R,x),C=U.base_element.cloneNode(!0),null===_?(a=U.base_element.cloneNode(!0),b=K.bind(n,C,{skip_attr:z,elementCanBeRemoved:W.attrName,noDomOptimization:!0,fbElement:a}),(_=K.core.fastBinding(b)||!1)&&(U.base_element=a)):t.push({cd:n,el:C}),i.push({element:C,after:w}),V(l,v={CD:n,element:w=C,prev:y,next:null,version:k,item:l}),y?(f=y.next,((y.next=v).next=f)&&(f.prev=v)):0===R&&H[0]&&(f=H[0],(v.next=f).prev=v),y=v,m.push(v));for(o=[],c=0,h=H.length;c<h;c++)(v=H[c]).version!==k&&(v.prev&&(v.prev.next=v.next),v.next&&(v.next.prev=v.prev),I(v),v.CD.destroy(),o.push(v.element),v.next=null,v.prev=null,v.element=null);for(H=m,U.rawUpdateDom(o,i),o.length=0,u=i.length=0,d=t.length;u<d;u++)s=t[u],_?_.bind(s.cd,s.el):K.bind(s.cd,s.el,{skip_attr:z,elementCanBeRemoved:W.attrName,noDomOptimization:!0})});var n,i,o,I,F,a,H,R,_,k,z,V,r,P}})}},K.d.al.init=function(t,n,i,o){var a,e,r,s;K.option.removeAttribute&&(n.removeAttribute(o.attrName),o.fbElement&&o.fbElement.removeAttribute(o.attrName)),a=o.changeDetector,s=["$element"],"window"===o.attrArgument&&s.push("window");try{r=a.compile(i,{no_return:!0,input:s}),o.fastBinding=e=function(e,t,n,i){return r(i.changeDetector.locals,t,window)},e(0,n,0,o)}catch(e){K.exceptionHandler(e,"al-init, error in expression: "+i,{exp:i,scope:t,cd:a,element:n}),o.fastBinding=function(){}}},K.d.al.app={stopBinding:!0},K.d.al.stop={restrict:"AE",stopBinding:!0},K.d.al.cloak=function(e,t,n,i){t.removeAttribute(i.attrName),n&&ce.removeClass(t,n)},K.d.al.html={restrict:"AM",priority:100,modifier:{},link:function(o,a,r,s){var l;return s.elementCanBeRemoved&&8!==a.nodeType?(K.exceptionHandler(null,s.attrName+" can't control element because of "+s.elementCanBeRemoved,{scope:o,element:a,value:r,env:s}),{}):(s.stopBinding=!0,l={baseElement:null,topElement:null,activeElement:null,childCD:null,name:r,watchMode:null,start:function(){l.parsing(),l.prepare(),l.watchModel()},parsing:function(){var e,t,n,i;if(s.attrArgument)for(e=0,t=(i=s.attrArgument.split(".")).length;e<t;e++)"literal"!==(n=i[e])?"tpl"!==n?K.d.al.html.modifier[n]&&K.d.al.html.modifier[n](l,{scope:o,element:a,inputName:r,env:s}):l.watchMode="tpl":l.watchMode="literal"},prepare:function(){8===a.nodeType?(l.baseElement=null,l.topElement=a):(l.baseElement=a,l.topElement=document.createComment(" "+s.attrName+": "+r+" "),ce.before(a,l.topElement),ce.remove(a))},removeBlock:function(){var e,t,n,i;if(l.childCD&&(l.childCD.destroy(),l.childCD=null),l.activeElement){if(Array.isArray(l.activeElement))for(t=0,n=(i=l.activeElement).length;t<n;t++)e=i[t],l.removeDom(e);else l.removeDom(l.activeElement);l.activeElement=null}},insertBlock:function(e){var t,n,i;if(l.baseElement)l.activeElement=l.baseElement.cloneNode(!1),l.activeElement.innerHTML=e,l.insertDom(l.topElement,l.activeElement),l.childCD=s.changeDetector.new(),K.bind(l.childCD,l.activeElement,{skip_attr:s.skippedAttr(),elementCanBeRemoved:s.attrName});else for((i=document.createElement("body")).innerHTML=e,t=l.topElement,l.activeElement=[],l.childCD=s.changeDetector.new();n=i.firstChild;)l.insertDom(t,n),l.activeElement.push(t=n),K.bind(l.childCD,t,{skip_attr:s.skippedAttr(),elementCanBeRemoved:s.attrName})},updateDom:function(e){l.removeBlock(),e&&l.insertBlock(e)},removeDom:function(e){ce.remove(e)},insertDom:function(e,t){ce.after(e,t)},watchModel:function(){"literal"===l.watchMode?l.updateDom(l.name):"tpl"===l.watchMode?s.watchText(l.name,l.updateDom):s.watch(l.name,l.updateDom)}})}},K.d.al.html.modifier.id=function(n){return n.updateDom=function(e){var t;n.removeBlock(),(e=document.getElementById(e))&&(t=e.innerHTML)&&n.insertBlock(t)}},K.d.al.html.modifier.url=function(t){return t.loadHtml=function(e){ce.ajax(e)},t.updateDom=function(e){e?t.loadHtml({cache:!0,url:e,success:function(e){t.removeBlock(),t.insertBlock(e)},error:t.removeBlock}):t.removeBlock()}},K.d.al.html.modifier.scope=function(i,o){var a,r,e=i.name.split(":");if(2===e.length)i.name=e[0],r=e[1];else{if(e=i.name.match(/(.+)\:\s*\:\:([\d\w]+)$/))a=!0;else if(a=!1,!(e=i.name.match(/(.+)\:\s*([\.\w]+)$/)))throw"Wrong expression "+i.name;i.name=e[1],r=e[2]}return i.insertBlock=function(e){var t,n;i.activeElement=i.baseElement.cloneNode(!1),i.activeElement.innerHTML=e,i.insertDom(i.topElement,i.activeElement),e=o.env.changeDetector,(t=i.childCD=e.new(null,{locals:!0})).locals.outer=null,n=e.watch(r,function(e){return t.locals.outer=e},{oneTime:a}),i.childCD.watch("$destroy",function(){return n.stop()}),K.bind(i.childCD,i.activeElement,{skip_attr:o.env.skippedAttr()})}},K.d.al.html.modifier.inline=function(e,t){var n=e.prepare;return e.prepare=function(){return n(),t.env.setValue(e.name,e.baseElement.innerHTML)}},K.d.al.radio=function(e,t,n,i){var o,a=i.takeAttr("al-value"),r=a?i.eval(a):i.takeAttr("value");return i.on(t,"change",function(){i.setValue(n,r),o.refresh(),i.scan()}),o=i.watch(n,function(e){return t.checked=r===e,"$scanNoChanges"})},window.Map?((ae=function(){return this.idByItem=new Map,this.itemById={},this.index=1,this}).prototype.acquire=function(e){var t="i"+this.index++;return this.idByItem.set(e,t),this.itemById[t]=e,t},ae.prototype.release=function(e){var t=this.itemById[e];delete this.itemById[e],this.idByItem.delete(t)},ae.prototype.replace=function(e,t){var n=this.itemById[e];this.idByItem.delete(n),this.idByItem.set(t,e),this.itemById[e]=t},ae.prototype.getId=function(e){return this.idByItem.get(e)},ae.prototype.getItem=function(e){return this.itemById[e]||null}):((ae=function(){return this.itemById={"i#null":null},this}).prototype.acquire=function(e){var t;return null===e?"i#null":("object"==typeof e?(t=e.$alite_id)||(e.$alite_id=t=K.utils.getId()):t=""+e,this.itemById[t]=e,t)},ae.prototype.release=function(e){delete this.itemById[e]},ae.prototype.replace=function(e,t){this.itemById[e]=t},ae.prototype.getId=function(e){return null===e?"i#null":"object"==typeof e?e.$alite_id:""+e},ae.prototype.getItem=function(e){return this.itemById[e]||null}),K.d.al.select=function(e,t,n,i){var o,a,r,s,l,c=i.changeDetector.new();return i.stopBinding=!0,c.$select={mapper:a=new ae},o=null,c.$select.change=function(){return K.nextTick(function(){return s(o)})},s=function(e){e=a.getId(e);return e?t.value=e:t.selectedIndex=-1},l=c.watch(n,function(e){return s(o=e)}),i.on(t,"input",r=function(e){return o=a.getItem(e.target.value),c.setValue(n,o),l.refresh(),c.scan()}),i.on(t,"change",r),K.bind(c,t,{skip_attr:i.skippedAttr()})},K.d.al.option=function(e,t,n,i){var o,a,r,s,l,i=l=i.changeDetector;for(a=0;a<=4&&!(s=l.$select);++a)l=l.parent||{};s?(r=s.mapper,o=null,i.watch(n,function(e){o?r.getId(e)!==o?(r.release(o),o=r.acquire(e),t.value=o,s.change()):r.replace(o,e):(o=r.acquire(e),t.value=o,s.change())}),i.watch("$destroy",function(){return r.release(o),s.change()})):K.exceptionHandler("","Error in al-option - al-select is not found",{cd:i,scope:i.scope,element:t,value:n})},K.hooks.attribute.unshift({code:"attribute",fn:function(){var e=this.attrName.match(/^\:([\w\.\-]+)$/);e&&("html"===(e=e[1]).split(".")[0]?(this.name="html",e=e.substring(5)):this.name="attr",this.ns="al",this.attrArgument=e)}}),re={checked:"checked",readonly:"readOnly",value:"value",selected:"selected",muted:"muted",disabled:"disabled",hidden:"hidden"},K.d.al.attr=function(e,t,o,n){var a,r,i,s,l,c,u,p,h;if(n.attrArgument){if(i=n.attrArgument.split("."),r=i[0],c=re[r],s=0<i.indexOf("tpl"),K.option.removeAttribute&&(t.removeAttribute(n.attrName),n.fbElement&&n.fbElement.removeAttribute(n.attrName)),a={readOnly:!0},u=null,"style"===r){if(!i[1])throw"Style is not declared";p=i[1].replace(/(-\w)/g,function(e){return e.substring(1).toUpperCase()}),u=function(e,t){return e.style[p]=t=null==t?"":t}}else"class"===r&&1<i.length?(s=!1,l=i.slice(1),u=function(e,t){var n,i,o,a,r;if(t)for(i=0,a=l.length;i<a;i++)n=l[i],ce.addClass(e,n);else for(o=0,r=l.length;o<r;o++)n=l[o],ce.removeClass(e,n)}):"focus"===r?u=function(e,t){return t?e.focus():e.blur()}:c?u=function(e,t){if(e[c]!==(t=void 0===t?null:t))return e[c]=t}:(a.element=t,a.elementAttr=r);h=s?"watchText":"watch",(s=u?function(e,t,n,i){return i.changeDetector[h](o,function(e){return u(t,e)},a)}:function(e,t,n,i){return i.changeDetector[h](o,null,{readOnly:!0,element:t,elementAttr:r})})(e,t,o,n),n.fastBinding=s}},K.d.al.model=function(e,t,n,i){var o=t.nodeName.toLowerCase();if("select"===o)return K.d.al.select.call(this,e,t,n,i);if("input"===o){if("checkbox"===t.type)return K.d.al.checked.call(this,e,t,n,i);if("radio"===t.type)return K.d.al.radio.call(this,e,t,n,i)}return K.d.al.value.call(this,e,t,n,i)},K.filters.slice=function(e,t,n){return e?n?e.slice(t,n):e.slice(t):null},se=function(e){return e<10?"0"+e:""+e},K.filters.date=function(e,t){var n,i,o,a,r;if(!e)return"";for(a=t,i=0,o=(r=[[/yyyy/g,(e=new Date(e)).getFullYear()],[/mm/g,se(e.getMonth()+1)],[/dd/g,se(e.getDate())],[/HH/g,se(e.getHours())],[/MM/g,se(e.getMinutes())],[/SS/g,se(e.getSeconds())]]).length;i<o;i++)a=a.replace((n=r[i])[0],n[1]);return a},K.filters.json={watchMode:"deep",fn:function(e){return JSON.stringify(K.utils.clone(e),null,4)}},K.filters.filter=function(e,t,n){var i,o,a,r,s,l,c,u,p,h,d;if(2===arguments.length)s=null,d=t;else{if(3!==arguments.length)return e;s=t,d=n}if(!e||null==d||""===d)return e;if(u=[],p=(""+d).toLowerCase(),s)for(o=0,l=e.length;o<l;o++)((i=e[o])[s]===d||0<=(""+i[s]).toLowerCase().indexOf(p))&&u.push(i);else for(a=0,c=e.length;a<c;a++)for(r in i=e[a])((h=i[r])===d||0<=(""+h).toLowerCase().indexOf(p))&&u.push(i);return u},K.filters.orderBy=function(e,n,i){return!e instanceof Array?null:(i=i?1:-1,e.sort(function(e,t){return e[n]<t[n]?-i:e[n]>t[n]?i:0}))},K.filters.throttle={init:function(e,t,n){var i;return t=Number(t),i=null,{onChange:function(e){return i&&clearTimeout(i),i=setTimeout(function(){return i=null,n.setValue(e),n.changeDetector.scan()},t)}}}},K.filters.toArray={init:function(e,t,o){var a,r=2===o.conf.args.length?(a=o.conf.args[0],o.conf.args[1]):(a="key","value"),s=[];return{watchMode:"deep",onChange:function(e){var t,n,i;for(n in s.length=0,e)i=e[n],(t={})[a]=n,t[r]=i,s.push(t);return o.setValue(s)}}}},K.filters.storeTo={init:function(e,t,n){return{onChange:function(e){return n.changeDetector.setValue(t,e),n.setValue(e)}}}},K.text["="]=function(e,t,n,i){t=K.utils.compile.expression(t);if(t.filters)throw"Conflict: bindonce and filters, use one-time binding";i.finally(t.fn(i.changeDetector.locals))},K.text["::"]=function(e,t,n,i){i.changeDetector.watch(t,function(e){return i.finally(e)},{oneTime:!0})},le=K.f$,K.component=function(C,$){var e,t=C.match(/^(\w+)[\-](.+)$/),t=t?(e=t[1],t[2]):(e="$global",C);t=de(t),K.d[e]||(K.d[e]={}),K.d[e][t]={restrict:"E",stopBinding:!0,priority:K.priority.$component,init:function(e,n,t,i){var o={$sendEvent:function(e,t){e=new CustomEvent(e);e.value=t,e.component=!0,n.dispatchEvent(e)}},a=i.changeDetector.new(),r=K.ChangeDetector(o),s=new A({element:n,attributes:i.attributes,changeDetector:r,parentChangeDetector:a});try{var l=$.call(r,o,n,s)||{}}catch(e){return void K.exceptionHandler(e,"Error in component <"+C+">: ",{element:n,scope:o,cd:r})}l.onStart&&r.watch("$finishBinding",function(){l.onStart(),r.scan()});var c=!1;a.watch("$destroy",function(){c=!0,r.destroy()}),r.watch("$destroy",function(){l.onDestroy&&l.onDestroy(),c||a.destroy()});for(var u=0,p=n.attributes;u<p.length;u++)if("#"===(b=p[u]).name[0]){var h=b.name.slice(1);if(h){l.api?a.setValue(h,l.api):a.setValue(h,o);break}}function d(e,t){var n=s.takeAttr(":"+e);if(!n){if(!(n=s.takeAttr(e)))return;t="copy"}fe({childCD:r,listener:t,name:e,parentName:n,parentCD:a})}if(l.props)if(Array.isArray(l.props))for(var f=0,v=l.props;f<v.length;f++)d(m=v[f],!0);else for(var m in l.props)d(m,l.props[m]);else for(var g=0,y=n.attributes;g<y.length;g++){var b,x=(b=y[g]).name,w=b.value;w&&((x=x.match(/^\:(.*)$/))&&fe({childCD:r,name:x[1],parentName:w,parentCD:a}))}var _=!1;if(a.watch("$onScanOnce",function(){return _=!0}),l.template&&(n.innerHTML=l.template),l.templateId){i=document.getElementById(l.templateId);if(!i)throw"No template "+l.templateId;n.innerHTML=i.innerHTML}function k(){_||a.digest(),K.bind(r,n,{skip:!0})}l.templateUrl?le.ajax({url:l.templateUrl,cache:!0,success:function(e){n.innerHTML=e,k()},error:function(){console.error("Template is not loaded",l.templateUrl)}}):k()}}},K}g.prototype={get x(){return this.p[0]},get y(){return this.p[1]},set x(e){this.p[0]=e},set y(e){this.p[1]=e},reset:function(){return this.p=new e(2),this.p[0]=0,this.p[1]=0,this},set:function(e,t){return this.p[0]=e||0,this.p[1]=t||0,this},clone:function(){var e=new g;return e.p=this.p.slice(0),e},add:function(e){return this.p[0]=this.p[0]+e.x,this.p[1]=this.p[1]+e.y,this},sub:function(e){return this.p[0]=this.p[0]-e.x,this.p[1]=this.p[1]-e.y,this},scale:function(e){return this.p[0]*=e,this.p[1]*=e,this},distance:function(e){var t=e.x-this.p[0],e=e.y-this.p[1];return Math.hypot(t,e)},length:function(){var e=this.p[0],t=this.p[1];return Math.hypot(e,t)},rotate:function(e,t){var n=Math.sin(t),i=Math.cos(t);this.p[0]-=e.x,this.p[1]-=e.y;t=this.p[0]*i-this.p[1]*n,i=this.p[0]*n+this.p[1]*i;return this.p[0]=t+e.x,this.p[1]=i+e.y,this}},s.prototype={defaultArea:{x:0,y:0,width:0,height:0,cx:0,cy:0,angle:0},_init:function(e,t){this.plugin=e,this.$container=t,this._create()},_create:function(){this._buildDOM(),this._bind()},_buildDOM:function(){this.dom={$tool:v("<div>").addClass("vision-tool-transform"),$shape:v(document.createElementNS("http://www.w3.org/2000/svg","svg")).attr({class:"vision-shape",overflow:"visible"}),$tl:v("<div>").addClass("vision-pointer").attr({"data-type":"tl"}),$tr:v("<div>").addClass("vision-pointer").attr({"data-type":"tr"}),$bl:v("<div>").addClass("vision-pointer").attr({"data-type":"bl"}),$br:v("<div>").addClass("vision-pointer").attr({"data-type":"br"}),$mt:v("<div>").addClass("vision-pointer").attr({"data-type":"mt"}),$mr:v("<div>").addClass("vision-pointer").attr({"data-type":"mr"}),$mb:v("<div>").addClass("vision-pointer").attr({"data-type":"mb"}),$ml:v("<div>").addClass("vision-pointer").attr({"data-type":"ml"}),$rotate:v("<div>").addClass("vision-pointer").attr({"data-type":"rotate"}),$center:v("<div>").addClass("vision-center").attr({"data-type":"center"})},this.dom.$tool.append(this.dom.$shape,this.dom.$center,this.dom.$rotate,this.dom.$mt,this.dom.$mr,this.dom.$mb,this.dom.$ml,this.dom.$tl,this.dom.$tr,this.dom.$bl,this.dom.$br),this.$container.append(this.dom.$tool)},_bind:function(){this.dom.$tool.on("mousedown",v.proxy(this._onToolMouseDown,this))},_unbind:function(){this.dom.$tool.off("mousedown",v.proxy(this._onToolMouseDown,this))},_initPoints:function(){var e=this.plugin.fn.getCanvasZoom(this.plugin),t=this.plugin.fn.getCanvasPosition(this.plugin),n=this.$container.get(0).getBoundingClientRect(),i=n.width/2+t.x-this.area.width*e/2,o=n.height/2+t.y-this.area.height*e/2,n=this.area.x*e+i,t=this.area.y*e+o,i=this.area.width*e,o=this.area.height*e,e=l(this.area.angle),n=new g(n,t),t=new g(n.x+i,n.y),o=new g(t.x,t.y+o),i=new g(o.x-i,o.y),a=new g((n.x+t.x)/2,(n.y+i.y)/2),r=m(e);this.points[0]=n,this.points[1]=t,this.points[2]=o,this.points[3]=i,this.points[9]=a;for(var s=0;s<4;s++)this.points[s].rotate(a,r);this._updateMiddlePoints()},_updateMiddlePoints:function(){var e=this.points[0],t=this.points[1],n=this.points[2],i=this.points[3],o=new g((e.x+t.x)/2,(e.y+t.y)/2),a=new g((t.x+n.x)/2,(t.y+n.y)/2),r=new g((n.x+i.x)/2,(n.y+i.y)/2),n=new g((i.x+e.x)/2,(i.y+e.y)/2),i=t.y-e.y,t=t.x-e.x,e=i/Math.sqrt(t*t+i*i),i=-t/Math.sqrt(t*t+i*i);this.points[4]=o,this.points[5]=a,this.points[6]=r,this.points[7]=n,this.points[8]=new g(o.x+25*e,o.y+25*i)},_draw:function(){var e;this.visible?(e=this.points,this.dom.$shape.html(`<path data-type="shape" d="
-					M ${e[0].x}, ${e[0].y}
-					L ${e[1].x}, ${e[1].y}
-					L ${e[2].x}, ${e[2].y}
-					L ${e[3].x}, ${e[3].y}
-					L ${e[0].x}, ${e[0].y}
-					M ${e[4].x}, ${e[4].y}
-					L ${e[8].x}, ${e[8].y}
-					Z" />`),this.dom.$tl.css({transform:"translate("+e[0].x+"px,"+e[0].y+"px)"}),this.dom.$tr.css({transform:"translate("+e[1].x+"px,"+e[1].y+"px)"}),this.dom.$br.css({transform:"translate("+e[2].x+"px,"+e[2].y+"px)"}),this.dom.$bl.css({transform:"translate("+e[3].x+"px,"+e[3].y+"px)"}),this.dom.$mt.css({transform:"translate("+e[4].x+"px,"+e[4].y+"px) rotate("+this.area.angle+"deg)"}),this.dom.$mr.css({transform:"translate("+e[5].x+"px,"+e[5].y+"px) rotate("+this.area.angle+"deg)"}),this.dom.$mb.css({transform:"translate("+e[6].x+"px,"+e[6].y+"px) rotate("+this.area.angle+"deg)"}),this.dom.$ml.css({transform:"translate("+e[7].x+"px,"+e[7].y+"px) rotate("+this.area.angle+"deg)"}),this.dom.$rotate.css({transform:"translate("+e[8].x+"px,"+e[8].y+"px)"}),this.dom.$center.css({transform:"translate("+e[9].x+"px,"+e[9].y+"px)"}),this.dom.$tool.addClass("vision-active")):this.dom.$tool.removeClass("vision-active")},_drag:function(e,t){for(var n=0;n<this.points.length;n++)this.points[n].add({x:e,y:t});var i=this.points[0],o=this.points[2],a=this.plugin.fn.getCanvasZoom(this.plugin),r=this.plugin.fn.getCanvasPosition(this.plugin),s=this.$container.get(0).getBoundingClientRect(),l=s.width/2+r.x,r=s.height/2+r.y;this.area.x=(i.x-l)/a,this.area.y=(i.y-r)/a,this.area.cx=((i.x+o.x)/2-l)/a,this.area.cy=((i.y+o.y)/2-r)/a,this.layer.x=this.area.cx,this.layer.y=this.area.cy,this.plugin.rootScope.scan()},_rotate:function(e){for(var t=0;t<this.points.length;t++)this.points[t].rotate(this.center_off,e);this.area.angle=l(this.area.angle+180*e/Math.PI),this.layer.angle=this.area.angle,this.plugin.rootScope.scan()},_resize:function(e,t,n){var i,o,a,r,s=new g(t,n),l=m(this.area.angle),c=this.points[0],u=this.points[2],p=this.plugin.fn.getCanvasZoom(this.plugin),h=this.plugin.fn.getCanvasPosition(this.plugin),d=this.$container.get(0).getBoundingClientRect(),f=d.width/2+h.x,h=d.height/2+h.y;switch(e){case"tl":case"ml":i=this.br_off.clone();break;case"tr":case"mt":i=this.bl_off.clone();break;case"br":case"mr":i=this.tl_off.clone();break;case"bl":case"mb":i=this.tr_off.clone()}switch(o=new g((i.x+s.x)/2,(i.y+s.y)/2),s.rotate(o,-l),i.rotate(o,-l),e){case"tl":a=-s.x+i.x,r=-s.y+i.y,t=i.x-a,n=i.y-r;break;case"ml":a=-s.x+i.x,s.set(i.x-a,i.y),s.rotate(o,l),i.rotate(o,l),o.set((this.tr_off.x+s.x)/2,(this.tr_off.y+s.y)/2),s.rotate(o,-l),i.rotate(o,-l),a=-s.x+i.x,r=this.area.height*p,t=i.x-a,n=i.y-r;break;case"tr":a=s.x-i.x,r=-s.y+i.y,t=i.x,n=i.y-r;break;case"mt":r=-s.y+i.y,s.set(i.x,i.y-r),s.rotate(o,l),i.rotate(o,l),o.set((this.br_off.x+s.x)/2,(this.br_off.y+s.y)/2),s.rotate(o,-l),i.rotate(o,-l),a=this.area.width*p,r=-s.y+i.y,t=i.x,n=i.y-r;break;case"br":a=s.x-i.x,r=s.y-i.y,t=i.x,n=i.y;break;case"mr":a=s.x-i.x,s.set(i.x+a,i.y),s.rotate(o,l),i.rotate(o,l),o.set((this.bl_off.x+s.x)/2,(this.bl_off.y+s.y)/2),s.rotate(o,-l),i.rotate(o,-l),a=s.x-i.x,r=this.area.height*p,t=i.x,n=i.y;break;case"bl":a=-s.x+i.x,r=s.y-i.y,t=i.x-a,n=i.y;break;case"mb":r=s.y-i.y,s.set(i.x,i.y+r),s.rotate(o,l),i.rotate(o,l),o.set((this.tl_off.x+s.x)/2,(this.tl_off.y+s.y)/2),s.rotate(o,-l),i.rotate(o,-l),a=this.area.width*p,r=s.y-i.y,t=i.x-a,n=i.y}o.set(t+a/2,n+r/2),this.points[0].set(t,n),this.points[1].set(t+a,n),this.points[2].set(t+a,n+r),this.points[3].set(t,n+r),this.points[9].set(o.x,o.y);for(var v=0;v<4;v++)this.points[v].rotate(o,l);this._updateMiddlePoints(),this.area.x=(c.x-f)/p,this.area.y=(c.y-h)/p,this.area.cx=((c.x+u.x)/2-f)/p,this.area.cy=((c.y+u.y)/2-h)/p,this.area.width=a/p,this.area.height=r/p,this.layer.x=this.area.cx,this.layer.y=this.area.cy,this.layer.width=this.area.width,this.layer.height=this.area.height,this.plugin.rootScope.scan()},_onToolMouseDown:function(e){e.preventDefault(),e.stopImmediatePropagation(),this.type=v(e.target).data("type"),this.tl_off=this.points[0].clone(),this.tr_off=this.points[1].clone(),this.br_off=this.points[2].clone(),this.bl_off=this.points[3].clone(),this.center_off=this.points[9].clone(),this.cursor={offset:{x:this.dom.$tool.offset().left,y:this.dom.$tool.offset().top},start:{x:0,y:0},prev:{x:0,y:0},current:{x:0,y:0}},this.cursor.start.x=this.cursor.prev.x=this.cursor.current.x=e.pageX-this.cursor.offset.x,this.cursor.start.y=this.cursor.prev.y=this.cursor.current.y=e.pageY-this.cursor.offset.y,v(document).on("mousemove",v.proxy(this._onToolMouseMove,this)),v(document).on("mouseup",v.proxy(this._onToolMouseUp,this))},_onToolMouseMove:function(e){switch(this.cursor.prev.x=this.cursor.current.x,this.cursor.prev.y=this.cursor.current.y,this.cursor.current.x=e.pageX-this.cursor.offset.x,this.cursor.current.y=e.pageY-this.cursor.offset.y,this.type){case"tl":case"tr":case"br":case"bl":case"mt":case"mr":case"mb":case"ml":this._resize(this.type,this.cursor.current.x,this.cursor.current.y);break;case"shape":var t=this.cursor.current.x-this.cursor.prev.x,n=this.cursor.current.y-this.cursor.prev.y;this._drag(t,n);break;case"rotate":t=Math.atan2(this.cursor.prev.y-this.center_off.y,this.cursor.prev.x-this.center_off.x),n=Math.atan2(this.cursor.current.y-this.center_off.y,this.cursor.current.x-this.center_off.x);this._rotate(n-t)}this._draw()},_onToolMouseUp:function(e){v(document).off("mousemove",v.proxy(this._onToolMouseMove,this)),v(document).off("mouseup",v.proxy(this._onToolMouseUp,this))},init:function(e){this.end(),this.layer=e,this.area=v.extend(!0,{},this.defaultArea,{x:e.x,y:e.y,width:e.width,height:e.height,cx:0,cy:0,angle:e.angle}),this.area.cx=this.area.x+this.area.width/2,this.area.cy=this.area.y+this.area.height/2,this._initPoints()},start:function(){this.visible||(this.visible=!0,this._draw())},end:function(){this.visible&&(this.visible=!1,this.layer=null,this.area=v.extend(!0,{},this.defaultArea),this._initPoints(),this._draw())},update:function(){this.init(this.layer),this.start()},isVisible:function(){return this.visible}},t=function(){function s(){for(var e=0,t={};e<arguments.length;e++){var n,i=arguments[e];for(n in i)t[n]=i[n]}return t}function c(e){return e.replace(/(%[0-9A-Z]{2})+/g,decodeURIComponent)}return function e(l){function r(){}function n(e,t,n){if("undefined"!=typeof document){"number"==typeof(n=s({path:"/"},r.defaults,n)).expires&&(n.expires=new Date(+new Date+864e5*n.expires)),n.expires=n.expires?n.expires.toUTCString():"";try{var i=JSON.stringify(t);/^[\{\[]/.test(i)&&(t=i)}catch(e){}t=l.write?l.write(t,e):encodeURIComponent(String(t)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent),e=encodeURIComponent(String(e)).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent).replace(/[\(\)]/g,escape);var o,a="";for(o in n)n[o]&&(a+="; "+o,!0!==n[o]&&(a+="="+n[o].split(";")[0]));return document.cookie=e+"="+t+a}}function t(e,t){if("undefined"!=typeof document){for(var n={},i=document.cookie?document.cookie.split("; "):[],o=0;o<i.length;o++){var a=i[o].split("="),r=a.slice(1).join("=");t||'"'!==r.charAt(0)||(r=r.slice(1,-1));try{var s=c(a[0]),r=(l.read||l)(r,s)||c(r);if(t)try{r=JSON.parse(r)}catch(e){}if(n[s]=r,e===s)break}catch(e){}}return e?n[e]:n}}return r.set=n,r.get=function(e){return t(e,!1)},r.getJSON=function(e){return t(e,!0)},r.remove=function(e,t){n(e,"",s(t,{expires:-1}))},r.defaults={},r.withConverter=e,r}(function(){})},"function"==typeof define&&define.amd&&(define(t),i=!0),"object"==typeof exports&&(module.exports=t(),i=!0),i||(o=window.Cookies,(a=window.Cookies=t()).noConflict=function(){return window.Cookies=o,a}),v("#vision-app-items").length?v(".vision-root .vision-toggle").on("click touchend",function(e){e.stopPropagation(),e.preventDefault();var t,n,i,o=v(this),a=o.data("id"),r=null;o.hasClass("vision-locked")||(o.addClass("vision-readonly"),r=o.hasClass("vision-checked")?(o.removeClass("vision-checked").addClass("vision-unchecked"),!1):(o.removeClass("vision-unchecked").addClass("vision-checked"),!0),t=vision_globals.ajax_url,n=vision_globals.ajax_nonce,e=vision_globals.ajax_action_update,i=vision_globals.ajax_msg_error,a={id:a,active:r},a=v.extend(!0,{},a),a=JSON.stringify(a),v.ajax({url:t,type:"POST",dataType:"json",data:{nonce:n,action:e,config:a}}).done(function(e){e&&!e.success&&(r?o.removeClass("vision-checked").addClass("vision-unchecked"):o.removeClass("vision-unchecked").addClass("vision-checked"))}).fail(function(){console.log(i)}).always(function(){o.removeClass("vision-readonly")}))}):v("#vision-app-item").length?c():v("#vision-app-settings").length&&u(),(r=p()).makeInstance=p,"function"==typeof alightInitCallback?alightInitCallback(r):"function"==typeof define?define(function(){return r}):"object"==typeof module&&"object"==typeof module.exports?module.exports=r:(r.option.globalController=!0,(window.alight=r).f$.ready(r.bootstrap))}(jQuery);
+;(function($) {
+	'use strict';
+	//=========================================================
+	// Shim
+	//=========================================================
+	if (!Object.is) {
+		Object.is = function is(x, y) { // eslint-disable-next-line no-self-compare
+			return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
+		};
+	}
+	
+	if('function' !== typeof DataTransfer.prototype.setDragImage) {
+		DataTransfer.prototype.setDragImage = function(image, offsetX, offsetY) {
+		};
+	}
+	
+	//=========================================================
+	// Storage
+	//=========================================================
+	function Storage() {
+		this.storage = {};
+		
+		this.get = function(key) {
+			if(key in this.storage) {
+				return this.storage[key];
+			}
+			return null;
+		}
+		this.set = function(key, item) {
+			this.storage[key] = item;
+		}
+		this.del = function(key) {
+			delete this.storage[key];
+		}
+		this.len = function() {
+			return Object.keys(this.storage).length;
+		}
+	};
+
+	//=========================================================
+	// FileSaver
+	// @source https://github.com/eligrey/FileSaver.js
+	//=========================================================
+	var saveAs = saveAs || function() {
+		// The one and only way of getting global scope in all environments
+		// https://stackoverflow.com/q/3277182/1008999
+		var _global = typeof window === 'object' && window.window === window
+		? window : typeof self === 'object' && self.self === self
+		? self : typeof global === 'object' && global.global === global
+		? global
+		: this
+		
+		function bom (blob, opts) {
+			if (typeof opts === 'undefined') opts = { autoBom: false }
+			else if (typeof opts !== 'object') {
+				console.warn('Deprecated: Expected third argument to be a object')
+				opts = { autoBom: !opts }
+			}
+			
+			// prepend BOM for UTF-8 XML and text/* types (including HTML)
+			// note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
+			if (opts.autoBom && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
+				return new Blob([String.fromCharCode(0xFEFF), blob], { type: blob.type })
+			}
+			return blob
+		}
+		
+		function download (url, name, opts) {
+			var xhr = new XMLHttpRequest()
+			xhr.open('GET', url)
+			xhr.responseType = 'blob'
+			xhr.onload = function () {
+				saveAs(xhr.response, name, opts)
+			}
+			xhr.onerror = function () {
+				console.error('could not download file')
+			}
+			xhr.send()
+		}
+		
+		function corsEnabled (url) {
+			var xhr = new XMLHttpRequest()
+			// use sync to avoid popup blocker
+			xhr.open('HEAD', url, false)
+			try {
+				xhr.send()
+			} catch (e) {}
+			return xhr.status >= 200 && xhr.status <= 299
+		}
+		
+		// `a.click()` doesn't work for all browsers (#465)
+		function click (node) {
+			try {
+				node.dispatchEvent(new MouseEvent('click'))
+			} catch (e) {
+				var evt = document.createEvent('MouseEvents')
+				evt.initMouseEvent('click', true, true, window, 0, 0, 0, 80, 20, false, false, false, false, 0, null)
+				node.dispatchEvent(evt)
+			}
+		}
+		
+		var saveAs = _global.saveAs || (
+			// probably in some web worker
+			(typeof window !== 'object' || window !== _global)
+			? function saveAs () { /* noop */ }
+				// Use download attribute first if possible (#193 Lumia mobile)
+			: 'download' in HTMLAnchorElement.prototype
+			? function saveAs (blob, name, opts) {
+				var URL = _global.URL || _global.webkitURL
+				var a = document.createElement('a')
+				name = name || blob.name || 'download'
+				
+				a.download = name
+				a.rel = 'noopener' // tabnabbing
+				
+				// TODO: detect chrome extensions & packaged apps
+				// a.target = '_blank'
+				
+				if (typeof blob === 'string') {
+					// Support regular links
+					a.href = blob
+					if (a.origin !== location.origin) {
+						corsEnabled(a.href)
+						? download(blob, name, opts)
+						: click(a, a.target = '_blank')
+					} else {
+						click(a)
+					}
+				} else {
+					// Support blobs
+					a.href = URL.createObjectURL(blob)
+					setTimeout(function () { URL.revokeObjectURL(a.href) }, 4E4) // 40s
+					setTimeout(function () { click(a) }, 0)
+				}
+			}
+			
+			// Use msSaveOrOpenBlob as a second approach
+			: 'msSaveOrOpenBlob' in navigator
+			? function saveAs (blob, name, opts) {
+				name = name || blob.name || 'download'
+				
+				if (typeof blob === 'string') {
+					if (corsEnabled(blob)) {
+						download(blob, name, opts)
+					} else {
+						var a = document.createElement('a')
+						a.href = blob
+						a.target = '_blank'
+						setTimeout(function () { click(a) })
+					}
+				} else {
+					navigator.msSaveOrOpenBlob(bom(blob, opts), name)
+				}
+			}
+			
+			// Fallback to using FileReader and a popup
+			: function saveAs (blob, name, opts, popup) {
+				// Open a popup immediately do go around popup blocker
+				// Mostly only available on user interaction and the fileReader is async so...
+				popup = popup || open('', '_blank')
+				if (popup) {
+					popup.document.title =
+					popup.document.body.innerText = 'downloading...'
+				}
+				
+				if (typeof blob === 'string') return download(blob, name, opts)
+				
+				var force = blob.type === 'application/octet-stream'
+				var isSafari = /constructor/i.test(_global.HTMLElement) || _global.safari
+				var isChromeIOS = /CriOS\/[\d]+/.test(navigator.userAgent)
+				
+				if ((isChromeIOS || (force && isSafari)) && typeof FileReader === 'object') {
+					// Safari doesn't allow downloading of blob URLs
+					var reader = new FileReader()
+					reader.onloadend = function () {
+						var url = reader.result
+						url = isChromeIOS ? url : url.replace(/^data:[^;]*;/, 'data:attachment/file;')
+						if (popup) popup.location.href = url
+						else location = url
+						popup = null // reverse-tabnabbing #460
+					}
+					reader.readAsDataURL(blob)
+				} else {
+					var URL = _global.URL || _global.webkitURL
+					var url = URL.createObjectURL(blob)
+					if (popup) popup.location = url
+					else location.href = url
+					popup = null // reverse-tabnabbing #460
+					setTimeout(function () { URL.revokeObjectURL(url) }, 4E4) // 40s
+				}
+			}
+		)
+		
+		_global.saveAs = saveAs.saveAs = saveAs;
+		
+		return saveAs;
+	}();
+
+	//=============================================
+	// Matrix & Point
+	//=============================================
+	var ARRAY_TYPE = typeof Float32Array !== "undefined" ? Float32Array : Array,
+	DEG = function(rad) {return rad * 180 / Math.PI;},
+	RAD = function(deg) {return deg * Math.PI / 180;},
+	DEGNORM = function(deg) {return (deg < 0 ? 360 : 0) + deg % 360;};
+
+	var MATRIX = function(a, b, c, d, tx, ty) {
+		this.reset().set(a, b, c, d, tx, ty);
+	};
+	MATRIX.prototype = {
+		get x() {
+			return this.m[4];
+		},
+		get y() {
+			return this.m[5];
+		},
+		get zoom() {
+			return this.m[0];
+		},
+		reset: function() {
+			this.m = new ARRAY_TYPE(6);
+
+			if(ARRAY_TYPE != Float32Array) {
+				this.m[1] = 0;
+				this.m[2] = 0;
+				this.m[4] = 0;
+				this.m[5] = 0;
+			}
+			this.m[0] = 1;
+			this.m[3] = 1;
+
+			return this;
+		},
+		set: function(a, b, c, d, tx, ty) {
+			this.m[0] = a || 1;
+			this.m[1] = b || 0;
+			this.m[2] = c || 0;
+			this.m[3] = d || 1;
+			this.m[4] = tx || 0;
+			this.m[5] = ty || 0;
+			return this;
+		},
+		clone: function() {
+			var matrix = new MATRIX();
+			matrix.m = this.m.slice(0);
+			return matrix;
+		},
+		multiply: function(matrix) {
+			var m11 = this.m[0] * matrix.m[0] + this.m[2] * matrix.m[1],
+				m12 = this.m[1] * matrix.m[0] + this.m[3] * matrix.m[1],
+				m21 = this.m[0] * matrix.m[2] + this.m[2] * matrix.m[3],
+				m22 = this.m[1] * matrix.m[2] + this.m[3] * matrix.m[3];
+
+			var dx = this.m[0] * matrix.m[4] + this.m[2] * matrix.m[5] + this.m[4],
+				dy = this.m[1] * matrix.m[4] + this.m[3] * matrix.m[5] + this.m[5];
+
+			this.m[0] = m11;
+			this.m[1] = m12;
+			this.m[2] = m21;
+			this.m[3] = m22;
+			this.m[4] = dx;
+			this.m[5] = dy;
+
+			return this;
+		},
+		inverse: function() {
+			var inv = new MATRIX();
+			inv.m = this.m.slice(0);
+
+			var d = 1 / (inv.m[0] * inv.m[3] - inv.m[1] * inv.m[2]),
+				m0 = inv.m[3] * d,
+				m1 = -inv.m[1] * d,
+				m2 = -inv.m[2] * d,
+				m3 = inv.m[0] * d,
+				m4 = d * (inv.m[2] * inv.m[5] - inv.m[3] * inv.m[4]),
+				m5 = d * (inv.m[1] * inv.m[4] - inv.m[0] * inv.m[5]);
+
+			inv.m[0] = m0;
+			inv.m[1] = m1;
+			inv.m[2] = m2;
+			inv.m[3] = m3;
+			inv.m[4] = m4;
+			inv.m[5] = m5;
+
+			return inv;
+		},
+		rotate: function(rad) {
+			var c = Math.cos(rad),
+				s = Math.sin(rad),
+				m11 = this.m[0] * c + this.m[2] * s,
+				m12 = this.m[1] * c + this.m[3] * s,
+				m21 = this.m[0] * -s + this.m[2] * c,
+				m22 = this.m[1] * -s + this.m[3] * c;
+
+			this.m[0] = m11;
+			this.m[1] = m12;
+			this.m[2] = m21;
+			this.m[3] = m22;
+
+			return this;
+		},
+		move: function(point) {
+			this.m[4] = point.x;
+			this.m[5] = point.y;
+
+			return this;
+		},
+		translate: function(point) {
+			this.m[4] += this.m[0] * point.x + this.m[2] * point.y;
+			this.m[5] += this.m[1] * point.x + this.m[3] * point.y;
+
+			return this;
+		},
+		scale: function(sx, sy) {
+			this.m[0] *= sx;
+			this.m[1] *= sx;
+			this.m[2] *= sy;
+			this.m[3] *= sy;
+
+			return this;
+		},
+		transformPoint: function(point) {
+			var x = point.x * this.m[0] + point.y * this.m[2] + this.m[4],
+				y = point.x * this.m[1] + point.y * this.m[3] + this.m[5];
+
+			return {x:x, y:y};
+		}
+	};
+
+	var POINT = function(x,y) {
+		this.reset().set(x, y);
+	};
+	POINT.prototype = {
+		get x() {
+			return this.p[0];
+		},
+		get y() {
+			return this.p[1];
+		},
+		set x(value) {
+			this.p[0] = value;
+		},
+		set y(value) {
+			this.p[1] = value;
+		},
+		reset: function() {
+			this.p = new ARRAY_TYPE(2);
+			this.p[0] = 0;
+			this.p[1] = 0;
+			return this;
+		},
+		set: function(x, y) {
+			this.p[0] = x || 0;
+			this.p[1] = y || 0;
+			return this;
+		},
+		clone: function() {
+			var point = new POINT();
+			point.p = this.p.slice(0);
+			return point;
+		},
+		add: function(point) {
+			this.p[0] = this.p[0] + point.x;
+			this.p[1] = this.p[1] + point.y;
+			return this;
+		},
+		sub: function(point) {
+			this.p[0] = this.p[0] - point.x;
+			this.p[1] = this.p[1] - point.y;
+			return this;
+		},
+		scale: function(s) {
+			this.p[0] *= s;
+			this.p[1] *= s;
+			return this;
+		},
+		distance: function(point) {
+			var x = point.x - this.p[0],
+				y = point.y - this.p[1];
+			return Math.hypot(x, y);
+		},
+		length: function() {
+			var x = this.p[0],
+				y = this.p[1];
+			return Math.hypot(x, y);
+		},
+		rotate: function(center, rad) {
+			var s = Math.sin(rad),
+				c = Math.cos(rad);
+
+			this.p[0] -= center.x;
+			this.p[1] -= center.y;
+
+			var xnew = this.p[0] * c - this.p[1] * s,
+				ynew = this.p[0] * s + this.p[1] * c;
+
+			this.p[0] = xnew + center.x;
+			this.p[1] = ynew + center.y;
+
+			return this;
+		}
+	};
+
+	//=============================================
+	// Transform Tool
+	//=============================================
+	function TransformTool(plugin, $container) {
+		this.plugin = null;
+		this.$container = null;
+		this.dom = {};
+
+		this.area = $.extend(true, {}, this.defaultArea);
+		this.visible = false;
+		this.drag = false;
+
+		this.points = [
+			new POINT(), // tl [0]
+			new POINT(), // tr [1]
+			new POINT(), // br [2]
+			new POINT(), // bl [3]
+			new POINT(), // mt [4]*
+			new POINT(), // mr [5]
+			new POINT(), // mb [6]
+			new POINT(), // ml [7]
+			new POINT(), // rotate [8]*
+			new POINT()  // center [9]
+		];
+		this.type = null;
+		this.tl_off = null;
+		this.tr_off = null;
+		this.br_off = null;
+		this.bl_off = null;
+		this.center_off = null;
+
+		this.dblclick = {
+			clicks: 0,
+			timer: 0,
+			time: 300
+		};
+
+		this._init(plugin, $container);
+	};
+	TransformTool.prototype = {
+		defaultArea: {
+			x:0,
+			y:0,
+			width:0,
+			height:0,
+			cx:0,
+			cy:0,
+			angle:0
+		},
+		//=============================================
+		// Private Methods
+		//=============================================
+		_init: function(plugin, $container) {
+			this.plugin = plugin;
+			this.$container = $container;
+
+			this._create();
+		},
+		_create: function() {
+			this._buildDOM();
+			this._bind();
+		},
+		_buildDOM: function() {
+			this.dom = {
+				$tool: $('<div>').addClass('vision-tool-transform'),
+				$shape: $(document.createElementNS('http://www.w3.org/2000/svg', 'svg')).attr({'class':'vision-shape','overflow':'visible'}),
+				$tl: $('<div>').addClass('vision-pointer').attr({'data-type':'tl'}),
+				$tr: $('<div>').addClass('vision-pointer').attr({'data-type':'tr'}),
+				$bl: $('<div>').addClass('vision-pointer').attr({'data-type':'bl'}),
+				$br: $('<div>').addClass('vision-pointer').attr({'data-type':'br'}),
+				$mt: $('<div>').addClass('vision-pointer').attr({'data-type':'mt'}),
+				$mr: $('<div>').addClass('vision-pointer').attr({'data-type':'mr'}),
+				$mb: $('<div>').addClass('vision-pointer').attr({'data-type':'mb'}),
+				$ml: $('<div>').addClass('vision-pointer').attr({'data-type':'ml'}),
+				$rotate: $('<div>').addClass('vision-pointer').attr({'data-type':'rotate'}),
+				$center: $('<div>').addClass('vision-center').attr({'data-type':'center'})
+			}
+			this.dom.$tool.append(
+				this.dom.$shape,
+				this.dom.$center,
+				this.dom.$rotate,
+				this.dom.$mt,
+				this.dom.$mr,
+				this.dom.$mb,
+				this.dom.$ml,
+				this.dom.$tl,
+				this.dom.$tr,
+				this.dom.$bl,
+				this.dom.$br
+			);
+			this.$container.append(this.dom.$tool);
+		},
+		_bind: function() {
+			this.dom.$tool.on('mousedown', $.proxy(this._onToolMouseDown, this));
+		},
+		_unbind: function() {
+			this.dom.$tool.off('mousedown', $.proxy(this._onToolMouseDown, this));
+		},
+		_initPoints: function() {
+			var zoom = this.plugin.fn.getCanvasZoom(this.plugin),
+				pos = this.plugin.fn.getCanvasPosition(this.plugin),
+				rcViewPane = this.$container.get(0).getBoundingClientRect(),
+				xOffset = rcViewPane.width / 2 + pos.x - (this.area.width * zoom)/2,
+				yOffset = rcViewPane.height / 2 + pos.y - (this.area.height * zoom)/2,
+				x = this.area.x * zoom + xOffset,
+				y = this.area.y * zoom + yOffset,
+				w = this.area.width * zoom,
+				h = this.area.height * zoom,
+				angle = DEGNORM(this.area.angle);
+
+			var tl = new POINT(x, y), // hack (+ zoom/2.5) 125% Windows
+				tr = new POINT(tl.x + w, tl.y),
+				br = new POINT(tr.x, tr.y + h),
+				bl = new POINT(br.x - w, br.y),
+				center = new POINT((tl.x + tr.x)/2, (tl.y + bl.y)/2),
+				rad = RAD(angle);
+
+			this.points[0] = tl;
+			this.points[1] = tr;
+			this.points[2] = br;
+			this.points[3] = bl;
+			this.points[9] = center;
+
+			for(var i=0;i<4;i++) {
+				this.points[i].rotate(center, rad);
+			}
+
+			this._updateMiddlePoints();
+		},
+		_updateMiddlePoints: function() {
+			var tl = this.points[0],
+				tr = this.points[1],
+				br = this.points[2],
+				bl = this.points[3],
+				mt = new POINT((tl.x + tr.x)/2, (tl.y + tr.y)/2), // middle top point
+				mr = new POINT((tr.x + br.x)/2, (tr.y + br.y)/2),
+				mb = new POINT((br.x + bl.x)/2, (br.y + bl.y)/2),
+				ml = new POINT((bl.x + tl.x)/2, (bl.y + tl.y)/2),
+				dy = tr.y - tl.y,
+				dx = tr.x - tl.x,
+				normal = {
+					x:  dy / Math.sqrt(dx*dx + dy*dy),
+					y: -dx / Math.sqrt(dx*dx + dy*dy)
+				};
+
+			this.points[4] = mt;
+			this.points[5] = mr;
+			this.points[6] = mb;
+			this.points[7] = ml;
+			this.points[8] = new POINT(mt.x + 25 * normal.x, mt.y + 25 * normal.y);
+		},
+		_draw: function() {
+			if(this.visible) {
+				var points = this.points;
+				this.dom.$shape.html(`<path data-type="shape" d="
+					M ${points[0].x}, ${points[0].y}
+					L ${points[1].x}, ${points[1].y}
+					L ${points[2].x}, ${points[2].y}
+					L ${points[3].x}, ${points[3].y}
+					L ${points[0].x}, ${points[0].y}
+					M ${points[4].x}, ${points[4].y}
+					L ${points[8].x}, ${points[8].y}
+					Z" />`);
+				this.dom.$tl.css({'transform':'translate(' + points[0].x + 'px,' + points[0].y + 'px)'});
+				this.dom.$tr.css({'transform':'translate(' + points[1].x + 'px,' + points[1].y + 'px)'});
+				this.dom.$br.css({'transform':'translate(' + points[2].x + 'px,' + points[2].y + 'px)'});
+				this.dom.$bl.css({'transform':'translate(' + points[3].x + 'px,' + points[3].y + 'px)'});
+
+				this.dom.$mt.css({'transform':'translate(' + points[4].x + 'px,' + points[4].y + 'px) rotate(' + this.area.angle + 'deg)'});
+				this.dom.$mr.css({'transform':'translate(' + points[5].x + 'px,' + points[5].y + 'px) rotate(' + this.area.angle + 'deg)'});
+				this.dom.$mb.css({'transform':'translate(' + points[6].x + 'px,' + points[6].y + 'px) rotate(' + this.area.angle + 'deg)'});
+				this.dom.$ml.css({'transform':'translate(' + points[7].x + 'px,' + points[7].y + 'px) rotate(' + this.area.angle + 'deg)'});
+
+				this.dom.$rotate.css({'transform':'translate(' + points[8].x + 'px,' + points[8].y + 'px)'});
+				this.dom.$center.css({'transform':'translate(' + points[9].x + 'px,' + points[9].y + 'px)'});
+
+				this.dom.$tool.addClass('vision-active');
+			} else {
+				this.dom.$tool.removeClass('vision-active');
+			}
+		},
+		_drag: function(dx, dy) {
+			for(var i=0;i<this.points.length;i++) {
+				this.points[i].add({x: dx, y: dy});
+			}
+
+			var tl = this.points[0],
+				br = this.points[2],
+				zoom = this.plugin.fn.getCanvasZoom(this.plugin),
+				pos = this.plugin.fn.getCanvasPosition(this.plugin),
+				rcViewPane = this.$container.get(0).getBoundingClientRect(),
+				xOffset = rcViewPane.width / 2 + pos.x,
+				yOffset = rcViewPane.height / 2 + pos.y;
+
+			this.area.x = (tl.x - xOffset) / zoom;
+			this.area.y = (tl.y - yOffset) / zoom;
+			this.area.cx = ((tl.x + br.x)/2 - xOffset) / zoom;
+			this.area.cy = ((tl.y + br.y)/2 - yOffset) / zoom;
+
+			this.layer.x = this.area.cx;
+			this.layer.y = this.area.cy;
+			this.plugin.rootScope.scan();
+		},
+		_rotate: function(drad) {
+			for(var i=0;i<this.points.length;i++) {
+				this.points[i].rotate(this.center_off, drad);
+			}
+			this.area.angle = DEGNORM(this.area.angle + (DEG(drad)));
+
+			this.layer.angle = this.area.angle;
+			this.plugin.rootScope.scan();
+		},
+		_resize: function(type, x, y) {
+			var p = new POINT(x, y),
+				rad = RAD(this.area.angle),
+				tl = this.points[0],
+				br = this.points[2],
+				zoom = this.plugin.fn.getCanvasZoom(this.plugin),
+				pos = this.plugin.fn.getCanvasPosition(this.plugin),
+				rcViewPane = this.$container.get(0).getBoundingClientRect(),
+				xOffset = rcViewPane.width / 2 + pos.x,
+				yOffset = rcViewPane.height / 2 + pos.y,
+				anchor, center, x, y, w, h;
+
+			switch(type) {
+				case 'tl':
+				case 'ml': { anchor = this.br_off.clone(); } break;
+				case 'tr':
+				case 'mt': { anchor = this.bl_off.clone(); } break;
+				case 'br':
+				case 'mr': { anchor = this.tl_off.clone(); } break;
+				case 'bl':
+				case 'mb': { anchor = this.tr_off.clone(); } break;
+			}
+
+			center = new POINT((anchor.x + p.x)/2, (anchor.y + p.y)/2);
+
+			p.rotate(center, -rad);
+			anchor.rotate(center, -rad);
+
+			switch(type) {
+				case 'tl': {
+					w = -p.x + anchor.x;
+					h = -p.y + anchor.y;
+					x = anchor.x - w;
+					y = anchor.y - h;
+				} break;
+				case 'ml': {
+					w = -p.x + anchor.x;
+					p.set(anchor.x - w, anchor.y); // bl
+
+					p.rotate(center, rad);
+					anchor.rotate(center, rad);
+
+					center.set((this.tr_off.x + p.x)/2, (this.tr_off.y + p.y)/2);
+
+					p.rotate(center, -rad);
+					anchor.rotate(center, -rad);
+
+					w = -p.x + anchor.x;
+					h = this.area.height * zoom;
+					x = anchor.x - w;
+					y = anchor.y - h;
+				} break;
+				case 'tr': {
+					w =  p.x - anchor.x;
+					h = -p.y + anchor.y;
+					x = anchor.x;
+					y = anchor.y - h;
+				} break;
+				case 'mt': {
+					h = -p.y + anchor.y;
+					p.set(anchor.x, anchor.y - h) // tl
+
+					p.rotate(center, rad);
+					anchor.rotate(center, rad);
+
+					center.set((this.br_off.x + p.x)/2, (this.br_off.y + p.y)/2);
+
+					p.rotate(center, -rad);
+					anchor.rotate(center, -rad);
+
+					w = this.area.width * zoom;
+					h = -p.y + anchor.y;
+					x = anchor.x;
+					y = anchor.y - h;
+				} break;
+				case 'br': {
+					w = p.x - anchor.x;
+					h = p.y - anchor.y;
+					x = anchor.x;
+					y = anchor.y;
+				} break;
+				case 'mr': {
+					w = p.x - anchor.x;
+					p.set(anchor.x + w, anchor.y); // tr
+
+					p.rotate(center, rad);
+					anchor.rotate(center, rad);
+
+					center.set((this.bl_off.x + p.x)/2, (this.bl_off.y + p.y)/2);
+
+					p.rotate(center, -rad);
+					anchor.rotate(center, -rad);
+
+					w = p.x - anchor.x;
+					h = this.area.height * zoom;
+					x = anchor.x;
+					y = anchor.y;
+				} break;
+				case 'bl': {
+					w = -p.x + anchor.x;
+					h =  p.y - anchor.y;
+					x = anchor.x - w;
+					y = anchor.y;
+				} break;
+				case 'mb': {
+					h =  p.y - anchor.y;
+					p.set(anchor.x, anchor.y + h) // br
+
+					p.rotate(center, rad);
+					anchor.rotate(center, rad);
+
+					center.set((this.tl_off.x + p.x)/2, (this.tl_off.y + p.y)/2);
+
+					p.rotate(center, -rad);
+					anchor.rotate(center, -rad);
+
+					w = this.area.width * zoom;
+					h = p.y - anchor.y;
+					x = anchor.x - w;
+					y = anchor.y;
+				} break;
+			}
+
+			center.set(x + w/2, y + h/2);
+
+			this.points[0].set(x, y);         // tl
+			this.points[1].set(x + w, y);     // tr
+			this.points[2].set(x + w, y + h); // br
+			this.points[3].set(x, y + h);     // bl
+			this.points[9].set(center.x, center.y);
+
+			for(var i=0;i<4;i++) {
+				this.points[i].rotate(center, rad);
+			}
+
+			this._updateMiddlePoints();
+
+			this.area.x = (tl.x - xOffset) / zoom;
+			this.area.y = (tl.y - yOffset) / zoom;
+			this.area.cx = ((tl.x + br.x)/2 - xOffset) / zoom;
+			this.area.cy = ((tl.y + br.y)/2 - yOffset) / zoom;
+			this.area.width = w / zoom;
+			this.area.height = h / zoom;
+
+			this.layer.x = this.area.cx;
+			this.layer.y = this.area.cy;
+			this.layer.width = this.area.width;
+			this.layer.height = this.area.height;
+			this.plugin.rootScope.scan();
+		},
+		_onToolMouseDown: function(e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+
+			this.type = $(e.target).data('type');
+
+			this.tl_off = this.points[0].clone();
+			this.tr_off = this.points[1].clone();
+			this.br_off = this.points[2].clone();
+			this.bl_off = this.points[3].clone();
+			this.center_off = this.points[9].clone();
+
+			this.cursor = {
+				offset:  { x: this.dom.$tool.offset().left, y: this.dom.$tool.offset().top },
+				start:   { x: 0, y: 0 },
+				prev:    { x: 0, y: 0 },
+				current: { x: 0, y: 0 }
+			};
+			this.cursor.start.x = this.cursor.prev.x = this.cursor.current.x = e.pageX - this.cursor.offset.x;
+			this.cursor.start.y = this.cursor.prev.y = this.cursor.current.y = e.pageY - this.cursor.offset.y;
+
+			$(document).on('mousemove', $.proxy(this._onToolMouseMove, this));
+			$(document).on('mouseup', $.proxy(this._onToolMouseUp, this));
+
+		},
+		_onToolMouseMove: function(e) {
+			this.cursor.prev.x = this.cursor.current.x;
+			this.cursor.prev.y = this.cursor.current.y;
+			this.cursor.current.x = e.pageX - this.cursor.offset.x;
+			this.cursor.current.y = e.pageY - this.cursor.offset.y;
+
+			switch(this.type) {
+				case 'tl':
+				case 'tr':
+				case 'br':
+				case 'bl':
+				case 'mt':
+				case 'mr':
+				case 'mb':
+				case 'ml': {
+					this._resize(this.type, this.cursor.current.x, this.cursor.current.y);
+				} break;
+				case 'shape': {
+					var dx = this.cursor.current.x - this.cursor.prev.x,
+						dy = this.cursor.current.y - this.cursor.prev.y;
+					this._drag(dx, dy);
+				} break;
+				case 'rotate': {
+					var prevRad = Math.atan2(this.cursor.prev.y - this.center_off.y, this.cursor.prev.x - this.center_off.x),
+						currRad = Math.atan2(this.cursor.current.y - this.center_off.y, this.cursor.current.x - this.center_off.x);
+					this._rotate(currRad - prevRad);
+				} break;
+			}
+
+			this._draw();
+		},
+		_onToolMouseUp: function(e) {
+			$(document).off('mousemove', $.proxy(this._onToolMouseMove, this));
+			$(document).off('mouseup', $.proxy(this._onToolMouseUp, this));
+		},
+		//=============================================
+		// Public Methods
+		//=============================================
+		init: function(layer) {
+			this.end();
+
+			this.layer = layer;
+			this.area = $.extend(true, {}, this.defaultArea, {
+				x: layer.x,
+				y: layer.y,
+				width: layer.width,
+				height: layer.height,
+				cx: 0,
+				cy: 0,
+				angle: layer.angle
+			});
+			this.area.cx = this.area.x + this.area.width / 2;
+			this.area.cy = this.area.y + this.area.height / 2;
+
+			this._initPoints();
+		},
+		start: function() {
+			if(!this.visible) {
+				this.visible = true;
+				this._draw();
+			}
+		},
+		end: function() {
+			if(this.visible) {
+				this.visible = false;
+				this.layer = null;
+				this.area = $.extend(true, {}, this.defaultArea);
+				this._initPoints();
+				this._draw();
+			}
+		},
+		update: function() {
+			this.init(this.layer);
+			this.start();
+		},
+		isVisible: function() {
+			return this.visible;
+		}
+	};
+
+	//=========================================================
+	// JavaScript Cookie v2.2.0
+	// https://github.com/js-cookie/js-cookie
+	//
+	// Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+	// Released under the MIT license
+	//=========================================================
+	(function (factory) {
+		var registeredInModuleLoader;
+		if (typeof define === 'function' && define.amd) {
+			define(factory);
+			registeredInModuleLoader = true;
+		}
+		if (typeof exports === 'object') {
+			module.exports = factory();
+			registeredInModuleLoader = true;
+		}
+		if (!registeredInModuleLoader) {
+			var OldCookies = window.Cookies;
+			var api = window.Cookies = factory();
+			api.noConflict = function () {
+				window.Cookies = OldCookies;
+				return api;
+			};
+		}
+	}(function () {
+		function extend () {
+			var i = 0;
+			var result = {};
+			for (; i < arguments.length; i++) {
+				var attributes = arguments[ i ];
+				for (var key in attributes) {
+					result[key] = attributes[key];
+				}
+			}
+			return result;
+		}
+		function decode (s) {
+			return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
+		}
+		function init (converter) {
+			function api() {}
+			function set (key, value, attributes) {
+				if (typeof document === 'undefined') {
+					return;
+				}
+				attributes = extend({
+					path: '/'
+				}, api.defaults, attributes);
+				if (typeof attributes.expires === 'number') {
+					attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
+				}
+				// We're using "expires" because "max-age" is not supported by IE
+				attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+				try {
+					var result = JSON.stringify(value);
+					if (/^[\{\[]/.test(result)) {
+						value = result;
+					}
+				} catch (e) {}
+				value = converter.write ?
+					converter.write(value, key) :
+					encodeURIComponent(String(value))
+						.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+				key = encodeURIComponent(String(key))
+					.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
+					.replace(/[\(\)]/g, escape);
+				var stringifiedAttributes = '';
+				for (var attributeName in attributes) {
+					if (!attributes[attributeName]) {
+						continue;
+					}
+					stringifiedAttributes += '; ' + attributeName;
+					if (attributes[attributeName] === true) {
+						continue;
+					}
+					// Considers RFC 6265 section 5.2:
+					// ...
+					// 3.  If the remaining unparsed-attributes contains a %x3B (";")
+					//     character:
+					// Consume the characters of the unparsed-attributes up to,
+					// not including, the first %x3B (";") character.
+					// ...
+					stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+				}
+				return (document.cookie = key + '=' + value + stringifiedAttributes);
+			}
+			function get (key, json) {
+				if (typeof document === 'undefined') {
+					return;
+				}
+				var jar = {};
+				// To prevent the for loop in the first place assign an empty array
+				// in case there are no cookies at all.
+				var cookies = document.cookie ? document.cookie.split('; ') : [];
+				var i = 0;
+				for (; i < cookies.length; i++) {
+					var parts = cookies[i].split('=');
+					var cookie = parts.slice(1).join('=');
+					if (!json && cookie.charAt(0) === '"') {
+						cookie = cookie.slice(1, -1);
+					}
+					try {
+						var name = decode(parts[0]);
+						cookie = (converter.read || converter)(cookie, name) ||
+							decode(cookie);
+						if (json) {
+							try {
+								cookie = JSON.parse(cookie);
+							} catch (e) {}
+						}
+						jar[name] = cookie;
+						if (key === name) {
+							break;
+						}
+					} catch (e) {}
+				}
+				return key ? jar[key] : jar;
+			}
+			
+			api.set = set;
+			api.get = function (key) {
+				return get(key, false /* read as raw */);
+			};
+			api.getJSON = function (key) {
+				return get(key, true /* read as json */);
+			};
+			api.remove = function (key, attributes) {
+				set(key, '', extend(attributes, {
+					expires: -1
+				}));
+			};
+			api.defaults = {};
+			api.withConverter = init;
+			return api;
+		}
+		
+		return init(function () {});
+	}));
+	
+	//=========================================================
+	// Screens
+	//=========================================================
+	function page_items() {
+		$('.vision-root .vision-toggle').on('click touchend', function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			
+			var $el = $(this),
+			id = $el.data('id'),
+			active = null;
+			
+			if($el.hasClass('vision-locked')) {
+				return;
+			}
+			
+			$el.addClass('vision-readonly');
+			
+			if($el.hasClass('vision-checked')) {
+				$el.removeClass('vision-checked').addClass('vision-unchecked');
+				active = false;
+			} else {
+				$el.removeClass('vision-unchecked').addClass('vision-checked');
+				active = true;
+			}
+			
+			
+			var wp_ajax_url = vision_globals.ajax_url,
+			wp_ajax_nonce = vision_globals.ajax_nonce,
+			wp_ajax_action_update = vision_globals.ajax_action_update,
+			wp_ajax_msg_error = vision_globals.ajax_msg_error,
+			config = {
+				id: id,
+				active: active
+			};
+			
+			var cfg = $.extend(true, {}, config);
+			cfg = JSON.stringify(cfg);
+			
+			$.ajax({
+				url: wp_ajax_url,
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					nonce: wp_ajax_nonce,
+					action: wp_ajax_action_update,
+					config: cfg
+				}
+			}).done(function(json) {
+				if(json && !json.success) {
+					if(active) {
+						$el.removeClass('vision-checked').addClass('vision-unchecked');
+					} else {
+						$el.removeClass('vision-unchecked').addClass('vision-checked');
+					}
+				}
+			}).fail(function() {
+				console.log(wp_ajax_msg_error);
+			}).always(function() {
+				$el.removeClass('vision-readonly');
+			});
+		});
+	}
+	
+	function page_item() {
+		//=========================================================
+		// Application Model Data
+		//=========================================================
+		var appData = {
+			alight: null,
+			rootScope: null,
+			
+			wpFileFrameImage: null,
+			transformTool: null,
+
+			wp_base_url: null,
+			wp_upload_url: null,
+			wp_plugin_url: null,
+			wp_ajax_url: null,
+			wp_ajax_nonce: null,
+			wp_ajax_action_update: null,
+			wp_ajax_action_get: null,
+			wp_ajax_action_modal: null,
+			wp_ajax_msg_error: null,
+			wp_item_id: null,
+			
+			themes: null,
+			fonts: null,
+			image: new Image(),
+			
+			embedCodeWithId: null,
+			embedCodeWithSlug: null,
+			
+			settings: {
+				themeJavaScript: null,
+				themeCSS: null
+			},
+			
+			// used for save/restore config data (user interface + plugin config)
+			config: null,
+			
+			ui: {
+				fullscreen: false,
+
+				builder: {
+					leftSidebar: true,
+					leftSidebarWidth: 350,
+					rightSidebar: true,
+					rightSidebarWidth: 350,
+				},
+
+				canvas: {
+					zoomStep: 0.05,
+					zoom: 1,
+					x: 0,
+					y: 0
+				},
+
+				prevCanvas: {
+					zoom: 1,
+					x: 0,
+					y: 0
+				},
+
+				moveCanvas: {
+					initX: null,
+					initY: null,
+					lastX: null,
+					lastY: null
+				},
+
+				sidebarResize: {
+					initX: null,
+					lastX: null,
+					width: null
+				},
+
+				mapLayers: new Map(),
+				activeLayer: null,
+
+				tabs: {
+					builder: true,
+					customCSS: false,
+					customJS: false,
+					shortcode: false
+				},
+
+				generalTab: {
+					main: false,
+					container: false
+				},
+
+				leftSidebarTabs: {
+					general: true,
+					layers: false
+				},
+
+				rightSidebarTabs: {
+					layer: true,
+					popover: false,
+					tooltip: false
+				},
+				
+				layerTab: { // folded
+					general: true,
+					data: true,
+					appearance: false
+				},
+				
+				tooltipTab: { // folded
+					data: false,
+					appearance: true
+				},
+				
+				popoverTab: { // folded
+					data: false,
+					appearance: true
+				},
+			},
+			
+			defaultConfig: {
+				active: true,
+				title: null,
+				slug: null,
+				image: {
+					relative: false,
+					url: null
+				},
+				imageWidth: 0,
+				imageHeight: 0,
+				autoWidth: true,
+				autoHeight: true,
+				containerWidth: null,
+				containerHeight: null,
+				
+				theme: 'light',
+				class: null, // additional css class
+				containerId: null,
+				
+				background: {
+					color: null,
+					image: {
+						relative: false,
+						url: null
+					},
+					size: null,
+					repeat: null,
+					position: null,
+					//scroll: null, //???
+				},
+				
+				customCSS: {
+					active: false,
+					data: null
+				},
+				
+				customJS: {
+					active: false,
+					data: null
+				},
+				
+				layers: []
+			},
+			
+			defaultLayer: {
+				guid: null,
+				id: null,
+				type: 'link', // link, image, text
+				title: null,
+				x: 0,
+				y: 0,
+				width: 150,
+				height: 100,
+				angle: 0,
+				autoWidth: false,
+				autoHeight: false,
+				lock: false,
+				visible: true,
+				scaling: true,
+				noevents: false,
+				className: null,
+				
+				url: null,
+				urlNewWindow: false,
+				urlNoFollow: true,
+				contentData: null,
+				userData: null,
+				
+				link: {
+					normalColor: null,
+					hoverColor: null,
+					radius: 0
+				},
+				
+				text: {
+					data: null,
+					font: null,
+					color: '#000',
+					size: 18,
+					lineHeight: 18,
+					align: null,
+					letterSpacing: null,
+					background: {
+						file: {
+							url: null
+						},
+						color: null,
+						size: 'contain',
+						repeat: 'no-repeat',
+						position: '50% 50%'
+					}
+				},
+				
+				image: {
+					background: {
+						file: {
+							url: null,
+							inlineEmbed: false
+						},
+						color: null,
+						size: 'contain',
+						repeat: 'no-repeat',
+						position: '50% 50%'
+					}
+				},
+				
+				svg: {
+					file: {
+						url: null,
+						relative: false
+					}
+				},
+				
+				tooltip: {
+					active: false,
+					data: null,
+					placement: 'top',
+					offset: {x:0, y:0},
+					width: null,
+					widthFromCSS: false,
+					trigger: 'hover', // values: hover, click, focus & touch, sticky (will be shown on load)
+					followCursor: false, // only for hover trigger
+					scaling: false,
+					interactive: true,
+					smart: false, // determines if the tooltip is placed within the viewport as best it can be if there is not enough space
+					showOnInit: false, // the tooltip will be shown immediately once the instance is created
+					className: null,
+					showAnimation: null,
+					hideAnimation: null,
+					duration: null // define animation durection
+				},
+				
+				popover: {
+					active: false,
+					data: null,
+					type: 'inbox', // values: tooltip, inbox, lightbox
+					placement: 'top', // only for tooltip type
+					offset: {x:0, y:0}, // only for tooltip type
+					width: null,
+					widthFromCSS: false,
+					trigger: 'click', // values: hover, click, dblclick, focus & touch
+					followCursor: false, // only for hover trigger
+					scaling: false, // only for tooltip type
+					interactive: true,
+					smart: false, // determines if the popover is placed within the viewport as best it can be if there is not enough space
+					showOnInit: false, // the popover will be shown immediately once the instance is created
+					mobileType: 'inbox', // values: tooltip, inbox, lightbox
+					className: null
+				}
+			},
+			
+			fn: {
+				init: function(appData) {
+					appData.fn.enableLoading(appData);
+					
+					var $app = $('#vision-app-item');
+					
+					$app.removeAttr('style');
+					$(window).on('resize', $.proxy(appData.fn.onResize, this, appData));
+
+					// init ajax
+					appData.plan = vision_globals.plan;
+					appData.transformTool = new TransformTool(appData, $('#vision-layers-canvas-wrap'));
+					appData.wp_base_url = vision_globals.wp_base_url;
+					appData.wp_upload_url = vision_globals.upload_base_url;
+					appData.wp_plugin_url = vision_globals.plugin_base_url;
+					appData.wp_ajax_url = vision_globals.ajax_url;
+					appData.wp_ajax_nonce = vision_globals.ajax_nonce;
+					appData.wp_ajax_action_update = vision_globals.ajax_action_update;
+					appData.wp_ajax_action_get = vision_globals.ajax_action_get;
+					appData.wp_ajax_action_modal = vision_globals.ajax_action_modal,
+					appData.wp_ajax_msg_error = vision_globals.ajax_msg_error;
+					appData.msg_pro_title = vision_globals.msg_pro_title;
+					appData.msg_edit_text = vision_globals.msg_edit_text;
+					appData.msg_custom_js_error = vision_globals.msg_custom_js_error;
+					appData.msg_layer_id_error = vision_globals.msg_layer_id_error;
+					
+					appData.wp_item_id = vision_globals.ajax_item_id;
+					
+					if(vision_globals.config) {
+						var cfg = $.extend(true, {}, appData.defaultConfig, vision_globals.config);
+						if(cfg) {
+							for(var i in cfg) { // copy values from one object to another
+								if(appData.config.hasOwnProperty(i)) {
+									appData.config[i] = cfg[i];
+								}
+							}
+							
+							// transform old config
+							for(var i=0;i<appData.config.layers.length;i++) {
+								var layer = $.extend(true, {}, appData.defaultLayer, appData.config.layers[i]);
+								
+								if(layer.image.hasOwnProperty('backgroundImage')) {
+									layer.image.background.file.url = layer.image.backgroundImage.url;
+									layer.image.background.file.relative = layer.image.backgroundImage.relative;
+									layer.image.background.position = layer.image.backgroundPosition;
+									layer.image.background.repeat = layer.image.backgroundRepeat;
+									layer.image.background.size = layer.image.backgroundSize;
+									
+									delete layer.image.backgroundImage;
+									delete layer.image.backgroundPosition;
+									delete layer.image.backgroundRepeat;
+									delete layer.image.backgroundSize;
+								}
+								if(layer.link.hasOwnProperty('url')) {
+									layer.url = layer.link.url;
+									layer.urlNewWindow = layer.link.newWindow;
+									
+									delete layer.link.url;
+									delete layer.link.newWindow;
+									delete layer.link.clickColor;
+								}
+								
+								if(!layer.guid) {
+									layer.guid = appData.fn.uuid();
+								}
+								
+								if(!layer.id) {
+									layer.id = appData.fn.uuid(8);
+								}
+								
+								if(layer.tooltip.offset.hasOwnProperty('x') || layer.tooltip.offset.hasOwnProperty('y')) {
+									layer.tooltip.offset.top = layer.tooltip.offset.y;
+									layer.tooltip.offset.left = layer.tooltip.offset.x;
+								}
+								
+								if(layer.popover.offset.hasOwnProperty('x') || layer.popover.offset.hasOwnProperty('y')) {
+									layer.popover.offset.top = layer.popover.offset.y;
+									layer.popover.offset.left = layer.popover.offset.x;
+								}
+								
+								appData.config.layers[i] = layer;
+							}
+						}
+					}
+					
+					if(vision_globals.settings) {
+						var cfg = $.extend(true, {}, vision_globals.settings);
+						if(cfg) {
+							for(var i in cfg) { // copy values from one object to another
+								if(appData.settings.hasOwnProperty(i)) {
+									appData.settings[i] = cfg[i];
+								}
+							}
+						}
+					}
+					
+					appData.image.onload = function(xhr) {
+						var $img = $('#vision-layers-image'),
+						image = this;
+						
+						appData.config.imageWidth = image.width;
+						appData.config.imageHeight = image.height;
+						
+						$img.css({
+							'background-image':'url(' + image.src + ')',
+							'width': image.width,
+							'height': image.height
+						});
+						$img.get(0).offsetHeight;
+						
+						appData.fn.canvasZoomDefault(appData);
+						//appData.fn.canvasZoomFit(appData);
+						appData.rootScope.scan();
+					}
+					appData.image.onerror = function(xhr) {
+						var $img = $('#vision-layers-image'),
+						image = this;
+						
+						appData.config.imageWidth = 0;
+						appData.config.imageHeight = 0;
+						
+						$img.css({
+							'background-image':'url(' + image.src + ')',
+							'width': 0,
+							'height': 0
+						});
+						
+						appData.fn.canvasZoomFit(appData);
+						appData.rootScope.scan();
+					}
+					
+					appData.rootScope.watch('appData.config.image', function(image) {
+						var imageSrc = appData.fn.getImageUrl(appData, image);
+						appData.image.src = ''; // destroy prev request
+						appData.image.src = imageSrc;
+					}, {deep: 2});
+
+					appData.rootScope.watch('appData.ui.canvas', function(canvas) {
+						var $canvas = $('#vision-layers-canvas');
+						$canvas.css({'transform':'translate3d(' + canvas.x + 'px,' + canvas.y + 'px,0) scale(' + canvas.zoom + ')'});
+						appData.fn.updateTransformTool();
+					}, {deep: 2});
+					
+					appData.rootScope.watch('appData.ui.activeLayer', function(layerNew, layerOld) {
+						if(layerOld) {
+							if($('#wp-vision-tooltip-editor-wrap').hasClass('html-active')){ // We are in text mode
+								layerOld.tooltip.data = $('#vision-tooltip-editor').val();
+							} else { // We are in tinyMCE mode
+								var activeEditor = tinyMCE.get('vision-tooltip-editor');
+								if(activeEditor !== null) { // Make sure we're not calling setContent on null
+									layerOld.tooltip.data = activeEditor.getContent();
+								}
+							}
+							
+							if($('#wp-vision-popover-editor-wrap').hasClass('html-active')){ // We are in text mode
+								layerOld.popover.data = $('#vision-popover-editor').val();
+							} else { // We are in tinyMCE mode
+								var activeEditor = tinyMCE.get('vision-popover-editor');
+								if(activeEditor !== null) { // Make sure we're not calling setContent on null
+									layerOld.popover.data = activeEditor.getContent();
+								}
+							}
+						}
+						
+						var data = (layerNew && layerNew.tooltip.data ? layerNew.tooltip.data : '');
+						if($('#wp-vision-tooltip-editor-wrap').hasClass('html-active')) { // We are in text mode
+							$('#vision-tooltip-editor').val(data);
+						} else {
+							var activeEditor = tinyMCE.get('vision-tooltip-editor');
+							if(activeEditor !== null) { // Make sure we're not calling setContent on null
+								activeEditor.setContent(data); // Update tinyMCE's content
+							}
+						}
+						
+						var data = (layerNew && layerNew.popover.data ? layerNew.popover.data : '');
+						if($('#wp-vision-popover-editor-wrap').hasClass('html-active')) { // We are in text mode
+							$('#vision-popover-editor').val(data);
+						} else {
+							var activeEditor = tinyMCE.get('vision-popover-editor');
+							if(activeEditor !== null) { // Make sure we're not calling setContent on null
+								activeEditor.setContent(data); // Update tinyMCE's content
+							}
+						}
+					});
+
+					appData.rootScope.watch('appData.ui.activeLayer', function(cur, old) {
+						if( cur && old && (
+							cur.x != old.x ||
+						 	cur.y != old.y ||
+							cur.width != old.width ||
+							cur.height != old.height ||
+							cur.angle != old.angle )) {
+						 	appData.fn.updateTransformTool();
+						}
+					}, {deep:2});
+
+					appData.fn.loadData(appData, 'fonts').done(function(data) {
+						appData.fonts = data.list;
+					}).always(function(){
+						appData.fn.loadData(appData, 'themes').done(function(data) {
+							appData.themes = data.list;
+						}).always(function(){
+							appData.rootScope.scan();
+							appData.fn.disableLoading(appData);
+						});
+					});
+				},
+				
+				enableLoading: function(appData) {
+					$('#vision-app-item').removeClass('vision-active');
+				},
+				
+				disableLoading: function(appData) {
+					setTimeout(function() {
+						$('#vision-app-item').addClass('vision-active');
+					}, 1000);
+				},
+				
+				loadData: function(appData, dataName, dataId) {
+					var def = $.Deferred();
+					
+					$.ajax({
+						url: appData.wp_ajax_url,
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							nonce: appData.wp_ajax_nonce,
+							action: appData.wp_ajax_action_get,
+							type: dataName,
+							id: dataId
+						},
+						success: function(json){
+							if(json && json.success) {
+								def.resolve(json.data);
+								return;
+							}
+							this.error();
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+							def.resolve(null);
+						}
+					});
+					
+					return def.promise();
+				},
+				
+				getPrewiewPageUrl: function(appData) {
+					var url = new Url(appData.wp_base_url + '/vision/map/' + appData.wp_item_id + '?preview=1');
+					return url.toString();
+				},
+				
+				preview: function(appData) {
+					window.open(appData.fn.getPrewiewPageUrl(appData), '_blank');
+				},
+				
+				getPluginConfig: function(appData) {
+					var cfg = {};
+					
+					cfg.title = appData.config.title;
+					cfg.imgSrc = appData.fn.getImageUrl(appData, appData.config.image);
+					
+					if(!appData.config.autoWidth && appData.config.containerWidth) {
+						cfg.width = appData.config.containerWidth;
+					}
+					
+					if(!appData.config.autoHeight && appData.config.containerHeight) {
+						cfg.height = appData.config.containerHeight;
+					}
+					
+					cfg.theme = appData.config.theme;
+					cfg.className = appData.config.class;
+					
+					// special flags for loader.js, used for quick checks
+					cfg.flags = {
+						customCSS: appData.config.customCSS.active,
+						effects: false
+					};
+					
+					var fonts = [],
+					layers = [];
+					for(var i=0;i<appData.config.layers.length;i++) {
+						var layer = appData.config.layers[i];
+						
+						if(!layer.visible) {
+							continue;
+						}
+						
+						layers.push({
+							id: layer.id,
+							type: layer.type,
+							title: layer.title,
+							//data: null,
+							x: (appData.config.imageWidth  ? (layer.x / (appData.config.imageWidth/2))*100 : 0),
+							y: (appData.config.imageHeight ? (layer.y / (appData.config.imageHeight/2))*100 : 0),
+							width: layer.width,
+							height: layer.height,
+							angle: layer.angle,
+							autoWidth: layer.autoWidth,
+							autoHeight: layer.autoHeight,
+							scaling: layer.scaling,
+							noevents: layer.noevents,
+							className: layer.className,
+							
+							url: layer.url,
+							urlNewWindow: layer.urlNewWindow,
+							urlNoFollow: layer.urlNoFollow,
+							//contentData: layer.contentData,
+							userData: layer.userData,
+							
+							tooltip: {
+								active: layer.tooltip.active,
+								//data: null, // inside markup, because we should use shortcodes
+								trigger: layer.tooltip.trigger,
+								placement: layer.tooltip.placement,
+								offset: {
+									top: layer.tooltip.offset.top,
+									left: layer.tooltip.offset.left
+								},
+								width: layer.tooltip.width,
+								widthFromCSS: layer.tooltip.widthFromCSS,
+								followCursor: layer.tooltip.followCursor,
+								scaling: layer.tooltip.scaling,
+								interactive: layer.tooltip.interactive,
+								smart: layer.tooltip.smart,
+								showOnInit: layer.tooltip.showOnInit,
+								showAnimation: layer.tooltip.showAnimation,
+								hideAnimation: layer.tooltip.hideAnimation,
+								duration: layer.tooltip.duration,
+								className: layer.tooltip.className
+							},
+							
+							popover: {
+								active: layer.popover.active,
+								//data: null, // inside markup, because we should use shortcodes
+								type: layer.popover.type,
+								mobileType: layer.popover.mobileType,
+								trigger: layer.popover.trigger,
+								placement: layer.popover.placement,
+								offset: {
+									top: layer.popover.offset.top,
+									left: layer.popover.offset.left
+								},
+								width: layer.popover.width,
+								widthFromCSS: layer.popover.widthFromCSS,
+								followCursor: layer.popover.followCursor,
+								scaling: layer.popover.scaling,
+								interactive: layer.popover.interactive,
+								smart: layer.popover.smart,
+								showOnInit: layer.popover.showOnInit,
+								className: layer.popover.className
+							}
+						});
+						
+						if(layer.type == 'text' && layer.text.font) {
+							fonts.push(layer.text.font);
+						}
+						
+						if(layer.tooltip.showAnimation || layer.tooltip.hideAnimation) {
+							cfg.flags.effects = true;
+						}
+					}
+					cfg.fonts = (fonts.length > 0 ? fonts : null);
+					cfg.layers = (layers.length > 0 ? layers : null);
+					
+					if(appData.config.customJS.active) {
+						cfg.onLoad = appData.config.customJS.data;
+						
+						try {
+							var fn = new Function(cfg.onLoad);
+						} catch(ex) {
+							appData.fn.showNotice(appData, appData.msg_custom_js_error + ': ' + ex.message, 'notice-error');
+						}
+					}
+					
+					return cfg;
+				},
+				
+				saveConfig: function(appData) {
+					appData.fn.enableLoading(appData);
+					appData.fn.saveEditorsData(appData);
+					
+					var data = $.extend(true, {}, appData.config),
+					jsonData = JSON.stringify(data),
+					config = appData.fn.getPluginConfig(appData),
+					jsonConfig = JSON.stringify(config);
+					
+					// the layer ID should be unique
+					for(var i=0;i<appData.config.layers.length;i++) {
+						var id = appData.config.layers[i].id;
+						for(var j=i+1;j<appData.config.layers.length;j++) {
+							if(appData.config.layers[j].id == id) {
+								appData.fn.showNotice(appData, appData.msg_layer_id_error, 'notice-error');
+								appData.fn.showNotice(appData, 'layer.id = ' + id, 'notice-error');
+								appData.fn.disableLoading(appData);
+								return;
+							}
+						}
+					}
+					
+					$.ajax({
+						url: appData.wp_ajax_url,
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							nonce: appData.wp_ajax_nonce,
+							action: appData.wp_ajax_action_update,
+							id: appData.wp_item_id,
+							data: jsonData,
+							config: jsonConfig
+						}
+					}).done(function(json) {
+						if(json) {
+							appData.wp_item_id = json.data.id;
+							appData.fn.showNotice(appData, json.data.msg, (json.success ? 'notice-success' : 'notice-error'));
+							appData.rootScope.scan();
+							return;
+						}
+						appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+					}).fail(function() {
+						appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+					}).always(function() {
+						appData.fn.disableLoading(appData);
+					});
+				},
+				
+				loadConfigFromJson: function(appData, json) {
+					if(json) {
+						var cfg = JSON.parse(json);
+						appData.config = $.extend(true, {}, cfg);
+						appData.rootScope.scan();
+					}
+				},
+				
+				loadConfigFromFile: function(appData) {
+					var $el = $('#vision-load-config-from-file').off('change');
+					$el.one('change', $.proxy(function(appData, e) {
+						var file = e.target.files[0];
+						e.target.value = '';
+						
+						if(file) {
+							var fileReader = new FileReader();
+							fileReader.onload = ($.proxy(function(e) {
+								var json = e.target.result;
+								appData.fn.loadConfigFromJson(appData, json);
+							}, this));
+							fileReader.readAsText(file);
+						}
+						
+					}, this, appData));
+					$el.click();
+				},
+				
+				saveConfigToFile: function(appData) {
+					var data = $.extend(true, {}, appData.config),
+					jsonData = JSON.stringify(data),
+					flieName = (appData.wp_item_id ? 'vision_config_' + appData.wp_item_id + '.json' : 'vision_config.json'),
+					file = new File([jsonData], flieName, {type: 'application/json;charset=utf-8'});
+					saveAs(file);
+				},
+				
+				showNotice: function(appData, data, type) { // type: notice-success, notice-error, notice-warning, notice-info
+					var $messages = $('#vision-messages'),
+					$msg = $('<div></div>').addClass('notice is-dismissible').addClass(type),
+					$data = $('<p></p>').html(data),
+					$close = $('<button></button>').attr('type', 'button').addClass('notice-dismiss').html('<span class="screen-reader-text">Dismiss this notice.</span>');
+					
+					function close() {
+						clearTimeout($msg.data('timer'));
+						
+						$msg.fadeTo(100, 0, function() {
+							$msg.slideUp(100, function() {
+								$msg.remove();
+							});
+						});
+					}
+					
+					$msg.data('timer', setTimeout(close, 5000));
+					
+					$close.click(function(e) {
+						e.preventDefault();
+						close();
+					});
+					
+					$msg.append($data, $close);
+					$messages.append($msg);
+				},
+				
+				createBlob: function(appData, data, contentType) {
+					return new Blob([data], {type: contentType});
+				},
+				
+				createObjectURL: function(appData, data, contentType) {
+					var blob = appData.fn.createBlob(appData, data, contentType);
+					return URL.createObjectURL(blob);
+				},
+
+				reverse: function(appData, data) {
+					const out = [];
+					for(let i=0; i<data.length; i++) {
+						out.unshift(data[i]);
+					}
+					return out;
+				},
+
+				getImageUrl: function(appData, imageObj, format) {
+					var url = '';
+					
+					if(imageObj && imageObj.url && imageObj.url.length > 0) {
+						if(imageObj.relative) {
+							url = appData.wp_upload_url + imageObj.url;
+						} else {
+							url = imageObj.url;
+						}
+						
+						if(format == 'style') {
+							url = 'url(' + url + ')';
+						}
+					}
+					
+					return url;
+				},
+				
+				selectImage: function(appData, rootScope, imageObj) {
+					if(appData.wpFileFrameImage) {
+						appData.wpFileFrameImage.detach();
+						appData.wpFileFrameImage = null;
+					}
+					
+					appData.wpFileFrameImage = wp.media.frames.file_frame = wp.media({
+						library: {
+							type:['image'] // image, audio, video, application/pdf
+						},
+						multiple: false
+					});
+					
+					appData.wpFileFrameImage.on('select', function(e) {
+						var attachment = appData.wpFileFrameImage.state().get('selection').first().toJSON(),
+						url = attachment.url;
+						
+						if(url.indexOf(appData.wp_upload_url) !== -1) {
+							url = url.replace(appData.wp_upload_url, '');
+							imageObj.relative = true;
+						} else {
+							imageObj.relative = false;
+						}
+						imageObj.url = url;
+						
+						rootScope.scan();
+					});
+					
+					appData.wpFileFrameImage.open();
+				},
+				
+				saveEditorsData: function(appData) {
+					if(appData.ui.activeLayer) {
+						if($('#wp-vision-tooltip-editor-wrap').hasClass('html-active')){ // We are in text mode
+							appData.ui.activeLayer.tooltip.data = $('#vision-tooltip-editor').val();
+						} else { // We are in tinyMCE mode
+							var activeEditor = tinyMCE.get('vision-tooltip-editor');
+							if(activeEditor !== null) { // Make sure we're not calling setContent on null
+								appData.ui.activeLayer.tooltip.data = activeEditor.getContent();
+							}
+						}
+						
+						if($('#wp-vision-popover-editor-wrap').hasClass('html-active')){ // We are in text mode
+							appData.ui.activeLayer.popover.data = $('#vision-popover-editor').val();
+						} else { // We are in tinyMCE mode
+							var activeEditor = tinyMCE.get('vision-popover-editor');
+							if(activeEditor !== null) { // Make sure we're not calling setContent on null
+								appData.ui.activeLayer.popover.data = activeEditor.getContent();
+							}
+						}
+					}
+					
+					var $editorCSS = $('#vision-notepad-css');
+					if($editorCSS.length) {
+						var editorCSS = ace.edit($editorCSS.get(0));
+						appData.config.customCSS.data = editorCSS.getSession().getValue();
+					}
+					
+					var $editorJS = $('#vision-notepad-js');
+					if($editorJS.length) {
+						var editorJS = ace.edit($editorJS.get(0));
+						appData.config.customJS.data = editorJS.getSession().getValue();
+					}
+				},
+				
+				onTab: function(appData, tab) {
+					if(appData.ui.tabs[tab]) {
+						return;
+					}
+					
+					var obj = appData.ui.tabs;
+					for (var property in obj) {
+						if (obj.hasOwnProperty(property)) {
+							obj[property] = false;
+						}
+					}
+					appData.ui.tabs[tab] = true;
+					
+					//---------------------------------
+					// reinit ace editors
+					appData.fn.saveEditorsData(appData);
+					appData.rootScope.scan();
+					
+					switch(tab) {
+						case 'builder': {
+						}
+						break;
+						case 'customCSS': {
+							var $editorCSS = $('#vision-notepad-css'),
+							editorCSS = ace.edit($editorCSS.get(0));
+							editorCSS.$blockScrolling = Infinity;
+							editorCSS.setTheme('ace/theme/monokai'); // default theme
+							editorCSS.session.setMode('ace/mode/css');
+							
+							if(appData.settings.themeCSS) {
+								editorCSS.setTheme('ace/theme/' + appData.settings.themeCSS);
+							}
+							
+							if(appData.config.customCSS.data) {
+								editorCSS.getSession().setValue(appData.config.customCSS.data);
+							}
+						}
+						break;
+						case 'customJS': {
+							var $editorJS = $('#vision-notepad-js'),
+							editorJS = ace.edit($editorJS.get(0));
+							editorJS.$blockScrolling = Infinity;
+							editorJS.setTheme('ace/theme/monokai'); // default theme
+							editorJS.session.setMode('ace/mode/javascript');
+							
+							if(appData.settings.themeJavaScript) {
+								editorJS.setTheme('ace/theme/' + appData.settings.themeJavaScript);
+							}
+							
+							if(appData.config.customJS.data) {
+								editorJS.getSession().setValue(appData.config.customJS.data);
+							}
+						}
+						break;
+					}
+					//---------------------------------
+				},
+
+				onLeftSidebarTab: function(appData, tab) {
+					if(appData.ui.leftSidebarTabs[tab]) {
+						return;
+					}
+
+					var obj = appData.ui.leftSidebarTabs;
+					for (var property in obj) {
+						if (obj.hasOwnProperty(property)) {
+							obj[property] = false;
+						}
+					}
+					appData.ui.leftSidebarTabs[tab] = true;
+				},
+
+				onRightSidebarTab: function(appData, tab) {
+					if(appData.ui.rightSidebarTabs[tab]) {
+						return;
+					}
+					
+					var obj = appData.ui.rightSidebarTabs;
+					for (var property in obj) {
+						if (obj.hasOwnProperty(property)) {
+							obj[property] = false;
+						}
+					}
+					appData.ui.rightSidebarTabs[tab] = true;
+				},
+				
+				onGeneralTab: function(appData, tab) {
+					appData.ui.generalTab[tab] = !appData.ui.generalTab[tab];
+				},
+				
+				onLayerTab: function(appData, tab) {
+					appData.ui.layerTab[tab] = !appData.ui.layerTab[tab];
+				},
+				
+				onTooltipTab: function(appData, tab) {
+					appData.ui.tooltipTab[tab] = !appData.ui.tooltipTab[tab];
+				},
+				
+				onPopoverTab: function(appData, tab) {
+					appData.ui.popoverTab[tab] = !appData.ui.popoverTab[tab];
+				},
+				
+				onResize: function(appData, e) {
+				},
+				
+				toggleSidebarPanel: function(appData, type) {
+					if( type === 'left' ) {
+						appData.ui.builder.leftSidebar = !appData.ui.builder.leftSidebar;
+					} else {
+						appData.ui.builder.rightSidebar = !appData.ui.builder.rightSidebar;
+					}
+					appData.rootScope.scan();
+				},
+				
+				canvasZoomIn: function(appData) {
+					var zoom = (appData.ui.canvas.zoom === 0.01 ? 0 : appData.ui.canvas.zoom) + appData.ui.canvas.zoomStep;
+					zoom = parseFloat(parseFloat(zoom).toFixed(2));
+
+					appData.ui.prevCanvas.zoom = appData.ui.canvas.zoom;
+					appData.ui.canvas.zoom = zoom;
+				},
+				
+				canvasZoomOut: function(appData) {
+					var zoom = appData.ui.canvas.zoom - appData.ui.canvas.zoomStep;
+					zoom = parseFloat(parseFloat(zoom).toFixed(2));
+
+					appData.ui.prevCanvas.zoom = appData.ui.canvas.zoom;
+					appData.ui.canvas.zoom = (zoom <= 0 ? 0.01 : zoom);
+				},
+				
+				canvasZoomDefault: function(appData) {
+					appData.ui.prevCanvas.zoom = appData.ui.canvas.zoom;
+					appData.ui.canvas.zoom = 1;
+				},
+				
+				canvasZoomFit: function(appData) {
+					var $img = $('#vision-layers-image'),
+					$parent = $('#vision-layers-canvas-wrap');
+					
+					var widthRatio = ($img.width() ? $parent.width() / $img.width() : 0),
+					heightRatio = ($img.height() ? $parent.height() / $img.height() : 0),
+					ratio = 1;
+					
+					if(widthRatio > heightRatio) {
+						ratio = heightRatio;
+					} else {
+						ratio = widthRatio;
+					}
+
+					appData.ui.prevCanvas.zoom = appData.ui.canvas.zoom;
+					appData.ui.canvas.zoom = ratio;
+
+					appData.ui.prevCanvas.x = appData.ui.canvas.x;
+					appData.ui.prevCanvas.y = appData.ui.canvas.y;
+					appData.ui.canvas.x = appData.ui.canvas.y = 0;
+				},
+				
+				canvasMoveDefault: function(appData) {
+					appData.ui.prevCanvas.x = appData.ui.canvas.x;
+					appData.ui.prevCanvas.y = appData.ui.canvas.y;
+
+					appData.ui.canvas.x = 0;
+					appData.ui.canvas.y = 0;
+				},
+
+				getCanvasZoomForLabel: function(appData) {
+					var zoom = parseFloat(parseFloat(appData.ui.canvas.zoom*100).toFixed(2));
+					return parseInt(zoom,10);
+				},
+
+				getCanvasZoom: function(appData) {
+					return appData.ui.canvas.zoom;
+				},
+
+				getCanvasPosition: function(appData) {
+					return {x: appData.ui.canvas.x, y: appData.ui.canvas.y};
+				},
+				
+				initLayer: function(appData, layer, el) {
+					appData.ui.mapLayers.set(layer, $(el));
+				},
+				
+				initLayerInner: function(appData, layer, el) {
+					if(layer.type != 'text' || !layer.text.data) {
+						return;
+					}
+					
+					$(el).html(layer.text.data);
+				},
+				
+				selectLayer: function(appData, layer) {
+					appData.ui.activeLayer = layer;
+					appData.rootScope.scan();
+					
+					var $layer = appData.ui.mapLayers.get(layer);
+					if($layer) {
+						$layer.trigger('focus');
+					}
+
+					appData.fn.hideTransformTool();
+
+					if(layer.lock || !layer.visible || $layer.hasClass('vision-editing')) {
+						return;
+					}
+
+					appData.fn.showTransformTool(layer);
+				},
+				
+				isLayerActive: function(appData, layer) {
+					return Object.is(appData.ui.activeLayer, layer);
+				},
+				
+				onLayerItemClick: function(appData, layer) {
+					console.log(layer);
+					if(appData.fn.isLayerActive(appData, layer)) {
+						appData.ui.activeLayer = null;
+					} else {
+						appData.fn.selectLayer(appData, layer);
+					}
+				},
+				
+				onLayerClick: function(appData, layer) {
+					if(!appData.fn.isLayerActive(appData, layer)) {
+						appData.fn.selectLayer(appData, layer);
+					} else {
+						var $layer = appData.ui.mapLayers.get(layer);
+						if($layer) {
+							$layer.trigger('focus');
+						}
+					}
+				},
+
+				editLayerText: function(appData, layer) {
+					if(layer.lock || layer.type != 'text') {
+						return;
+					}
+
+					const $layer = appData.ui.mapLayers.get(layer);
+					const $el = $layer.find('.vision-layer-inner');
+
+					let flag = false;
+					if($el.text() == appData.msg_edit_text) {
+						flag = true;
+						$el.text('');
+					}
+
+					function onInput(e) {
+						flag = false;
+						layer.text.data = $el.html();
+					}
+
+					$layer.addClass('vision-editing');
+					$el.attr('contenteditable', true).trigger('focus');
+					let sel = window.getSelection();
+					sel.selectAllChildren($el.get(0));
+					sel.collapseToEnd();
+
+					$el.on('input', onInput);
+
+					$el.one('blur', function(e) {
+						$layer.removeClass('vision-editing');
+						$el.attr('contenteditable', false);
+						$el.off('input', onInput);
+
+						if(flag) {
+							$el.text(appData.msg_edit_text);
+						}
+					});
+				},
+
+				onLayerKeyDown: function(appData, layer, e) {
+					var $layer = appData.ui.mapLayers.get(layer);
+
+					if(layer.lock || $layer.hasClass('vision-editing')) {
+						return;
+					}
+
+					var flag = false;
+
+					switch (e.which){
+						case 37: { layer.x -= 1; flag=true; } break; //left arrow key
+						case 38: { layer.y -= 1; flag=true; } break; //up arrow key
+						case 39: { layer.x += 1; flag=true; } break; //right arrow key
+						case 40: { layer.y += 1; flag=true; } break; //bottom arrow key
+						case 13: {
+							e.preventDefault();
+							e.stopPropagation();
+
+							appData.fn.editLayerText(appData, layer);
+						} break;
+					}
+
+					if(flag) {
+						e.preventDefault();
+						e.stopPropagation();
+
+						appData.rootScope.scan();
+					}
+				},
+
+				prevLayer: function(appData) {
+					if(appData.config.layers.length == 0) {
+						return;
+					}
+					
+					if(appData.ui.activeLayer) {
+						for(var i=appData.config.layers.length-1;i>0;i--) {
+							if(Object.is(appData.config.layers[i], appData.ui.activeLayer)) {
+								break;
+							}
+						}
+						i = (i - 1 < 0 ? appData.config.layers.length-1 : i - 1);
+						appData.fn.selectLayer(appData, appData.config.layers[i]);
+					} else if(appData.config.layers.length > 0) {
+						appData.fn.selectLayer(appData, appData.config.layers[appData.config.layers.length-1]);
+					}
+				},
+				
+				nextLayer: function(appData) {
+					if(appData.config.layers.length == 0) {
+						return;
+					}
+					
+					if(appData.ui.activeLayer) {
+						for(var i=0;i<appData.config.layers.length;i++) {
+							if(Object.is(appData.config.layers[i], appData.ui.activeLayer)) {
+								break;
+							}
+						}
+						i = (i + 1 >= appData.config.layers.length ? 0 : i + 1);
+						appData.fn.selectLayer(appData, appData.config.layers[i]);
+					} else if(appData.config.layers.length > 0) {
+						appData.fn.selectLayer(appData, appData.config.layers[0]);
+					}
+				},
+				
+				addLayerLink: function(appData) {
+					var layer = $.extend(true, {}, appData.defaultLayer);
+					layer.guid = appData.fn.uuid();
+					layer.id = appData.fn.uuid(8);
+					layer.type = 'link';
+					appData.config.layers.push(layer);
+					appData.fn.selectLayer(appData, layer);
+				},
+				
+				addLayerText: function(appData) {
+					var layer = $.extend(true, {}, appData.defaultLayer);
+					layer.guid = appData.fn.uuid();
+					layer.id = appData.fn.uuid(8);
+					layer.type = 'text';
+					layer.text.data = appData.msg_edit_text;
+					appData.config.layers.push(layer);
+					appData.fn.selectLayer(appData, layer);
+				},
+				
+				addLayerImage: function(appData) {
+					var layer = $.extend(true, {}, appData.defaultLayer);
+					layer.guid = appData.fn.uuid();
+					layer.id = appData.fn.uuid(8);
+					layer.type = 'image';
+					appData.config.layers.push(layer);
+					appData.fn.selectLayer(appData, layer);
+				},
+				
+				addLayerSVG: function(appData) {
+					var layer = $.extend(true, {}, appData.defaultLayer);
+					layer.guid = appData.fn.uuid();
+					layer.id = appData.fn.uuid(8);
+					layer.type = 'svg';
+					appData.config.layers.push(layer);
+					appData.fn.selectLayer(appData, layer);
+				},
+				
+				copyLayer: function(appData) {
+					if(appData.ui.activeLayer == null) {
+						return;
+					}
+					
+					var index = null,
+					len = appData.config.layers.length,
+					layer = null;
+					
+					for(var i=0; i<len; i++) {
+						layer = appData.config.layers[i];
+						if(Object.is(appData.ui.activeLayer, layer)) {
+							index = i;
+							break;
+						}
+					}
+					
+					if(index == null) {
+						return;
+					}
+					
+					layer = $.extend(true, {}, layer);
+					layer.guid = appData.fn.uuid();
+					layer.id = appData.fn.uuid(8);
+					layer.title = (layer.title ? layer.title : layer.type);
+					layer.title = layer.title + (layer.title.includes('[copy]') ? '' : ' [copy]');
+					
+					appData.config.layers.splice(index+1, 0, layer);
+					appData.fn.selectLayer(appData, layer);
+				},
+				
+				updownLayer: function(appData, direction) {
+					if(appData.ui.activeLayer == null) {
+						return;
+					}
+					
+					var index = null,
+					len = appData.config.layers.length,
+					layer = null;
+					
+					for(var i=0; i<len; i++) {
+						layer = appData.config.layers[i];
+						if(Object.is(appData.ui.activeLayer, layer)) {
+							index = i;
+							break;
+						}
+					}
+					
+					if(index == null) {
+						return;
+					}
+					
+					if(direction == 'up' && index > 0) {
+						appData.config.layers[index] = appData.config.layers[index-1];
+						appData.config.layers[index-1] = layer;
+						
+						index = index-1;
+					} else if(direction == 'down' && index < (len-1)) {
+						appData.config.layers[index] = appData.config.layers[index+1];
+						appData.config.layers[index+1] = layer;
+						
+						index = index+1;
+					} else {
+						return;
+					}
+				},
+				
+				deleteLayer: function(appData) {
+					if(appData.ui.activeLayer == null) {
+						return;
+					}
+					
+					var index = null,
+					len = appData.config.layers.length;
+					
+					for(var i=0; i<len; i++) {
+						var layer = appData.config.layers[i];
+						if(Object.is(appData.ui.activeLayer, layer)) {
+							index = i;
+							break;
+						}
+					}
+					
+					if(index == null) {
+						return;
+					}
+					
+					var newIndex = index;
+					if(index >= 0 && index < len) {
+						appData.config.layers.splice(index,1);
+						
+						if(index == (len-1) && len > 1) {
+							newIndex = (len-2);
+						} else if(len == 1) {
+							newIndex = null;
+						}
+					}
+					
+					appData.fn.selectLayer(appData, appData.config.layers[newIndex]);
+				},
+				
+				editLayerAlign: function(appData, align) {
+					if(appData.ui.activeLayer == null) {
+						return;
+					}
+					
+					var layer = appData.ui.activeLayer;
+					
+					switch(align) {
+						case 'top':    { layer.y = -appData.config.imageHeight/2 + layer.height/2; } break;
+						case 'middle': { layer.y = 0; } break;
+						case 'bottom': { layer.y =  appData.config.imageHeight/2 - layer.height/2; } break;
+						case 'left':   { layer.x = -appData.config.imageWidth/2 + layer.width/2; } break;
+						case 'center': { layer.x = 0; } break;
+						case 'right':  { layer.x =  appData.config.imageWidth/2 - layer.width/2; } break;
+					}
+				},
+				
+				toggleLayerPopover: function(appData, layer) {
+					layer.popover.active = !layer.popover.active;
+				},
+				
+				toggleLayerTooltip: function(appData, layer) {
+					layer.tooltip.active = !layer.tooltip.active;
+				},
+				
+				toggleLayerVisible: function(appData, layer) {
+					layer.visible = !layer.visible;
+
+					if(appData.ui.activeLayer && appData.ui.activeLayer.guid == layer.guid ) {
+						if(!layer.visible) {
+							appData.fn.hideTransformTool();
+						} else {
+							appData.fn.showTransformTool(layer);
+						}
+					}
+				},
+				
+				toggleLayerLock: function(appData, layer) {
+					layer.lock = !layer.lock;
+					if(appData.ui.activeLayer && appData.ui.activeLayer.guid == layer.guid ) {
+						if(layer.lock) {
+							appData.fn.hideTransformTool();
+						} else {
+							appData.fn.showTransformTool(layer);
+						}
+					}
+				},
+				
+				getLayerStyle: function(appData, layer, field) {
+					switch(field) {
+						case 'x': {
+							return (layer.x - layer.width/2) + 'px';
+						} break;
+						case 'y': {
+							return (layer.y - layer.height/2) + 'px';
+						} break;
+						case 'width': {
+							return layer.width + 'px';
+						} break;
+						case 'height': { 
+							return layer.height + 'px'; 
+						} break;
+						case 'angle': {
+							return (layer.angle ? 'rotate(' + layer.angle + 'deg)' : 'rotate(0deg)');
+						} break;
+						case 'border-radius': {
+							switch(layer.type) {
+								case 'link': return (layer.link.radius ? layer.link.radius : '');
+							}
+							return null;
+						} break;
+						case 'background-color': {
+							switch(layer.type) {
+								case 'link' : return (layer.link.normalColor ? layer.link.normalColor : ''); break;
+								case 'image': return (layer.image.background.color ? layer.image.background.color : ''); break;
+								case 'text' : return (layer.text.background.color ? layer.text.background.color : ''); break;
+							}
+							return null;
+						} break;
+						case 'background-image': {
+							switch(layer.type) {
+								case 'image': return appData.fn.getImageUrl(appData, layer.image.background.file, 'style'); break;
+								case 'text' : return appData.fn.getImageUrl(appData, layer.text.background.file, 'style'); break;
+								case 'svg'  : return appData.fn.getImageUrl(appData, layer.svg.file, 'style'); break;
+							}
+							return null;
+						} break;
+						case 'background-size': {
+							switch(layer.type) {
+								case 'image': return (layer.image.background.size ? layer.image.background.size : '');
+								case 'text' : return (layer.text.background.size ? layer.text.background.size : '');
+								case 'svg'  : return '100% 100%';
+							}
+							return null;
+						} break;
+						case 'background-repeat': {
+							switch(layer.type) {
+								case 'image': return (layer.image.background.repeat ? layer.image.background.repeat : '');
+								case 'text' : return (layer.text.background.repeat ? layer.text.background.repeat : '');
+							}
+							return null;
+						} break;
+						case 'background-position': {
+							switch(layer.type) {
+								case 'image': return (layer.image.background.position ? layer.image.background.position : '');
+								case 'text' : return (layer.text.background.position ? layer.text.background.position : '');
+							}
+							return null;
+						} break;
+						case 'color': {
+							switch(layer.type) {
+								case 'text': return layer.text.color; break;
+							}
+							return null;
+						} break;
+						case 'font-family': {
+							if(layer.type == 'text') {
+								if(layer.text.font) {
+									var selector = layer.text.font.replace(new RegExp('[+]|[:]', 'g'),'');
+									
+									if($('#' + selector).length == 0) {
+										var head = document.getElementsByTagName('head')[0],
+										linkFont = document.createElement('link');
+										
+										linkFont.setAttribute('id', selector);
+										linkFont.setAttribute('rel', 'stylesheet');
+										linkFont.setAttribute('href', 'https://fonts.googleapis.com/css?family=' + layer.text.font);
+										head.appendChild(linkFont);
+									}
+									
+									var fontName = layer.text.font.replace(new RegExp('[+]', 'g'),' ');
+									
+									return '"' + fontName + '", sans-serif';
+								}
+								return 'sans-serif';
+							}
+							return null;
+						} break;
+						case 'font-size': {
+							if(layer.type == 'text') {
+								return (layer.text.size > 0 ? layer.text.size : 0) + 'px';
+							}
+							return null;
+						} break;
+						case 'line-height': {
+							if(layer.type == 'text') {
+								return (layer.text.lineHeight > 0 ? layer.text.lineHeight : 0) + 'px';
+							}
+							return null;
+						} break;
+						case 'letter-spacing': {
+							if(layer.type == 'text') {
+								return (layer.text.letterSpacing > 0 ? layer.text.letterSpacing : 0) + 'px';
+							}
+							return null;
+						} break;
+						case 'text-align': {
+							if(layer.type == 'text') {
+								return (layer.text.align ? layer.text.align : '');
+							}
+						} break;
+					}
+					return null;
+				},
+				
+				getLayerCoord: function(appData, layer, type) {
+					switch(type) {
+						case 'x': {
+							return parseFloat(parseFloat(layer.x).toFixed(2));
+						} break;
+						case 'y': {
+							return parseFloat(parseFloat(layer.y).toFixed(2));
+						} break;
+						case 'w': {
+							return parseFloat(parseFloat(layer.width).toFixed(2));
+						} break;
+						case 'h': {
+							return parseFloat(parseFloat(layer.height).toFixed(2));
+						} break;
+						case 'angle': {
+							return Math.floor(layer.angle);
+						} break;
+					};
+					return '';
+				},
+
+				showTransformTool: function(layer) {
+					appData.transformTool.init(layer);
+					appData.transformTool.start();
+				},
+
+				hideTransformTool: function() {
+					appData.transformTool.end();
+				},
+
+				updateTransformTool: function() {
+					if(appData.transformTool.isVisible()) {
+						appData.transformTool.update();
+					}
+				},
+
+				onMoveCanvasStart: function(appData, e) {
+					e.preventDefault();
+					e.stopPropagation();
+					
+					appData.ui.moveCanvas.initX = e.pageX;
+					appData.ui.moveCanvas.initY = e.pageY;
+					appData.ui.moveCanvas.lastX = e.pageX;
+					appData.ui.moveCanvas.lastY = e.pageY;
+					
+					$('body').on('mousemove', $.proxy(appData.fn.onMoveCanvas, this, appData));
+					$('body').on('mouseup', $.proxy(appData.fn.onMoveCanvasEnd, this, appData));
+					$('body').on('mouseleave', $.proxy(appData.fn.onMoveCanvasEnd, this, appData));
+				},
+				
+				onMoveCanvas: function(appData, e) {
+					e.preventDefault();
+					e.stopPropagation();
+					
+					var deltaX = e.pageX - appData.ui.moveCanvas.lastX,
+					deltaY = e.pageY - appData.ui.moveCanvas.lastY;
+					
+					appData.ui.moveCanvas.lastX = e.pageX;
+					appData.ui.moveCanvas.lastY = e.pageY;
+
+					appData.ui.prevCanvas.x = appData.ui.canvas.x;
+					appData.ui.prevCanvas.y = appData.ui.canvas.y;
+
+					appData.ui.canvas.x += deltaX;
+					appData.ui.canvas.y += deltaY;
+					
+					appData.rootScope.scan();
+				},
+				
+				onMoveCanvasEnd: function(appData, e) {
+					e.preventDefault();
+					e.stopPropagation();
+					
+					$('body').off('mousemove', $.proxy(appData.fn.onMoveCanvas, this, appData));
+					$('body').off('mouseup', $.proxy(appData.fn.onMoveCanvasEnd, this, appData));
+					$('body').off('mouseleave', $.proxy(appData.fn.onMoveCanvasEnd, this, appData));
+					
+					appData.ui.moveCanvas.initX = null;
+					appData.ui.moveCanvas.initY = null;
+					appData.ui.moveCanvas.lastX = null;
+					appData.ui.moveCanvas.lastY = null;
+				},
+				
+				onSidebarResizeStart: function(appData, e, type) {
+					e.preventDefault();
+					e.stopPropagation();
+					
+					appData.ui.sidebarResize.initX = e.pageX;
+					appData.ui.sidebarResize.lastX = e.pageX;
+					appData.ui.sidebarResize.width = type === 'left' ? appData.ui.builder.leftSidebarWidth : appData.ui.builder.rightSidebarWidth;
+					
+					$('body').on('mousemove', $.proxy(appData.fn.onSidebarResize, this, appData, type));
+					$('body').on('mouseup', $.proxy(appData.fn.onSidebarResizeEnd, this, appData));
+					$('body').on('mouseleave', $.proxy(appData.fn.onSidebarResizeEnd, this, appData));
+				},
+				
+				onSidebarResize: function(appData, type, e) {
+					e.preventDefault();
+					e.stopPropagation();
+
+					var deltaX = e.pageX - appData.ui.sidebarResize.lastX;
+					appData.ui.sidebarResize.lastX = e.pageX;
+
+					if ( type === 'left' ) {
+						appData.ui.sidebarResize.width += deltaX;
+					} else {
+						appData.ui.sidebarResize.width -= deltaX;
+					}
+					
+					if(appData.ui.sidebarResize.width >= 350 && appData.ui.sidebarResize.width <= 800) {
+						if ( type === 'left' ) {
+							appData.ui.builder.leftSidebarWidth = appData.ui.sidebarResize.width;
+						} else {
+							appData.ui.builder.rightSidebarWidth = appData.ui.sidebarResize.width;
+						}
+						appData.rootScope.scan();
+					}
+
+					appData.fn.updateTransformTool();
+				},
+				
+				onSidebarResizeEnd: function(appData, e) {
+					e.preventDefault();
+					e.stopPropagation();
+					
+					$('body').off('mousemove', $.proxy(appData.fn.onSidebarResize, this, appData));
+					$('body').off('mouseup', $.proxy(appData.fn.onSidebarResizeEnd, this, appData));
+					$('body').off('mouseleave', $.proxy(appData.fn.onSidebarResizeEnd, this, appData));
+					
+					appData.ui.sidebarResize.initX = null;
+					appData.ui.sidebarResize.lastX = null;
+					appData.ui.sidebarResize.width = null;
+				},
+				
+				selectShowAnimation: function(appData, tooltip) {
+					var modalData = {
+						selectedClass: null,
+					};
+					
+					appData.modal.fn.show(appData, 'show-effects', modalData, appData.fn.selectAnimationCallback).then(function(result) {
+						appData.modal.fn.close(appData, modalData.id);
+						
+						if(result == 'close') {
+							return;
+						}
+						
+						if(result) {
+							tooltip.showAnimation = modalData.selectedClass;
+							appData.rootScope.scan();
+						}
+					});
+				},
+				
+				selectHideAnimation: function(appData, tooltip) {
+					var modalData = {
+						selectedClass: null,
+					};
+					
+					appData.modal.fn.show(appData, 'hide-effects', modalData, appData.fn.selectAnimationCallback).then(function(result) {
+						appData.modal.fn.close(appData, modalData.id);
+						
+						if(result == 'close') {
+							return;
+						}
+						
+						if(result) {
+							tooltip.hideAnimation = modalData.selectedClass;
+							appData.rootScope.scan();
+						}
+					});
+				},
+				
+				selectAnimationCallback: function(modalData) {
+					var animationEvent = function() {
+						var el = document.createElement('fakeelement');
+						
+						var animations = {
+							'animation'      : 'animationend',
+							'MSAnimationEnd' : 'msAnimationEnd',
+							'OAnimation'     : 'oAnimationEnd',
+							'MozAnimation'   : 'mozAnimationEnd',
+							'WebkitAnimation': 'webkitAnimationEnd'
+						}
+						
+						for (var i in animations){
+							if (el.style[i] !== undefined){
+								return animations[i];
+							}
+						}
+					};
+					
+					$('#vision-modal-' + modalData.id).find('.vision-modal-effect[data-fx-name]').on('click', function(e) {
+						var $btn = $(this),
+						fx = $btn.data('fx-name');
+						$btn.removeClass(fx).addClass(fx);
+						
+						modalData.selectedClass = fx;
+						modalData.rootScope.scan();
+					});
+					
+					$('#vision-modal-' + modalData.id).find('.vision-modal-effect[data-fx-name]').on('dblclick', function(e) {
+						var $btn = $(this),
+						fx = $btn.data('fx-name');
+						
+						modalData.selectedClass = fx;
+						modalData.deferred.resolve(true);
+					});
+					
+					$('#vision-modal-' + modalData.id).find('.vision-modal-effect[data-fx-name]').on(animationEvent(), function(e) {
+						var $btn = $(this),
+						fx = $btn.data('fx-name');
+						
+						if($btn.hasClass(fx)) {
+							$btn.removeClass(fx);
+						}
+					});
+				},
+				
+				floor: function(appData, value) {
+					return Math.floor(value);
+				},
+				
+				assignObject: function(appData, srcObj, dstObj) {
+					for(var prop in srcObj) {
+						if(dstObj.hasOwnProperty(prop)) {
+							dstObj[prop] = srcObj[prop];
+						}
+					}
+				},
+				
+				copyToClipboard: function(appData, selector) {
+					var $el = $(selector);
+					if($el.length == 0) {
+						return;
+					}
+					
+					var text = $el.val();
+					
+					if(window.clipboardData && window.clipboardData.setData) {
+						// IE specific code path to prevent textarea being shown while dialog is visible.
+						return clipboardData.setData('Text', text); 
+					} else if(document.queryCommandSupported && document.queryCommandSupported('copy')) {
+						var textarea = document.createElement('textarea');
+						textarea.textContent = text;
+						textarea.style.position = 'fixed';  // prevent scrolling to bottom of page in MS Edge.
+						document.body.appendChild(textarea);
+						textarea.select();
+						try {
+							document.execCommand('copy');  // Security exception may be thrown by some browsers.
+						} catch (ex) {
+							console.warn('Copy to clipboard failed.', ex);
+						} finally {
+							document.body.removeChild(textarea);
+						}
+					}
+					
+					$el.select();
+				},
+				
+				generateLayerId: function(appData, rootScope, layer) {
+					function isUnique(id) {
+						for(var i=0;i<appData.config.layers.length;i++) {
+							if(appData.config.layers[i].id == id)
+								return false;
+						}
+						return true;
+					}
+					var id = appData.fn.uuid(8);
+					while(!isUnique(id)) {
+						id = appData.fn.uuid();
+					}
+					layer.id = id;
+					rootScope.scan();
+				},
+				
+				uuid: function(limit) {
+					var result = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+						var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+						return v.toString(16);
+					});
+					
+					return (limit > 0 ? result.substring(0,limit) : result);
+				},
+			},
+			
+			modal: {
+				count: 0,
+				items: [],
+				
+				fn: {
+					resize: function(modalData) {
+						var $modal = $('#vision-modal-' + modalData.id),
+						$dialog = $modal.find('.vision-modal-dialog'),
+						$header = $modal.find('.vision-modal-header'),
+						$data = $modal.find('.vision-modal-data'),
+						$footer = $modal.find('.vision-modal-footer');
+						
+						var h = $header.outerHeight() + $footer.outerHeight() + 50,
+						wh = $(window).height(),
+						dh = $data.height();
+						
+						if(dh > wh - h) {
+							$data.outerHeight(wh - h);
+						}
+					},
+					show: function(appData, modalName, modalData, callback) {
+						var id = ++appData.modal.count,
+						deferred = $.Deferred();
+						
+						appData.modal.items.push(id);
+						appData.inprocess++;
+						
+						$.ajax({
+							url: appData.wp_ajax_url,
+							type: 'GET',
+							dataType: 'html',
+							data: {
+								nonce: appData.wp_ajax_nonce,
+								action: appData.wp_ajax_action_modal,
+								name: modalName
+							}
+						}).done(function(html) {
+							$('body').addClass('vision-modal-open');
+							
+							var $modal = $(html),
+							scope = {};
+							scope.modalData = modalData;
+							scope.modalData.id = id;
+							scope.modalData.deferred = deferred;
+							scope.modalData.appData = appData;
+							
+							if(modalData.easyClose == undefined || modalData.easyClose) {
+								$modal.on('click', function(e) {
+									scope.modalData.deferred.resolve('close');
+								});
+							}
+							
+							$('#vision-modals').append($modal);
+							
+							var $dialog = $modal.find('.vision-modal-dialog');
+							$dialog.on('click', function(e) {
+								return false;
+							});
+							
+							modalData.rootScope = appData.alight($modal.get(0), scope);
+							
+							appData.modal.fn.resize(modalData);
+						}).fail(function(xhr, textStatus, thrownError) {
+							appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+						}).always(function() {
+							if (callback && typeof callback == 'function') { // make sure the callback is a function
+								callback.call(this, modalData); // brings the scope to the callback
+							}
+							appData.inprocess--;
+						});
+						
+						return deferred.promise();
+					},
+					close: function(appData, id) {
+						$('#vision-modal-' + id).remove();
+						
+						var index = appData.modal.items.indexOf(id);
+						appData.modal.items.splice(index, 1);
+						if(appData.modal.items.length == 0) {
+							jQuery('body').removeClass('vision-modal-open');
+						}
+					}
+				}
+			}
+		};
+		
+		//=========================================================
+		// Angular Light Isolate Initialization
+		//=========================================================
+		var alightInitCallback = function(alight) {
+			delete window.alightInitCallback;
+			
+			//=========================================================
+			// Directives
+			//=========================================================
+			alight.directives.al.uuid = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $(element);
+					
+					$value.on('input change', onValueInput);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function isBlank(str) {
+						return (!str || /^\s*$/.test(str));
+					}
+					
+					function onValueInput(e) {
+						var value = $value.val(),
+						isValid = true;
+						
+						if(isBlank(value)) {
+							//value = null;
+							isValid = false;
+						} else {
+							if(value.match('^[a-zA-Z0-9_-]+$')) { // check integer (allow the number 0 to be valid by itself but still invalid when in front of other numbers)
+								value = value;
+							} else {
+								isValid = false;
+							}
+						}
+						
+						if(isValid) {
+							env.setValue(expression, value);
+							env.scan();
+							callback();
+							
+							$el.removeClass('vision-invalid');
+						} else {
+							$el.addClass('vision-invalid');
+						}
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val(null);
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.text = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $(element);
+					
+					$value.on('input change', onValueInput);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function isBlank(str) {
+						return (!str || /^\s*$/.test(str));
+					}
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(isBlank(value)) {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+						callback();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val(null);
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.textarea = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $(element);
+					
+					$el.addClass('vision-textarea');
+					$value.on('input change', onValueInput);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function isBlank(str) {
+						return (!str || /^\s*$/.test(str));
+					}
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(isBlank(value)) {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+						callback();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val(null);
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.integer = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $(element);
+					
+					$value.on('input change', onValueInput);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function isBlank(str) {
+						return (!str || /^\s*$/.test(str));
+					}
+					
+					function onValueInput(e) {
+						var value = $value.val(),
+						isValid = true;
+						
+						if(isBlank(value)) {
+							value = null;
+						} else {
+							if(value.match('^([+-]?[1-9]+[0-9]*|0)$')) { // check integer (allow the number 0 to be valid by itself but still invalid when in front of other numbers)
+								value = parseInt(value, 10);
+							} else {
+								isValid = false;
+							}
+						}
+						
+						if(isValid) {
+							env.setValue(expression, value);
+							env.scan();
+							callback();
+							
+							$el.removeClass('vision-invalid');
+						} else {
+							$el.addClass('vision-invalid');
+						}
+					}
+					
+					env.watch(expression, function(value) {
+						$el.removeClass('vision-invalid');
+						
+						if(value == null) {
+							$value.val(null);
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.float = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $(element);
+					
+					$value.on('input change', onValueInput);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function isBlank(str) {
+						return (!str || /^\s*$/.test(str));
+					}
+					
+					function onValueInput(e) {
+						var value = $value.val(),
+						isValid = true;
+						
+						if(isBlank(value)) {
+							value = null;
+						} else {
+							if(value.match('^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$')) { // check float
+								value = parseFloat(value);
+							} else {
+								isValid = false;
+							}
+						}
+						
+						if(isValid) {
+							env.setValue(expression, value);
+							env.scan();
+							callback();
+							
+							$el.removeClass('vision-invalid');
+						} else {
+							$el.addClass('vision-invalid');
+						}
+					}
+					
+					env.watch(expression, function(value) {
+						$el.removeClass('vision-invalid');
+						
+						if(value == null) {
+							$value.val(null);
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.toggle = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element);
+					$el.addClass('vision-toggle').html('&nbsp;');
+					$el.on('mousedown touchstart', onItemClick);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function onItemClick(e) {
+						env.setValue(expression, !env.getValue(expression));
+						env.scan();
+						callback();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value) {
+							$el.addClass('vision-checked').removeClass('vision-unchecked');
+						} else {
+							$el.removeClass('vision-checked').addClass('vision-unchecked');
+						}
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.checkbox = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element);
+					
+					$el.addClass('vision-checkbox').html('<i class="vision-icon vision-icon-check"></i>');
+					$el.on('mousedown touchstart', onItemClick);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function onItemClick(e) {
+						env.setValue(expression, !env.getValue(expression));
+						env.scan();
+						callback();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value) {
+							$el.addClass('vision-checked').removeClass('vision-unchecked');
+						} else {
+							$el.removeClass('vision-checked').addClass('vision-unchecked');
+						}
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.unit = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					// template
+					//.vision-unit
+					//   .vision-unit-value
+					//   .vision-unit-type
+					var $el = $(element),
+					$value = $('<input/>').addClass('vision-unit-value'),
+					$dropdown = $('<select/>').addClass('vision-unit-type');
+					$dropdown.append('<option value="px">px</li>');
+					$dropdown.append('<option value="%">%</li>');
+					$dropdown.append('<option value="em">em</li>');
+					$dropdown.append('<option value="cm">cm</li>');
+					$dropdown.append('<option value="mm">mm</li>');
+					$dropdown.append('<option value="in">in</li>');
+					$dropdown.append('<option value="pt">pt</li>');
+					$dropdown.append('<option value="pc">pc</li>');
+					$dropdown.append('<option value="ex">ex</li>');
+					$dropdown.append('<option value="ch">ch</li>');
+					$dropdown.append('<option value="rem">rem</li>');
+					$dropdown.append('<option value="vw">vw</li>');
+					$dropdown.append('<option value="vh">vh</li>');
+					$dropdown.append('<option value="vmin">vmin</li>');
+					$dropdown.append('<option value="vmax">vmax</li>');
+					
+					$el.append($value, $dropdown);
+					$value.on('input change', onValueInput);
+					$dropdown.on('change', onDropdownInput);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function isBlank(str) {
+						return (!str || /^\s*$/.test(str));
+					}
+					
+					function onValueInput(e) {
+						var value = $value.val(),
+						isValid = true;
+						
+						if(isBlank(value)) {
+							value = {
+								value: null,
+								type: $dropdown.val()
+							}
+						} else {
+							if(value.match('^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$')) { // check float
+								value = {
+									value: parseFloat(value),
+									type: $dropdown.val()
+								}
+							} else {
+								isValid = false;
+							}
+						}
+						
+						if(isValid) {
+							env.setValue(expression, value);
+							env.scan();
+							callback();
+							
+							$value.removeClass('vision-invalid');
+						} else {
+							$value.addClass('vision-invalid');
+						}
+					}
+					
+					function onDropdownInput(e) {
+						var type = $dropdown.val(),
+						value = env.getValue(expression);
+						
+						if(value) {
+							value.type = type;
+							env.setValue(expression, value);
+							env.scan();
+							callback();
+						}
+					}
+					
+					env.watch(expression, function(value) {
+						$value.removeClass('vision-invalid');
+						
+						if(value == null) {
+							$value.val(null);
+							$dropdown.val('px');
+						} else {
+							$value.val(value.value);
+							$dropdown.val(value.type);
+						}
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.style = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					if(!env.attrArgument) {
+						return;
+					}
+					var $el = $(element),
+					styleName = env.attrArgument.split('.')[0];
+					
+					env.watch(expression, function(value) {
+						$el.css(styleName, value);
+					}, {readOnly: true});
+				}
+			}
+			
+			alight.directives.al.backgroundrepeat = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $('<select/>').addClass($el.get(0).className);
+					$value.append('<option value="none">none</option>');
+					$value.append('<option value="repeat">repeat</option>');
+					$value.append('<option value="repeat-x">repeat-x</option>');
+					$value.append('<option value="repeat-y">repeat-y</option>');
+					$value.append('<option value="no-repeat">no-repeat</option>');
+					
+					$el.append($value);
+					$value.unwrap();
+					$value.on('change', onValueInput);
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(value == 'none') {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val('none');
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			}
+			
+			alight.directives.al.backgroundsize = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $('<select/>').addClass($el.get(0).className);
+					$value.append('<option value="none">none</option>');
+					$value.append('<option value="auto">auto</option>');
+					$value.append('<option value="cover">cover</option>');
+					$value.append('<option value="contain">contain</option>');
+					$value.append('<option value="100% 100%">stretch</option>');
+					
+					$el.append($value);
+					$value.unwrap();
+					$value.on('change', onValueInput);
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(value == 'none') {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val('none');
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			}
+			
+			alight.directives.al.textfont = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $('<select/>').addClass($el.get(0).className),
+					fonts = env.getValue($el.data('fonts'));
+					
+					for(var i=0;i<fonts.length;i++) {
+						var view = fonts[i].fontname.replace(new RegExp('[+]', 'g'),' '),
+						value = fonts[i].fontname;
+						
+						$value.append('<option value="' + value + '">' + view + '</option>');
+					}
+					
+					$el.append($value);
+					$value.unwrap();
+					$value.on('change', onValueInput);
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(value == 'none') {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val('none');
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			}
+			
+			alight.directives.al.textalign = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $('<select/>').addClass($el.get(0).className);
+					$value.append('<option value="none">none</option>');
+					$value.append('<option value="left">left</option>');
+					$value.append('<option value="right">right</option>');
+					$value.append('<option value="center">center</option>');
+					$value.append('<option value="justify">justify</option>');
+					
+					$el.append($value);
+					$value.unwrap();
+					$value.on('change', onValueInput);
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(value == 'none') {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val('none');
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			}
+			
+			alight.directives.al.color = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					// template
+					//.vision-color
+					//   .vision-color-btn
+					//   .vision-color-value
+					var $el = $(element),
+					$btn = $('<div></div>').addClass('vision-color-btn').append('<div><div></div></div>'),
+					$value = $('<input/>').addClass('vision-color-value');
+					
+					$el.append($btn, $value);
+					$btn.on('click touchend', onBtnClick);
+					$value.on('input change', onValueInput);
+					
+					//=========================================================
+					// colorPicker
+					// a set of RE's that can match strings and generate color tuples. https://github.com/jquery/jquery-color/
+					var stringParsers = [
+						{
+							re: /rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,
+							parse: function(execResult) {
+								return [
+									execResult[1],
+									execResult[2],
+									execResult[3],
+									execResult[4]
+								];
+							}
+						},
+						{
+							re: /rgba?\(\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,
+							parse: function(execResult) {
+								return [
+									2.55 * execResult[1],
+									2.55 * execResult[2],
+									2.55 * execResult[3],
+									execResult[4]
+								];
+							}
+						},
+						{
+							re: /#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/,
+							parse: function(execResult) {
+								return [
+									parseInt(execResult[1], 16),
+									parseInt(execResult[2], 16),
+									parseInt(execResult[3], 16)
+								];
+							}
+						}
+						/*
+						{
+							re: /#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])/,
+							parse: function(execResult) {
+								return [
+									parseInt(execResult[1] + execResult[1], 16),
+									parseInt(execResult[2] + execResult[2], 16),
+									parseInt(execResult[3] + execResult[3], 16)
+								];
+							}
+						}
+						*/
+					];
+					
+					function Color() {
+						this.rgb = {
+							r: 0, // [0: 255]
+							g: 0, // [0: 255]
+							b: 0  // [0: 255]
+						};
+						this.hsb = {
+							h: 0, // [0: 360]
+							s: 0, // [0: 100]
+							b: 0  // [0: 100]
+						};
+						this.alpha = 1; // [0: 1]
+					};
+					Color.prototype = {
+						// translate a format from Color object to a string
+						rgb: function() {
+							return 'rgb(' + this.rgb.r + ',' + this.rgb.g + ',' + this.rgb.b + ')';
+						},
+						rgba: function() {
+							return 'rgba(' + this.rgb.r + ',' + this.rgb.g + ',' + this.rgb.b + ',' + this.alpha + ')';
+						},
+						hex: function() {
+							return this.toHex();
+						},
+						
+						RGBAtoHSBA: function(r, g, b, a) {
+							var hue = 0,
+							max = Math.max(r, g, b), 
+							min = Math.min(r, g, b), 
+							delta = max - min;
+							
+							var brightness = max / 255, 
+							saturation = (max != 0) ? delta / max : 0;
+							
+							if(saturation) {
+								var rr = (max - r) / delta,
+								gr = (max - g) / delta, 
+								br = (max - b) / delta;
+								
+								if (r == max) hue = br - gr;
+								else if (g == max) hue = 2 + rr - br;
+								else hue = 4 + gr - rr;
+								
+								hue /= 6;
+								if (hue < 0) hue++;
+							}
+							
+							return {
+								h: Math.round(hue * 360),
+								s: Math.round(saturation * 100),
+								b: Math.round(brightness * 100), //b: Math.floor(brightness * 100),
+								a: a || 1
+							};
+						},
+						
+						HSBAtoRGBA: function(h, s, b, a) {
+							var h = h,
+							s = s / 100,
+							b = b / 100;
+							
+							var R, G, B, X, C;
+							h = (h % 360) / 60;
+							C = b * s;
+							X = C * (1 - Math.abs(h % 2 - 1));
+							R = G = B = b - C;
+							
+							h = ~~h;
+							R += [C, X, 0, 0, X, C][h];
+							G += [X, C, C, X, 0, 0][h];
+							B += [0, 0, X, C, C, X][h];
+							
+							return {
+								r: Math.round(R * 255),
+								g: Math.round(G * 255),
+								b: Math.round(B * 255), //Math.ceil(B * 255),
+								a: a || 1
+							};
+						},
+						
+						//parse a string to HSB and RGB
+						setColor: function(color) {
+							color = color.toLowerCase();
+							for (var key in stringParsers) {
+								if (stringParsers.hasOwnProperty(key)) {
+									var parser = stringParsers[key];
+									var match = parser.re.exec(color),
+										values = match && parser.parse(match);
+									if (values) {
+										var hsba = this.RGBAtoHSBA.apply(null, values);
+										
+										this.hsb = {
+											h: hsba.h,
+											s: hsba.s,
+											b: hsba.b
+										};
+										
+										this.rgb = {
+											r: values[0],
+											g: values[1],
+											b: values[2]
+										}
+										
+										this.alpha = hsba.a;
+										
+										return true;
+									}
+								}
+							}
+							return false;
+						},
+						
+						setRed: function(r) {
+							if(r > 255) { r = 255; }
+							else if(r < 0) { r = 0; };
+							this.rgb.r = r;
+							
+							var hsb = this.RGBAtoHSBA(this.rgb.r, this.rgb.g, this.rgb.b);
+							this.hsb = {
+								h: hsb.h,
+								s: hsb.s,
+								b: hsb.b
+							}
+						},
+						
+						setGreen: function(g) {
+							if(g > 255) { g = 255; }
+							else if(g < 0) { g = 0; };
+							this.rgb.g = g;
+							
+							var hsb = this.RGBAtoHSBA(this.rgb.r, this.rgb.g, this.rgb.b);
+							this.hsb = {
+								h: hsb.h,
+								s: hsb.s,
+								b: hsb.b
+							}
+						},
+						
+						setBlue: function(b) {
+							if(b > 255) { b = 255; }
+							else if(b < 0) { b = 0; };
+							this.rgb.b = b;
+							
+							var hsb = this.RGBAtoHSBA(this.rgb.r, this.rgb.g, this.rgb.b);
+							this.hsb = {
+								h: hsb.h,
+								s: hsb.s,
+								b: hsb.b
+							}
+						},
+						
+						setHue: function(h) {
+							if(h > 360) { h = 360; }
+							else if(h < 0) { h = 0; };
+							this.hsb.h = h;
+							
+							var rgb = this.HSBAtoRGBA(this.hsb.h, this.hsb.s, this.hsb.b);
+							this.rgb = {
+								r: rgb.r,
+								g: rgb.g,
+								b: rgb.b
+							}
+						},
+						
+						setSaturation: function(s) {
+							if(s > 100) { s = 100; }
+							else if(s < 0) { s = 0; };
+							this.hsb.s = s;
+							
+							var rgb = this.HSBAtoRGBA(this.hsb.h, this.hsb.s, this.hsb.b);
+							this.rgb = {
+								r: rgb.r,
+								g: rgb.g,
+								b: rgb.b
+							}
+						},
+						
+						setBrightness: function(b) {
+							if(b > 100) { b = 100; }
+							else if(b < 0) { b = 0; };
+							this.hsb.b = b;
+							
+							var rgb = this.HSBAtoRGBA(this.hsb.h, this.hsb.s, this.hsb.b);
+							this.rgb = {
+								r: rgb.r,
+								g: rgb.g,
+								b: rgb.b
+							}
+						},
+						
+						setAlpha: function(a) {
+							var a = parseInt(a * 100, 10) / 100;
+							if(a > 1) { a = 1; }
+							else if(a < 0) { a = 0; };
+							this.alpha = a;
+						},
+						
+						toRGBA: function() {
+							return {
+								r: this.rgb.r,
+								g: this.rgb.g,
+								b: this.rgb.b,
+								a: this.alpha
+							}
+						},
+						
+						toHSBA: function() {
+							return {
+								h: this.hsb.h,
+								s: this.hsb.s,
+								b: this.hsb.b,
+								a: this.alpha
+							}
+						},
+						
+						toHex: function() {
+							return '#' + ((1 << 24) | (parseInt(this.rgb.r, 10) << 16) | (parseInt(this.rgb.g, 10) << 8) | parseInt(this.rgb.b, 10)).toString(16).substr(1);
+						}
+					};
+					
+					function ColorPicker(config) {
+						this.config = null;
+						this.color = new Color();
+						this.controls = {};
+						this.inputEdit = {
+							enabled: false,
+							pageY: 0,
+							value: 0,
+							type: null
+						},
+						
+						this._init(config);
+					};
+					ColorPicker.prototype = {
+						//=============================================
+						// Properties & methods (shared for all instances)
+						//=============================================
+						defaults: {
+							onSelect: null
+						},
+						
+						//=============================================
+						// Private Methods
+						//=============================================
+						_init: function(config) {
+							this.config = $.extend(true, {}, this.defaults, config);
+							this._create();
+						},
+						
+						_create: function() {
+							this._buildDOM();
+							this._bind();
+							this._refresh();
+						},
+						
+						_buildDOM: function() {
+							var $data = $('<div></div>').addClass('vision-data'),
+							$picker = $('<div></div>').addClass('vision-color-picker'),
+							$pallete_thumb = $('<div></div>').addClass('vision-thumb'),
+							$pallete = $('<div></div>').addClass('vision-pallete').append($pallete_thumb),
+							$hue_thumb = $('<div></div>').addClass('vision-thumb'),
+							$hue = $('<div></div>').addClass('vision-hue').append($hue_thumb),
+							$panel = $('<div></div>').addClass('vision-panel'),
+							$input_rgb_r = $('<div></div>').addClass('vision-input').append('<span>R<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),
+							$input_rgb_g = $('<div></div>').addClass('vision-input').append('<span>G<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),
+							$input_rgb_b = $('<div></div>').addClass('vision-input').append('<span>B<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),
+							$input_line = $('<div></div>').addClass('vision-line'),
+							$input_hsb_h = $('<div></div>').addClass('vision-input').append('<span>H<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),
+							$input_hsb_s = $('<div></div>').addClass('vision-input').append('<span>S<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>'),
+							$input_hsb_b = $('<div></div>').addClass('vision-input').append('<span>B<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>');
+							
+							$panel.append($input_rgb_r, $input_rgb_g, $input_rgb_b, $input_line, $input_hsb_h, $input_hsb_s, $input_hsb_b);
+							$picker.append($data.append($pallete, $hue, $panel));
+							
+							this.controls.$picker = $picker;
+							this.controls.$pallete = $pallete;
+							this.controls.$pallete_thumb = $pallete_thumb;
+							this.controls.$hue = $hue;
+							this.controls.$hue_thumb = $hue_thumb;
+							this.controls.$input_rgb_r = $input_rgb_r.find('input');
+							this.controls.$input_rgb_g = $input_rgb_g.find('input');
+							this.controls.$input_rgb_b = $input_rgb_b.find('input');
+							this.controls.$input_hsb_h = $input_hsb_h.find('input');
+							this.controls.$input_hsb_s = $input_hsb_s.find('input');
+							this.controls.$input_hsb_b = $input_hsb_b.find('input');
+							this.controls.$input_rgb_r_thumb = $input_rgb_r.find('.vision-thumb');
+							this.controls.$input_rgb_g_thumb = $input_rgb_g.find('.vision-thumb');
+							this.controls.$input_rgb_b_thumb = $input_rgb_b.find('.vision-thumb');
+							this.controls.$input_hsb_h_thumb = $input_hsb_h.find('.vision-thumb');
+							this.controls.$input_hsb_s_thumb = $input_hsb_s.find('.vision-thumb');
+							this.controls.$input_hsb_b_thumb = $input_hsb_b.find('.vision-thumb');
+							
+							
+							var $data = $('<div></div>').addClass('vision-data'),
+							$alpha_thumb = $('<div></div>').addClass('vision-thumb'),
+							$alpha_gradient = $('<div></div>').addClass('vision-gradient'),
+							$alpha = $('<div></div>').addClass('vision-alpha').append($alpha_gradient, $alpha_thumb),
+							$panel = $('<div></div>').addClass('vision-panel'),
+							$input_alpha = $('<div></div>').addClass('vision-input').append('<span>A<input type="text" maxlength="3" size="3"/><span class="vision-thumb"></span></span>');
+							
+							$panel.append($input_alpha);
+							$picker.append($data.append($alpha, $panel));
+							
+							this.controls.$alpha = $alpha;
+							this.controls.$alpha_thumb = $alpha_thumb;
+							this.controls.$alpha_gradient = $alpha_gradient;
+							this.controls.$input_alpha = $input_alpha.find('input');
+							this.controls.$input_alpha_thumb = $input_alpha.find('.vision-thumb');
+							
+							var $data = $('<div></div>').addClass('vision-data'),
+							$preview = $('<div></div>').addClass('vision-preview').append('<div><div></div></div>'),
+							$input_color = $('<input readonly />').addClass('vision-input-color'),
+							$submit = $('<div></div>').addClass('vision-submit').text('OK');
+							
+							$picker.append($data.append($preview, $input_color, $submit));
+							
+							this.controls.$preview = $preview.find('> div > div');
+							this.controls.$input_color = $input_color;
+							this.controls.$submit = $submit;
+							
+							$picker.appendTo('body');
+						},
+						
+						_bind: function() {
+							// sliders
+							this.controls.$pallete.on('mousedown', $.proxy(this._onPalleteEditStart, this) );
+							this.controls.$pallete.on('click', $.proxy(this._onPalleteEditMove, this) );
+							this.controls.$hue.on('mousedown', $.proxy(this._onHueEditStart, this) );
+							this.controls.$hue.on('click', $.proxy(this._onHueEditMove, this) );
+							this.controls.$alpha.on('mousedown', $.proxy(this._onAlphaEditStart, this) );
+							this.controls.$alpha.on('click', $.proxy(this._onAlphaEditMove, this) );
+							
+							// inputs
+							this.controls.$input_rgb_r_thumb.on('mousedown', $.proxy(this._onInputEditStart, this, 'rgb_r') );
+							this.controls.$input_rgb_g_thumb.on('mousedown', $.proxy(this._onInputEditStart, this, 'rgb_g') );
+							this.controls.$input_rgb_b_thumb.on('mousedown', $.proxy(this._onInputEditStart, this, 'rgb_b') );
+							this.controls.$input_hsb_h_thumb.on('mousedown', $.proxy(this._onInputEditStart, this, 'hsb_h') );
+							this.controls.$input_hsb_s_thumb.on('mousedown', $.proxy(this._onInputEditStart, this, 'hsb_s') );
+							this.controls.$input_hsb_b_thumb.on('mousedown', $.proxy(this._onInputEditStart, this, 'hsb_b') );
+							this.controls.$input_alpha_thumb.on('mousedown', $.proxy(this._onInputEditStart, this, 'alpha') );
+							
+							this.controls.$input_rgb_r.on('input', $.proxy(this._onInput, this, 'rgb_r') );
+							this.controls.$input_rgb_g.on('input', $.proxy(this._onInput, this, 'rgb_g') );
+							this.controls.$input_rgb_b.on('input', $.proxy(this._onInput, this, 'rgb_b') );
+							this.controls.$input_hsb_h.on('input', $.proxy(this._onInput, this, 'hsb_h') );
+							this.controls.$input_hsb_s.on('input', $.proxy(this._onInput, this, 'hsb_s') );
+							this.controls.$input_hsb_b.on('input', $.proxy(this._onInput, this, 'hsb_b') );
+							this.controls.$input_alpha.on('input', $.proxy(this._onInput, this, 'alpha') );
+							
+							// submit
+							this.controls.$submit.on('click', $.proxy(this._onSubmit, this) );
+						},
+						
+						_refresh: function() {
+							var rgb = this.color.toRGBA(),
+							hsb = this.color.toHSBA();
+							
+							// pallete
+							var h = this.controls.$pallete.outerHeight() - 2, // with correction (border 1px)
+							w = this.controls.$pallete.outerWidth() - 2; // with correction (border 1px)
+							this.controls.$pallete.css({'background-color': 'hsl(' + hsb.h + ', 100%, 50%)'});
+							this.controls.$pallete_thumb.css({top: parseInt(h - h * hsb.b/100, 10)});
+							this.controls.$pallete_thumb.css({left: parseInt(w - w * (100-hsb.s)/100, 10)});
+							
+							// hue
+							var h = this.controls.$hue.outerHeight() - 2; // with correction (border 1px)
+							this.controls.$hue_thumb.css({top: parseInt(h - h * hsb.h/360, 10)});
+							
+							// alpha
+							var w = this.controls.$alpha.outerWidth() - 2; // with correction (border 1px)
+							this.controls.$alpha_thumb.css({left: parseInt(w - w * (1 - hsb.a), 10)});
+							this.controls.$alpha_gradient.css({background:'linear-gradient(to left,' + this.color.hex() + ',rgba(0,0,0,0))'});
+							
+							// inputs
+							this.controls.$input_rgb_r.val(rgb.r); // [0:255]
+							this.controls.$input_rgb_g.val(rgb.g); // [0:255]
+							this.controls.$input_rgb_b.val(rgb.b); // [0:255]
+							
+							this.controls.$input_hsb_h.val(hsb.h); // [0 : 360]
+							this.controls.$input_hsb_s.val(hsb.s); // [0 : 100]
+							this.controls.$input_hsb_b.val(hsb.b); // [0 : 100]
+							
+							this.controls.$input_alpha.val(parseInt(rgb.a * 100, 10)); // [0:100]
+							
+							// preview
+							this.controls.$preview.css({'background-color': this.color.rgba()});
+							this.controls.$input_color.val(rgb.a != 1 ? this.color.rgba() : this.color.hex() );
+						},
+						
+						_show: function($target) {
+							var offset = $target.offset(),
+							targetW = $target.outerWidth(),
+							targetH = $target.outerHeight(),
+							pickerW = this.controls.$picker.outerWidth(),
+							pickerH = this.controls.$picker.outerHeight(),
+							top = offset.top - pickerH - 1,
+							left = offset.left;
+							
+							this.controls.$picker.offset({
+								top: top,
+								left: left
+							});
+							
+							// correct layout
+							var rc = this.controls.$picker.get(0).getBoundingClientRect();
+							if(rc.y < 0) {
+								top = offset.top + targetH + offsetH + 1;
+								this.controls.$picker.offset({top: top});
+							}
+							if((rc.x + rc.width) > window.innerWidth) {
+								left = offset.left + targetW - pickerW;
+								this.controls.$picker.offset({left: left});
+							}
+							
+							this.controls.$picker.addClass('vision-active');
+							
+							$('body').on('mousedown touchstart', $.proxy(this._onBodyClick, this) );
+						},
+						
+						_hide: function() {
+							this.controls.$picker.removeClass('vision-active').css({'top':'', 'left':''});
+							
+							$('body').off('mousedown touchstart', $.proxy(this._onBodyClick, this) );
+						},
+						
+						_destroy: function() {
+							if(this.controls.$picker) {
+								this.controls.$picker.remove();
+							}
+							
+							this.config = null;
+							this.color = new Color();
+							this.controls = {};
+						},
+						
+						_onPalleteEditStart: function(e) {
+							$('body').on('mouseup', $.proxy(this._onPalleteEditEnd, this) );
+							$('body').on('mousemove', $.proxy(this._onPalleteEditMove, this) );
+						},
+						
+						_onPalleteEditMove: function(e) {
+							var h = this.controls.$pallete.outerHeight(),
+							w = this.controls.$pallete.outerWidth(),
+							s = 100 - parseInt(100*(w - Math.max(0,Math.min(w,(e.pageX - this.controls.$pallete.offset().left))))/w, 10),
+							b = parseInt(100*(h - Math.max(0,Math.min(h,(e.pageY - this.controls.$pallete.offset().top))))/h, 10);
+							
+							this.color.setSaturation(s);
+							this.color.setBrightness(b);
+							
+							this._refresh();
+							return false;
+						},
+						
+						_onPalleteEditEnd: function(e) {
+							$('body').off('mouseup', $.proxy(this._onPalleteEditEnd, this) );
+							$('body').off('mousemove', $.proxy(this._onPalleteEditMove, this) );
+							
+							this._refresh();
+							return false;
+						},
+						
+						_onHueEditStart: function(e) {
+							$('body').on('mouseup', $.proxy(this._onHueEditEnd, this) );
+							$('body').on('mousemove', $.proxy(this._onHueEditMove, this) );
+						},
+						
+						_onHueEditMove: function(e) {
+							var sliderHeight = this.controls.$hue.outerHeight(),
+							hue = parseInt(360*(sliderHeight - Math.max(0,Math.min(sliderHeight,(e.pageY - this.controls.$hue.offset().top))))/sliderHeight, 10);
+							
+							this.color.setHue(hue);
+							
+							this._refresh();
+							return false;
+						},
+						
+						_onHueEditEnd: function(e) {
+							$('body').off('mouseup', $.proxy(this._onHueEditEnd, this) );
+							$('body').off('mousemove', $.proxy(this._onHueEditMove, this) );
+							
+							this._refresh();
+							return false;
+						},
+						
+						_onAlphaEditStart: function(e) {
+							$('body').on('mouseup', $.proxy(this._onAlphaEditEnd, this) );
+							$('body').on('mousemove', $.proxy(this._onAlphaEditMove, this) );
+						},
+						
+						_onAlphaEditMove: function(e) {
+							var sliderWidth = this.controls.$alpha.outerWidth(),
+							alpha = 1 - (sliderWidth - Math.max(0,Math.min(sliderWidth,(e.pageX - this.controls.$alpha.offset().left))))/sliderWidth;
+							
+							this.color.setAlpha(alpha);
+							
+							this._refresh();
+							return false;
+						},
+						
+						_onAlphaEditEnd: function(e) {
+							$('body').off('mouseup', $.proxy(this._onAlphaEditEnd, this) );
+							$('body').off('mousemove', $.proxy(this._onAlphaEditMove, this) );
+							
+							this._refresh();
+							return false;
+						},
+						
+						_onInputEditStart: function(type, e) {
+							$('body').on('mouseup', $.proxy(this._onInputEditEnd, this) );
+							$('body').on('mousemove', $.proxy(this._onInputEditMove, this) );
+							
+							this.inputEdit.enabled = true;
+							this.inputEdit.pageY = e.pageY;
+							this.inputEdit.value = parseInt($(e.target).siblings('input').val(), 10);
+							this.inputEdit.type = type;
+						},
+						
+						_onInputEditMove: function(e) {
+							if(this.inputEdit.enabled) {
+								var delta = e.pageY - this.inputEdit.pageY,
+								value = this.inputEdit.value + delta;
+								
+								switch(this.inputEdit.type) {
+									case 'rgb_r': { this.color.setRed(value); } break;
+									case 'rgb_g': { this.color.setGreen(value); } break;
+									case 'rgb_b': { this.color.setBlue(value); } break;
+									case 'hsb_h': { this.color.setHue(value); } break;
+									case 'hsb_s': { this.color.setSaturation(value); } break;
+									case 'hsb_b': { this.color.setBrightness(value); } break;
+									case 'alpha': { this.color.setAlpha(value/100); } break;
+								}
+							}
+							
+							this._refresh();
+							return false;
+						},
+						
+						_onInputEditEnd: function(e) {
+							$('body').off('mouseup', $.proxy(this._onInputEditEnd, this) );
+							$('body').off('mousemove', $.proxy(this._onInputEditMove, this) );
+							
+							this.inputEdit.enabled = false;
+							this.inputEdit.pageY = 0;
+							this.inputEdit.value = 0;
+							this.inputEdit.type = null;
+							
+							this._refresh();
+							return false;
+						},
+						
+						_onInput: function(type, e) {
+							var value = $(e.target).val();
+							value = parseInt(value, 10) || 0;
+							
+							switch(type) {
+								case 'rgb_r': { this.color.setRed(value); } break;
+								case 'rgb_g': { this.color.setGreen(value); } break;
+								case 'rgb_b': { this.color.setBlue(value); } break;
+								case 'hsb_h': { this.color.setHue(value); } break;
+								case 'hsb_s': { this.color.setSaturation(value); } break;
+								case 'hsb_b': { this.color.setBrightness(value); } break;
+								case 'alpha': { this.color.setAlpha(value/100); } break;
+							}
+							
+							this._refresh();
+							return false;
+						},
+						
+						_onSubmit: function(e) {
+							this._hide();
+							
+							if (typeof this.config.onSelect == "function") { // make sure the callback is a function
+								this.config.onSelect.call(this, this.color);
+							}
+						},
+						
+						_onBodyClick: function(e) {
+							if(this.controls.$picker.has(e.target).length === 0 && !$(e.target).hasClass('vision-color-picker')) {
+								this._hide();
+							}
+						},
+						
+						//=============================================
+						// Public Methods
+						//=============================================
+						show: function($target, color) {
+							if(color) {
+								this.color.setColor(color);
+								this._refresh();
+							}
+							this._show($target);
+						},
+						
+						hide: function() {
+							this._hide();
+						},
+						
+						destroy: function() {
+							this._destroy();
+						}
+					}
+					//=========================================================
+					
+					var colorPicker = new ColorPicker({
+						onSelect: onSelect
+					});
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function isBlank(str) {
+						return (!str || /^\s*$/.test(str));
+					}
+					
+					function onSelect(color) {
+						var value = (color.alpha == 1 ? color.hex() : color.rgba());
+						env.setValue(expression, value);
+						env.scan();
+						callback();
+						
+						$value.val(value);
+					}
+					
+					function onBtnClick(e) {
+						colorPicker.show($btn, env.getValue(expression));
+					}
+					
+					function onValueInput(e) {
+						var $value = $(this),
+						value = $value.val(),
+						isValid = true;
+						
+						if(isBlank(value)) {
+							value = null;
+						} else {
+							var color = new Color();
+							if(!color.setColor(value)) {
+								isValid = false;
+							}
+						}
+						
+						if(isValid) {
+							env.setValue(expression, value);
+							env.scan();
+							callback();
+							
+							$(element).removeClass('vision-invalid');
+						} else {
+							$(element).addClass('vision-invalid');
+						}
+					}
+					
+					env.changeDetector.watch('$destroy', function() {
+						colorPicker.destroy();
+					});
+					
+					env.watch(expression, function(value) {
+						$(element).removeClass('vision-invalid');
+						
+						if(value == null) {
+							$value.val(null);
+							$btn.find('> div > div').css({'background-color': ''});
+						} else {
+							var color = new Color();
+							if(color.setColor(value)) {
+								$btn.find('> div > div').css({'background-color': color.rgba()});
+							} else {
+								$btn.find('> div > div').css({'background-color': ''});
+							}
+							$value.val(value);
+						}
+						
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.tooltipplacement = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $('<select/>').addClass($el.get(0).className);
+					$value.append('<option value="none">none</option>');
+					$value.append('<option value="top">top</option>');
+					$value.append('<option value="right">right</option>');
+					$value.append('<option value="bottom">bottom</option>');
+					$value.append('<option value="left">left</option>');
+					$value.append('<option value="top-left">top-left</option>');
+					$value.append('<option value="top-right">top-right</option>');
+					$value.append('<option value="right-top">right-top</option>');
+					$value.append('<option value="right-bottom">right-bottom</option>');
+					$value.append('<option value="bottom-left">bottom-left</option>');
+					$value.append('<option value="bottom-right">bottom-right</option>');
+					$value.append('<option value="left-top">left-top</option>');
+					$value.append('<option value="left-bottom">left-bottom</option>');
+					$el.append($value);
+					$value.unwrap();
+					$value.on('change', onValueInput);
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(value == 'none') {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val('none');
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			}
+			
+			alight.directives.al.tooltiptrigger = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $('<select/>').addClass($el.get(0).className);
+					$value.append('<option value="none">none</option>');
+					$value.append('<option value="hover">hover</option>');
+					$value.append('<option value="focus">focus</option>');
+					$value.append('<option value="click">click</option>');
+					$value.append('<option value="clickbody">click & body</option>');
+					$value.append('<option value="sticky">sticky</option>');
+					
+					$el.append($value);
+					$value.unwrap();
+					$value.on('change', onValueInput);
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(value == 'none') {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val('none');
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			}
+			
+			alight.directives.al.popovertype = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $('<select/>').addClass($el.get(0).className);
+					$value.append('<option value="tooltip">tooltip</option>');
+					$value.append('<option value="inbox">inbox</option>');
+					$value.append('<option value="lightbox">lightbox</option>');
+					
+					$el.append($value);
+					$value.unwrap();
+					$value.on('change', onValueInput);
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(value == 'default') {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val('default');
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			}
+			
+			alight.directives.al.popoverplacement = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $('<select/>').addClass($el.get(0).className);
+					$value.append('<option value="none">none</option>');
+					$value.append('<option value="top-left">top-left</option>');
+					$value.append('<option value="top">top</option>');
+					$value.append('<option value="top-right">top-right</option>');
+					$value.append('<option value="right-top">right-top</option>');
+					$value.append('<option value="right">right</option>');
+					$value.append('<option value="right-bottom">right-bottom</option>');
+					$value.append('<option value="bottom-right">bottom-right</option>');
+					$value.append('<option value="bottom">bottom</option>');
+					$value.append('<option value="bottom-left">bottom-left</option>');
+					$value.append('<option value="left-bottom">left-bottom</option>');
+					$value.append('<option value="left">left</option>');
+					$value.append('<option value="left-top">left-top</option>');
+					
+					$el.append($value);
+					$value.unwrap();
+					$value.on('change', onValueInput);
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(value == 'none') {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val('none');
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			}
+			
+			alight.directives.al.popovertrigger = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element),
+					$value = $('<select/>').addClass($el.get(0).className);
+					$value.append('<option value="none">none</option>');
+					$value.append('<option value="hover">hover</option>');
+					$value.append('<option value="focus">focus</option>');
+					$value.append('<option value="click">click</option>');
+					$value.append('<option value="dblclick">dblclick</option>');
+					
+					$el.append($value);
+					$value.unwrap();
+					$value.on('change', onValueInput);
+					
+					function onValueInput(e) {
+						var value = $value.val();
+						
+						if(value == 'none') {
+							value = null;
+						}
+						
+						env.setValue(expression, value);
+						env.scan();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value == null) {
+							$value.val('none');
+						} else {
+							$value.val(value);
+						}
+					}, {readOnly: true});
+				}
+			}
+			//=========================================================
+			// Filters
+			//=========================================================
+			
+			//=========================================================
+			// Event Modifiers
+			//=========================================================
+			//alight.hooks.eventModifier['enter'] = 'keydown keyup';
+			
+			//=========================================================
+			// Initialization
+			//=========================================================
+			appData.config = $.extend(true, {}, appData.defaultConfig);
+			appData.alight = alight;
+			appData.rootScope = appData.alight(document.querySelectorAll('#vision-app-item')[0], {appData: appData});
+			
+			appData.fn.init(appData);
+		};
+		window.alightInitCallback = alightInitCallback;
+	}
+	
+	function page_settings() {
+		//=========================================================
+		// Application Model Data
+		//=========================================================
+		var appData = {
+			alight: null,
+			rootScope: null,
+			
+			wp_ajax_url: null,
+			wp_ajax_nonce: null,
+			wp_ajax_action_update: null, // update settings
+			wp_ajax_action_get: null, // get themes
+			wp_ajax_action_delete_data: null, // delete all data
+			wp_ajax_action_modal: null,
+			wp_ajax_msg_error: null,
+			
+			themes: null,
+			roles: null,
+			
+			// used for save/restore config data (user interface + plugin config)
+			config: null,
+			
+			defaultConfig: {
+				themeJavaScript: null,
+				themeCSS: null,
+				roles: null
+			},
+			
+			fn: {
+				init: function(appData) {
+					$('#vision-app-settings').removeAttr('style');
+					
+					// init ajax
+					appData.plan = vision_globals.plan;
+					appData.wp_ajax_url = vision_globals.ajax_url;
+					appData.wp_ajax_nonce = vision_globals.ajax_nonce;
+					appData.wp_ajax_action_update = vision_globals.ajax_action_update;
+					appData.wp_ajax_action_get = vision_globals.ajax_action_get;
+					appData.wp_ajax_action_delete_data = vision_globals.ajax_action_delete_data;
+					appData.wp_ajax_action_modal = vision_globals.ajax_action_modal;
+					appData.wp_ajax_msg_error = vision_globals.ajax_msg_error;
+					
+					appData.fn.initConfig(appData);
+				},
+				
+				enableLoading: function(appData) {
+					$('#vision-app-settings').removeClass('vision-active');
+				},
+				
+				disableLoading: function(appData) {
+					setTimeout(function() {
+						$('#vision-app-settings').addClass('vision-active');
+					}, 1000);
+				},
+				
+				loadData: function(appData, dataName) {
+					var def = $.Deferred();
+					
+					$.ajax({
+						url: appData.wp_ajax_url,
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							nonce: appData.wp_ajax_nonce,
+							action: appData.wp_ajax_action_get,
+							type: dataName
+						},
+						success: function(json){
+							if(json && json.success) {
+								def.resolve(json.data);
+								return;
+							}
+							this.error();
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+							def.reject();
+						}
+					});
+					
+					return def.promise();
+				},
+				
+				initConfig: function(appData) {
+					appData.fn.enableLoading(appData);
+					
+					var cfg = $.extend(true, {}, appData.defaultConfig, (vision_globals.config ? JSON.parse(vision_globals.config) : null));
+					appData.config = cfg;
+					
+					if(appData.config) { // leave only default properties
+						for(var key in appData.config) {
+							if(!appData.defaultConfig.hasOwnProperty(key)) {
+								delete appData.config[key];
+							}
+						}
+					}
+					
+					appData.fn.loadData(appData, 'editor-themes').done(function(data) {
+						appData.themes = data.list;
+					}).always(function(){
+						appData.rootScope.scan();
+						appData.fn.disableLoading(appData);
+					});
+					
+					appData.fn.loadData(appData, 'roles').done(function(data) {
+						appData.roles = data.list;
+					}).always(function(){
+						appData.rootScope.scan();
+						appData.fn.disableLoading(appData);
+					});
+				},
+				
+				saveConfig: function(appData) {
+					appData.fn.enableLoading(appData);
+					
+					var cfg = $.extend(true, {}, appData.config);
+					cfg = JSON.stringify(cfg);
+					
+					$.ajax({
+						url: appData.wp_ajax_url,
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							nonce: appData.wp_ajax_nonce,
+							action: appData.wp_ajax_action_update,
+							config: cfg
+						}
+					}).done(function(json) {
+						if(json) {
+							appData.fn.showNotice(appData, json.data.msg, (json.success ? 'notice-success' : 'notice-error'));
+							return;
+						}
+						appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+					}).fail(function() {
+						appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+					}).always(function() {
+						appData.fn.disableLoading(appData);
+					});
+				},
+				
+				deleteAllData: function(appData, text) {
+					var modalData = {
+						text: text
+					};
+					
+					appData.modal.fn.show(appData, 'confirm', modalData).then(function(result) {
+						appData.modal.fn.close(appData, modalData.id);
+						
+						if(result == 'close') {
+							return;
+						}
+						
+						if(result) {
+							appData.fn.enableLoading(appData);
+							
+							$.ajax({
+								url: appData.wp_ajax_url,
+								type: 'POST',
+								dataType: 'json',
+								data: {
+									nonce: appData.wp_ajax_nonce,
+									action: appData.wp_ajax_action_delete_data
+								}
+							}).done(function(json) {
+								if(json) {
+									appData.fn.showNotice(appData, json.data.msg, (json.success ? 'notice-success' : 'notice-error'));
+									return;
+								}
+								appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+							}).fail(function() {
+								appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+							}).always(function() {
+								appData.fn.disableLoading(appData);
+							});
+							
+							appData.rootScope.scan();
+						}
+					});
+				},
+				
+				showNotice: function(appData, data, type) { // type: notice-success, notice-error, notice-warning, notice-info
+					var $messages = $('#vision-messages'),
+					$msg = $('<div></div>').addClass('notice is-dismissible').addClass(type),
+					$data = $('<p></p>').html(data),
+					$close = $('<button></button>').attr('type', 'button').addClass('notice-dismiss').html('<span class="screen-reader-text">Dismiss this notice.</span>');
+					
+					function close() {
+						clearTimeout($msg.data('timer'));
+						
+						$msg.fadeTo(100, 0, function() {
+							$msg.slideUp(100, function() {
+								$msg.remove();
+							});
+						});
+					}
+					
+					$msg.data('timer', setTimeout(close, 5000));
+					
+					$close.click(function(e) {
+						e.preventDefault();
+						close();
+					});
+					
+					$msg.append($data, $close);
+					$messages.append($msg);
+				},
+			},
+			
+			modal: {
+				count: 0,
+				items: [],
+				
+				fn: {
+					resize: function(modalData) {
+						var $modal = $('#vision-modal-' + modalData.id),
+						$dialog = $modal.find('.vision-modal-dialog'),
+						$header = $modal.find('.vision-modal-header'),
+						$data = $modal.find('.vision-modal-data'),
+						$footer = $modal.find('.vision-modal-footer');
+						
+						var h = $header.outerHeight() + $footer.outerHeight() + 50,
+						wh = $(window).height(),
+						dh = $data.height();
+						
+						if(dh > wh - h) {
+							$data.outerHeight(wh - h);
+						}
+					},
+					show: function(appData, modalName, modalData, callback) {
+						var id = ++appData.modal.count,
+						deferred = $.Deferred();
+						
+						appData.modal.items.push(id);
+						appData.inprocess++;
+						
+						$.ajax({
+							url: appData.wp_ajax_url,
+							type: 'GET',
+							dataType: 'html',
+							data: {
+								nonce: appData.wp_ajax_nonce,
+								action: appData.wp_ajax_action_modal,
+								name: modalName
+							}
+						}).done(function(html) {
+							$('body').addClass('vision-modal-open');
+							
+							var $modal = $(html),
+							scope = {};
+							scope.modalData = modalData;
+							scope.modalData.id = id;
+							scope.modalData.deferred = deferred;
+							scope.modalData.appData = appData;
+							
+							if(modalData.easyClose == undefined || modalData.easyClose) {
+								$modal.on('click', function(e) {
+									scope.modalData.deferred.resolve('close');
+								});
+							}
+							
+							$('#vision-modals').append($modal);
+							
+							var $dialog = $modal.find('.vision-modal-dialog');
+							$dialog.on('click', function(e) {
+								return false;
+							});
+							
+							modalData.rootScope = appData.alight($modal.get(0), scope);
+							
+							appData.modal.fn.resize(modalData);
+						}).fail(function(xhr, textStatus, thrownError) {
+							appData.fn.showNotice(appData, appData.wp_ajax_msg_error, 'notice-error');
+						}).always(function() {
+							if (callback && typeof callback == 'function') { // make sure the callback is a function
+								callback.call(this, modalData); // brings the scope to the callback
+							}
+							appData.inprocess--;
+						});
+						
+						return deferred.promise();
+					},
+					close: function(appData, id) {
+						$('#vision-modal-' + id).remove();
+						
+						var index = appData.modal.items.indexOf(id);
+						appData.modal.items.splice(index, 1);
+						if(appData.modal.items.length == 0) {
+							jQuery('body').removeClass('vision-modal-open');
+						}
+					}
+				}
+			}
+		}
+		
+		//=========================================================
+		// Angular Light Isolate Initialization
+		//=========================================================
+		var alightInitCallback = function(alight) {
+			delete window.alightInitCallback;
+			
+			//=========================================================
+			// Directives
+			//=========================================================
+			alight.directives.al.toggle = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					var $el = $(element);
+					$el.addClass('vision-toggle').html('&nbsp;');
+					$el.on('mousedown touchstart', onItemClick);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function onItemClick(e) {
+						env.setValue(expression, !env.getValue(expression));
+						env.scan();
+						callback();
+					}
+					
+					env.watch(expression, function(value) {
+						if(value) {
+							$el.addClass('vision-checked').removeClass('vision-unchecked');
+						} else {
+							$el.removeClass('vision-checked').addClass('vision-unchecked');
+						}
+					}, {readOnly: true});
+				}
+			};
+			
+			alight.directives.al.checkboxlist = {
+				restrict: 'EA',
+				link: function(scope, element, expression, env) {
+					// template
+					//.<ul>
+					//   <li><div class="vision-checkbox"></div><div class="vision-name"></div></li>
+					var $el = $(element),
+					$ul = $('<ul>'),
+					predefined = $el.data('predefined'),
+					source = $el.data('src');
+					
+					$el.addClass('vision-checkboxlist').append($ul);
+					$el.on('click', '.vision-checkbox', onItemClick);
+					
+					function callback() {
+						var callback = $el.data('callback');
+						if(callback) {
+							var fn = env.changeDetector.compile(callback);
+							fn(scope);
+						}
+					}
+					
+					function onItemClick(e) {
+						var $checkbox = $(this),
+						$li = $checkbox.parent(),
+						id = $li.data('id'),
+						dataSrc = env.getValue(source);
+						
+						for(var i=0;i<dataSrc.length;i++) {
+							if(dataSrc[i].id == id) {
+								var dataDst = env.getValue(expression);
+								if(dataDst) {
+									var flag = true;
+									for(var j=0;j<dataDst.length;j++) {
+										if(dataDst[j] == id) {
+											flag = false;
+											dataDst.splice(j, 1);
+											$checkbox.removeClass('vision-checked');
+											
+											if(dataDst.length == 0) {
+												dataDst = null;
+											}
+											
+											break;
+										}
+									}
+									if(flag) {
+										dataDst.push(id);
+										$checkbox.addClass('vision-checked');
+									}
+								} else {
+									dataDst = [];
+									dataDst.push(id);
+									$checkbox.addClass('vision-checked');
+								}
+								
+								env.setValue(expression, dataDst);
+								env.scan();
+								
+								callback();
+								
+								break;
+							}
+						}
+					}
+					
+					if(source) {
+						env.watch(source, function(data) {
+							var dataSrc = env.getValue(source),
+							dataDst = env.getValue(expression);
+							
+							$ul.empty();
+							if(dataSrc instanceof Array) {
+								for(var i=0;i<dataSrc.length;i++) {
+									var $li = $('<li>').attr({'data-id':dataSrc[i].id}),
+									$checkbox = $('<div>').addClass('vision-checkbox'),
+									$name = $('<div>').addClass('vision-name').text(dataSrc[i].name);
+									
+									if(predefined == dataSrc[i].id) {
+										$checkbox.addClass('vision-checked vision-readonly');
+									}
+									
+									if(dataDst instanceof Array) {
+										for(var j=0;j<dataDst.length;j++) {
+											if(dataDst[j] == dataSrc[i].id) {
+												$checkbox.addClass('vision-checked');
+												break;
+											}
+										}
+									}
+									
+									$li.append($checkbox, $name);
+									$ul.append($li);
+								}
+							}
+						}, {readOnly: true});
+					}
+				}
+			};
+			//=========================================================
+			// Initialization
+			//=========================================================
+			appData.config = $.extend(true, {}, appData.defaultConfig);
+			appData.alight = alight;
+			appData.rootScope = appData.alight(document.querySelectorAll('#vision-app-settings')[0], {appData: appData});
+			
+			appData.fn.init(appData);
+		};
+		window.alightInitCallback = alightInitCallback;
+	}
+
+	
+	//=========================================================
+	// Entry point
+	//=========================================================
+	if($('#vision-app-items').length) { page_items(); } 
+	else if($('#vision-app-item').length) { page_item(); }
+	else if($('#vision-app-settings').length) { page_settings(); }
+
+	/**
+	 * Angular Light 0.14.0
+	 * (c) 2016 Oleg Nechaev
+	 * Released under the MIT License.
+	 */
+	(function() {
+		"use strict";
+		function buildAlight() {
+			var alight = function(element, data) {
+				return alight.bootstrap(element, data);
+			}
+			alight.version = '0.14.0';
+			alight.filters = {};
+			alight.text = {};
+			alight.core = {};
+			alight.utils = {};
+			alight.option = {
+				globalController: false,
+				removeAttribute: true,
+				domOptimization: true,
+				domOptimizationRemoveEmpty: true,
+				fastBinding: true
+			};
+			alight.debug = {
+				scan: 0,
+				directive: false,
+				watch: false,
+				watchText: false,
+				parser: false
+			};
+			alight.ctrl = alight.controllers = {};
+			alight.d = alight.directives = {
+				al: {},
+				bo: {},
+				$global: {}
+			};
+			alight.hooks = {
+				directive: [],
+				binding: []
+			};
+			alight.priority = {
+				al: {
+					app: 2000,
+					checked: 20,
+					'class': 30,
+					css: 30,
+					focused: 20,
+					'if': 700,
+					'ifnot': 700,
+					model: 25,
+					radio: 25,
+					repeat: 1000,
+					select: 20,
+					stop: -10,
+					value: 20,
+					on: 10
+				},
+				$component: 5,
+				$attribute: -5
+			};
+			var f$ = alight.f$ = {};
+
+			var removeItem = function(list, item) {
+				var i = list.indexOf(item);
+				if(i >= 0) list.splice(i, 1)
+				else console.warn('trying to remove not exist item')
+			};
+			/* next postfix.js */
+
+	/* library to work with DOM */
+	(function(){
+		f$.before = function(base, elm) {
+			var parent = base.parentNode;
+			parent.insertBefore(elm, base)
+		};
+
+		f$.after = function(base, elm) {
+			var parent = base.parentNode;
+			var n = base.nextSibling;
+			if(n) parent.insertBefore(elm, n)
+			else parent.appendChild(elm)
+		};
+
+		f$.remove = function(elm) {
+			var parent = elm.parentNode;
+			if(parent) parent.removeChild(elm)
+		};
+
+		// on / off
+		f$.on = function(element, event, callback) {
+			element.addEventListener(event, callback, false)
+		};
+		f$.off = function(element, event, callback) {
+			element.removeEventListener(event, callback, false)
+		};
+
+		f$.isFunction = function(fn) {
+			return (fn && Object.prototype.toString.call(fn) === '[object Function]')
+		};
+
+		f$.isObject = function(o) {
+			return (o && Object.prototype.toString.call(o) === '[object Object]')
+		};
+
+		f$.isPromise = function(p) {
+			return p && window.Promise && p instanceof window.Promise;
+		};
+
+		f$.isElement = function(el) {
+			return el instanceof HTMLElement
+		};
+
+		f$.addClass = function(element, name) {
+			if(element.classList) element.classList.add(name)
+			else element.className += ' ' + name
+		};
+
+		f$.removeClass = function(element, name) {
+			if(element.classList) element.classList.remove(name)
+			else element.className = element.className.replace(new RegExp('(^| )' + name.split(' ').join('|') + '( |$)', 'gi'), ' ')
+		};
+
+		f$.rawAjax = function(args) {
+			var request = new XMLHttpRequest();
+			request.open(args.type || 'GET', args.url, true, args.username, args.password);
+			for(var i in args.headers) request.setRequestHeader(i, args.headers[i]);
+
+			if(args.success) {
+				request.onload = function() {
+					if (request.status >= 200 && request.status < 400){
+						args.success(request.responseText);
+					} else {
+						if(args.error) args.error();
+					}
+				}
+			}
+			if(args.error) request.onerror = args.error;
+
+			request.send(args.data || null);
+		};
+
+		/*
+			ajax
+				cache
+				type
+				url
+				success
+				error
+				username
+				password
+				data
+				headers
+		*/
+		f$.ajaxCache = {};
+		f$.ajax = function(args) {
+			if(args.username || args.password || args.headers || args.data || !args.cache) return f$.rawAjax(args);
+
+			// cache
+			var queryType = args.type || 'GET';
+			var cacheKey = queryType + ':' + args.url;
+			var d = f$.ajaxCache[cacheKey];
+			if(!d) f$.ajaxCache[cacheKey] = d = {callback: []};  // data
+			if(d.result) {
+				if(args.success) args.success(d.result);
+				return
+			}
+			d.callback.push(args);
+			if(d.loading) return;
+			d.loading = true;
+			f$.rawAjax({
+				type: queryType,
+				url: args.url,
+				success: function(result) {
+					d.loading = false
+					d.result = result;
+					for(var i=0;i<d.callback.length;i++)
+						if(d.callback[i].success) d.callback[i].success(result)
+					d.callback.length = 0;
+				},
+				error: function() {
+					d.loading = false
+					for(var i=0;i<d.callback.length;i++)
+						if(d.callback[i].error) d.callback[i].error()
+					d.callback.length = 0;
+				}
+			})
+		};
+
+		// append classes
+		(function(){
+			var css = '@charset "UTF-8";[al-cloak],[hidden],.al-hide{display:none !important;}';
+			var head = document.querySelectorAll('head')[0];
+
+			var s = document.createElement('style');
+			s.setAttribute('type', 'text/css');
+			if (s.styleSheet) {  // IE
+				s.styleSheet.cssText = css;
+			} else {
+				s.appendChild(document.createTextNode(css));
+			}
+			head.appendChild(s);
+		})();
+
+	})();
+
+	f$.ready = (function() {
+		var callbacks = [];
+		var ready = false;
+		function onReady() {
+			ready = true;
+			f$.off(document, 'DOMContentLoaded', onReady);
+			for(var i=0;i<callbacks.length;i++)
+				callbacks[i]();
+			callbacks.length = 0;
+		};
+		f$.on(document, 'DOMContentLoaded', onReady);
+		return function(callback) {
+			if(ready) callback();
+			else callbacks.push(callback)
+		}
+	})();
+
+	if (window.jQuery) {
+		window.jQuery.fn.alight = function (data) {
+			var elements = [];
+			this.each(function (i, el) { return elements.push(el); });
+			if (elements.length)
+				return alight(elements, data);
+		};
+	}
+
+	alight.core.getFilter = function (name, cd) {
+		var filter = cd.locals[name];
+		if (filter && (f$.isFunction(filter) || filter.init || filter.fn))
+			return filter;
+		filter = alight.filters[name];
+		if (filter)
+			return filter;
+		throw 'Filter not found: ' + name;
+	};
+	function makeSimpleFilter(filter, option) {
+		var onStop;
+		var values = [];
+		var active = false;
+		var cd = option.cd;
+		var callback = option.callback;
+		if (option.filterConf.args.length) {
+			var watchers = [];
+			option.filterConf.args.forEach(function (exp, i) {
+				var w = cd.watch(exp, function (value) {
+					values[i + 1] = value;
+					handler();
+				});
+				if (!w.$.isStatic)
+					watchers.push(w);
+			});
+			var planned = false;
+			var handler = function () {
+				if (!planned) {
+					planned = true;
+					cd.watch('$onScanOnce', function () {
+						planned = false;
+						if (active) {
+							var result = filter.apply(null, values);
+							if (f$.isPromise(result)) {
+								result.then(function (value) {
+									callback(value);
+									cd.scan();
+								});
+							}
+							else
+								callback(result);
+						}
+					});
+				}
+			};
+			if (watchers.length) {
+				onStop = function () {
+					watchers.forEach(function (w) { return w.stop(); });
+				};
+			}
+		}
+		else {
+			var handler = function () {
+				var result = filter(values[0]);
+				if (f$.isPromise(result)) {
+					result.then(function (value) {
+						callback(value);
+						cd.scan();
+					});
+				}
+				else
+					callback(result);
+			};
+		}
+		var node = {
+			onChange: function (value) {
+				active = true;
+				values[0] = value;
+				handler();
+			},
+			onStop: onStop,
+			watchMode: option.watchMode
+		};
+		return node;
+	}
+	alight.core.buildFilterNode = function (cd, filterConf, filter, callback) {
+		if (f$.isFunction(filter)) {
+			return makeSimpleFilter(filter, { cd: cd, filterConf: filterConf, callback: callback });
+		}
+		else if (filter.init) {
+			return filter.init.call(cd, cd.scope, filterConf.raw, {
+				setValue: callback,
+				conf: filterConf,
+				changeDetector: cd
+			});
+		}
+		else if (f$.isFunction(filter.fn)) {
+			return makeSimpleFilter(filter.fn, { cd: cd, filterConf: filterConf, callback: callback, watchMode: filter.watchMode });
+		}
+		throw 'Wrong filter: ' + filterConf.name;
+	};
+	function makeFilterChain(cd, ce, prevCallback, option) {
+		var watchMode = null;
+		var oneTime = option.oneTime;
+		if (option.isArray)
+			watchMode = 'array';
+		else if (option.deep)
+			watchMode = 'deep';
+		if (!prevCallback) {
+			var watchObject_1 = {
+				el: option.element,
+				ea: option.elementAttr
+			};
+			prevCallback = function (value) {
+				execWatchObject(cd.scope, watchObject_1, value);
+			};
+		}
+		var chain = alight.utils.parsFilter(ce.filter);
+		var onStop = [];
+		for (var i = chain.result.length - 1; i >= 0; i--) {
+			var filter = alight.core.getFilter(chain.result[i].name, cd);
+			var node = alight.core.buildFilterNode(cd, chain.result[i], filter, prevCallback);
+			if (node.watchMode)
+				watchMode = node.watchMode;
+			if (node.onStop)
+				onStop.push(node.onStop);
+			prevCallback = node.onChange;
+		}
+		;
+		option = {
+			oneTime: oneTime
+		};
+		if (watchMode === 'array')
+			option.isArray = true;
+		else if (watchMode === 'deep')
+			option.deep = true;
+		if (onStop.length) {
+			option.onStop = function () {
+				onStop.forEach(function (fn) { return fn(); });
+				onStop.length = 0;
+			};
+		}
+		return cd.watch(ce.expression, prevCallback, option);
+	}
+	;
+
+	var ChangeDetector, ErrorValue, Root, WA, displayError, execWatchObject, get_time, innerEvents, notEqual, scanCore, watchAny, watchInitValue;
+
+	alight.ChangeDetector = function(scope) {
+	  var cd, root;
+	  root = new Root();
+	  cd = new ChangeDetector(root, scope || {});
+	  root.topCD = cd;
+	  return cd;
+	};
+
+	Root = function() {
+	  this.watchers = {
+		any: [],
+		finishBinding: [],
+		finishScan: [],
+		finishScanOnce: [],
+		onScanOnce: []
+	  };
+	  this.status = null;
+	  this.extraLoop = false;
+	  this.finishBinding_lock = false;
+	  this.lateScan = false;
+	  this.topCD = null;
+	  return this;
+	};
+
+	Root.prototype.destroy = function() {
+	  this.watchers.any.length = 0;
+	  this.watchers.finishBinding.length = 0;
+	  this.watchers.finishScan.length = 0;
+	  this.watchers.finishScanOnce.length = 0;
+	  this.watchers.onScanOnce.length = 0;
+	  if (this.topCD) {
+		return this.topCD.destroy();
+	  }
+	};
+
+	ChangeDetector = function(root, scope) {
+	  this.scope = scope;
+	  this.locals = scope;
+	  this.root = root;
+	  this.watchList = [];
+	  this.destroy_callbacks = [];
+	  this.parent = null;
+	  this.children = [];
+	  this.rwatchers = {
+		any: [],
+		finishScan: [],
+		elEvents: []
+	  };
+	};
+
+	ChangeDetector.prototype["new"] = function(scope, option) {
+	  var Locals, cd, parent;
+	  option = option || {};
+	  parent = this;
+	  if (scope == null) {
+		scope = parent.scope;
+	  }
+	  cd = new ChangeDetector(parent.root, scope);
+	  cd.parent = parent;
+	  if (scope === parent.scope) {
+		if (option.locals) {
+		  Locals = parent._ChildLocals;
+		  if (!Locals) {
+			parent._ChildLocals = Locals = function() {
+			  this.$$root = scope;
+			  return this;
+			};
+			Locals.prototype = parent.locals;
+		  }
+		  cd.locals = new Locals();
+		} else {
+		  cd.locals = parent.locals;
+		}
+	  }
+	  parent.children.push(cd);
+	  return cd;
+	};
+
+	ChangeDetector.prototype.destroy = function() {
+	  var cd, child, d, fn, i, j, k, l, len, len1, len2, len3, len4, len5, m, n, o, ref, ref1, ref2, ref3, ref4, ref5, root, wa;
+	  cd = this;
+	  root = cd.root;
+	  cd.scope = null;
+	  if (cd.parent) {
+		removeItem(cd.parent.children, cd);
+	  }
+	  ref = cd.destroy_callbacks;
+	  for (j = 0, len = ref.length; j < len; j++) {
+		fn = ref[j];
+		fn();
+	  }
+	  ref1 = cd.children.slice();
+	  for (k = 0, len1 = ref1.length; k < len1; k++) {
+		child = ref1[k];
+		child.destroy();
+	  }
+	  cd.destroy_callbacks.length = 0;
+	  ref2 = cd.watchList;
+	  for (l = 0, len2 = ref2.length; l < len2; l++) {
+		d = ref2[l];
+		if (d.onStop) {
+		  d.onStop();
+		}
+	  }
+	  cd.watchList.length = 0;
+	  ref3 = cd.rwatchers.any;
+	  for (m = 0, len3 = ref3.length; m < len3; m++) {
+		wa = ref3[m];
+		removeItem(root.watchers.any, wa);
+	  }
+	  cd.rwatchers.any.length = 0;
+	  ref4 = cd.rwatchers.finishScan;
+	  for (n = 0, len4 = ref4.length; n < len4; n++) {
+		wa = ref4[n];
+		removeItem(root.watchers.finishScan, wa);
+	  }
+	  cd.rwatchers.finishScan.length = 0;
+	  ref5 = this.rwatchers.elEvents;
+	  for (o = 0, len5 = ref5.length; o < len5; o++) {
+		i = ref5[o];
+		f$.off(i[0], i[1], i[2]);
+	  }
+	  this.rwatchers.elEvents.length = 0;
+	  if (root.topCD === cd) {
+		root.topCD = null;
+		root.destroy();
+	  }
+	};
+
+	WA = function(callback) {
+	  return this.cb = callback;
+	};
+
+	watchAny = function(cd, key, callback) {
+	  var root, wa;
+	  root = cd.root;
+	  wa = new WA(callback);
+	  cd.rwatchers[key].push(wa);
+	  root.watchers[key].push(wa);
+	  return {
+		stop: function() {
+		  removeItem(cd.rwatchers[key], wa);
+		  return removeItem(root.watchers[key], wa);
+		}
+	  };
+	};
+
+	ChangeDetector.prototype.on = function(element, eventName, callback) {
+	  f$.on(element, eventName, callback);
+	  return this.rwatchers.elEvents.push([element, eventName, callback]);
+	};
+
+	innerEvents = {
+	  $any: function(cd, callback) {
+		return watchAny(cd, 'any', callback);
+	  },
+	  $finishScan: function(cd, callback) {
+		return watchAny(cd, 'finishScan', callback);
+	  },
+	  $finishScanOnce: function(cd, callback) {
+		cd.root.watchers.finishScanOnce.push(callback);
+	  },
+	  $onScanOnce: function(cd, callback) {
+		cd.root.watchers.onScanOnce.push(callback);
+	  },
+	  $destroy: function(cd, callback) {
+		cd.destroy_callbacks.push(callback);
+	  },
+	  $finishBinding: function(cd, callback) {
+		cd.root.watchers.finishBinding.push(callback);
+	  }
+	};
+
+
+	/*
+		option:
+			isArray
+			readOnly
+			oneTime
+			deep
+			onStop
+			watchText
+	 */
+
+	watchInitValue = function() {};
+
+	ChangeDetector.prototype.watch = function(name, callback, option) {
+	  var cd, ce, d, exp, ie, isFunction, isStatic, key, r, root, scope;
+	  ie = innerEvents[name];
+	  if (ie) {
+		return ie(this, callback);
+	  }
+	  option = option || {};
+	  if (option === true) {
+		option = {
+		  isArray: true
+		};
+	  }
+	  if (option.init) {
+		console.warn('watch.init is depricated');
+	  }
+	  cd = this;
+	  root = cd.root;
+	  scope = cd.scope;
+	  if (f$.isFunction(name)) {
+		exp = name;
+		key = alight.utils.getId();
+		isFunction = true;
+	  } else {
+		isFunction = false;
+		exp = null;
+		name = name.trim();
+		if (name.slice(0, 2) === '::') {
+		  name = name.slice(2);
+		  option.oneTime = true;
+		}
+		key = name;
+		if (option.deep) {
+		  key = 'd#' + key;
+		} else if (option.isArray) {
+		  key = 'a#' + key;
+		} else {
+		  key = 'v#' + key;
+		}
+	  }
+	  if (alight.debug.watch) {
+		console.log('$watch', name);
+	  }
+	  isStatic = false;
+	  if (!isFunction) {
+		if (option.watchText) {
+		  exp = option.watchText.fn;
+		} else {
+		  ce = alight.utils.compile.expression(name);
+		  if (ce.filter) {
+			return makeFilterChain(cd, ce, callback, option);
+		  }
+		  isStatic = ce.isSimple && ce.simpleVariables.length === 0;
+		  exp = ce.fn;
+		}
+	  }
+	  if (option.deep) {
+		option.isArray = false;
+	  }
+	  d = {
+		isStatic: isStatic,
+		isArray: Boolean(option.isArray),
+		extraLoop: !option.readOnly,
+		deep: option.deep === true ? 10 : option.deep,
+		value: watchInitValue,
+		callback: callback,
+		exp: exp,
+		src: '' + name,
+		onStop: option.onStop || null,
+		el: option.element || null,
+		ea: option.elementAttr || null
+	  };
+	  if (isStatic) {
+		cd.watch('$onScanOnce', function() {
+		  return execWatchObject(scope, d, d.exp(scope));
+		});
+	  } else {
+		cd.watchList.push(d);
+	  }
+	  r = {
+		$: d,
+		stop: function() {
+		  var e, error;
+		  if (option.onStop) {
+			try {
+			  option.onStop();
+			} catch (error) {
+			  e = error;
+			  alight.exceptionHandler(e, "Error in onStop of watcher: " + name, name);
+			}
+		  }
+		  if (d.isStatic) {
+			return;
+		  }
+		  return removeItem(cd.watchList, d);
+		},
+		refresh: function() {
+		  var value;
+		  value = d.exp(cd.locals);
+		  if (value && d.deep) {
+			return d.value = alight.utils.clone(value, d.deep);
+		  } else if (value && d.isArray) {
+			return d.value = value.slice();
+		  } else {
+			return d.value = value;
+		  }
+		}
+	  };
+	  if (option.oneTime) {
+		d.callback = function(value) {
+		  if (value === void 0) {
+			return;
+		  }
+		  r.stop();
+		  return callback(value);
+		};
+	  }
+	  return r;
+	};
+
+	ChangeDetector.prototype.watchGroup = function(keys, callback) {
+	  var cd, group, j, key, len, planned;
+	  cd = this;
+	  if (!callback && f$.isFunction(keys)) {
+		callback = keys;
+		keys = null;
+	  }
+	  planned = false;
+	  group = function() {
+		if (planned) {
+		  return;
+		}
+		planned = true;
+		return cd.watch('$onScanOnce', function() {
+		  planned = false;
+		  return callback();
+		});
+	  };
+	  if (keys) {
+		for (j = 0, len = keys.length; j < len; j++) {
+		  key = keys[j];
+		  cd.watch(key, group);
+		}
+	  }
+	  return group;
+	};
+
+	get_time = (function() {
+	  if (window.performance) {
+		return function() {
+		  return Math.floor(performance.now());
+		};
+	  }
+	  return function() {
+		return (new Date()).getTime();
+	  };
+	})();
+
+	notEqual = function(a, b) {
+	  var i, j, len, ta, tb, v;
+	  if (a === null || b === null) {
+		return true;
+	  }
+	  ta = typeof a;
+	  tb = typeof b;
+	  if (ta !== tb) {
+		return true;
+	  }
+	  if (ta === 'object') {
+		if (a.length !== b.length) {
+		  return true;
+		}
+		for (i = j = 0, len = a.length; j < len; i = ++j) {
+		  v = a[i];
+		  if (v !== b[i]) {
+			return true;
+		  }
+		}
+	  }
+	  return false;
+	};
+
+	execWatchObject = function(scope, w, value) {
+	  if (w.el) {
+		if (w.ea) {
+		  w.el.setAttribute(w.ea, value);
+		} else {
+		  w.el.nodeValue = value;
+		}
+	  } else {
+		w.callback.call(scope, value);
+	  }
+	};
+
+	displayError = function(e, cd, w, option) {
+	  var args, text;
+	  args = {
+		src: w.src,
+		scope: cd.scope,
+		locals: cd.locals
+	  };
+	  if (w.el) {
+		args.element = w.el;
+	  }
+	  if (option === 1) {
+		text = '$scan, error in callback: ';
+	  } else {
+		text = '$scan, error in expression: ';
+	  }
+	  return alight.exceptionHandler(e, text + w.src, args);
+	};
+
+	ErrorValue = function() {};
+
+	scanCore = function(topCD, result) {
+	  var a0, a1, cd, changes, e, error, error1, extraLoop, index, j, last, len, locals, mutated, queue, ref, root, total, value, w;
+	  root = topCD.root;
+	  extraLoop = false;
+	  changes = 0;
+	  total = 0;
+	  if (!topCD) {
+		return;
+	  }
+	  queue = [];
+	  index = 0;
+	  cd = topCD;
+	  while (cd) {
+		locals = cd.locals;
+		total += cd.watchList.length;
+		ref = cd.watchList.slice();
+		for (j = 0, len = ref.length; j < len; j++) {
+		  w = ref[j];
+		  last = w.value;
+		  try {
+			value = w.exp(locals);
+		  } catch (error) {
+			e = error;
+			value = ErrorValue;
+		  }
+		  if (last !== value) {
+			mutated = false;
+			if (w.isArray) {
+			  a0 = Array.isArray(last);
+			  a1 = Array.isArray(value);
+			  if (a0 === a1) {
+				if (a0) {
+				  if (notEqual(last, value)) {
+					mutated = true;
+					w.value = value.slice();
+				  }
+				} else {
+				  mutated = true;
+				  w.value = value;
+				}
+			  } else {
+				mutated = true;
+				if (a1) {
+				  w.value = value.slice();
+				} else {
+				  w.value = value;
+				}
+			  }
+			} else if (w.deep) {
+			  if (!alight.utils.equal(last, value, w.deep)) {
+				mutated = true;
+				w.value = alight.utils.clone(value, w.deep);
+			  }
+			} else {
+			  mutated = true;
+			  w.value = value;
+			}
+			if (mutated) {
+			  mutated = false;
+			  if (value === ErrorValue) {
+				displayError(e, cd, w);
+			  } else {
+				changes++;
+				try {
+				  if (w.el) {
+					if (w.ea) {
+					  if (value != null) {
+						w.el.setAttribute(w.ea, value);
+					  } else {
+						w.el.removeAttribute(w.ea);
+					  }
+					} else {
+					  w.el.nodeValue = value;
+					}
+				  } else {
+					if (last === watchInitValue) {
+					  last = void 0;
+					}
+					if (w.callback.call(cd.scope, value, last) !== '$scanNoChanges') {
+					  if (w.extraLoop) {
+						extraLoop = true;
+					  }
+					}
+				  }
+				} catch (error1) {
+				  e = error1;
+				  displayError(e, cd, w, 1);
+				}
+			  }
+			}
+			if (alight.debug.scan > 1) {
+			  console.log('changed:', w.src);
+			}
+		  }
+		}
+		queue.push.apply(queue, cd.children);
+		cd = queue[index++];
+	  }
+	  result.total = total;
+	  result.changes = changes;
+	  result.extraLoop = extraLoop;
+	};
+
+	ChangeDetector.prototype.digest = function() {
+	  var callback, duration, j, len, mainLoop, onScanOnce, result, root, start, totalChanges;
+	  root = this.root;
+	  mainLoop = 10;
+	  totalChanges = 0;
+	  if (alight.debug.scan) {
+		start = get_time();
+	  }
+	  result = {
+		total: 0,
+		changes: 0,
+		extraLoop: false,
+		src: '',
+		scope: null,
+		element: null
+	  };
+	  while (mainLoop) {
+		mainLoop--;
+		root.extraLoop = false;
+		if (root.watchers.onScanOnce.length) {
+		  onScanOnce = root.watchers.onScanOnce.slice();
+		  root.watchers.onScanOnce.length = 0;
+		  for (j = 0, len = onScanOnce.length; j < len; j++) {
+			callback = onScanOnce[j];
+			callback.call(root);
+		  }
+		}
+		scanCore(this, result);
+		totalChanges += result.changes;
+		if (!result.extraLoop && !root.extraLoop && !root.watchers.onScanOnce.length) {
+		  break;
+		}
+	  }
+	  if (alight.debug.scan) {
+		duration = get_time() - start;
+		console.log("$scan: loops: (" + (10 - mainLoop) + "), last-loop changes: " + result.changes + ", watches: " + result.total + " / " + duration + "ms");
+	  }
+	  result.mainLoop = mainLoop;
+	  result.totalChanges = totalChanges;
+	  return result;
+	};
+
+	ChangeDetector.prototype.scan = function(cfg) {
+	  var callback, cb, finishScanOnce, j, k, l, len, len1, len2, ref, ref1, result, root;
+	  root = this.root;
+	  cfg = cfg || {};
+	  if (alight.option.zone && !cfg.zone) {
+		return;
+	  }
+	  if (f$.isFunction(cfg)) {
+		cfg = {
+		  callback: cfg
+		};
+	  }
+	  if (cfg.callback) {
+		root.watchers.finishScanOnce.push(cfg.callback);
+	  }
+	  if (cfg.late) {
+		if (root.lateScan) {
+		  return;
+		}
+		root.lateScan = true;
+		alight.nextTick(function() {
+		  if (root.lateScan) {
+			return root.topCD.scan();
+		  }
+		});
+		return;
+	  }
+	  if (root.status === 'scaning') {
+		root.extraLoop = true;
+		return;
+	  }
+	  root.lateScan = false;
+	  root.status = 'scaning';
+	  if (root.topCD) {
+		result = root.topCD.digest();
+	  } else {
+		result = {};
+	  }
+	  if (result.totalChanges) {
+		ref = root.watchers.any;
+		for (j = 0, len = ref.length; j < len; j++) {
+		  cb = ref[j];
+		  cb();
+		}
+	  }
+	  root.status = null;
+	  ref1 = root.watchers.finishScan;
+	  for (k = 0, len1 = ref1.length; k < len1; k++) {
+		callback = ref1[k];
+		callback();
+	  }
+	  finishScanOnce = root.watchers.finishScanOnce.slice();
+	  root.watchers.finishScanOnce.length = 0;
+	  for (l = 0, len2 = finishScanOnce.length; l < len2; l++) {
+		callback = finishScanOnce[l];
+		callback.call(root);
+	  }
+	  if (result.mainLoop === 0) {
+		throw 'Infinity loop detected';
+	  }
+	  return result;
+	};
+
+	alight.core.ChangeDetector = ChangeDetector;
+
+	ChangeDetector.prototype.compile = function(expression, option) {
+	  return alight.utils.compile.expression(expression, option).fn;
+	};
+
+	ChangeDetector.prototype.setValue = function(name, value) {
+	  var cd, e, error, error1, fn, j, key, len, locals, msg, ref, rx;
+	  cd = this;
+	  fn = cd.compile(name + ' = $value', {
+		input: ['$value'],
+		no_return: true
+	  });
+	  try {
+		return fn(cd.locals, value);
+	  } catch (error) {
+		e = error;
+		msg = "can't set variable: " + name;
+		if (alight.debug.parser) {
+		  console.warn(msg);
+		}
+		if (('' + e).indexOf('TypeError') >= 0) {
+		  rx = name.match(/^([\w\d\.]+)\.[\w\d]+$/);
+		  if (rx && rx[1]) {
+			locals = cd.locals;
+			ref = rx[1].split('.');
+			for (j = 0, len = ref.length; j < len; j++) {
+			  key = ref[j];
+			  if (locals[key] === void 0) {
+				locals[key] = {};
+			  }
+			  locals = locals[key];
+			}
+			try {
+			  fn(cd.locals, value);
+			  return;
+			} catch (error1) {
+
+			}
+		  }
+		}
+		return alight.exceptionHandler(e, msg, {
+		  name: name,
+		  value: value
+		});
+	  }
+	};
+
+	ChangeDetector.prototype["eval"] = function(exp) {
+	  var fn;
+	  fn = this.compile(exp);
+	  return fn(this.locals);
+	};
+
+	ChangeDetector.prototype.getValue = function(name) {
+	  return this["eval"](name);
+	};
+
+	(function() {
+
+	  /*
+		  Scope.$watchText(name, callback, config)
+		  args:
+			  config.readOnly
+			  config.onStatic
+		  result:
+			  isStatic: flag
+			  $: watch-object
+			  value: current value
+			  exp: expression
+			  stop: function to stop watch
+	  
+	  
+		  kind of expressions
+			  simple: {{model}}
+			  text-directive: {{#dir model}} {{=staticModel}} {{::oneTimeBinding}}
+			  with function: {{fn()}}
+			  with filter: {{value | filter}}
+	   */
+	  var watchText;
+	  alight.text.$base = function(option) {
+		var cd, dir, env, point, scope;
+		point = option.point;
+		cd = option.cd;
+		scope = cd.scope;
+		if (scope.$ns && scope.$ns.text) {
+		  dir = scope.$ns.text[option.name];
+		} else {
+		  dir = alight.text[option.name];
+		}
+		if (!dir) {
+		  throw 'No directive alight.text.' + option.name;
+		}
+		env = {
+		  changeDetector: cd,
+		  setter: function(value) {
+			if (!option.update) {
+			  return;
+			}
+			if (value === null) {
+			  point.value = '';
+			} else {
+			  point.value = '' + value;
+			}
+			return option.update();
+		  },
+		  setterRaw: function(value) {
+			if (!option.updateRaw) {
+			  return;
+			}
+			if (value === null) {
+			  point.value = '';
+			} else {
+			  point.value = '' + value;
+			}
+			return option.updateRaw();
+		  },
+		  "finally": function(value) {
+			if (!option["finally"]) {
+			  return;
+			}
+			if (value === null) {
+			  point.value = '';
+			} else {
+			  point.value = '' + value;
+			}
+			point.type = 'text';
+			option["finally"]();
+			option.update = null;
+			return option["finally"] = null;
+		  }
+		};
+		return dir.call(cd, env.setter, option.exp, scope, env);
+	  };
+	  watchText = function(expression, callback, config) {
+		var canUseSimpleBuilder, cd, ce, d, data, doFinally, doUpdate, doUpdateRaw, exp, fireCallback, fn, i, j, k, l, len, len1, len2, lname, name, noCache, privateValue, resultValue, st, updatePlanned, value, w, watchCount, watchObject;
+		config = config || {};
+		cd = this;
+		if (alight.debug.watchText) {
+		  console.log('$watchText', expression);
+		}
+		st = alight.utils.compile.buildSimpleText(expression, null);
+		if (st) {
+		  cd.watch(expression, callback, {
+			watchText: st,
+			element: config.element,
+			elementAttr: config.elementAttr
+		  });
+		  return;
+		}
+		data = alight.utils.parsText(expression);
+		watchCount = 0;
+		canUseSimpleBuilder = true;
+		noCache = false;
+		doUpdate = doUpdateRaw = doFinally = function() {};
+		for (j = 0, len = data.length; j < len; j++) {
+		  d = data[j];
+		  if (d.type === 'expression') {
+			exp = d.list.join('|');
+			lname = exp.match(/^([^\w\d\s\$"'\(\u0410-\u044F\u0401\u0451]+)/);
+			if (lname) {
+			  d.isDir = true;
+			  name = lname[1];
+			  if (name === '#') {
+				i = exp.indexOf(' ');
+				if (i < 0) {
+				  name = exp.substring(1);
+				  exp = '';
+				} else {
+				  name = exp.slice(1, i);
+				  exp = exp.slice(i);
+				}
+			  } else {
+				exp = exp.substring(name.length);
+			  }
+			  alight.text.$base({
+				name: name,
+				exp: exp,
+				cd: cd,
+				point: d,
+				update: function() {
+				  return doUpdate();
+				},
+				updateRaw: function() {
+				  return doUpdateRaw();
+				},
+				"finally": function() {
+				  doUpdate();
+				  return doFinally();
+				}
+			  });
+			  noCache = true;
+			  if (d.type !== 'text') {
+				canUseSimpleBuilder = false;
+			  }
+			} else {
+			  ce = alight.utils.compile.expression(exp, {
+				string: true
+			  });
+			  if (!ce.filter) {
+				d.fn = ce.fn;
+				if (!ce.rawExpression) {
+				  throw 'Error';
+				}
+				if (ce.isSimple && ce.simpleVariables.length === 0) {
+				  d.type = 'text';
+				  d.value = d.fn();
+				} else {
+				  d.re = ce.rawExpression;
+				  watchCount++;
+				}
+			  } else {
+				watchCount++;
+				canUseSimpleBuilder = false;
+				d.watched = true;
+				(function(d) {
+				  return cd.watch(exp, function(value) {
+					if (value == null) {
+					  value = '';
+					}
+					d.value = value;
+					return doUpdate();
+				  });
+				})(d);
+			  }
+			}
+		  }
+		}
+		if (canUseSimpleBuilder) {
+		  if (!watchCount) {
+			value = '';
+			for (k = 0, len1 = data.length; k < len1; k++) {
+			  d = data[k];
+			  value += d.value;
+			}
+			cd.watch('$onScanOnce', function() {
+			  return execWatchObject(cd.scope, {
+				callback: callback,
+				el: config.element,
+				ea: config.elementAttr
+			  }, value);
+			});
+			return;
+		  }
+		  if (noCache) {
+			st = alight.utils.compile.buildSimpleText(null, data);
+		  } else {
+			st = alight.utils.compile.buildSimpleText(expression, data);
+		  }
+		  cd.watch(expression, callback, {
+			watchText: {
+			  fn: st.fn
+			},
+			element: config.element,
+			elementAttr: config.elementAttr
+		  });
+		  return;
+		}
+		watchObject = {
+		  callback: callback,
+		  el: config.element,
+		  ea: config.elementAttr
+		};
+		data.scope = cd.scope;
+		fn = alight.utils.compile.buildText(expression, data);
+		doUpdateRaw = function() {
+		  return execWatchObject(cd.scope, watchObject, fn());
+		};
+		if (watchCount) {
+		  w = null;
+		  resultValue = '';
+		  doUpdate = function() {
+			resultValue = fn();
+		  };
+		  doFinally = function() {
+			var l, len2;
+			i = true;
+			for (l = 0, len2 = data.length; l < len2; l++) {
+			  d = data[l];
+			  if (d.type === 'expression') {
+				i = false;
+				break;
+			  }
+			}
+			if (!i) {
+			  return;
+			}
+			cd.watch('$finishScanOnce', function() {
+			  return w.stop();
+			});
+			if (config.onStatic) {
+			  config.onStatic();
+			}
+		  };
+		  privateValue = function() {
+			return resultValue;
+		  };
+		  for (l = 0, len2 = data.length; l < len2; l++) {
+			d = data[l];
+			if (d.type === 'expression') {
+			  if (d.isDir || d.watched) {
+				continue;
+			  }
+			  d.watched = true;
+			  (function(d, exp) {
+				return cd.watch(exp, function(value) {
+				  if (value == null) {
+					value = '';
+				  }
+				  d.value = value;
+				  return doUpdate();
+				});
+			  })(d, d.list.join(' | '));
+			}
+		  }
+		  doUpdate();
+		  w = cd.watch(privateValue, callback, {
+			element: config.element,
+			elementAttr: config.elementAttr
+		  });
+		} else {
+		  updatePlanned = false;
+		  fireCallback = function() {
+			updatePlanned = false;
+			return doUpdateRaw();
+		  };
+		  doUpdate = function() {
+			if (updatePlanned) {
+			  return;
+			}
+			updatePlanned = true;
+			return cd.watch('$onScanOnce', fireCallback);
+		  };
+		  doUpdate();
+		}
+	  };
+	  return ChangeDetector.prototype.watchText = watchText;
+	})();
+
+	var _optimizeLineElements;
+
+	_optimizeLineElements = {
+	  TR: 1,
+	  TD: 1,
+	  LI: 1
+	};
+
+	alight.utils.optmizeElement = function(element, noRemove) {
+	  var current, d, data, e, exp, i, j, k, len, len1, lname, mark, n, next, prev, prevLineElement, ref, result, text, wrapped;
+	  if (element.nodeType === 1) {
+		noRemove = noRemove || !alight.option.domOptimizationRemoveEmpty;
+		if (element.nodeName === 'PRE') {
+		  noRemove = true;
+		}
+		e = element.firstChild;
+		if (e && e.nodeType === 3 && !e.nodeValue.trim() && !noRemove) {
+		  f$.remove(e);
+		  e = element.firstChild;
+		}
+		prevLineElement = false;
+		while (e) {
+		  next = e.nextSibling;
+		  if (prevLineElement && e.nodeType === 3 && !e.nodeValue.trim() && !noRemove) {
+			f$.remove(e);
+		  } else {
+			prevLineElement = e.nodeType === 1 && _optimizeLineElements[e.nodeName];
+			alight.utils.optmizeElement(e, noRemove);
+		  }
+		  e = next;
+		}
+		e = element.lastChild;
+		if (e && e.nodeType === 3 && !e.nodeValue.trim() && !noRemove) {
+		  f$.remove(e);
+		}
+	  } else if (element.nodeType === 3) {
+		text = element.data;
+		mark = alight.utils.pars_start_tag;
+		i = text.indexOf(mark);
+		if (i < 0) {
+		  return;
+		}
+		if (text.slice(i + mark.length).indexOf(mark) < 0) {
+		  return;
+		}
+		prev = 't';
+		current = {
+		  value: ''
+		};
+		result = [current];
+		data = alight.utils.parsText(text);
+		for (j = 0, len = data.length; j < len; j++) {
+		  d = data[j];
+		  if (d.type === 'text') {
+			current.value += d.value;
+		  } else {
+			exp = d.list.join('|');
+			wrapped = alight.utils.pars_start_tag + exp + alight.utils.pars_finish_tag;
+			lname = exp.match(/^([^\w\d\s\$"'\(\u0410-\u044F\u0401\u0451]+)/);
+			if (lname) {
+			  if (prev === 't' || prev === 'd') {
+				current.value += wrapped;
+			  } else {
+				current = {
+				  value: wrapped
+				};
+				result.push(current);
+			  }
+			  prev = 'd';
+			} else if (d.list.length === 1) {
+			  if (prev === 't' || prev === 'v') {
+				current.value += wrapped;
+			  } else {
+				current = {
+				  value: wrapped
+				};
+				result.push(current);
+			  }
+			  prev = 'v';
+			} else {
+			  if (prev === 't') {
+				current.value += wrapped;
+			  } else {
+				current = {
+				  value: wrapped
+				};
+				result.push(current);
+			  }
+			}
+		  }
+		}
+		if (result.length < 2) {
+		  return;
+		}
+		e = element;
+		e.data = result[0].value;
+		ref = result.slice(1);
+		for (k = 0, len1 = ref.length; k < len1; k++) {
+		  d = ref[k];
+		  n = document.createTextNode(d.value);
+		  f$.after(e, n);
+		  e = n;
+		}
+	  }
+	};
+
+	var Env, attrBinding, bindComment, bindElement, bindNode, bindText, sortByPriority, testDirective;
+
+	(function() {
+	  var ext;
+	  alight.hooks.attribute = ext = [];
+	  ext.push({
+		code: 'dataPrefix',
+		fn: function() {
+		  if (this.attrName.slice(0, 5) === 'data-') {
+			this.attrName = this.attrName.slice(5);
+		  }
+		}
+	  });
+	  ext.push({
+		code: 'colonNameSpace',
+		fn: function() {
+		  var name, parts;
+		  if (this.directive || this.name) {
+			return;
+		  }
+		  parts = this.attrName.match(/^(\w+)[\-\:](.+)$/);
+		  if (parts) {
+			this.ns = parts[1];
+			name = parts[2];
+		  } else {
+			this.ns = '$global';
+			name = this.attrName;
+		  }
+		  parts = name.match(/^([^\.]+)\.(.*)$/);
+		  if (parts) {
+			name = parts[1];
+			this.attrArgument = parts[2];
+		  }
+		  this.name = name.replace(/(-\w)/g, function(m) {
+			return m.substring(1).toUpperCase();
+		  });
+		}
+	  });
+	  ext.push({
+		code: 'getGlobalDirective',
+		fn: function() {
+		  var path;
+		  if (this.directive) {
+			return;
+		  }
+		  path = alight.d[this.ns];
+		  if (!path) {
+			this.result = 'noNS';
+			this.stop = true;
+			return;
+		  }
+		  this.directive = path[this.name];
+		  if (!this.directive) {
+			if (this.ns === '$global') {
+			  this.result = 'noNS';
+			} else {
+			  this.result = 'noDirective';
+			}
+			this.stop = true;
+		  }
+		}
+	  });
+	  ext.push({
+		code: 'cloneDirective',
+		fn: function() {
+		  var dir, k, name, ns, r, v;
+		  r = this.directive;
+		  ns = this.ns;
+		  name = this.name;
+		  dir = {};
+		  if (f$.isFunction(r)) {
+			dir.init = r;
+		  } else if (f$.isObject(r)) {
+			for (k in r) {
+			  v = r[k];
+			  dir[k] = v;
+			}
+		  } else {
+			throw 'Wrong directive: ' + ns + '.' + name;
+		  }
+		  dir.priority = r.priority || (alight.priority[ns] && alight.priority[ns][name]) || 0;
+		  dir.restrict = r.restrict || 'A';
+		  if (dir.restrict.indexOf(this.attrType) < 0) {
+			throw 'Directive has wrong binding (attribute/element): ' + name;
+		  }
+		  this.directive = dir;
+		}
+	  });
+	  return ext.push({
+		code: 'preprocessor',
+		fn: function() {
+		  var directive, name, ns;
+		  ns = this.ns;
+		  name = this.name;
+		  directive = this.directive;
+		  directive.$init = function(cd, element, value, env) {
+			var doProcess, dscope;
+			doProcess = function() {
+			  var dp, i, j, l, len;
+			  l = dscope.procLine;
+			  for (i = j = 0, len = l.length; j < len; i = ++j) {
+				dp = l[i];
+				dp.fn.call(dscope);
+				if (dscope.isDeferred) {
+				  dscope.procLine = l.slice(i + 1);
+				  break;
+				}
+			  }
+			  dscope.async = true;
+			  return null;
+			};
+			dscope = {
+			  element: element,
+			  value: value,
+			  cd: cd,
+			  env: env,
+			  ns: ns,
+			  name: name,
+			  doBinding: false,
+			  directive: directive,
+			  isDeferred: false,
+			  procLine: alight.hooks.directive,
+			  makeDeferred: function() {
+				dscope.isDeferred = true;
+				dscope.doBinding = true;
+				dscope.retStopBinding = true;
+				dscope.async = false;
+				return function() {
+				  dscope.isDeferred = false;
+				  if (dscope.async) {
+					return doProcess();
+				  }
+				};
+			  }
+			};
+			if (directive.stopBinding) {
+			  env.stopBinding = true;
+			}
+			doProcess();
+			if (dscope.retStopBinding) {
+			  return 'stopBinding';
+			}
+		  };
+		}
+	  });
+	})();
+
+	(function() {
+	  var ext;
+	  ext = alight.hooks.directive;
+	  ext.push({
+		code: 'init',
+		fn: function() {
+		  var result;
+		  if (this.directive.init) {
+			if (alight.debug.directive) {
+			  if (this.directive.scope) {
+				console.warn(this.ns + "-" + this.name + " uses scope and init together, probably you need use link instead of init");
+			  }
+			}
+			this.env.changeDetector = this.cd;
+			result = this.directive.init.call(this.env, this.cd.scope, this.element, this.value, this.env);
+			if (result && result.start) {
+			  result.start();
+			}
+		  }
+		}
+	  });
+	  ext.push({
+		code: 'templateUrl',
+		fn: function() {
+		  var callback, ds;
+		  ds = this;
+		  if (this.directive.templateUrl) {
+			callback = this.makeDeferred();
+			f$.ajax({
+			  cache: true,
+			  url: this.directive.templateUrl,
+			  success: function(html) {
+				ds.directive.template = html;
+				return callback();
+			  },
+			  error: callback
+			});
+		  }
+		}
+	  });
+	  ext.push({
+		code: 'template',
+		fn: function() {
+		  var el;
+		  if (this.directive.template) {
+			if (this.element.nodeType === 1) {
+			  this.element.innerHTML = this.directive.template;
+			} else if (this.element.nodeType === 8) {
+			  el = document.createElement('p');
+			  el.innerHTML = this.directive.template.trim();
+			  el = el.firstChild;
+			  f$.after(this.element, el);
+			  this.element = el;
+			  this.doBinding = true;
+			}
+		  }
+		}
+	  });
+	  ext.push({
+		code: 'scope',
+		fn: function() {
+		  var childCD, parentCD;
+		  if (!this.directive.scope) {
+			return;
+		  }
+		  parentCD = this.cd;
+		  switch (this.directive.scope) {
+			case true:
+			  childCD = parentCD["new"]({
+				$parent: parentCD.scope
+			  });
+			  break;
+			case 'root':
+			  childCD = alight.ChangeDetector({
+				$parent: parentCD.scope
+			  });
+			  parentCD.watch('$destroy', function() {
+				return childCD.destroy();
+			  });
+			  break;
+			default:
+			  throw 'Wrong scope value: ' + this.directive.scope;
+		  }
+		  this.env.parentChangeDetector = parentCD;
+		  this.cd = childCD;
+		  this.doBinding = true;
+		  this.retStopBinding = true;
+		}
+	  });
+	  ext.push({
+		code: 'link',
+		fn: function() {
+		  var result;
+		  if (this.directive.link) {
+			this.env.changeDetector = this.cd;
+			result = this.directive.link.call(this.env, this.cd.scope, this.element, this.value, this.env);
+			if (result && result.start) {
+			  result.start();
+			}
+		  }
+		}
+	  });
+	  return ext.push({
+		code: 'scopeBinding',
+		fn: function() {
+		  if (this.doBinding && !this.env.stopBinding) {
+			alight.bind(this.cd, this.element, {
+			  skip_attr: this.env.skippedAttr()
+			});
+		  }
+		}
+	  });
+	})();
+
+	testDirective = (function() {
+	  var addAttr;
+	  addAttr = function(attrName, args, base) {
+		var attr;
+		if (args.attr_type === 'A') {
+		  attr = base || {};
+		  attr.priority = alight.priority.$attribute;
+		  attr.is_attr = true;
+		  attr.name = attrName;
+		  attr.attrName = attrName;
+		  attr.element = args.element;
+		  args.list.push(attr);
+		} else if (args.attr_type === 'M') {
+		  args.list.push(base);
+		}
+	  };
+	  return function(attrName, args) {
+		var attrHook, attrSelf, j, len, ref;
+		if (args.skip_attr.indexOf(attrName) >= 0) {
+		  return addAttr(attrName, args, {
+			skip: true
+		  });
+		}
+		attrSelf = {
+		  attrName: attrName,
+		  attrType: args.attr_type,
+		  element: args.element,
+		  cd: args.cd,
+		  result: null
+		};
+		ref = alight.hooks.attribute;
+		for (j = 0, len = ref.length; j < len; j++) {
+		  attrHook = ref[j];
+		  attrHook.fn.call(attrSelf);
+		  if (attrSelf.stop) {
+			break;
+		  }
+		}
+		if (attrSelf.result === 'noNS') {
+		  addAttr(attrName, args);
+		  return;
+		}
+		if (attrSelf.result === 'noDirective') {
+		  if (args.attr_type === 'E') {
+			args.list.push({
+			  name: attrName,
+			  priority: -10,
+			  attrName: attrName,
+			  noDirective: true
+			});
+			return;
+		  }
+		  addAttr(attrName, args, {
+			noDirective: true
+		  });
+		  return;
+		}
+		args.list.push({
+		  name: attrName,
+		  directive: attrSelf.directive,
+		  priority: attrSelf.directive.priority,
+		  attrName: attrName,
+		  attrArgument: attrSelf.attrArgument
+		});
+	  };
+	})();
+
+	sortByPriority = function(a, b) {
+	  if (a.priority === b.priority) {
+		return 0;
+	  }
+	  if (a.priority > b.priority) {
+		return -1;
+	  } else {
+		return 1;
+	  }
+	};
+
+	attrBinding = function(cd, element, value, attrName) {
+	  var text;
+	  text = value;
+	  if (text.indexOf(alight.utils.pars_start_tag) < 0) {
+		return;
+	  }
+	  cd.watchText(text, null, {
+		element: element,
+		elementAttr: attrName
+	  });
+	  return true;
+	};
+
+	bindText = function(cd, element, option) {
+	  var text;
+	  text = element.data;
+	  if (text.indexOf(alight.utils.pars_start_tag) < 0) {
+		return;
+	  }
+	  cd.watchText(text, null, {
+		element: element
+	  });
+	  return text;
+	};
+
+	bindComment = function(cd, element, option) {
+	  var args, d, dirName, directive, e, env, error, i, list, text, value;
+	  text = element.nodeValue.trim();
+	  if (text.slice(0, 10) !== 'directive:') {
+		return;
+	  }
+	  text = text.slice(10).trim();
+	  i = text.indexOf(' ');
+	  if (i >= 0) {
+		dirName = text.slice(0, +(i - 1) + 1 || 9e9);
+		value = text.slice(i + 1);
+	  } else {
+		dirName = text;
+		value = '';
+	  }
+	  args = {
+		list: list = [],
+		element: element,
+		attr_type: 'M',
+		cd: cd,
+		skip_attr: []
+	  };
+	  testDirective(dirName, args);
+	  d = list[0];
+	  if (d.noDirective) {
+		throw "Comment directive not found: " + dirName;
+	  }
+	  directive = d.directive;
+	  env = new Env({
+		element: element,
+		attrName: d.attrName,
+		attributes: list
+	  });
+	  if (alight.debug.directive) {
+		console.log('bind', d.attrName, value, d);
+	  }
+	  try {
+		directive.$init(cd, element, value, env);
+	  } catch (error) {
+		e = error;
+		alight.exceptionHandler(e, 'Error in directive: ' + d.name, {
+		  value: value,
+		  env: env,
+		  cd: cd,
+		  scope: cd.scope,
+		  element: element
+		});
+	  }
+	  if (env.skipToElement) {
+		return {
+		  directive: 1,
+		  skipToElement: env.skipToElement
+		};
+	  }
+	  return {
+		directive: 1,
+		skipToElement: null
+	  };
+	};
+
+	Env = function(option) {
+	  var k, v;
+	  for (k in option) {
+		v = option[k];
+		this[k] = v;
+	  }
+	  return this;
+	};
+
+	Env.prototype.takeAttr = function(name, skip) {
+	  var attr, j, len, ref, value;
+	  if (arguments.length === 1) {
+		skip = true;
+	  }
+	  ref = this.attributes;
+	  for (j = 0, len = ref.length; j < len; j++) {
+		attr = ref[j];
+		if (attr.attrName !== name) {
+		  continue;
+		}
+		if (skip) {
+		  attr.skip = true;
+		}
+		value = this.element.getAttribute(name);
+		return value || true;
+	  }
+	};
+
+	Env.prototype.skippedAttr = function() {
+	  var attr, j, len, ref, results;
+	  ref = this.attributes;
+	  results = [];
+	  for (j = 0, len = ref.length; j < len; j++) {
+		attr = ref[j];
+		if (!attr.skip) {
+		  continue;
+		}
+		results.push(attr.attrName);
+	  }
+	  return results;
+	};
+
+	Env.prototype.scan = function(option) {
+	  return this.changeDetector.scan(option);
+	};
+
+	Env.prototype.on = function(element, eventname, callback) {
+	  return this.changeDetector.on(element, eventname, callback);
+	};
+
+	Env.prototype.watch = function(name, callback, option) {
+	  return this.changeDetector.watch(name, callback, option);
+	};
+
+	Env.prototype.watchGroup = function(keys, callback) {
+	  return this.changeDetector.watchGroup(keys, callback);
+	};
+
+	Env.prototype.watchText = function(expression, callback, option) {
+	  return this.changeDetector.watchText(expression, callback, option);
+	};
+
+	Env.prototype.getValue = function(name) {
+	  return this.changeDetector.getValue(name);
+	};
+
+	Env.prototype.setValue = function(name, value) {
+	  return this.changeDetector.setValue(name, value);
+	};
+
+	Env.prototype["eval"] = function(exp) {
+	  return this.changeDetector["eval"](exp);
+	};
+
+
+	/*
+		env.new(scope, option)
+		env.new(scope, true)  - makes locals
+		env.new(true)  - makes locals
+	 */
+
+	Env.prototype["new"] = function(scope, option) {
+	  if (option === true) {
+		option = {
+		  locals: true
+		};
+	  } else if (scope === true && (option == null)) {
+		scope = null;
+		option = {
+		  locals: true
+		};
+	  }
+	  return this.changeDetector["new"](scope, option);
+	};
+
+
+	/*
+		env.bind(cd, element, option)
+		env.bind(cd)
+		env.bind(element)
+		env.bind(element, cd)
+		env.bind(option)
+		env.bind(env.new(), option)
+	 */
+
+	Env.prototype.bind = function(_cd, _element, _option) {
+	  var a, cd, count, element, j, len, option;
+	  this.stopBinding = true;
+	  count = 0;
+	  for (j = 0, len = arguments.length; j < len; j++) {
+		a = arguments[j];
+		if (a instanceof ChangeDetector) {
+		  cd = a;
+		  count += 1;
+		}
+		if (f$.isElement(a)) {
+		  element = a;
+		  count += 1;
+		}
+	  }
+	  option = arguments[count];
+	  if (!option) {
+		option = {
+		  skip: this.skippedAttr()
+		};
+	  }
+	  if (!element) {
+		element = this.element;
+	  }
+	  if (!cd) {
+		cd = this.changeDetector;
+	  }
+	  return alight.bind(cd, element, option);
+	};
+
+	bindElement = (function() {
+	  return function(cd, element, config) {
+		var args, attr, attrName, attrValue, bindResult, childElement, childNodes, childOption, d, directive, e, env, error, fastBinding, fb, index, j, len, len1, len2, list, n, o, r, ref, ref1, skipChildren, skipToElement, skip_attr, value;
+		fb = {
+		  attr: [],
+		  dir: [],
+		  children: []
+		};
+		bindResult = {
+		  directive: 0,
+		  hook: 0,
+		  skipToElement: null,
+		  fb: fb
+		};
+		config = config || {};
+		skipChildren = false;
+		skip_attr = config.skip_attr;
+		if (config.skip === true) {
+		  config.skip_top = true;
+		} else if (!skip_attr) {
+		  skip_attr = config.skip || [];
+		}
+		if (!(skip_attr instanceof Array)) {
+		  skip_attr = [skip_attr];
+		}
+		if (!config.skip_top) {
+		  args = {
+			list: list = [],
+			element: element,
+			skip_attr: skip_attr,
+			attr_type: 'E',
+			cd: cd
+		  };
+		  attrName = element.nodeName.toLowerCase();
+		  testDirective(attrName, args);
+		  if (attrName === 'script' || attrName === 'style') {
+			skipChildren = true;
+		  }
+		  args.attr_type = 'A';
+		  ref = element.attributes;
+		  for (j = 0, len = ref.length; j < len; j++) {
+			attr = ref[j];
+			testDirective(attr.name, args);
+		  }
+		  if (config.attachDirective) {
+			ref1 = config.attachDirective;
+			for (attrName in ref1) {
+			  attrValue = ref1[attrName];
+			  testDirective(attrName, args);
+			}
+		  }
+		  list = list.sort(sortByPriority);
+		  for (n = 0, len1 = list.length; n < len1; n++) {
+			d = list[n];
+			if (d.skip) {
+			  continue;
+			}
+			if (d.noDirective) {
+			  throw "Directive not found: " + d.name;
+			}
+			d.skip = true;
+			if (config.attachDirective && config.attachDirective[d.attrName]) {
+			  value = config.attachDirective[d.attrName];
+			} else {
+			  value = element.getAttribute(d.attrName);
+			}
+			if (d.is_attr) {
+			  if (attrBinding(cd, element, value, d.attrName)) {
+				fb.attr.push({
+				  attrName: d.attrName,
+				  value: value
+				});
+			  }
+			} else {
+			  directive = d.directive;
+			  env = new Env({
+				element: element,
+				attrName: d.attrName,
+				attrArgument: d.attrArgument || null,
+				attributes: list,
+				stopBinding: false,
+				elementCanBeRemoved: config.elementCanBeRemoved,
+				fbElement: config.fbElement
+			  });
+			  if (alight.debug.directive) {
+				console.log('bind', d.attrName, value, d);
+			  }
+			  try {
+				if (directive.$init(cd, element, value, env) === 'stopBinding') {
+				  skipChildren = true;
+				}
+			  } catch (error) {
+				e = error;
+				alight.exceptionHandler(e, 'Error in directive: ' + d.attrName, {
+				  value: value,
+				  env: env,
+				  cd: cd,
+				  scope: cd.scope,
+				  element: element
+				});
+			  }
+			  if (env.fastBinding) {
+				if (f$.isFunction(env.fastBinding)) {
+				  fastBinding = env.fastBinding;
+				} else {
+				  fastBinding = directive.init;
+				}
+				fb.dir.push({
+				  fb: fastBinding,
+				  attrName: d.attrName,
+				  value: value,
+				  attrArgument: env.attrArgument,
+				  fbData: env.fbData
+				});
+			  } else {
+				bindResult.directive++;
+			  }
+			  if (env.stopBinding) {
+				skipChildren = true;
+				break;
+			  }
+			  if (env.skipToElement) {
+				bindResult.skipToElement = env.skipToElement;
+			  }
+			}
+		  }
+		}
+		if (!skipChildren) {
+		  skipToElement = null;
+		  childNodes = (function() {
+			var len2, o, ref2, results;
+			ref2 = element.childNodes;
+			results = [];
+			for (o = 0, len2 = ref2.length; o < len2; o++) {
+			  childElement = ref2[o];
+			  results.push(childElement);
+			}
+			return results;
+		  })();
+		  for (index = o = 0, len2 = childNodes.length; o < len2; index = ++o) {
+			childElement = childNodes[index];
+			if (!childElement) {
+			  continue;
+			}
+			if (skipToElement) {
+			  if (skipToElement === childElement) {
+				skipToElement = null;
+			  }
+			  continue;
+			}
+			if (config.fbElement) {
+			  childOption = {
+				fbElement: config.fbElement.childNodes[index]
+			  };
+			}
+			r = bindNode(cd, childElement, childOption);
+			bindResult.directive += r.directive;
+			bindResult.hook += r.hook;
+			skipToElement = r.skipToElement;
+			if (r.fb) {
+			  if (r.fb.text || (r.fb.attr && r.fb.attr.length) || (r.fb.dir && r.fb.dir.length) || (r.fb.children && r.fb.children.length)) {
+				fb.children.push({
+				  index: index,
+				  fb: r.fb
+				});
+			  }
+			}
+		  }
+		}
+		return bindResult;
+	  };
+	})();
+
+	bindNode = function(cd, element, option) {
+	  var h, j, len, r, ref, result, text;
+	  result = {
+		directive: 0,
+		hook: 0,
+		skipToElement: null,
+		fb: null
+	  };
+	  if (alight.hooks.binding.length) {
+		ref = alight.hooks.binding;
+		for (j = 0, len = ref.length; j < len; j++) {
+		  h = ref[j];
+		  result.hook += 1;
+		  r = h.fn(cd, element, option);
+		  if (r && r.owner) {
+			return result;
+		  }
+		}
+	  }
+	  if (element.nodeType === 1) {
+		r = bindElement(cd, element, option);
+		result.directive += r.directive;
+		result.hook += r.hook;
+		result.skipToElement = r.skipToElement;
+		result.fb = r.fb;
+	  } else if (element.nodeType === 3) {
+		text = bindText(cd, element, option);
+		if (text) {
+		  result.fb = {
+			text: text
+		  };
+		}
+	  } else if (element.nodeType === 8) {
+		r = bindComment(cd, element, option);
+		if (r) {
+		  result.directive += r.directive;
+		  result.skipToElement = r.skipToElement;
+		}
+	  }
+	  return result;
+	};
+
+	alight.nextTick = (function() {
+	  var exec, list, timer;
+	  timer = null;
+	  list = [];
+	  exec = function() {
+		var callback, dlist, e, error, it, j, len, self;
+		timer = null;
+		dlist = list.slice();
+		list.length = 0;
+		for (j = 0, len = dlist.length; j < len; j++) {
+		  it = dlist[j];
+		  callback = it[0];
+		  self = it[1];
+		  try {
+			callback.call(self);
+		  } catch (error) {
+			e = error;
+			alight.exceptionHandler(e, '$nextTick, error in function', {
+			  fn: callback,
+			  self: self
+			});
+		  }
+		}
+		return null;
+	  };
+	  return function(callback) {
+		list.push([callback, this]);
+		if (timer) {
+		  return;
+		}
+		return timer = setTimeout(exec, 0);
+	  };
+	})();
+
+	alight.bind = function(changeDetector, element, option) {
+	  var cb, finishBinding, j, len, lst, result, root;
+	  if (!changeDetector) {
+		throw 'No changeDetector';
+	  }
+	  if (!element) {
+		throw 'No element';
+	  }
+	  option = option || {};
+	  if (alight.option.domOptimization && !option.noDomOptimization) {
+		alight.utils.optmizeElement(element);
+	  }
+	  root = changeDetector.root;
+	  finishBinding = !root.finishBinding_lock;
+	  if (finishBinding) {
+		root.finishBinding_lock = true;
+		root.bindingResult = {
+		  directive: 0,
+		  hook: 0
+		};
+	  }
+	  result = bindNode(changeDetector, element, option);
+	  root.bindingResult.directive += result.directive;
+	  root.bindingResult.hook += result.hook;
+	  changeDetector.digest();
+	  if (finishBinding) {
+		root.finishBinding_lock = false;
+		lst = root.watchers.finishBinding.slice();
+		root.watchers.finishBinding.length = 0;
+		for (j = 0, len = lst.length; j < len; j++) {
+		  cb = lst[j];
+		  cb();
+		}
+		result.total = root.bindingResult;
+		
+		
+	  }
+	  return result;
+	};
+
+	!function () {
+		function zoneJSInvoker(_0, zone, _2, task, _4, args) {
+			task.callback.apply(null, args);
+			var root = zone._properties.root;
+			if (root && root.topCD)
+				root.topCD.scan({ zone: true });
+		}
+		var bind = alight.bind;
+		alight.bind = function (cd, el, option) {
+			var root = cd.root;
+			var oz = alight.option.zone;
+			if (oz) {
+				var Z = oz === true ? Zone : oz;
+				var zone = root.zone;
+				if (!zone) {
+					root.zone = zone = Z.current.fork({
+						name: Z.current.name + '.x',
+						properties: { root: root },
+						onInvokeTask: zoneJSInvoker
+					});
+				}
+				if (Z.current !== zone)
+					return root.zone.run(bind, null, [cd, el, option]);
+			}
+			return bind(cd, el, option);
+		};
+	}();
+
+	alight.bootstrap = function (input, data) {
+		if (!input) {
+			alight.bootstrap('[al-app]');
+			alight.bootstrap('[al\\:app]');
+			alight.bootstrap('[data-al-app]');
+			return;
+		}
+		var changeDetector;
+		if (input instanceof alight.core.ChangeDetector) {
+			changeDetector = input;
+			input = data;
+		}
+		else if (data instanceof alight.core.ChangeDetector) {
+			changeDetector = data;
+		}
+		else if (f$.isFunction(data)) {
+			var scope = {};
+			changeDetector = alight.ChangeDetector(scope);
+			data.call(changeDetector, scope);
+		}
+		else if (data) {
+			changeDetector = alight.ChangeDetector(data);
+		}
+		if (Array.isArray(input)) {
+			var result = void 0;
+			for (var _i = 0, input_1 = input; _i < input_1.length; _i++) {
+				var item = input_1[_i];
+				result = alight.bootstrap(item, changeDetector);
+			}
+			return result;
+		}
+		if (typeof (input) === 'string') {
+			var result = void 0;
+			var elements = document.querySelectorAll(input);
+			for (var _a = 0, elements_1 = elements; _a < elements_1.length; _a++) {
+				var element = elements_1[_a];
+				result = alight.bootstrap(element, changeDetector);
+			}
+			return result;
+		}
+		if (!changeDetector)
+			changeDetector = alight.ChangeDetector();
+		if (f$.isElement(input)) {
+			var ctrlKey, ctrlName;
+			for (var _b = 0, _c = ['al-app', 'al:app', 'data-al-app']; _b < _c.length; _b++) {
+				ctrlKey = _c[_b];
+				ctrlName = input.getAttribute(ctrlKey);
+				input.removeAttribute(ctrlKey);
+				if (ctrlName)
+					break;
+			}
+			var option;
+			if (ctrlName) {
+				option = {
+					skip_attr: [ctrlKey],
+					attachDirective: {}
+				};
+				if (alight.d.al.ctrl)
+					option.attachDirective['al-ctrl'] = ctrlName;
+				else
+					option.attachDirective[ctrlName + '!'] = '';
+			}
+			alight.bind(changeDetector, input, option);
+			return changeDetector;
+		}
+		;
+		alight.exceptionHandler('Error in bootstrap', 'Error input arguments', {
+			input: input
+		});
+	};
+
+	var clone, equal;
+
+	alight.utils.getId = (function() {
+	  var index, prefix;
+	  prefix = (function() {
+		var d, k, n, p, r, symbols;
+		symbols = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+		n = Math.floor((new Date()).valueOf() / 1000) - 1388512800;
+		r = '';
+		while (n > 0) {
+		  d = Math.floor(n / 62);
+		  p = d * 62;
+		  k = n - p;
+		  n = d;
+		  r = symbols[k] + r;
+		}
+		return r;
+	  })();
+	  index = 1;
+	  return function() {
+		return prefix + '#' + index++;
+	  };
+	})();
+
+	alight.utils.clone = clone = function(d, lvl) {
+	  var i, k, r, v;
+	  if (lvl == null) {
+		lvl = 128;
+	  }
+	  if (lvl < 1) {
+		return null;
+	  }
+	  if (!d) {
+		return d;
+	  }
+	  if (typeof d === 'object') {
+		if (d instanceof Array) {
+		  r = (function() {
+			var j, len, results;
+			results = [];
+			for (j = 0, len = d.length; j < len; j++) {
+			  i = d[j];
+			  results.push(clone(i, lvl - 1));
+			}
+			return results;
+		  })();
+		  return r;
+		}
+		if (d instanceof Date) {
+		  return new Date(d.valueOf());
+		}
+		if (d.nodeType && typeof d.cloneNode === "function") {
+		  return d;
+		}
+		r = {};
+		for (k in d) {
+		  v = d[k];
+		  if (k[0] === '$') {
+			continue;
+		  }
+		  r[k] = clone(v, lvl - 1);
+		}
+		return r;
+	  }
+	  return d;
+	};
+
+	alight.utils.equal = equal = function(a, b, lvl) {
+	  var i, j, k, len, set, ta, tb, v;
+	  if (lvl == null) {
+		lvl = 128;
+	  }
+	  if (lvl < 1) {
+		return true;
+	  }
+	  if (!a || !b) {
+		return a === b;
+	  }
+	  ta = typeof a;
+	  tb = typeof b;
+	  if (ta !== tb) {
+		return false;
+	  }
+	  if (ta === 'object') {
+		if (a instanceof Array) {
+		  if (a.length !== b.length) {
+			return false;
+		  }
+		  for (i = j = 0, len = a.length; j < len; i = ++j) {
+			v = a[i];
+			if (!equal(v, b[i], lvl - 1)) {
+			  return false;
+			}
+		  }
+		  return true;
+		}
+		if (a instanceof Date) {
+		  return a.valueOf() === b.valueOf();
+		}
+		if (a.nodeType && typeof a.cloneNode === "function") {
+		  return a === b;
+		}
+		set = {};
+		for (k in a) {
+		  v = a[k];
+		  if (k[0] === '$') {
+			continue;
+		  }
+		  set[k] = true;
+		  if (!equal(v, b[k], lvl - 1)) {
+			return false;
+		  }
+		}
+		for (k in b) {
+		  v = b[k];
+		  if (k[0] === '$') {
+			continue;
+		  }
+		  if (set[k]) {
+			continue;
+		  }
+		  if (!equal(v, a[k], lvl - 1)) {
+			return false;
+		  }
+		}
+		return true;
+	  }
+	  return a === b;
+	};
+
+	alight.exceptionHandler = function(e, title, locals) {
+	  var output;
+	  output = [];
+	  if (title) {
+		output.push(title);
+	  }
+	  if (e && e.message) {
+		output.push(e.message);
+	  }
+	  if (locals) {
+		output.push(locals);
+	  }
+	  if (e) {
+		output.push(e.stack ? e.stack : e);
+	  }
+	  return console.error.apply(console, output);
+	};
+
+	(function() {
+	  var assignmentOperator, isChar, isDigit, isSign, reserved, toDict;
+	  toDict = function() {
+		var i, k, len, result;
+		result = {};
+		for (i = 0, len = arguments.length; i < len; i++) {
+		  k = arguments[i];
+		  result[k] = true;
+		}
+		return result;
+	  };
+	  reserved = toDict('instanceof', 'typeof', 'in', 'null', 'true', 'false', 'undefined', 'return');
+	  isChar = (function() {
+		var rx;
+		rx = /[a-zA-Z\u0410-\u044F\u0401\u0451_\.\$]/;
+		return function(x) {
+		  return x.match(rx);
+		};
+	  })();
+	  isDigit = function(x) {
+		return x.charCodeAt() >= 48 && x.charCodeAt() <= 57;
+	  };
+	  isSign = (function() {
+		var chars;
+		chars = toDict('+', '-', '>', '<', '=', '&', '|', '^', '!', '~');
+		return function(x) {
+		  return chars[x] || false;
+		};
+	  })();
+	  assignmentOperator = toDict('=', '+=', '-=', '++', '--', '|=', '^=', '&=', '!=', '<<=', '>>=');
+	  alight.utils.parsExpression = function(expression, option) {
+		var build, convert, data, getFirstPart, inputKeywords, pars, ret, splitVariable, toElvis, uniq;
+		option = option || {};
+		inputKeywords = toDict.apply(null, option.input || []);
+		uniq = 1;
+		pars = function(option) {
+		  var a, an, ap, bracket, child, commitText, digit, filter, freeText, index, leftVariable, level, line, original, result, sign, status, stopKey, stringKey, stringValue, variable, variableChildren;
+		  line = option.line;
+		  result = option.result || [];
+		  index = option.index || 0;
+		  level = option.level || 0;
+		  stopKey = option.stopKey || null;
+		  variable = '';
+		  leftVariable = null;
+		  variableChildren = [];
+		  sign = '';
+		  digit = '';
+		  status = false;
+		  original = '';
+		  stringKey = '';
+		  stringValue = '';
+		  freeText = '';
+		  bracket = 0;
+		  filter = null;
+		  commitText = function() {
+			if (freeText) {
+			  result.push({
+				type: 'free',
+				value: freeText
+			  });
+			}
+			return freeText = '';
+		  };
+		  while (index <= line.length) {
+			ap = line[index - 1];
+			a = line[index++] || '';
+			an = line[index];
+			if ((status && freeText) || (!a)) {
+			  commitText();
+			}
+			if (status === 'string') {
+			  if (a === stringKey && ap !== '\\') {
+				stringValue += a;
+				result.push({
+				  type: 'string',
+				  value: stringValue
+				});
+				stringValue = '';
+				stringKey = '';
+				status = '';
+				continue;
+			  }
+			  stringValue += a;
+			  continue;
+			} else if (status === 'key') {
+			  if (isChar(a) || isDigit(a)) {
+				variable += a;
+				continue;
+			  }
+			  if (a === '[') {
+				variable += a;
+				child = pars({
+				  line: line,
+				  index: index,
+				  level: level + 1,
+				  stopKey: ']'
+				});
+				if (!child.stopKeyOk) {
+				  throw 'Error expression';
+				}
+				index = child.index;
+				variable += '###' + child.uniq + '###]';
+				variableChildren.push(child);
+				continue;
+			  } else if (a === '?' && (an === '.' || an === '(' || an === '[')) {
+				variable += a;
+				continue;
+			  } else if (a === '(') {
+				variable += a;
+				child = pars({
+				  line: line,
+				  index: index,
+				  level: level + 1,
+				  stopKey: ')'
+				});
+				if (!child.stopKeyOk) {
+				  throw 'Error expression';
+				}
+				index = child.index;
+				variable += '###' + child.uniq + '###)';
+				variableChildren.push(child);
+				continue;
+			  }
+			  leftVariable = {
+				type: 'key',
+				value: variable,
+				start: index - variable.length - 1,
+				finish: index - 1,
+				children: variableChildren
+			  };
+			  result.push(leftVariable);
+			  status = '';
+			  variable = '';
+			  variableChildren = [];
+			} else if (status === 'sign') {
+			  if (isSign(a)) {
+				sign += a;
+				continue;
+			  }
+			  if (sign === '|' && level === 0 && bracket === 0) {
+				filter = line.substring(index - 1);
+				index = line.length + 1;
+				continue;
+			  }
+			  if (assignmentOperator[sign] || (sign[0] === '=' && sign[1] !== '=')) {
+				leftVariable.assignment = true;
+			  }
+			  result.push({
+				type: 'sign',
+				value: sign
+			  });
+			  status = '';
+			  sign = '';
+			} else if (status === 'digit') {
+			  if (isDigit(a) || a === '.') {
+				digit += a;
+				continue;
+			  }
+			  result.push({
+				type: 'digit',
+				value: digit
+			  });
+			  digit = '';
+			}
+			if (isChar(a)) {
+			  status = 'key';
+			  variable += a;
+			  continue;
+			}
+			if (isSign(a)) {
+			  status = 'sign';
+			  sign += a;
+			  continue;
+			}
+			if (isDigit(a)) {
+			  status = 'digit';
+			  digit += a;
+			  continue;
+			}
+			if (a === '"' || a === "'") {
+			  stringKey = a;
+			  status = 'string';
+			  stringValue += a;
+			  continue;
+			}
+			if (a === stopKey) {
+			  commitText();
+			  return {
+				result: result,
+				index: index,
+				stopKeyOk: true,
+				uniq: uniq++
+			  };
+			}
+			if (a === '(') {
+			  bracket++;
+			}
+			if (a === ')') {
+			  bracket--;
+			}
+			if (a === '{') {
+			  commitText();
+			  child = pars({
+				line: line,
+				index: index,
+				level: level + 1,
+				stopKey: '}'
+			  });
+			  result.push({
+				type: '{}',
+				child: child
+			  });
+			  index = child.index;
+			  continue;
+			}
+			if (a === ':' && stopKey === '}') {
+			  leftVariable.type = 'free';
+			}
+			freeText += a;
+		  }
+		  commitText();
+		  return {
+			result: result,
+			index: index,
+			filter: filter
+		  };
+		};
+		data = pars({
+		  line: expression
+		});
+		ret = {
+		  isSimple: !data.filter,
+		  simpleVariables: []
+		};
+		if (data.filter) {
+		  ret.expression = expression.substring(0, expression.length - data.filter.length - 1);
+		  ret.filter = data.filter;
+		} else {
+		  ret.expression = expression;
+		}
+		splitVariable = function(variable) {
+		  var parts;
+		  parts = variable.split(/[\.\[\(\?]/);
+		  return {
+			count: parts.length,
+			firstPart: parts[0]
+		  };
+		};
+		toElvis = function(name, isReserved) {
+		  if (isReserved) {
+			return '($$=' + name + ',$$==null)?undefined:';
+		  } else {
+			return '($$=$$' + name + ',$$==null)?undefined:';
+		  }
+		};
+		getFirstPart = function(name) {
+		  return name.split(/[\.\[\(\?]/)[0];
+		};
+		convert = function(variable) {
+		  var firstPart, full, i, isReserved, last, len, p, parts, ref, result;
+		  if (variable === 'this') {
+			return '$$scope';
+		  }
+		  firstPart = getFirstPart(variable);
+		  isReserved = reserved[firstPart] || inputKeywords[firstPart];
+		  if (firstPart === 'this') {
+			variable = '$$scope' + variable.slice(4);
+			isReserved = true;
+		  }
+		  parts = variable.split('?');
+		  if (parts.length === 1) {
+			if (isReserved) {
+			  return variable;
+			}
+			return '$$scope.' + variable;
+		  }
+		  if (isReserved) {
+			result = toElvis(parts[0], true);
+			full = parts[0];
+		  } else {
+			result = toElvis('scope.' + parts[0]);
+			full = 'scope.' + parts[0];
+		  }
+		  ref = parts.slice(1, parts.length - 1);
+		  for (i = 0, len = ref.length; i < len; i++) {
+			p = ref[i];
+			if (p[0] === '(') {
+			  result += toElvis(full + p, isReserved);
+			} else {
+			  result += toElvis(p);
+			  full += p;
+			}
+		  }
+		  last = parts[parts.length - 1];
+		  if (last[0] === '(') {
+			if (!isReserved) {
+			  result += '$$';
+			}
+			result += full + last;
+		  } else {
+			result += '$$' + last;
+		  }
+		  return '(' + result + ')';
+		};
+		build = function(part) {
+		  var c, childName, d, i, j, key, len, len1, name, ref, ref1, result, sv;
+		  result = '';
+		  ref = part.result;
+		  for (i = 0, len = ref.length; i < len; i++) {
+			d = ref[i];
+			if (d.type === 'key') {
+			  if (d.assignment) {
+				sv = splitVariable(d.value);
+				if (sv.firstPart === 'this') {
+				  name = '$$scope' + d.value.substring(4);
+				} else if (inputKeywords[sv.firstPart]) {
+				  name = d.value;
+				} else if (sv.count < 2) {
+				  name = '($$scope.$$root || $$scope).' + d.value;
+				} else {
+				  name = '$$scope.' + d.value;
+				}
+				ret.isSimple = false;
+			  } else {
+				if (reserved[d.value]) {
+				  name = d.value;
+				} else {
+				  name = convert(d.value);
+				  ret.simpleVariables.push(name);
+				}
+			  }
+			  if (d.children.length) {
+				ref1 = d.children;
+				for (j = 0, len1 = ref1.length; j < len1; j++) {
+				  c = ref1[j];
+				  key = "###" + c.uniq + "###";
+				  childName = build(c);
+				  name = name.split(key).join(childName);
+				}
+			  }
+			  result += name;
+			  continue;
+			}
+			if (d.type === '{}') {
+			  result += '{' + build(d.child) + '}';
+			  continue;
+			}
+			result += d.value;
+		  }
+		  return result;
+		};
+		ret.result = build(data);
+		if (alight.debug.parser) {
+		  console.log(expression, ret);
+		}
+		return ret;
+	  };
+	  alight.utils.parsFilter = function(text) {
+		var d, r, result;
+		result = [];
+		text = text.trim();
+		while (text) {
+		  d = text.match(/^(\w+)([^\w])(.*)$/);
+		  if (d) {
+			if (d[2] === '|') {
+			  result.push({
+				name: d[1],
+				args: [],
+				raw: ''
+			  });
+			  text = d[3];
+			} else {
+			  r = alight.utils.parsArguments(d[3], {
+				stop: '|'
+			  });
+			  result.push({
+				name: d[1],
+				args: r.result,
+				raw: d[3].slice(0, r.length)
+			  });
+			  text = d[3].slice(r.length + 1).trim();
+			}
+		  } else {
+			d = text.match(/^(\w+)$/);
+			if (!d) {
+			  return null;
+			}
+			result.push({
+			  name: d[1],
+			  args: [],
+			  raw: ''
+			});
+			break;
+		  }
+		}
+		return {
+		  result: result
+		};
+	  };
+	  return alight.utils.parsArguments = function(text, option) {
+		var a, arg, args, bracket, index, push, string0, string1;
+		option = option || {};
+		index = 0;
+		args = [];
+		arg = '';
+		bracket = 0;
+		string0 = false;
+		string1 = false;
+		push = function() {
+		  if (arg) {
+			args.push(arg);
+			arg = '';
+		  }
+		};
+		while (index <= text.length) {
+		  a = text[index] || '';
+		  index++;
+		  if (string0) {
+			arg += a;
+			if (a === '"') {
+			  string0 = false;
+			}
+			continue;
+		  }
+		  if (string1) {
+			arg += a;
+			if (a === "'") {
+			  string1 = false;
+			}
+			continue;
+		  }
+		  if (a === '"') {
+			arg += a;
+			string0 = true;
+			continue;
+		  }
+		  if (a === "'") {
+			arg += a;
+			string1 = true;
+			continue;
+		  }
+		  if (bracket) {
+			arg += a;
+			if (a === '(') {
+			  bracket++;
+			}
+			if (a === ')') {
+			  bracket--;
+			}
+			continue;
+		  }
+		  if (a === ' ' || a === ',') {
+			push();
+			continue;
+		  }
+		  if (option.stop && option.stop === a) {
+			push();
+			break;
+		  }
+		  if (a === '(') {
+			bracket = 1;
+		  }
+		  arg += a;
+		}
+		push();
+		return {
+		  result: args,
+		  length: index - 1
+		};
+	  };
+	})();
+
+	(function() {
+	  var cache, clone, rawParsText;
+	  alight.utils.pars_start_tag = '{{';
+	  alight.utils.pars_finish_tag = '}}';
+	  rawParsText = function(line) {
+		var find_exp, finish_tag, get_part, index, pars, prev_index, result, rexp, start_tag;
+		start_tag = alight.utils.pars_start_tag;
+		finish_tag = alight.utils.pars_finish_tag;
+		result = [];
+		index = 0;
+		prev_index = 0;
+		get_part = function(count) {
+		  var r;
+		  count = count || 1;
+		  r = line.substring(prev_index, index - count);
+		  prev_index = index;
+		  return r;
+		};
+		rexp = null;
+		pars = function(lvl, stop, force) {
+		  var a, a2, an, prev;
+		  if (!lvl) {
+			rexp = {
+			  type: 'expression',
+			  list: []
+			};
+			result.push(rexp);
+		  }
+		  prev = null;
+		  a = null;
+		  while (index < line.length) {
+			prev = a;
+			a = line[index];
+			index += 1;
+			a2 = prev + a;
+			an = line[index];
+			if (a === stop) {
+			  return;
+			}
+			if (force) {
+			  continue;
+			}
+			if (a2 === finish_tag && lvl === 0) {
+			  rexp.list.push(get_part(2));
+			  return true;
+			}
+			if (a === '(') {
+			  pars(lvl + 1, ')');
+			} else if (a === '{') {
+			  pars(lvl + 1, '}');
+			} else if (a === '"') {
+			  pars(lvl + 1, '"', true);
+			} else if (a === "'") {
+			  pars(lvl + 1, "'", true);
+			} else if (a === '|') {
+			  if (lvl === 0) {
+				if (an === '|') {
+				  index += 1;
+				} else {
+				  rexp.list.push(get_part());
+				}
+			  }
+			}
+		  }
+		};
+		find_exp = function() {
+		  var a, a2, prev, r, text;
+		  prev = null;
+		  a = null;
+		  while (index < line.length) {
+			prev = a;
+			a = line[index];
+			index += 1;
+			a2 = prev + a;
+			if (a2 === start_tag) {
+			  text = get_part(2);
+			  if (text) {
+				result.push({
+				  type: 'text',
+				  value: text
+				});
+			  }
+			  if (!pars(0)) {
+				throw 'Wrong expression' + line;
+			  }
+			  a = null;
+			}
+		  }
+		  r = get_part(-1);
+		  if (r) {
+			return result.push({
+			  type: 'text',
+			  value: r
+			});
+		  }
+		};
+		find_exp();
+		if (alight.debug.parser) {
+		  console.log('parsText', result);
+		}
+		return result;
+	  };
+	  cache = {};
+	  clone = function(result) {
+		var i, k, resp;
+		resp = (function() {
+		  var j, len, results;
+		  results = [];
+		  for (j = 0, len = result.length; j < len; j++) {
+			i = result[j];
+			k = {
+			  type: i.type,
+			  value: i.value
+			};
+			if (i.list) {
+			  k.list = i.list.slice();
+			}
+			results.push(k);
+		  }
+		  return results;
+		})();
+		return resp;
+	  };
+	  return alight.utils.parsText = function(line) {
+		var result;
+		result = cache[line];
+		if (!result) {
+		  cache[line] = result = rawParsText(line);
+		}
+		return clone(result);
+	  };
+	})();
+
+
+	/*
+		src - expression
+		cfg:
+			scope
+			hash		
+			no_return   - method without return (exec)
+			string	  - method will return result as string
+			input	   - list of input arguments
+			rawExpression
+
+		return {
+			fn
+			rawExpression
+			filters
+			isSimple
+			simpleVariables
+		}
+	 */
+	(function() {
+	  var self;
+	  alight.utils.compile = self = {};
+	  self.cache = {};
+	  self.Function = Function;
+
+	  /*
+	  compile expression
+		  no_return
+		  input
+		  string
+	  
+	  return
+		  fn
+		  rawExpression
+	  
+		  result
+		  filters
+		  isSimple
+		  simpleVariables
+		  expression
+	   */
+	  self.expression = function(src, cfg) {
+		var args, e, error, exp, fn, funcCache, hash, no_return, result;
+		cfg = cfg || {};
+		src = src.trim();
+		hash = src + '#';
+		hash += cfg.no_return ? '+' : '-';
+		hash += cfg.string ? 's' : 'v';
+		if (cfg.input) {
+		  hash += cfg.input.join(',');
+		}
+		funcCache = self.cache[hash];
+		if (funcCache) {
+		  return funcCache;
+		}
+		funcCache = alight.utils.parsExpression(src, {
+		  input: cfg.input
+		});
+		exp = funcCache.result;
+		no_return = cfg.no_return || false;
+		if (no_return) {
+		  result = "var $$;" + exp;
+		} else {
+		  if (cfg.string && !funcCache.filter) {
+			result = "var $$, __ = (" + exp + "); return '' + (__ || (__ == null?'':__))";
+			funcCache.rawExpression = "(__=" + exp + ") || (__ == null?'':__)";
+		  } else {
+			result = "var $$;return (" + exp + ")";
+		  }
+		}
+		try {
+		  if (cfg.input) {
+			args = cfg.input.slice();
+			args.unshift('$$scope');
+			args.push(result);
+			fn = self.Function.apply(null, args);
+		  } else {
+			fn = self.Function('$$scope', result);
+		  }
+		} catch (error) {
+		  e = error;
+		  alight.exceptionHandler(e, 'Wrong expression: ' + src, {
+			src: src,
+			cfg: cfg
+		  });
+		  throw 'Wrong expression: ' + exp;
+		}
+		funcCache.fn = fn;
+		return self.cache[hash] = funcCache;
+	  };
+	  self.cacheText = {};
+	  self.buildText = function(text, data) {
+		var d, escapedValue, fn, i, index, len, result;
+		fn = self.cacheText[text];
+		if (fn) {
+		  return function() {
+			return fn.call(data);
+		  };
+		}
+		result = [];
+		for (index = i = 0, len = data.length; i < len; index = ++i) {
+		  d = data[index];
+		  if (d.type === 'expression') {
+			if (d.fn) {
+			  result.push("this[" + index + "].fn(this.scope)");
+			} else {
+			  result.push("((x=this[" + index + "].value) || (x == null?'':x))");
+			}
+		  } else if (d.value) {
+			escapedValue = d.value.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");
+			result.push('"' + escapedValue + '"');
+		  }
+		}
+		result = result.join(' + ');
+		fn = self.Function("var x; return (" + result + ")");
+		self.cacheText[text] = fn;
+		return function() {
+		  return fn.call(data);
+		};
+	  };
+	  self.cacheSimpleText = {};
+	  return self.buildSimpleText = function(text, data) {
+		var d, escapedValue, fn, i, index, item, len, result, simpleVariables;
+		item = text ? self.cacheSimpleText[text] : null;
+		if (item || !data) {
+		  return item || null;
+		}
+		result = [];
+		simpleVariables = [];
+		for (index = i = 0, len = data.length; i < len; index = ++i) {
+		  d = data[index];
+		  if (d.type === 'expression') {
+			result.push("(" + d.re + ")");
+			if (d.simpleVariables) {
+			  simpleVariables.push.apply(simpleVariables, d.simpleVariables);
+			}
+		  } else if (d.value) {
+			escapedValue = d.value.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");
+			result.push('"' + escapedValue + '"');
+		  }
+		}
+		result = result.join(' + ');
+		fn = self.Function('$$scope', "var $$, __; return (" + result + ")");
+		item = {
+		  fn: fn,
+		  simpleVariables: simpleVariables
+		};
+		if (text) {
+		  self.cacheSimpleText[text] = item;
+		}
+		return item;
+	  };
+	})();
+
+	var FastBinding, compileText, pathToEl;
+
+	pathToEl = function(path) {
+	  var i, j, len, result;
+	  if (!path.length) {
+		return 'el';
+	  }
+	  result = 'el';
+	  for (j = 0, len = path.length; j < len; j++) {
+		i = path[j];
+		result += ".childNodes[" + i + "]";
+	  }
+	  return result;
+	};
+
+	compileText = function(text) {
+	  var ce, d, data, j, key, len, st;
+	  data = alight.utils.parsText(text);
+	  for (j = 0, len = data.length; j < len; j++) {
+		d = data[j];
+		if (d.type !== 'expression') {
+		  continue;
+		}
+		if (d.list.length > 1) {
+		  return null;
+		}
+		key = d.list[0];
+		if (key[0] === '#') {
+		  return null;
+		}
+		if (key[0] === '=') {
+		  return null;
+		}
+		if (key.slice(0, 2) === '::') {
+		  return null;
+		}
+		ce = alight.utils.compile.expression(key, {
+		  string: true
+		});
+		if (!ce.rawExpression) {
+		  throw 'Error';
+		}
+		d.re = ce.rawExpression;
+	  }
+	  st = alight.utils.compile.buildSimpleText(text, data);
+	  return st.fn;
+	};
+
+	alight.core.fastBinding = function(bindResult) {
+	  if (!alight.option.fastBinding) {
+		return;
+	  }
+	  if (bindResult.directive || bindResult.hook || !bindResult.fb) {
+		return;
+	  }
+	  return new FastBinding(bindResult);
+	};
+
+	FastBinding = function(bindResult) {
+	  var path, self, source, walk;
+	  self = this;
+	  source = [];
+	  self.fastWatchFn = [];
+	  path = [];
+	  walk = function(fb, deep) {
+		var d, fn, it, j, k, key, l, len, len1, len2, ref, ref1, ref2, rel, rtext, text;
+		if (fb.dir) {
+		  rel = pathToEl(path);
+		  ref = fb.dir;
+		  for (j = 0, len = ref.length; j < len; j++) {
+			d = ref[j];
+			source.push('s.dir(' + self.fastWatchFn.length + ', ' + rel + ');');
+			self.fastWatchFn.push(d);
+		  }
+		}
+		if (fb.attr) {
+		  ref1 = fb.attr;
+		  for (k = 0, len1 = ref1.length; k < len1; k++) {
+			it = ref1[k];
+			text = it.value;
+			key = it.attrName;
+			rel = pathToEl(path);
+			fn = compileText(text);
+			rtext = text.replace(/"/g, '\\"').replace(/\n/g, '\\n');
+			if (fn) {
+			  source.push('s.fw("' + rtext + '", ' + self.fastWatchFn.length + ', ' + rel + ', "' + key + '");');
+			  self.fastWatchFn.push(fn);
+			} else {
+			  source.push("s.wt('" + rtext + "', " + rel + ", '" + key + "');");
+			}
+		  }
+		}
+		if (fb.text) {
+		  rel = pathToEl(path);
+		  fn = compileText(fb.text);
+		  rtext = fb.text.replace(/"/g, '\\"').replace(/\n/g, '\\n');
+		  if (fn) {
+			source.push('s.fw("' + rtext + '", ' + self.fastWatchFn.length + ', ' + rel + ');');
+			self.fastWatchFn.push(fn);
+		  } else {
+			source.push('s.wt("' + rtext + '", ' + rel + ');');
+		  }
+		}
+		if (fb.children) {
+		  ref2 = fb.children;
+		  for (l = 0, len2 = ref2.length; l < len2; l++) {
+			it = ref2[l];
+			path.length = deep + 1;
+			path[deep] = it.index;
+			walk(it.fb, deep + 1);
+		  }
+		}
+	  };
+	  walk(bindResult.fb, 0);
+	  source = source.join('\n');
+	  self.resultFn = alight.utils.compile.Function('s', 'el', 'f$', source);
+	  return this;
+	};
+
+	FastBinding.prototype.bind = function(cd, element) {
+	  this.currentCD = cd;
+	  this.resultFn(this, element, f$);
+	};
+
+	FastBinding.prototype.dir = function(fnIndex, el) {
+	  var cd, d, env, r;
+	  d = this.fastWatchFn[fnIndex];
+	  cd = this.currentCD;
+	  env = new Env({
+		attrName: d.attrName,
+		attrArgument: d.attrArgument,
+		changeDetector: cd,
+		fbData: d.fbData
+	  });
+	  r = d.fb.call(env, cd.scope, el, d.value, env);
+	  if (r && r.start) {
+		r.start();
+	  }
+	};
+
+	FastBinding.prototype.fw = function(text, fnIndex, element, attr) {
+	  var cd, fn, value, w;
+	  cd = this.currentCD;
+	  fn = this.fastWatchFn[fnIndex];
+	  value = fn(cd.locals);
+	  w = {
+		isStatic: false,
+		isArray: false,
+		extraLoop: false,
+		deep: false,
+		value: value,
+		callback: null,
+		exp: fn,
+		src: text,
+		onStop: null,
+		el: element,
+		ea: attr || null
+	  };
+	  cd.watchList.push(w);
+	  execWatchObject(cd.scope, w, value);
+	};
+
+	FastBinding.prototype.wt = function(expression, element, attr) {
+	  this.currentCD.watchText(expression, null, {
+		element: element,
+		elementAttr: attr
+	  });
+	};
+
+	(function() {
+	  var eventOption, execute, formatModifier, getValue, handler, keyCodes, makeEvent, setKeyModifier;
+	  alight.hooks.attribute.unshift({
+		code: 'events',
+		fn: function() {
+		  var d;
+		  d = this.attrName.match(/^\@([\w\.\-]+)$/);
+		  if (!d) {
+			return;
+		  }
+		  this.ns = 'al';
+		  this.name = 'on';
+		  this.attrArgument = d[1];
+		}
+	  });
+
+	  /*
+	  eventModifier
+		  = 'keydown blur'
+		  = ['keydown', 'blur']
+		  =
+			  event: string or list
+			  fn: (event, env) ->
+	   */
+	  alight.hooks.eventModifier = {};
+	  setKeyModifier = function(name, key) {
+		return alight.hooks.eventModifier[name] = {
+		  event: ['keydown', 'keypress', 'keyup'],
+		  fn: function(event, env) {
+			if (!event[key]) {
+			  env.stop = true;
+			}
+		  }
+		};
+	  };
+	  setKeyModifier('alt', 'altKey');
+	  setKeyModifier('control', 'ctrlKey');
+	  setKeyModifier('ctrl', 'ctrlKey');
+	  setKeyModifier('meta', 'metaKey');
+	  setKeyModifier('shift', 'shiftKey');
+	  alight.hooks.eventModifier.self = function(event, env) {
+		if (event.target !== env.element) {
+		  return env.stop = true;
+		}
+	  };
+	  alight.hooks.eventModifier.once = {
+		beforeExec: function(event, env) {
+		  return env.unbind();
+		}
+	  };
+	  formatModifier = function(modifier, filterByEvents) {
+		var e, i, inuse, len, ref, result;
+		result = {};
+		if (typeof modifier === 'string') {
+		  result.event = modifier;
+		} else if (typeof modifier === 'object' && modifier.event) {
+		  result.event = modifier.event;
+		}
+		if (typeof result.event === 'string') {
+		  result.event = result.event.split(/\s+/);
+		}
+		if (filterByEvents) {
+		  if (result.event) {
+			inuse = false;
+			ref = result.event;
+			for (i = 0, len = ref.length; i < len; i++) {
+			  e = ref[i];
+			  if (filterByEvents.indexOf(e) >= 0) {
+				inuse = true;
+				break;
+			  }
+			}
+			if (!inuse) {
+			  return null;
+			}
+		  }
+		}
+		if (f$.isFunction(modifier)) {
+		  result.fn = modifier;
+		} else if (modifier.fn) {
+		  result.fn = modifier.fn;
+		}
+		if (modifier.beforeExec) {
+		  result.beforeExec = modifier.beforeExec;
+		}
+		if (modifier.init) {
+		  result.init = modifier.init;
+		}
+		return result;
+	  };
+	  alight.d.al.on = function(scope, element, expression, env) {
+		var evConstructor, eventName;
+		if (!env.attrArgument) {
+		  return;
+		}
+		if (alight.option.removeAttribute) {
+		  element.removeAttribute(env.attrName);
+		  if (env.fbElement) {
+			env.fbElement.removeAttribute(env.attrName);
+		  }
+		}
+		eventName = env.attrArgument.split('.')[0];
+		evConstructor = function() {};
+		evConstructor.prototype = makeEvent(env.attrArgument, eventOption[eventName]);
+		if (expression) {
+		  evConstructor.prototype.fn = env.changeDetector.compile(expression, {
+			no_return: true,
+			input: ['$event', '$element', '$value']
+		  });
+		}
+		evConstructor.prototype.expression = expression;
+		env.fastBinding = function(scope, element, expression, env) {
+		  var callback, cd, e, ev, i, len, ref;
+		  ev = new evConstructor;
+		  ev.scope = scope;
+		  ev.element = element;
+		  ev.cd = cd = env.changeDetector;
+		  callback = function(e) {
+			return handler(ev, e);
+		  };
+		  ref = ev.eventList;
+		  for (i = 0, len = ref.length; i < len; i++) {
+			e = ref[i];
+			f$.on(element, e, callback);
+		  }
+		  if (ev.initFn) {
+			ev.initFn(scope, element, expression, env);
+		  }
+		  ev.unbind = function() {
+			var j, len1, ref1;
+			ref1 = ev.eventList;
+			for (j = 0, len1 = ref1.length; j < len1; j++) {
+			  e = ref1[j];
+			  f$.off(element, e, callback);
+			}
+		  };
+		  env.changeDetector.watch('$destroy', ev.unbind);
+		};
+		env.fastBinding(scope, element, expression, env);
+	  };
+	  keyCodes = {
+		enter: 13,
+		tab: 9,
+		"delete": 46,
+		backspace: 8,
+		esc: 27,
+		space: 32,
+		up: 38,
+		down: 40,
+		left: 37,
+		right: 39
+	  };
+	  eventOption = {
+		click: {
+		  stop: true,
+		  prevent: true
+		},
+		dblclick: {
+		  stop: true,
+		  prevent: true
+		},
+		submit: {
+		  stop: true,
+		  prevent: true
+		},
+		keyup: {
+		  filterByKey: true
+		},
+		keypress: {
+		  filterByKey: true
+		},
+		keydown: {
+		  filterByKey: true
+		}
+	  };
+	  makeEvent = function(attrArgument, option) {
+		var args, ev, eventName, filterByKey, i, k, len, modifier, ref;
+		option = option || {};
+		ev = {
+		  attrArgument: attrArgument,
+		  throttle: null,
+		  throttleTime: 0,
+		  debounce: null,
+		  debounceId: null,
+		  initFn: null,
+		  eventList: null,
+		  stop: option.stop || false,
+		  prevent: option.prevent || false,
+		  scan: true,
+		  modifiers: []
+		};
+		args = attrArgument.split('.');
+		eventName = args[0];
+		filterByKey = null;
+		modifier = alight.hooks.eventModifier[eventName];
+		if (modifier) {
+		  modifier = formatModifier(modifier);
+		  if (modifier.event) {
+			ev.eventList = modifier.event;
+			if (modifier.fn) {
+			  ev.modifiers.push(modifier);
+			}
+			if (modifier.init) {
+			  ev.initFn = modifier.init;
+			}
+		  }
+		}
+		if (!ev.eventList) {
+		  ev.eventList = [eventName];
+		}
+		ref = args.slice(1);
+		for (i = 0, len = ref.length; i < len; i++) {
+		  k = ref[i];
+		  if (k === 'stop') {
+			ev.stop = true;
+			continue;
+		  }
+		  if (k === 'prevent') {
+			ev.prevent = true;
+			continue;
+		  }
+		  if (k === 'nostop') {
+			ev.stop = false;
+			continue;
+		  }
+		  if (k === 'noprevent') {
+			ev.prevent = false;
+			continue;
+		  }
+		  if (k === 'noscan') {
+			ev.scan = false;
+			continue;
+		  }
+		  if (k.substring(0, 9) === 'throttle-') {
+			ev.throttle = Number(k.substring(9));
+			continue;
+		  }
+		  if (k.substring(0, 9) === 'debounce-') {
+			ev.debounce = Number(k.substring(9));
+			continue;
+		  }
+		  modifier = alight.hooks.eventModifier[k];
+		  if (modifier) {
+			modifier = formatModifier(modifier, ev.eventList);
+			if (modifier) {
+			  ev.modifiers.push(modifier);
+			}
+			continue;
+		  }
+		  if (!option.filterByKey) {
+			continue;
+		  }
+		  if (filterByKey === null) {
+			filterByKey = {};
+		  }
+		  if (keyCodes[k]) {
+			k = keyCodes[k];
+		  }
+		  filterByKey[k] = true;
+		}
+		ev.filterByKey = filterByKey;
+		return ev;
+	  };
+	  getValue = function(ev, event) {
+		var element;
+		element = ev.element;
+		if (element.type === 'checkbox') {
+		  return element.checked;
+		} else if (element.type === 'radio') {
+		  return element.value || element.checked;
+		} else if (event.component) {
+		  return event.value;
+		} else {
+		  return element.value;
+		}
+	  };
+	  execute = function(ev, event) {
+		var error, error1, i, len, modifier, ref;
+		ref = ev.modifiers;
+		for (i = 0, len = ref.length; i < len; i++) {
+		  modifier = ref[i];
+		  if (modifier.beforeExec) {
+			modifier.beforeExec(event, ev);
+		  }
+		}
+		if (ev.fn) {
+		  try {
+			ev.fn(ev.cd.locals, event, ev.element, getValue(ev, event));
+		  } catch (error1) {
+			error = error1;
+			alight.exceptionHandler(error, "Error in event: " + ev.attrArgument + " = " + ev.expression, {
+			  attr: ev.attrArgument,
+			  exp: ev.expression,
+			  scope: ev.scope,
+			  cd: ev.cd,
+			  element: ev.element,
+			  event: event
+			});
+		  }
+		}
+		if (ev.scan) {
+		  ev.cd.scan();
+		}
+	  };
+	  return handler = function(ev, event) {
+		var EV, env, i, len, modifier, ref;
+		if (ev.filterByKey) {
+		  if (!ev.filterByKey[event.keyCode]) {
+			return;
+		  }
+		}
+		if (ev.modifiers.length) {
+		  EV = function() {};
+		  EV.prototype = ev;
+		  env = new EV;
+		  env.stop = false;
+		  ref = ev.modifiers;
+		  for (i = 0, len = ref.length; i < len; i++) {
+			modifier = ref[i];
+			if (modifier.fn) {
+			  modifier.fn(event, env);
+			  if (env.stop) {
+				return;
+			  }
+			}
+		  }
+		}
+		if (ev.prevent) {
+		  event.preventDefault();
+		}
+		if (ev.stop) {
+		  event.stopPropagation();
+		}
+		if (ev.debounce) {
+		  if (ev.debounceId) {
+			clearTimeout(ev.debounceId);
+		  }
+		  ev.debounceId = setTimeout(function() {
+			ev.debounceId = null;
+			return execute(ev, event);
+		  }, ev.debounce);
+		} else if (ev.throttle) {
+		  if (ev.throttleTime < Date.now()) {
+			ev.throttleTime = Date.now() + ev.throttle;
+			execute(ev, event);
+		  }
+		} else {
+		  execute(ev, event);
+		}
+	  };
+	})();
+
+	alight.hooks.attribute.unshift({
+		code: 'directDirective',
+		fn: function () {
+			var d = this.attrName.match(/^(.*)\!$/);
+			if (!d)
+				return;
+			var name = d[1].replace(/(-\w)/g, function (m) {
+				return m.substring(1).toUpperCase();
+			});
+			var fn = this.cd.locals[name] || alight.ctrl[name] || alight.option.globalController && window[name];
+			if (f$.isFunction(fn)) {
+				this.directive = function (scope, element, value, env) {
+					var cd = env.changeDetector;
+					if (value) {
+						var args = alight.utils.parsArguments(value);
+						var values = Array(args.result.length);
+						for (var i = 0; i < args.result.length; i++) {
+							values[i] = alight.utils.compile.expression(args.result[i], {
+								input: ['$element', '$env']
+							}).fn(cd.locals, element, env);
+						}
+						fn.apply(cd, values);
+					}
+					else {
+						fn.call(cd, scope, element, value, env);
+					}
+				};
+			}
+			else {
+				this.result = 'noDirective';
+				this.stop = true;
+			}
+		}
+	});
+
+	function setElementToName(scope, element, value, env) {
+		env.setValue(env.attrArgument, element);
+	}
+	;
+	alight.hooks.attribute.unshift({
+		code: 'elementVariable',
+		fn: function () {
+			var d = this.attrName.match(/^#([\w\.]*)$/);
+			if (!d)
+				return;
+			this.directive = setElementToName;
+			this.attrArgument = d[1];
+		}
+	});
+
+	alight.d.al.value = function(scope, element, variable, env) {
+	  var updateModel, watch;
+	  env.fastBinding = true;
+	  updateModel = function() {
+		env.setValue(variable, element.value);
+		watch.refresh();
+		env.scan();
+	  };
+	  env.on(element, 'input', updateModel);
+	  env.on(element, 'change', updateModel);
+	  return watch = env.watch(variable, function(value) {
+		if (value == null) {
+		  value = '';
+		}
+		element.value = value;
+		return '$scanNoChanges';
+	  });
+	};
+
+	alight.d.al.checked = function (scope, element, name, env) {
+		var fbData = env.fbData = {
+			opt: {},
+			watch: []
+		};
+		function eattr(attrName) {
+			var result = env.takeAttr(attrName);
+			if (alight.option.removeAttribute) {
+				element.removeAttribute(attrName);
+				if (env.fbElement)
+					env.fbElement.removeAttribute(attrName);
+			}
+			return result;
+		}
+		function takeAttr(name, attrName) {
+			var text = eattr(attrName);
+			if (text) {
+				fbData.opt[name] = text;
+				return true;
+			}
+			else {
+				var exp = eattr(':' + attrName) || eattr('al-attr.' + attrName);
+				if (exp) {
+					fbData.watch.push([exp, name]);
+					return true;
+				}
+			}
+		}
+		function applyOpt(opt, env, updateDOM) {
+			for (var k in env.fbData.opt) {
+				opt[k] = env.fbData.opt[k];
+			}
+			var _loop_1 = function(w) {
+				var name_1 = w[1];
+				env.watch(w[0], function (value) {
+					opt[name_1] = value;
+					updateDOM();
+				});
+			};
+			for (var _i = 0, _a = env.fbData.watch; _i < _a.length; _i++) {
+				var w = _a[_i];
+				_loop_1(w);
+			}
+		}
+		if (takeAttr('value', 'value')) {
+			env.fastBinding = function (scope, element, name, env) {
+				var watch, array = null;
+				function updateDOM() {
+					element.checked = array && array.indexOf(opt.value) >= 0;
+					return '$scanNoChanges';
+				}
+				;
+				var opt = {};
+				applyOpt(opt, env, updateDOM);
+				watch = env.watch(name, function (input) {
+					array = input;
+					if (!Array.isArray(array))
+						array = null;
+					updateDOM();
+				}, { isArray: true });
+				env.on(element, 'change', function () {
+					if (!array) {
+						array = [];
+						env.setValue(name, array);
+					}
+					if (element.checked) {
+						if (array.indexOf(opt.value) < 0)
+							array.push(opt.value);
+					}
+					else {
+						var i = array.indexOf(opt.value);
+						if (i >= 0)
+							array.splice(i, 1);
+					}
+					watch.refresh();
+					env.scan();
+					return;
+				});
+			};
+		}
+		else {
+			takeAttr('true', 'true-value');
+			takeAttr('false', 'false-value');
+			env.fastBinding = function (scope, element, name, env) {
+				var value, watch;
+				var opt = {
+					true: true,
+					false: false
+				};
+				function updateDOM() {
+					element.checked = value === opt.true;
+					return '$scanNoChanges';
+				}
+				;
+				applyOpt(opt, env, updateDOM);
+				watch = env.watch(name, function (input) {
+					value = input;
+					updateDOM();
+				});
+				env.on(element, 'change', function () {
+					value = element.checked ? opt.true : opt.false;
+					env.setValue(name, value);
+					watch.refresh();
+					env.scan();
+					return;
+				});
+			};
+		}
+		env.fastBinding(scope, element, name, env);
+	};
+
+	alight.d.al["if"] = function(scope, element, name, env) {
+	  var self;
+	  if (env.elementCanBeRemoved) {
+		alight.exceptionHandler(null, env.attrName + " can't control element because of " + env.elementCanBeRemoved, {
+		  scope: scope,
+		  element: element,
+		  value: name,
+		  env: env
+		});
+		return {};
+	  }
+	  env.stopBinding = true;
+	  return self = {
+		item: null,
+		childCD: null,
+		base_element: null,
+		top_element: null,
+		start: function() {
+		  self.prepare();
+		  self.watchModel();
+		},
+		prepare: function() {
+		  self.base_element = element;
+		  self.top_element = document.createComment(" " + env.attrName + ": " + name + " ");
+		  f$.before(element, self.top_element);
+		  f$.remove(element);
+		},
+		updateDom: function(value) {
+		  if (value) {
+			self.insertBlock(value);
+		  } else {
+			self.removeBlock();
+		  }
+		},
+		removeBlock: function() {
+		  if (!self.childCD) {
+			return;
+		  }
+		  self.childCD.destroy();
+		  self.childCD = null;
+		  self.removeDom(self.item);
+		  self.item = null;
+		},
+		insertBlock: function() {
+		  if (self.childCD) {
+			return;
+		  }
+		  self.item = self.base_element.cloneNode(true);
+		  self.insertDom(self.top_element, self.item);
+		  self.childCD = env.changeDetector["new"]();
+		  alight.bind(self.childCD, self.item, {
+			skip_attr: env.skippedAttr(),
+			elementCanBeRemoved: env.attrName
+		  });
+		},
+		watchModel: function() {
+		  env.watch(name, self.updateDom);
+		},
+		removeDom: function(element) {
+		  f$.remove(element);
+		},
+		insertDom: function(base, element) {
+		  f$.after(base, element);
+		}
+	  };
+	};
+
+	alight.d.al.ifnot = function(scope, element, name, env) {
+	  var self;
+	  self = alight.d.al["if"](scope, element, name, env);
+	  self.updateDom = function(value) {
+		if (value) {
+		  self.removeBlock();
+		} else {
+		  self.insertBlock();
+		}
+	  };
+	  return self;
+	};
+
+
+	/*
+		al-repeat="item in list"
+		"item in list"
+		"item in list | filter"
+		"item in list | filter track by trackExpression"
+		"item in list track by $index"
+		"item in list track by $id(item)"
+		"item in list track by item.id"
+
+		"(key, value) in object"
+		"(key, value) in object orderBy:key:reverse"
+		"(key, value) in object | filter orderBy:key,reverse"
+	 */
+	alight.directives.al.repeat = {
+		restrict: 'AM',
+		init: function(parentScope, element, exp, env) {
+			var CD, self;
+			if (env.elementCanBeRemoved) {
+				alight.exceptionHandler(null, env.attrName + " can't control element because of " + env.elementCanBeRemoved, {
+					scope: parentScope,
+					element: element,
+					value: exp,
+					env: env
+				});
+				return {};
+			}
+			env.stopBinding = true;
+			CD = env.changeDetector;
+			
+			return self = {
+				start: function() {
+					self.parsExpression();
+					self.prepareDom();
+					self.buildUpdateDom();
+					self.watchModel();
+				},
+				parsExpression: function() {
+					var r, s;
+					s = exp.trim();
+					if (s[0] === '(') {
+						self.objectMode = true;
+						r = s.match(/\((\w+),\s*(\w+)\)\s+in\s+(.+)\s+orderBy:(.+)\s*$/);
+						if (r) {
+							self.objectKey = r[1];
+							self.objectValue = r[2];
+							self.expression = r[3] + (" | toArray:" + self.objectKey + "," + self.objectValue + " | orderBy:" + r[4]);
+							self.nameOfKey = '$item';
+							self.trackExpression = '$item.' + self.objectKey;
+						} else {
+							r = s.match(/\((\w+),\s*(\w+)\)\s+in\s+(.+)\s*$/);
+							if (!r) {
+								throw 'Wrong repeat: ' + exp;
+							}
+							self.objectKey = r[1];
+							self.objectValue = r[2];
+							self.expression = r[3] + (" | toArray:" + self.objectKey + "," + self.objectValue);
+							self.nameOfKey = '$item';
+							self.trackExpression = '$item.' + self.objectKey;
+						}
+					} else {
+						//==============================
+						// simple array with structures
+						// item in appData.config.list
+						//==============================
+						r = s.match(/(.*) track by ([\w\.\$\(\)]+)/);
+						if (r) {
+							self.trackExpression = r[2];
+							s = r[1];
+						}
+						r = s.match(/\s*(\w+)\s+in\s+(.+)/);
+						if (!r) {
+							throw 'Wrong repeat: ' + exp;
+						}
+						self.nameOfKey = r[1];
+						self.expression = r[2];
+					}
+				},
+				watchModel: function() {
+					var flags;
+					if (self.objectMode) {
+						flags = { deep: true };
+					} else {
+						flags = { isArray: true };
+					}
+					self.watch = CD.watch(self.expression, self.updateDom, flags);
+				},
+				prepareDom: function() {
+					var el, element_list, i, len, t, t2;
+					if (element.nodeType === 8) {
+						self.top_element = element;
+						self.element_list = element_list = [];
+						el = element.nextSibling;
+						while (el) {
+							if (el.nodeType === 8) {
+								t = el.nodeValue;
+								t2 = t.trim().split(/\s+/);
+								if (t2[0] === '/directive:' && t2[1] === 'al-repeat') {
+									env.skipToElement = el;
+									break;
+								}
+							}
+							element_list.push(el);
+							el = el.nextSibling;
+						}
+						for (i = 0, len = element_list.length; i < len; i++) {
+							el = element_list[i];
+							f$.remove(el);
+						}
+						null;
+					} else {
+						//==============================
+						// simple array with structures
+						// item in appData.config.list
+						//==============================
+						self.base_element = element;
+						self.top_element = document.createComment(" " + exp + " ");
+						f$.before(element, self.top_element);
+						f$.remove(element);
+						if (alight.option.removeAttribute) {
+							element.removeAttribute(env.attrName);
+						}
+					}
+				},
+				makeChild: function(item, index, list) {
+					var childCD;
+					childCD = CD["new"](null, {
+						locals: true
+					});
+					self.updateLocals(childCD, item, index, list);
+					return childCD;
+				},
+				updateLocals: function(childCD, item, index, list) {
+					var locals;
+					locals = childCD.locals;
+					if (self.objectMode) {
+						locals[self.objectKey] = item[self.objectKey];
+						locals[self.objectValue] = item[self.objectValue];
+					} else {
+						locals[self.nameOfKey] = item;
+					}
+					locals.$index = index;
+					locals.$first = index === 0;
+					locals.$last = index === list.length - 1;
+				},
+				rawUpdateDom: function(removes, inserts) {
+					var e, i, it, j, len, len1;
+					for (i = 0, len = removes.length; i < len; i++) {
+						e = removes[i];
+						f$.remove(e);
+					}
+					for (j = 0, len1 = inserts.length; j < len1; j++) {
+						it = inserts[j];
+						f$.after(it.after, it.element);
+					}
+				},
+				buildUpdateDom: function() {
+					return self.updateDom = (function() {
+						var _getId, _id, fastBinding, generator, getResultList, index, node_by_id, node_del, node_get, node_set, nodes, skippedAttrs, version;
+						nodes = [];
+						index = 0;
+						fastBinding = null;
+						version = 0;
+						skippedAttrs = env.skippedAttr();
+						if (self.trackExpression === '$index') {
+							node_by_id = {};
+							node_get = function(item) {
+								return node_by_id[index] || null;
+							};
+							node_del = function(node) {
+								if(node.$id != null) delete node_by_id[node.$id];
+							};
+							node_set = function(item, node) {
+								node.$id = index;
+								node_by_id[index] = node;
+							};
+						} else {
+							if (self.trackExpression) {
+								node_by_id = {};
+								_getId = (function() {
+									var fn;
+									fn = CD.compile(self.trackExpression, {
+										input: ['$id', self.nameOfKey]
+									});
+									return function(a, b) {
+										return fn(CD.scope, a, b);
+									};
+								})();
+								_id = function(item) {
+									var id;
+									id = item.$alite_id;
+									if (id) {
+										return id;
+									}
+									id = item.$alite_id = alight.utils.getId();
+									return id;
+								};
+								node_get = function(item) {
+									var $id;
+									$id = _getId(_id, item);
+									if($id != null) return node_by_id[$id];
+									return null;
+								};
+								node_del = function(node) {
+									var $id;
+									$id = node.$id;
+									if($id != null) delete node_by_id[$id];
+								};
+								node_set = function(item, node) {
+									var $id;
+									$id = _getId(_id, item);
+									node.$id = $id;
+									node_by_id[$id] = node;
+								};
+							} else {
+								//==============================
+								// simple array with structures
+								// item in appData.config.list
+								//==============================
+								if (window.Map) {
+									node_by_id = new Map();
+									node_get = function(item) {
+										return node_by_id.get(item);
+									};
+									node_del = function(node) {
+										node_by_id["delete"](node.item);
+									};
+									node_set = function(item, node) {
+										node_by_id.set(item, node);
+									};
+								} else {
+									node_by_id = {};
+									node_get = function(item) {
+										var $id;
+										if (typeof item === 'object') {
+											$id = item.$alite_id;
+											if ($id) {
+												return node_by_id[$id];
+											}
+										} else {
+											return node_by_id[item] || null;
+										}
+										return null;
+									};
+									node_del = function(node) {
+										var $id;
+										$id = node.$id;
+										if (node_by_id[$id]) {
+											node.$id = null;
+											delete node_by_id[$id];
+										}
+									};
+									node_set = function(item, node) {
+										var $id;
+										if (typeof item === 'object') {
+											$id = alight.utils.getId();
+											item.$alite_id = $id;
+											node.$id = $id;
+											node_by_id[$id] = node;
+										} else {
+											node.$id = item;
+											node_by_id[item] = node;
+										}
+									};
+								}
+							}
+						}
+						generator = [];
+						getResultList = function(input) {
+							var size, t;
+							t = typeof input;
+							if (t === 'object') {
+								//==============================
+								// simple array with structures
+								// item in appData.config.list
+								//==============================
+								if (input && input.length) {
+									return input;
+								}
+							} else {
+								if (t === 'number') {
+									size = Math.floor(input);
+								} else if (t === 'string') {
+									size = Math.floor(input);
+									if (isNaN(size)) {
+										return [];
+									}
+								}
+								if (size < generator.length) {
+									generator.length = size;
+								} else {
+									while (generator.length < size) {
+										generator.push(generator.length);
+									}
+								}
+								return generator;
+							}
+							return [];
+						};
+						if (self.element_list) {
+							return function(input) {
+								var applyList, bel, childCD, dom_inserts, dom_removes, el, elLast, element_list, i, it, item, item_value, j, k, l, last_element, len, len1, len2, len3, len4, len5, len6, len7, list, m, n, next2, node, nodes2, o, p, pid, prev_moved, prev_node, ref, ref1, ref2;
+								list = getResultList(input);
+								last_element = self.top_element;
+								dom_inserts = [];
+								nodes2 = [];
+								for (i = 0, len = nodes.length; i < len; i++) {
+									node = nodes[i];
+									node.active = false;
+								}
+								for (index = j = 0, len1 = list.length; j < len1; index = ++j) {
+									item = list[index];
+									node = node_get(item);
+									if (node) {
+										node.active = true;
+									}
+								}
+								dom_removes = [];
+								for (k = 0, len2 = nodes.length; k < len2; k++) {
+									node = nodes[k];
+									if (node.active) {
+										continue;
+									}
+									if (node.prev) {
+										node.prev.next = node.next;
+									}
+									if (node.next) {
+										node.next.prev = node.prev;
+									}
+									node_del(node);
+									node.CD.destroy();
+									ref = node.element_list;
+									for (l = 0, len3 = ref.length; l < len3; l++) {
+										el = ref[l];
+										dom_removes.push(el);
+									}
+									node.next = null;
+									node.prev = null;
+									node.element_list = null;
+								}
+								applyList = [];
+								pid = null;
+								prev_node = null;
+								prev_moved = false;
+								elLast = self.element_list.length - 1;
+								for (index = m = 0, len4 = list.length; m < len4; index = ++m) {
+									item = list[index];
+									item_value = item;
+									node = node_get(item);
+									if (node) {
+										self.updateLocals(node.CD, item, index, list);
+										if (node.prev === prev_node) {
+											if (prev_moved) {
+												ref1 = node.element_list;
+												for (n = 0, len5 = ref1.length; n < len5; n++) {
+													el = ref1[n];
+													dom_inserts.push({
+														element: el,
+														after: last_element
+													});
+													last_element = el;
+												}
+											}
+											prev_node = node;
+											last_element = node.element_list[elLast];
+											node.active = true;
+											nodes2.push(node);
+											continue;
+										}
+										node.prev = prev_node;
+										if (prev_node) {
+											prev_node.next = node;
+										}
+										ref2 = node.element_list;
+										for (o = 0, len6 = ref2.length; o < len6; o++) {
+											el = ref2[o];
+											dom_inserts.push({
+												element: el,
+												after: last_element
+											});
+											last_element = el;
+										}
+										prev_moved = true;
+										prev_node = node;
+										node.active = true;
+										nodes2.push(node);
+										continue;
+									}
+									childCD = self.makeChild(item_value, index, list);
+									element_list = (function() {
+										var len7, p, ref3, results;
+										ref3 = self.element_list;
+										results = [];
+										for (p = 0, len7 = ref3.length; p < len7; p++) {
+											bel = ref3[p];
+											el = bel.cloneNode(true);
+											applyList.push({
+												cd: childCD,
+												el: el
+											});
+											dom_inserts.push({
+												element: el,
+												after: last_element
+											});
+											results.push(last_element = el);
+										}
+										return results;
+									})();
+									node = {
+										CD: childCD,
+										element_list: element_list,
+										prev: prev_node,
+										next: null,
+										active: true,
+										item: item
+									};
+									node_set(item, node);
+									if (prev_node) {
+										next2 = prev_node.next;
+										prev_node.next = node;
+										node.next = next2;
+										if (next2) {
+											next2.prev = node;
+									}
+									} else if (index === 0 && nodes[0]) {
+										next2 = nodes[0];
+										node.next = next2;
+										next2.prev = node;
+									}
+									prev_node = node;
+									nodes2.push(node);
+								}
+								nodes = nodes2;
+								self.rawUpdateDom(dom_removes, dom_inserts);
+								dom_removes.length = 0;
+								dom_inserts.length = 0;
+								for (p = 0, len7 = applyList.length; p < len7; p++) {
+									it = applyList[p];
+									alight.bind(it.cd, it.el, {
+										skip_attr: skippedAttrs,
+										elementCanBeRemoved: env.attrName,
+										noDomOptimization: true
+									});
+								}
+							};
+						} else {
+							return function(input) {
+								//console.log(input);
+								var applyList, childCD, dom_inserts, dom_removes, fbElement, i, it, item, item_value, j, k, last_element, len, len1, len2, list, next2, node, nodes2, pid, prev_moved, prev_node, r;
+								list = getResultList(input);
+								last_element = self.top_element;
+								version++;
+								dom_inserts = [];
+								nodes2 = [];
+								applyList = [];
+								pid = null;
+								prev_node = null;
+								prev_moved = false;
+								for (index = i = 0, len = list.length; i < len; index = ++i) {
+									item = list[index];
+									item_value = item;
+									node = node_get(item);
+									if (node) {
+										self.updateLocals(node.CD, item, index, list);
+										if (node.prev === prev_node) {
+											if (prev_moved) {
+												dom_inserts.push({
+													element: node.element,
+													after: prev_node.element
+												});
+											}
+											prev_node = node;
+											last_element = node.element;
+											node.version = version;
+											nodes2.push(node);
+											continue;
+										}
+										node.prev = prev_node;
+										if (prev_node) {
+											prev_node.next = node;
+										}
+										dom_inserts.push({
+											element: node.element,
+											after: last_element
+										});
+										prev_moved = true;
+										last_element = node.element;
+										prev_node = node;
+										node.version = version;
+										nodes2.push(node);
+										continue;
+									}
+									childCD = self.makeChild(item_value, index, list);
+									element = self.base_element.cloneNode(true);
+									if(fastBinding === null) {
+										//==============================
+										// simple array with structures
+										// item in appData.config.list
+										//==============================
+										fbElement = self.base_element.cloneNode(true);
+										r = alight.bind(childCD, element, {
+											skip_attr: skippedAttrs,
+											elementCanBeRemoved: env.attrName,
+											noDomOptimization: true,
+											fbElement: fbElement
+										});
+										fastBinding = alight.core.fastBinding(r) || false;
+										if (fastBinding) {
+											self.base_element = fbElement;
+										}
+									} else {
+										applyList.push({
+											cd: childCD,
+											el: element
+										});
+									}
+									dom_inserts.push({
+										element: element,
+										after: last_element
+									});
+									node = {
+										CD: childCD,
+										element: element,
+										prev: prev_node,
+										next: null,
+										version: version,
+										item: item
+									};
+									last_element = element;
+									
+									//console.log(item);
+									//console.log(node);
+									
+									node_set(item, node);
+									if (prev_node) {
+										next2 = prev_node.next;
+										prev_node.next = node;
+										node.next = next2;
+										if (next2) {
+											next2.prev = node;
+										}
+									} else if (index === 0 && nodes[0]) {
+										next2 = nodes[0];
+										node.next = next2;
+										next2.prev = node;
+									}
+									prev_node = node;
+									nodes2.push(node);
+								}
+								dom_removes = [];
+								for (j = 0, len1 = nodes.length; j < len1; j++) {
+									node = nodes[j];
+									if (node.version === version) {
+										continue;
+									}
+									if (node.prev) {
+										node.prev.next = node.next;
+									}
+									if (node.next) {
+										node.next.prev = node.prev;
+									}
+									node_del(node);
+									node.CD.destroy();
+									dom_removes.push(node.element);
+									node.next = null;
+									node.prev = null;
+									node.element = null;
+								}
+								nodes = nodes2;
+								self.rawUpdateDom(dom_removes, dom_inserts);
+								dom_removes.length = 0;
+								dom_inserts.length = 0;
+								for (k = 0, len2 = applyList.length; k < len2; k++) {
+									it = applyList[k];
+									if (fastBinding) {
+										fastBinding.bind(it.cd, it.el);
+									} else {
+										alight.bind(it.cd, it.el, {
+											skip_attr: skippedAttrs,
+											elementCanBeRemoved: env.attrName,
+											noDomOptimization: true
+										});
+									}
+								}
+							};
+						}
+					})(); // updateDom
+				}
+			};
+		}
+	};
+
+	alight.d.al.init = function(scope, element, exp, env) {
+	  var cd, e, error, fb, fn, input;
+	  if (alight.option.removeAttribute) {
+		element.removeAttribute(env.attrName);
+		if (env.fbElement) {
+		  env.fbElement.removeAttribute(env.attrName);
+		}
+	  }
+	  cd = env.changeDetector;
+	  input = ['$element'];
+	  if (env.attrArgument === 'window') {
+		input.push('window');
+	  }
+	  try {
+		fn = cd.compile(exp, {
+		  no_return: true,
+		  input: input
+		});
+		env.fastBinding = fb = function(scope, element, exp, env) {
+		  return fn(env.changeDetector.locals, element, window);
+		};
+		fb(scope, element, exp, env);
+	  } catch (error) {
+		e = error;
+		alight.exceptionHandler(e, 'al-init, error in expression: ' + exp, {
+		  exp: exp,
+		  scope: scope,
+		  cd: cd,
+		  element: element
+		});
+		env.fastBinding = function() {};
+	  }
+	};
+
+	alight.d.al.app = {
+	  stopBinding: true
+	};
+
+	alight.d.al.stop = {
+	  restrict: 'AE',
+	  stopBinding: true
+	};
+
+	alight.d.al.cloak = function(scope, element, name, env) {
+	  element.removeAttribute(env.attrName);
+	  if (name) {
+		f$.removeClass(element, name);
+	  }
+	};
+
+
+	/*
+		al-html="model"
+		al-html:id=" 'templateId' "
+		al-html:id.literal="templateId" // template id without 'quotes'
+		al-html:url="model"
+		al-html:url.tpl="/templates/{{templateId}}"
+	 */
+	alight.d.al.html = {
+	  restrict: 'AM',
+	  priority: 100,
+	  modifier: {},
+	  link: function(scope, element, inputName, env) {
+		var self;
+		if (env.elementCanBeRemoved && element.nodeType !== 8) {
+		  alight.exceptionHandler(null, env.attrName + " can't control element because of " + env.elementCanBeRemoved, {
+			scope: scope,
+			element: element,
+			value: inputName,
+			env: env
+		  });
+		  return {};
+		}
+		env.stopBinding = true;
+		return self = {
+		  baseElement: null,
+		  topElement: null,
+		  activeElement: null,
+		  childCD: null,
+		  name: inputName,
+		  watchMode: null,
+		  start: function() {
+			self.parsing();
+			self.prepare();
+			self.watchModel();
+		  },
+		  parsing: function() {
+			var i, len, modifierName, ref;
+			if (env.attrArgument) {
+			  ref = env.attrArgument.split('.');
+			  for (i = 0, len = ref.length; i < len; i++) {
+				modifierName = ref[i];
+				if (modifierName === 'literal') {
+				  self.watchMode = 'literal';
+				  continue;
+				}
+				if (modifierName === 'tpl') {
+				  self.watchMode = 'tpl';
+				  continue;
+				}
+				if (!alight.d.al.html.modifier[modifierName]) {
+				  continue;
+				}
+				alight.d.al.html.modifier[modifierName](self, {
+				  scope: scope,
+				  element: element,
+				  inputName: inputName,
+				  env: env
+				});
+			  }
+			}
+		  },
+		  prepare: function() {
+			if (element.nodeType === 8) {
+			  self.baseElement = null;
+			  self.topElement = element;
+			} else {
+			  self.baseElement = element;
+			  self.topElement = document.createComment(" " + env.attrName + ": " + inputName + " ");
+			  f$.before(element, self.topElement);
+			  f$.remove(element);
+			}
+		  },
+		  removeBlock: function() {
+			var el, i, len, ref;
+			if (self.childCD) {
+			  self.childCD.destroy();
+			  self.childCD = null;
+			}
+			if (self.activeElement) {
+			  if (Array.isArray(self.activeElement)) {
+				ref = self.activeElement;
+				for (i = 0, len = ref.length; i < len; i++) {
+				  el = ref[i];
+				  self.removeDom(el);
+				}
+			  } else {
+				self.removeDom(self.activeElement);
+			  }
+			  self.activeElement = null;
+			}
+		  },
+		  insertBlock: function(html) {
+			var current, el, t;
+			if (self.baseElement) {
+			  self.activeElement = self.baseElement.cloneNode(false);
+			  self.activeElement.innerHTML = html;
+			  self.insertDom(self.topElement, self.activeElement);
+			  self.childCD = env.changeDetector["new"]();
+			  alight.bind(self.childCD, self.activeElement, {
+				skip_attr: env.skippedAttr(),
+				elementCanBeRemoved: env.attrName
+			  });
+			} else {
+			  t = document.createElement('body');
+			  t.innerHTML = html;
+			  current = self.topElement;
+			  self.activeElement = [];
+			  self.childCD = env.changeDetector["new"]();
+			  while (el = t.firstChild) {
+				self.insertDom(current, el);
+				current = el;
+				self.activeElement.push(el);
+				alight.bind(self.childCD, current, {
+				  skip_attr: env.skippedAttr(),
+				  elementCanBeRemoved: env.attrName
+				});
+			  }
+			}
+		  },
+		  updateDom: function(html) {
+			self.removeBlock();
+			if (html) {
+			  self.insertBlock(html);
+			}
+		  },
+		  removeDom: function(element) {
+			f$.remove(element);
+		  },
+		  insertDom: function(base, element) {
+			f$.after(base, element);
+		  },
+		  watchModel: function() {
+			if (self.watchMode === 'literal') {
+			  self.updateDom(self.name);
+			} else if (self.watchMode === 'tpl') {
+			  env.watchText(self.name, self.updateDom);
+			} else {
+			  env.watch(self.name, self.updateDom);
+			}
+		  }
+		};
+	  }
+	};
+
+	alight.d.al.html.modifier.id = function(self) {
+	  return self.updateDom = function(id) {
+		var html, tpl;
+		self.removeBlock();
+		tpl = document.getElementById(id);
+		if (tpl) {
+		  html = tpl.innerHTML;
+		  if (html) {
+			self.insertBlock(html);
+		  }
+		}
+	  };
+	};
+
+	alight.d.al.html.modifier.url = function(self) {
+	  self.loadHtml = function(cfg) {
+		f$.ajax(cfg);
+	  };
+	  return self.updateDom = function(url) {
+		if (!url) {
+		  self.removeBlock();
+		  return;
+		}
+		self.loadHtml({
+		  cache: true,
+		  url: url,
+		  success: function(html) {
+			self.removeBlock();
+			self.insertBlock(html);
+		  },
+		  error: self.removeBlock
+		});
+	  };
+	};
+
+	alight.d.al.html.modifier.scope = function(self, option) {
+	  var d, innerName, oneTime, outerName;
+	  d = self.name.split(':');
+	  if (d.length === 2) {
+		self.name = d[0];
+		outerName = d[1];
+	  } else {
+		d = self.name.match(/(.+)\:\s*\:\:([\d\w]+)$/);
+		if (d) {
+		  oneTime = true;
+		} else {
+		  oneTime = false;
+		  d = self.name.match(/(.+)\:\s*([\.\w]+)$/);
+		  if (!d) {
+			throw 'Wrong expression ' + self.name;
+		  }
+		}
+		self.name = d[1];
+		outerName = d[2];
+	  }
+	  innerName = 'outer';
+	  return self.insertBlock = function(html) {
+		var childCD, parentCD, w;
+		self.activeElement = self.baseElement.cloneNode(false);
+		self.activeElement.innerHTML = html;
+		self.insertDom(self.topElement, self.activeElement);
+		parentCD = option.env.changeDetector;
+		childCD = self.childCD = parentCD["new"](null, {
+		  locals: true
+		});
+		childCD.locals[innerName] = null;
+		w = parentCD.watch(outerName, function(outerValue) {
+		  return childCD.locals[innerName] = outerValue;
+		}, {
+		  oneTime: oneTime
+		});
+		self.childCD.watch('$destroy', function() {
+		  return w.stop();
+		});
+		alight.bind(self.childCD, self.activeElement, {
+		  skip_attr: option.env.skippedAttr()
+		});
+	  };
+	};
+
+	alight.d.al.html.modifier.inline = function(self, option) {
+	  var originalPrepare;
+	  originalPrepare = self.prepare;
+	  return self.prepare = function() {
+		originalPrepare();
+		return option.env.setValue(self.name, self.baseElement.innerHTML);
+	  };
+	};
+
+	alight.d.al.radio = function(scope, element, name, env) {
+	  var key, value, watch;
+	  key = env.takeAttr('al-value');
+	  if (key) {
+		value = env["eval"](key);
+	  } else {
+		value = env.takeAttr('value');
+	  }
+	  env.on(element, 'change', function() {
+		env.setValue(name, value);
+		watch.refresh();
+		env.scan();
+	  });
+	  return watch = env.watch(name, function(newValue) {
+		element.checked = value === newValue;
+		return '$scanNoChanges';
+	  });
+	};
+
+
+	/*
+		<select al-select="selected">
+		  <option al-repeat="item in list" al-option="item">{{item.name}}</option>
+		  <optgroup label="Linux">
+			  <option al-repeat="linux in list2" al-option="linux">Linux {{linux.codeName}}</option>
+		  </optgroup>
+		</select>
+	 */
+	(function() {
+	  var Mapper;
+	  if (window.Map) {
+		Mapper = function() {
+		  this.idByItem = new Map;
+		  this.itemById = {};
+		  this.index = 1;
+		  return this;
+		};
+		Mapper.prototype.acquire = function(item) {
+		  var id;
+		  id = "i" + (this.index++);
+		  this.idByItem.set(item, id);
+		  this.itemById[id] = item;
+		  return id;
+		};
+		Mapper.prototype.release = function(id) {
+		  var item;
+		  item = this.itemById[id];
+		  delete this.itemById[id];
+		  this.idByItem["delete"](item);
+		};
+		Mapper.prototype.replace = function(id, item) {
+		  var old;
+		  old = this.itemById[id];
+		  this.idByItem["delete"](old);
+		  this.idByItem.set(item, id);
+		  this.itemById[id] = item;
+		};
+		Mapper.prototype.getId = function(item) {
+		  return this.idByItem.get(item);
+		};
+		Mapper.prototype.getItem = function(id) {
+		  return this.itemById[id] || null;
+		};
+	  } else {
+		Mapper = function() {
+		  this.itemById = {
+			'i#null': null
+		  };
+		  return this;
+		};
+		Mapper.prototype.acquire = function(item) {
+		  var id;
+		  if (item === null) {
+			return 'i#null';
+		  }
+		  if (typeof item === 'object') {
+			id = item.$alite_id;
+			if (!id) {
+			  item.$alite_id = id = alight.utils.getId();
+			}
+		  } else {
+			id = '' + item;
+		  }
+		  this.itemById[id] = item;
+		  return id;
+		};
+		Mapper.prototype.release = function(id) {
+		  delete this.itemById[id];
+		};
+		Mapper.prototype.replace = function(id, item) {
+		  this.itemById[id] = item;
+		};
+		Mapper.prototype.getId = function(item) {
+		  if (item === null) {
+			return 'i#null';
+		  }
+		  if (typeof item === 'object') {
+			return item.$alite_id;
+		  } else {
+			return '' + item;
+		  }
+		};
+		Mapper.prototype.getItem = function(id) {
+		  return this.itemById[id] || null;
+		};
+	  }
+	  alight.d.al.select = function(scope, element, key, env) {
+		var cd, lastValue, mapper, onChangeDOM, setValueOfElement, watch;
+		cd = env.changeDetector["new"]();
+		env.stopBinding = true;
+		cd.$select = {
+		  mapper: mapper = new Mapper
+		};
+		lastValue = null;
+		cd.$select.change = function() {
+		  return alight.nextTick(function() {
+			return setValueOfElement(lastValue);
+		  });
+		};
+		setValueOfElement = function(value) {
+		  var id;
+		  id = mapper.getId(value);
+		  if (id) {
+			return element.value = id;
+		  } else {
+			return element.selectedIndex = -1;
+		  }
+		};
+		watch = cd.watch(key, function(value) {
+		  lastValue = value;
+		  return setValueOfElement(value);
+		});
+		onChangeDOM = function(event) {
+		  lastValue = mapper.getItem(event.target.value);
+		  cd.setValue(key, lastValue);
+		  watch.refresh();
+		  return cd.scan();
+		};
+		env.on(element, 'input', onChangeDOM);
+		env.on(element, 'change', onChangeDOM);
+		return alight.bind(cd, element, {
+		  skip_attr: env.skippedAttr()
+		});
+	  };
+	  return alight.d.al.option = function(scope, element, key, env) {
+		var cd, i, id, j, mapper, select, step;
+		cd = step = env.changeDetector;
+		for (i = j = 0; j <= 4; i = ++j) {
+		  select = step.$select;
+		  if (select) {
+			break;
+		  }
+		  step = step.parent || {};
+		}
+		if (!select) {
+		  alight.exceptionHandler('', 'Error in al-option - al-select is not found', {
+			cd: cd,
+			scope: cd.scope,
+			element: element,
+			value: key
+		  });
+		  return;
+		}
+		mapper = select.mapper;
+		id = null;
+		cd.watch(key, function(item) {
+		  if (id) {
+			if (mapper.getId(item) !== id) {
+			  mapper.release(id);
+			  id = mapper.acquire(item);
+			  element.value = id;
+			  select.change();
+			} else {
+			  mapper.replace(id, item);
+			}
+		  } else {
+			id = mapper.acquire(item);
+			element.value = id;
+			select.change();
+		  }
+		});
+		cd.watch('$destroy', function() {
+		  mapper.release(id);
+		  return select.change();
+		});
+	  };
+	})();
+
+	(function() {
+	  var props;
+	  alight.hooks.attribute.unshift({
+		code: 'attribute',
+		fn: function() {
+		  var d, value;
+		  d = this.attrName.match(/^\:([\w\.\-]+)$/);
+		  if (!d) {
+			return;
+		  }
+		  value = d[1];
+		  if (value.split('.')[0] === 'html') {
+			this.name = 'html';
+			value = value.substring(5);
+		  } else {
+			this.name = 'attr';
+		  }
+		  this.ns = 'al';
+		  this.attrArgument = value;
+		}
+	  });
+	  props = {
+		checked: 'checked',
+		readonly: 'readOnly',
+		value: 'value',
+		selected: 'selected',
+		muted: 'muted',
+		disabled: 'disabled',
+		hidden: 'hidden'
+	  };
+	  return alight.d.al.attr = function(scope, element, key, env) {
+		var args, attrName, d, fn, isTemplate, list, prop, setter, styleName, watch;
+		if (!env.attrArgument) {
+		  return;
+		}
+		d = env.attrArgument.split('.');
+		attrName = d[0];
+		prop = props[attrName];
+		isTemplate = d.indexOf('tpl') > 0;
+		if (alight.option.removeAttribute) {
+		  element.removeAttribute(env.attrName);
+		  if (env.fbElement) {
+			env.fbElement.removeAttribute(env.attrName);
+		  }
+		}
+		args = {
+		  readOnly: true
+		};
+		setter = null;
+		if (attrName === 'style') {
+		  if (!d[1]) {
+			throw 'Style is not declared';
+		  }
+		  styleName = d[1].replace(/(-\w)/g, function(m) {
+			return m.substring(1).toUpperCase();
+		  });
+		  setter = function(element, value) {
+			if (value == null) {
+			  value = '';
+			}
+			return element.style[styleName] = value;
+		  };
+		} else if (attrName === 'class' && d.length > 1) {
+		  isTemplate = false;
+		  list = d.slice(1);
+		  setter = function(element, value) {
+			var c, i, j, len, len1;
+			if (value) {
+			  for (i = 0, len = list.length; i < len; i++) {
+				c = list[i];
+				f$.addClass(element, c);
+			  }
+			} else {
+			  for (j = 0, len1 = list.length; j < len1; j++) {
+				c = list[j];
+				f$.removeClass(element, c);
+			  }
+			}
+		  };
+		} else if (attrName === 'focus') {
+		  setter = function(element, value) {
+			if (value) {
+			  return element.focus();
+			} else {
+			  return element.blur();
+			}
+		  };
+		} else {
+		  if (prop) {
+			setter = function(element, value) {
+			  if (value === void 0) {
+				value = null;
+			  }
+			  if (element[prop] !== value) {
+				return element[prop] = value;
+			  }
+			};
+		  } else {
+			args.element = element;
+			args.elementAttr = attrName;
+		  }
+		}
+		watch = isTemplate ? 'watchText' : 'watch';
+		if (setter) {
+		  fn = function(scope, element, _, env) {
+			return env.changeDetector[watch](key, function(value) {
+			  return setter(element, value);
+			}, args);
+		  };
+		} else {
+		  fn = function(scope, element, _, env) {
+			return env.changeDetector[watch](key, null, {
+			  readOnly: true,
+			  element: element,
+			  elementAttr: attrName
+			});
+		  };
+		}
+		fn(scope, element, key, env);
+		env.fastBinding = fn;
+	  };
+	})();
+
+	alight.d.al.model = function(scope, element, value, env) {
+	  var name;
+	  name = element.nodeName.toLowerCase();
+	  if (name === 'select') {
+		return alight.d.al.select.call(this, scope, element, value, env);
+	  }
+	  if (name === 'input') {
+		if (element.type === 'checkbox') {
+		  return alight.d.al.checked.call(this, scope, element, value, env);
+		}
+		if (element.type === 'radio') {
+		  return alight.d.al.radio.call(this, scope, element, value, env);
+		}
+	  }
+	  return alight.d.al.value.call(this, scope, element, value, env);
+	};
+
+	alight.filters.slice = function(value, a, b) {
+	  if (!value) {
+		return null;
+	  }
+	  if (b) {
+		return value.slice(a, b);
+	  } else {
+		return value.slice(a);
+	  }
+	};
+
+	(function() {
+	  var d2;
+	  d2 = function(x) {
+		if (x < 10) {
+		  return '0' + x;
+		}
+		return '' + x;
+	  };
+	  return alight.filters.date = function(value, format) {
+		var d, i, len, r, x;
+		if (!value) {
+		  return '';
+		}
+		value = new Date(value);
+		x = [[/yyyy/g, value.getFullYear()], [/mm/g, d2(value.getMonth() + 1)], [/dd/g, d2(value.getDate())], [/HH/g, d2(value.getHours())], [/MM/g, d2(value.getMinutes())], [/SS/g, d2(value.getSeconds())]];
+		r = format;
+		for (i = 0, len = x.length; i < len; i++) {
+		  d = x[i];
+		  r = r.replace(d[0], d[1]);
+		}
+		return r;
+	  };
+	})();
+
+	alight.filters.json = {
+	  watchMode: 'deep',
+	  fn: function(value) {
+		return JSON.stringify(alight.utils.clone(value), null, 4);
+	  }
+	};
+
+	alight.filters.filter = function(input, _a, _b) {
+	  var d, i, j, k, key, len, len1, result, s, svalue, v, value;
+	  if (arguments.length === 2) {
+		key = null;
+		value = _a;
+	  } else if (arguments.length === 3) {
+		key = _a;
+		value = _b;
+	  } else {
+		return input;
+	  }
+	  if (!input || (value == null) || value === '') {
+		return input;
+	  }
+	  result = [];
+	  svalue = ('' + value).toLowerCase();
+	  if (key) {
+		for (i = 0, len = input.length; i < len; i++) {
+		  d = input[i];
+		  if (d[key] === value) {
+			result.push(d);
+		  } else {
+			s = ('' + d[key]).toLowerCase();
+			if (s.indexOf(svalue) >= 0) {
+			  result.push(d);
+			}
+		  }
+		}
+	  } else {
+		for (j = 0, len1 = input.length; j < len1; j++) {
+		  d = input[j];
+		  for (k in d) {
+			v = d[k];
+			if (v === value) {
+			  result.push(d);
+			} else {
+			  s = ('' + v).toLowerCase();
+			  if (s.indexOf(svalue) >= 0) {
+				result.push(d);
+			  }
+			}
+		  }
+		}
+	  }
+	  return result;
+	};
+
+	alight.filters.orderBy = function(value, key, reverse) {
+	  if (!value instanceof Array) {
+		return null;
+	  }
+	  if (reverse) {
+		reverse = 1;
+	  } else {
+		reverse = -1;
+	  }
+	  return value.sort(function(a, b) {
+		if (a[key] < b[key]) {
+		  return -reverse;
+		}
+		if (a[key] > b[key]) {
+		  return reverse;
+		}
+		return 0;
+	  });
+	};
+
+	alight.filters.throttle = {
+	  init: function(scope, delay, env) {
+		var to;
+		delay = Number(delay);
+		to = null;
+		return {
+		  onChange: function(value) {
+			if (to) {
+			  clearTimeout(to);
+			}
+			return to = setTimeout(function() {
+			  to = null;
+			  env.setValue(value);
+			  return env.changeDetector.scan();
+			}, delay);
+		  }
+		};
+	  }
+	};
+
+	alight.filters.toArray = {
+	  init: function(scope, exp, env) {
+		var keyName, result, valueName;
+		if (env.conf.args.length === 2) {
+		  keyName = env.conf.args[0];
+		  valueName = env.conf.args[1];
+		} else {
+		  keyName = 'key';
+		  valueName = 'value';
+		}
+		result = [];
+		return {
+		  watchMode: 'deep',
+		  onChange: function(obj) {
+			var d, key, value;
+			result.length = 0;
+			for (key in obj) {
+			  value = obj[key];
+			  d = {};
+			  d[keyName] = key;
+			  d[valueName] = value;
+			  result.push(d);
+			}
+			return env.setValue(result);
+		  }
+		};
+	  }
+	};
+
+	alight.filters.storeTo = {
+	  init: function(scope, key, env) {
+		return {
+		  onChange: function(value) {
+			env.changeDetector.setValue(key, value);
+			return env.setValue(value);
+		  }
+		};
+	  }
+	};
+
+	alight.text['='] = function(callback, expression, scope, env) {
+	  var ce;
+	  ce = alight.utils.compile.expression(expression);
+	  if (ce.filters) {
+		throw 'Conflict: bindonce and filters, use one-time binding';
+	  }
+	  env["finally"](ce.fn(env.changeDetector.locals));
+	};
+
+	alight.text['::'] = function(callback, expression, scope, env) {
+	  env.changeDetector.watch(expression, function(value) {
+		return env["finally"](value);
+	  }, {
+		oneTime: true
+	  });
+	};
+
+	(function () {
+		/*
+		
+		alight.component('rating', (scope, element, env) => {
+		  return {
+			template,
+			templateId,
+			templateUrl,
+			props,
+			onStart,
+			onDestroy,
+			api
+		  };
+		})
+		
+		<rating :rating="rating" :max="max" @change="rating=$event.value"></rating>
+		
+		*/
+		var f$ = alight.f$;
+		function toCamelCase(name) {
+			return name.replace(/(-\w)/g, function (m) {
+				return m.substring(1).toUpperCase();
+			});
+		}
+		;
+		function makeWatch(_a) {
+			var listener = _a.listener, childCD = _a.childCD, name = _a.name, parentName = _a.parentName, parentCD = _a.parentCD;
+			var fn;
+			var watchOption = {};
+			name = toCamelCase(name);
+			if (listener && listener !== true) {
+				if (f$.isFunction(listener)) {
+					fn = listener;
+				}
+				else {
+					fn = listener.onChange;
+					if (listener === 'copy' || listener.watchMode === 'copy') {
+						if (fn)
+							fn(parentName);
+						else
+							childCD.scope[name] = parentName;
+						return;
+					}
+					if (listener === 'array' || listener.watchMode === 'array')
+						watchOption.isArray = true;
+					if (listener === 'deep' || listener.watchMode === 'deep')
+						watchOption.deep = true;
+				}
+			}
+			if (!fn) {
+				fn = function (value) {
+					childCD.scope[name] = value;
+					childCD.scan();
+				};
+			}
+			parentCD.watch(parentName, fn, watchOption);
+		}
+		;
+		alight.component = function (attrName, constructor) {
+			var parts = attrName.match(/^(\w+)[\-](.+)$/);
+			var ns, name;
+			if (parts) {
+				ns = parts[1];
+				name = parts[2];
+			}
+			else {
+				ns = '$global';
+				name = attrName;
+			}
+			name = toCamelCase(name);
+			if (!alight.d[ns])
+				alight.d[ns] = {};
+			alight.d[ns][name] = {
+				restrict: 'E',
+				stopBinding: true,
+				priority: alight.priority.$component,
+				init: function (_parentScope, element, _value, parentEnv) {
+					var scope = {
+						$sendEvent: function (eventName, value) {
+							var event = new CustomEvent(eventName);
+							event.value = value;
+							event.component = true;
+							element.dispatchEvent(event);
+						}
+					};
+					var parentCD = parentEnv.changeDetector.new();
+					var childCD = alight.ChangeDetector(scope);
+					var env = new Env({
+						element: element,
+						attributes: parentEnv.attributes,
+						changeDetector: childCD,
+						parentChangeDetector: parentCD
+					});
+					try {
+						var option = constructor.call(childCD, scope, element, env) || {};
+					}
+					catch (e) {
+						alight.exceptionHandler(e, 'Error in component <' + attrName + '>: ', {
+							element: element,
+							scope: scope,
+							cd: childCD
+						});
+						return;
+					}
+					if (option.onStart) {
+						childCD.watch('$finishBinding', function () {
+							option.onStart();
+							childCD.scan();
+						});
+					}
+					// bind props
+					var parentDestroyed = false;
+					parentCD.watch('$destroy', function () {
+						parentDestroyed = true;
+						childCD.destroy();
+					});
+					childCD.watch('$destroy', function () {
+						if (option.onDestroy)
+							option.onDestroy();
+						if (!parentDestroyed)
+							parentCD.destroy(); // child of parentCD
+					});
+					// api
+					for (var _i = 0, _a = element.attributes; _i < _a.length; _i++) {
+						var attr = _a[_i];
+						if (attr.name[0] !== '#')
+							continue;
+						var name_1 = attr.name.slice(1);
+						if (!name_1)
+							continue;
+						if (option.api)
+							parentCD.setValue(name_1, option.api);
+						else
+							parentCD.setValue(name_1, scope);
+						break;
+					}
+					function watchProp(key, listener) {
+						var name = ':' + key;
+						var value = env.takeAttr(name);
+						if (!value) {
+							value = env.takeAttr(key);
+							if (!value)
+								return;
+							listener = 'copy';
+						}
+						makeWatch({ childCD: childCD, listener: listener, name: key, parentName: value, parentCD: parentCD });
+					}
+					// option props
+					if (option.props) {
+						if (Array.isArray(option.props))
+							for (var _b = 0, _c = option.props; _b < _c.length; _b++) {
+								var key = _c[_b];
+								watchProp(key, true);
+							}
+						else
+							for (var key in option.props)
+								watchProp(key, option.props[key]);
+					}
+					else {
+						// auto props
+						for (var _d = 0, _e = element.attributes; _d < _e.length; _d++) {
+							var attr = _e[_d];
+							var propName = attr.name;
+							var propValue = attr.value;
+							if (!propValue)
+								continue;
+							var parts_1 = propName.match(/^\:(.*)$/);
+							if (!parts_1)
+								continue;
+							makeWatch({ childCD: childCD, name: parts_1[1], parentName: propValue, parentCD: parentCD });
+						}
+					}
+					var scanned = false;
+					parentCD.watch('$onScanOnce', function () { return scanned = true; });
+					// template
+					if (option.template)
+						element.innerHTML = option.template;
+					if (option.templateId) {
+						var templateElement = document.getElementById(option.templateId);
+						if (!templateElement)
+							throw 'No template ' + option.templateId;
+						element.innerHTML = templateElement.innerHTML;
+					}
+					if (option.templateUrl) {
+						f$.ajax({
+							url: option.templateUrl,
+							cache: true,
+							success: function (template) {
+								element.innerHTML = template;
+								binding(true);
+							},
+							error: function () {
+								console.error('Template is not loaded', option.templateUrl);
+							}
+						});
+					}
+					else {
+						binding();
+					}
+					function binding(async) {
+						if (!scanned)
+							parentCD.digest();
+						alight.bind(childCD, element, { skip: true });
+					}
+				}
+			};
+		};
+	})();
+	
+			/* prev prefix.js */
+			return alight;
+		}; // finish of buildAlight
+		
+		var alight = buildAlight();
+		alight.makeInstance = buildAlight;
+		
+		if(typeof(alightInitCallback) === 'function') {
+			alightInitCallback(alight)
+		} else if(typeof(define) === 'function') {  // requrejs/commonjs
+			define(function() {
+				return alight;
+			});
+		} else if(typeof(module) === 'object' && typeof(module.exports) === 'object') {
+			module.exports = alight
+		} else {
+			alight.option.globalController = true;  // global controllers
+			window.alight = alight;
+			alight.f$.ready(alight.bootstrap);
+		};
+	})();
+})(jQuery);

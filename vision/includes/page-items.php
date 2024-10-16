@@ -10,10 +10,11 @@ $list_table->prepare_items();
         <div class="vision-title">
             <i class="icon icon-scan-eye"></i>
             <span>Vision<sup><?php echo esc_attr(VISION_PLUGIN_PLAN); ?></sup></span>
+            <span> - </span>
             <span><?php esc_html_e('All Items', 'vision'); ?></span>
         </div>
 		<div class="vision-actions">
-			<a class="vision-blue" href="?page=vision_item" title="<?php esc_html_e('Create a new item', 'vision'); ?>"><?php esc_html_e('Add Item', 'vision'); ?></a>
+			<a class="vision-button vision-blue" href="?page=vision_item" title="<?php esc_html_e('Create a new item', 'vision'); ?>"><?php esc_html_e('Add Item', 'vision'); ?></a>
 		</div>
 	</div>
 	<div class="vision-app">

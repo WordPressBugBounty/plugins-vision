@@ -3,8 +3,8 @@ Contributors: Avirtum
 Tags: image maps, infographics, floor plan, interactive images, hotspots
 Requires at least: 4.0
 Tested up to: 6.6
-Requires PHP: 7.0
-Stable tag: 1.8.2
+Requires PHP: 7.4
+Stable tag: 1.8.3
 License: GPLv3
 
 Empower your site with interactive visuals! Our plugin seamlessly transforms static images into engaging media, enabling publishers and bloggers.
@@ -128,9 +128,12 @@ You’re done. Enjoy.
 
 == Changelog ==
 
+= 1.8.3 =
+* Mod: redesigned the interface for better usability
+
 = 1.8.2 =
-Fix: preview mode
-Fix: layer ordering (up & down actions)
+* Fix: preview mode
+* Fix: layer ordering (up & down actions)
 
 = 1.8.1 =
 * Fix: code compatibility with WordPress Coding Standards

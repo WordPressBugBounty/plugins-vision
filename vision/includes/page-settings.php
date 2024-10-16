@@ -9,6 +9,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
         <div class="vision-title">
             <i class="icon icon-scan-eye"></i>
             <span>Vision<sup><?php echo esc_attr(VISION_PLUGIN_PLAN); ?></sup></span>
+            <span> - </span>
             <span><?php esc_html_e('Settings', 'vision'); ?></span>
         </div>
 	</div>
@@ -29,7 +30,6 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
 					<div class="vision-left-panel">
 						<div class="vision-list">
 							<a class="vision-item vision-small vision-lite" href="https://1.envato.market/getvision" al-if="appData.plan=='lite'"><?php esc_html_e('Buy Pro version', 'vision'); ?></a>
-							<div class="vision-item vision-small vision-pro" al-if="appData.plan=='pro'"><?php esc_html_e('Pro Version', 'vision'); ?></div>
 						</div>
 					</div>
 					<div class="vision-right-panel">

@@ -35,7 +35,7 @@ $reasons = [
             <div class="vision-fields">
             <?php foreach($reasons as $key => $value) { ?>
                 <div class="vision-field">
-                    <label><input type="radio" name="vision-reason" value="<?php echo esc_attr($key); ?>"><?php echo esc_attr($value["label"]); ?></label>
+                    <label><input type="radio" name="vision-reason" <?php if ( $key === "temporary" ) echo 'checked'; ?> value="<?php echo esc_attr($key); ?>"><?php echo esc_attr($value["label"]); ?></label>
                     <?php if(isset($value["input"])) { ?>
                         <input type="text" name="reason-<?php echo esc_attr($key); ?>" placeholder="<?php echo esc_attr($value["input"]); ?>">
                     <?php } ?>
@@ -47,8 +47,8 @@ $reasons = [
             </div>
         </div>
         <div class="vision-footer">
-            <div class="vision-btn vision-skip"><?php esc_html_e("Skip & Deactivate", 'vision'); ?></div>
             <div class="vision-btn vision-submit"><?php esc_html_e("Submit & Deactivate", 'vision'); ?></div>
+            <div class="vision-btn vision-skip"><?php esc_html_e("Skip & Deactivate", 'vision'); ?></div>
         </div>
     </div>
 </div>
