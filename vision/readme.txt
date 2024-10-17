@@ -84,8 +84,8 @@ Vision is the ultimate tool for anyone seeking to enhance their online presence,
 == Screenshots ==
 
 1. Interactive image map builder
-2. Manage layers (create, copy, move, etc)
-3. Preview mode
+2. Preview mode
+3. Manage layers (create, copy, move, etc)
 4. Edit popover content
 5. Edit popover properties
 6. Preview popover in action
