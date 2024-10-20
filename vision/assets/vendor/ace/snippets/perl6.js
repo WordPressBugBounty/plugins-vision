@@ -1,8 +1,1 @@
-define("ace/snippets/perl6",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="perl6"});                (function() {
-                    window.require(["ace/snippets/perl6"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/perl6",["require","exports","module"],function(e,o,p){"use strict";o.snippetText=void 0,o.scope="perl6"}),window.require(["ace/snippets/perl6"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

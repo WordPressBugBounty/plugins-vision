@@ -1,8 +1,1 @@
-define("ace/snippets/lisp",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="lisp"});                (function() {
-                    window.require(["ace/snippets/lisp"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/lisp",["require","exports","module"],function(e,o,p){"use strict";o.snippetText=void 0,o.scope="lisp"}),window.require(["ace/snippets/lisp"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

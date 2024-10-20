@@ -1,8 +1,1 @@
-define("ace/snippets/text",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="text"});                (function() {
-                    window.require(["ace/snippets/text"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/text",["require","exports","module"],function(e,t,o){"use strict";t.snippetText=void 0,t.scope="text"}),window.require(["ace/snippets/text"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

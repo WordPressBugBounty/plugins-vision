@@ -22,8 +22,8 @@ $list_table->prepare_items();
 		<form method="post">
 			<?php $list_table->search_box(esc_html__('Search Items', 'vision'),'item'); ?>
 			<input type="hidden" name="page" value="<?php
-                // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-                echo sanitize_key(filter_var($_REQUEST['page'], FILTER_DEFAULT)) ?>
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated
+                echo sanitize_key( filter_var( wp_unslash( $_REQUEST['page'] ), FILTER_DEFAULT ) ) ?>
             ">
 			<?php $list_table->display() ?>
 		</form>

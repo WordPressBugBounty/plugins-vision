@@ -1,8 +1,1 @@
-define("ace/snippets/nix",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="nix"});                (function() {
-                    window.require(["ace/snippets/nix"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/nix",["require","exports","module"],function(e,o,t){"use strict";o.snippetText=void 0,o.scope="nix"}),window.require(["ace/snippets/nix"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

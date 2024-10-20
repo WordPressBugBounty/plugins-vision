@@ -1,8 +1,1 @@
-define("ace/snippets/svg",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="svg"});                (function() {
-                    window.require(["ace/snippets/svg"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/svg",["require","exports","module"],function(e,o,t){"use strict";o.snippetText=void 0,o.scope="svg"}),window.require(["ace/snippets/svg"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

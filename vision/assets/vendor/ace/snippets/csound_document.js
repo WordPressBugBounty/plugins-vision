@@ -1,8 +1,1 @@
-define("ace/snippets/csound_document",["require","exports","module"],function(e,t,n){"use strict";t.snippetText="# <CsoundSynthesizer>\nsnippet synth\n	<CsoundSynthesizer>\n	<CsInstruments>\n	${1}\n	</CsInstruments>\n	<CsScore>\n	e\n	</CsScore>\n	</CsoundSynthesizer>\n",t.scope="csound_document"});                (function() {
-                    window.require(["ace/snippets/csound_document"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/csound_document",["require","exports","module"],function(e,n,t){"use strict";n.snippetText="# <CsoundSynthesizer>\nsnippet synth\n\t<CsoundSynthesizer>\n\t<CsInstruments>\n\t${1}\n\t</CsInstruments>\n\t<CsScore>\n\te\n\t</CsScore>\n\t</CsoundSynthesizer>\n",n.scope="csound_document"}),window.require(["ace/snippets/csound_document"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

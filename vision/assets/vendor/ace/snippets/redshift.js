@@ -1,8 +1,1 @@
-define("ace/snippets/redshift",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="redshift"});                (function() {
-                    window.require(["ace/snippets/redshift"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/redshift",["require","exports","module"],function(e,t,o){"use strict";t.snippetText=void 0,t.scope="redshift"}),window.require(["ace/snippets/redshift"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

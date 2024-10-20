@@ -1,8 +1,1 @@
-define("ace/snippets/sass",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="sass"});                (function() {
-                    window.require(["ace/snippets/sass"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/sass",["require","exports","module"],function(e,s,o){"use strict";s.snippetText=void 0,s.scope="sass"}),window.require(["ace/snippets/sass"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

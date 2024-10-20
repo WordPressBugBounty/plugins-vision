@@ -1,8 +1,1 @@
-define("ace/snippets/toml",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="toml"});                (function() {
-                    window.require(["ace/snippets/toml"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/toml",["require","exports","module"],function(e,o,t){"use strict";o.snippetText=void 0,o.scope="toml"}),window.require(["ace/snippets/toml"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

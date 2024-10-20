@@ -1,8 +1,1 @@
-define("ace/snippets/php_laravel_blade",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="php"});                (function() {
-                    window.require(["ace/snippets/php_laravel_blade"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/php_laravel_blade",["require","exports","module"],function(e,p,o){"use strict";p.snippetText=void 0,p.scope="php"}),window.require(["ace/snippets/php_laravel_blade"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

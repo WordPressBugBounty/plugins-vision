@@ -1,8 +1,1 @@
-define("ace/snippets/matlab",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="matlab"});                (function() {
-                    window.require(["ace/snippets/matlab"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/matlab",["require","exports","module"],function(e,t,o){"use strict";t.snippetText=void 0,t.scope="matlab"}),window.require(["ace/snippets/matlab"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

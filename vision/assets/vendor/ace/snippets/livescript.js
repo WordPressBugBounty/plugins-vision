@@ -1,8 +1,1 @@
-define("ace/snippets/livescript",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="livescript"});                (function() {
-                    window.require(["ace/snippets/livescript"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/livescript",["require","exports","module"],function(e,t,i){"use strict";t.snippetText=void 0,t.scope="livescript"}),window.require(["ace/snippets/livescript"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

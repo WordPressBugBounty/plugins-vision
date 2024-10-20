@@ -1,8 +1,1 @@
-define("ace/snippets/puppet",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="puppet"});                (function() {
-                    window.require(["ace/snippets/puppet"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/puppet",["require","exports","module"],function(e,p,t){"use strict";p.snippetText=void 0,p.scope="puppet"}),window.require(["ace/snippets/puppet"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

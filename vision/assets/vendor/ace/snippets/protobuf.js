@@ -1,8 +1,1 @@
-define("ace/snippets/protobuf",["require","exports","module"],function(e,t,n){"use strict";t.snippetText="",t.scope="protobuf"});                (function() {
-                    window.require(["ace/snippets/protobuf"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/protobuf",["require","exports","module"],function(e,o,t){"use strict";o.snippetText="",o.scope="protobuf"}),window.require(["ace/snippets/protobuf"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

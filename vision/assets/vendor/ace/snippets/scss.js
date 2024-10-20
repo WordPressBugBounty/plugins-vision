@@ -1,8 +1,1 @@
-define("ace/snippets/scss",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="scss"});                (function() {
-                    window.require(["ace/snippets/scss"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/scss",["require","exports","module"],function(e,s,o){"use strict";s.snippetText=void 0,s.scope="scss"}),window.require(["ace/snippets/scss"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

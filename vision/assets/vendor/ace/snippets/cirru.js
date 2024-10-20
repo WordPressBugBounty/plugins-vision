@@ -1,8 +1,1 @@
-define("ace/snippets/cirru",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="cirru"});                (function() {
-                    window.require(["ace/snippets/cirru"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/cirru",["require","exports","module"],function(e,o,t){"use strict";o.snippetText=void 0,o.scope="cirru"}),window.require(["ace/snippets/cirru"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

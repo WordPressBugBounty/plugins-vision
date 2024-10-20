@@ -526,6 +526,12 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
 
                                                         <div al-if="appData.ui.activeLayer.type == 'text'">
                                                             <div class="vision-control">
+                                                                <div class="vision-helper" title="<?php esc_html_e('Add text', 'vision'); ?>"></div>
+                                                                <div class="vision-label"><?php esc_html_e('Text', 'vision'); ?></div>
+                                                                <input class="vision-number vision-long" type="text" al-text="appData.ui.activeLayer.text.data" placeholder="<?php esc_html_e('Text', 'vision'); ?>">
+                                                            </div>
+
+                                                            <div class="vision-control">
                                                                 <div class="vision-helper" title="<?php esc_html_e('Specifies a font of the text', 'vision'); ?>"></div>
                                                                 <div class="vision-label"><?php esc_html_e('Font', 'vision'); ?></div>
                                                                 <div class="vision-select vision-capitalize vision-long" al-textfont="appData.ui.activeLayer.text.font" data-fonts="appData.fonts"></div>

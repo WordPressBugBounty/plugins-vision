@@ -191,7 +191,6 @@ class Vision_Builder {
 			'effects_url' => $plugin_url . 'assets/css/vision-effects.css',
 			'theme_base_url' => $plugin_url . 'assets/themes/',
 			'plugin_base_url' => $plugin_url . 'assets/vendor/vision/',
-			'plugin_upload_base_url' => VISION_PLUGIN_UPLOAD_URL,
 			'plugin_version' => VISION_PLUGIN_VERSION,
             'ssl' => is_ssl(),
             'api' => [
@@ -404,6 +403,13 @@ class Vision_Builder {
 				//=============================================
 
             echo '</div>' . PHP_EOL;
+
+            $css = $this->getMainCss($itemData, $id) . ($itemData->customCSS->active ? $itemData->customCSS->data : '');
+            $css = preg_replace('/[^a-zA-Z0-9\s\=\[\]\{\}\:\;\.\,\#\$\-\"\'\']/', '', $css);
+
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            echo '<style>' . $css . '</style>';
+
             echo '<!-- vision end -->' . PHP_EOL;
 
 			$output = ob_get_contents(); // get the buffered content into a var
@@ -425,7 +431,10 @@ class Vision_Builder {
 			return $result;
 		}
 
-		if(preg_match('/vision\/map\/([a-z0-9_-]+)/', $_SERVER['REQUEST_URI'], $matches)) {
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
+        $url = sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+
+		if(preg_match('/vision\/map\/([a-z0-9_-]+)/', $url, $matches)) {
          	$preview = filter_input(INPUT_GET, 'preview', FILTER_SANITIZE_NUMBER_INT);
 
             global $wpdb;
@@ -582,11 +591,14 @@ class Vision_Builder {
 	 */
 	function page_redirects() {
 		$page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
-		
+
 		if($page==='vision') {
 			$action = sanitize_key(filter_input(INPUT_GET, 'action', FILTER_DEFAULT));
 			if($action) {
-				$url = remove_query_arg(['action', 'id', '_wpnonce'], $_SERVER['REQUEST_URI']);
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
+                $url = sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+
+				$url = remove_query_arg(['action', 'id', '_wpnonce'], $url );
 				header('Refresh:0; url="' . $url . '"', true, 303);
 				//wp_redirect($url); // does not work delete and dublicate operations on XAMPP
 			}
@@ -648,7 +660,6 @@ class Vision_Builder {
 			$globals = [
 				'plan' => VISION_PLUGIN_PLAN,
 				'msg_pro_title' => esc_html__('Available only in Pro version', 'vision'),
-				'msg_edit_text' => esc_html__('Press Enter to edit text', 'vision'),
 				'msg_custom_js_error' => esc_html__('Custom js code error', 'vision'),
 				'msg_layer_id_error' => esc_html__('The layer ID should be unique', 'vision'),
 				'wp_base_url' => get_site_url(),
@@ -827,14 +838,14 @@ class Vision_Builder {
 			$itemConfig = json_decode($inputConfig);
 			$flag = true;
 			
-			if(VISION_PLUGIN_PLAN == 'lite') {
+			if(VISION_PLUGIN_PLAN == 'lite' && !$inputId ) {
                 // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$rowcount = $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
 				
 				if(!($rowcount == 0 || ($rowcount == 1 && $inputId))) {
 					$flag = false;
 					$error = true;
-					$data['msg'] = esc_html__('The operation failed, you can work only with one item. To create more, buy the pro version.', 'vision');
+					$data['msg'] = esc_html__('The operation failed, you can create only one item. To create more, buy the pro version.', 'vision');
 				}
 			}
 			
@@ -903,26 +914,6 @@ class Vision_Builder {
 						$data['msg'] = esc_html__('The operation failed, can\'t create item', 'vision');
 					}
 				}
-			}
-
-			// [filemanager] create an external file
-			if(!$error && wp_is_writable(VISION_PLUGIN_UPLOAD_DIR)) {
-				$file_json = 'config.json';
-				$file_main_css = 'main.css';
-				$file_custom_css = 'custom.css';
-				$file_root_path = VISION_PLUGIN_UPLOAD_DIR . '/' . $inputId . '/';
-
-                $wp_filesystem = $this->getFileSystem();
-				if(!$wp_filesystem->is_dir($file_root_path)) {
-                    $wp_filesystem->mkdir($file_root_path);
-				}
-
-                if(file_exists($file_root_path . $file_json)) {
-                    wp_delete_file($file_root_path . $file_json);
-                }
-
-                $wp_filesystem->put_contents($file_root_path . $file_main_css, $this->getMainCss($itemData, $inputId));
-                $wp_filesystem->put_contents($file_root_path . $file_custom_css, $itemData->customCSS->data);
 			}
 		} else {
 			$error = true;

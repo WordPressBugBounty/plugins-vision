@@ -1,8 +1,1 @@
-define("ace/snippets/html_elixir",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="html_elixir"});                (function() {
-                    window.require(["ace/snippets/html_elixir"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/html_elixir",["require","exports","module"],function(e,t,i){"use strict";t.snippetText=void 0,t.scope="html_elixir"}),window.require(["ace/snippets/html_elixir"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

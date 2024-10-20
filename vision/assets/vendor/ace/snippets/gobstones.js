@@ -1,8 +1,1 @@
-define("ace/snippets/gobstones",["require","exports","module"],function(e,t,n){"use strict";t.snippetText="# Procedure\nsnippet proc\n	procedure ${1?:name}(${2:argument}) {\n		${3:// body...}\n	}\n\n# Function\nsnippet fun\n	function ${1?:name}(${2:argument}) {\n		return ${3:// body...}\n	}\n\n# Repeat\nsnippet rep\n	repeat ${1?:times} {\n		${2:// body...}\n	}\n\n# For\nsnippet for\n	foreach ${1?:e} in ${2?:list} {\n		${3:// body...}	\n	}\n\n# If\nsnippet if\n	if (${1?:condition}) {\n		${3:// body...}	\n	}\n\n# While\n  while (${1?:condition}) {\n    ${2:// body...}	\n  }\n",t.scope="gobstones"});                (function() {
-                    window.require(["ace/snippets/gobstones"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/gobstones",["require","exports","module"],function(n,t,e){"use strict";t.snippetText="# Procedure\nsnippet proc\n\tprocedure ${1?:name}(${2:argument}) {\n\t\t${3:// body...}\n\t}\n\n# Function\nsnippet fun\n\tfunction ${1?:name}(${2:argument}) {\n\t\treturn ${3:// body...}\n\t}\n\n# Repeat\nsnippet rep\n\trepeat ${1?:times} {\n\t\t${2:// body...}\n\t}\n\n# For\nsnippet for\n\tforeach ${1?:e} in ${2?:list} {\n\t\t${3:// body...}\t\n\t}\n\n# If\nsnippet if\n\tif (${1?:condition}) {\n\t\t${3:// body...}\t\n\t}\n\n# While\n  while (${1?:condition}) {\n    ${2:// body...}\t\n  }\n",t.scope="gobstones"}),window.require(["ace/snippets/gobstones"],function(n){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=n)});

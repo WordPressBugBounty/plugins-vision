@@ -1,8 +1,1 @@
-define("ace/snippets/fsharp",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="fsharp"});                (function() {
-                    window.require(["ace/snippets/fsharp"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/fsharp",["require","exports","module"],function(e,o,p){"use strict";o.snippetText=void 0,o.scope="fsharp"}),window.require(["ace/snippets/fsharp"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});

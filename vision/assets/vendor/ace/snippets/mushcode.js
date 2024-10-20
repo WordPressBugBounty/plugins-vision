@@ -1,8 +1,1 @@
-define("ace/snippets/mushcode",["require","exports","module"],function(e,t,n){"use strict";t.snippetText=undefined,t.scope="mushcode"});                (function() {
-                    window.require(["ace/snippets/mushcode"], function(m) {
-                        if (typeof module == "object" && typeof exports == "object" && module) {
-                            module.exports = m;
-                        }
-                    });
-                })();
-            
+define("ace/snippets/mushcode",["require","exports","module"],function(e,o,t){"use strict";o.snippetText=void 0,o.scope="mushcode"}),window.require(["ace/snippets/mushcode"],function(e){"object"==typeof module&&"object"==typeof exports&&module&&(module.exports=e)});
