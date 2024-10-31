@@ -199,21 +199,18 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                         </div>
                                     </div>
                                     <div class="vision-data" al-attr.class.vision-active="appData.ui.leftSidebarTabs.layers">
-                                        <div class="vision-layers-wrap">
+                                        <div al-if="appData.config.image.url == null">
+                                            <div class="vision-info"><?php esc_html_e('Please set a map image to access settings', 'vision'); ?></div>
+                                        </div>
+                                        <div class="vision-layers-wrap" al-if="appData.config.image.url != null">
                                             <div class="vision-layers-toolbar">
-                                                <div class="vision-left-panel">
-                                                    <i class="icon icon-link" al-on.click="appData.fn.addLayerLink(appData)" title="<?php esc_html_e('add link', 'vision'); ?>"></i>
-                                                    <i class="icon icon-type" al-on.click="appData.fn.addLayerText(appData)" title="<?php esc_html_e('add text', 'vision'); ?>"></i>
-                                                    <i class="icon icon-image" al-on.click="appData.fn.addLayerImage(appData)" title="<?php esc_html_e('add image', 'vision'); ?>"></i>
-                                                    <span al-if="appData.ui.activeLayer != null">
-                                                    <i class="vision-separator"></i>
+                                                <div class="vision-left-panel" al-attr.class.vision-hidden="appData.ui.activeLayer == null">
                                                     <i class="icon icon-copy" al-on.click="appData.fn.copyLayer(appData)" title="<?php esc_html_e('copy', 'vision'); ?>"></i>
                                                     <i class="icon icon-arrow-up-from-line" al-on.click="appData.fn.updownLayer(appData, 'down')" title="<?php esc_html_e('move up', 'vision'); ?>"></i>
                                                     <i class="icon icon-arrow-down-from-line" al-on.click="appData.fn.updownLayer(appData, 'up')" title="<?php esc_html_e('move down', 'vision'); ?>"></i>
-                                                    </span>
                                                 </div>
-                                                <div class="vision-right-panel">
-                                                    <i class="icon icon-trash-2 icon-color-red" al-if="appData.ui.activeLayer != null" al-on.click="appData.fn.deleteLayer(appData)" title="<?php esc_html_e('delete', 'vision'); ?>"></i>
+                                                <div class="vision-right-panel" al-attr.class.vision-hidden="appData.ui.activeLayer == null">
+                                                    <i class="icon icon-trash-2 icon-color-red" al-on.click="appData.fn.deleteLayer(appData)" title="<?php esc_html_e('delete', 'vision'); ?>"></i>
                                                 </div>
                                             </div>
                                             <div class="vision-layers-list">
@@ -236,105 +233,116 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
-                                <div class="vision-main-panel">
-                                    <div class="vision-edit-layers">
-                                        <div class="vision-layers-toolbar-layer-info" al-if="appData.ui.activeLayer">
-                                            <div class="vision-layer-info">
-                                                <div><i>x:</i><i>{{appData.fn.getLayerCoord(appData, appData.ui.activeLayer, 'x')}}</i></div>
-                                                <div><i>y:</i><i>{{appData.fn.getLayerCoord(appData, appData.ui.activeLayer, 'y')}}</i></div>
-                                                <div><i>w:</i><i>{{appData.fn.getLayerCoord(appData, appData.ui.activeLayer, 'w')}}</i></div>
-                                                <div><i>h:</i><i>{{appData.fn.getLayerCoord(appData, appData.ui.activeLayer, 'h')}}</i></div>
-                                                <div><i>L:</i><i>{{appData.fn.getLayerCoord(appData, appData.ui.activeLayer, 'angle')}}°</i></div>
+                                <div class="vision-main-panel vision-center">
+                                    <div al-attr.class.vision-hidden="appData.config.image.url != null">
+                                        <div class="vision-info"><?php esc_html_e('Please set a map image if you want to create layers on it', 'vision'); ?></div>
+                                    </div>
+                                    <div al-attr.class.vision-hidden="appData.config.image.url == null">
+                                        <div class="vision-edit-layers">
+                                            <div class="vision-layers-toolbar-top">
+                                                <div class="vision-layers-toolbar" al-attr.class.vision-hidden="appData.ui.activeLayer == null">
+                                                    <i class="icon icon-chevron-left" al-on.click="appData.fn.prevLayer(appData)" title="<?php esc_html_e('Prev layer', 'vision'); ?>"></i>
+                                                    <i class="icon icon-chevron-right" al-on.click="appData.fn.nextLayer(appData)" title="<?php esc_html_e('Next layer', 'vision'); ?>"></i>
+                                                </div>
+                                                <div class="vision-layers-toolbar">
+                                                    <i class="icon icon-link" al-attr.class.vision-active="appData.tools.activeTool == 'link'" al-on.click="appData.fn.addLayerLink(appData)" title="<?php esc_html_e('add link', 'vision'); ?>"></i>
+                                                    <i class="icon icon-type" al-attr.class.vision-active="appData.tools.activeTool == 'text'" al-on.click="appData.fn.addLayerText(appData)" title="<?php esc_html_e('add text', 'vision'); ?>"></i>
+                                                    <i class="icon icon-image" al-attr.class.vision-active="appData.tools.activeTool == 'image'" al-on.click="appData.fn.addLayerImage(appData)" title="<?php esc_html_e('add image', 'vision'); ?>"></i>
+                                                </div>
+                                                <div class="vision-layers-toolbar" al-attr.class.vision-hidden="appData.ui.activeLayer == null">
+                                                    <i class="icon icon-copy" al-on.click="appData.fn.copyLayer(appData)" title="<?php esc_html_e('copy', 'vision'); ?>"></i>
+                                                    <i class="icon icon-arrow-up-from-line" al-on.click="appData.fn.updownLayer(appData, 'down')" title="<?php esc_html_e('move up', 'vision'); ?>"></i>
+                                                    <i class="icon icon-arrow-down-from-line" al-on.click="appData.fn.updownLayer(appData, 'up')" title="<?php esc_html_e('move down', 'vision'); ?>"></i>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="vision-layers-toolbar-navigation" al-if="appData.config.layers.length > 0">
-                                            <i class="icon icon-chevron-left" al-on.click="appData.fn.prevLayer(appData)" title="<?php esc_html_e('Prev layer', 'vision'); ?>"></i>
-                                            <i class="icon icon-chevron-right" al-on.click="appData.fn.nextLayer(appData)" title="<?php esc_html_e('Next layer', 'vision'); ?>"></i>
-                                        </div>
-                                        <div class="vision-layers-toolbar-view">
-                                            <div class="vision-icon" al-on.click="appData.fn.canvasZoomIn(appData)" title="<?php esc_html_e('Zoom in', 'vision'); ?>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="11" cy="11" r="8"/>
-                                                    <line x1="21" x2="16.65" y1="21" y2="16.65"/>
-                                                    <line x1="11" x2="11" y1="8" y2="14"/>
-                                                    <line x1="8" x2="14" y1="11" y2="11"/>
-                                                </svg>
+                                            <div class="vision-layers-toolbar-bottom">
+                                                <div class="vision-layers-toolbar">
+                                                    <div class="vision-icon" al-on.click="appData.fn.canvasZoomIn(appData)" title="<?php esc_html_e('Zoom in', 'vision'); ?>">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                            <circle cx="11" cy="11" r="8"/>
+                                                            <line x1="21" x2="16.65" y1="21" y2="16.65"/>
+                                                            <line x1="11" x2="11" y1="8" y2="14"/>
+                                                            <line x1="8" x2="14" y1="11" y2="11"/>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="vision-zoom-value">{{appData.fn.getCanvasZoomForLabel(appData)}}%</span>
+                                                    <div class="vision-icon" al-on.click="appData.fn.canvasZoomOut(appData)" title="<?php esc_html_e('Zoom out', 'vision'); ?>">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                            <circle cx="11" cy="11" r="8"/>
+                                                            <line x1="21" x2="16.65" y1="21" y2="16.65"/>
+                                                            <line x1="8" x2="14" y1="11" y2="11"/>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="vision-icon" al-on.click="appData.fn.canvasZoomFit(appData)" title="<?php esc_html_e('Zoom fit', 'vision'); ?>">
+                                                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
+                                                            <path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
+                                                            <path d="m3 16v3a2 2 0 0 0 2 2h3"/>
+                                                            <path d="m16 21h3a2 2 0 0 0 2-2v-3"/>
+                                                            <rect x="6" y="6" width="12" height="12" ry="2" fill="currentColor" stroke="none" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="vision-icon" al-on.click="appData.fn.canvasZoomDefault(appData)" title="<?php esc_html_e('Zoom default', 'vision'); ?>">
+                                                        <svg class="lucide lucide-expand" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="m21 21-6-6m6 6v-4.8m0 4.8h-4.8"/>
+                                                            <path d="m3 16.2v4.8h4.8m-4.8 0 6-6"/>
+                                                            <path d="m21 7.8v-4.8h-4.8m4.8 0-6 6"/>
+                                                            <path d="M3 7.8V3m0 0h4.8M3 3l6 6"/>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="vision-icon" al-on.click="appData.fn.canvasMoveDefault(appData)" title="<?php esc_html_e('Move default', 'vision'); ?>">
+                                                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="m12 9v-7m0 7-3.4041-3.3841m3.4041 3.3841 3.3841-3.4041"/>
+                                                            <path d="m18.399 15.384-3.4041-3.3841 3.3841-3.4041m-3.3841 3.4041h7.0051"/>
+                                                            <path d="m5.5959 8.6159 3.4041 3.3841-3.3841 3.4041m3.3841-3.4041h-7"/>
+                                                            <path d="m15.404 18.384-3.4041-3.3841-3.3841 3.4041m3.3841-3.4041v7"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <span class="vision-zoom-value">{{appData.fn.getCanvasZoomForLabel(appData)}}%</span>
-                                            <div class="vision-icon" al-on.click="appData.fn.canvasZoomOut(appData)" title="<?php esc_html_e('Zoom out', 'vision'); ?>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="11" cy="11" r="8"/>
-                                                    <line x1="21" x2="16.65" y1="21" y2="16.65"/>
-                                                    <line x1="8" x2="14" y1="11" y2="11"/>
-                                                </svg>
-                                            </div>
-                                            <div class="vision-icon" al-on.click="appData.fn.canvasZoomFit(appData)" title="<?php esc_html_e('Zoom fit', 'vision'); ?>">
-                                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
-                                                    <path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
-                                                    <path d="m3 16v3a2 2 0 0 0 2 2h3"/>
-                                                    <path d="m16 21h3a2 2 0 0 0 2-2v-3"/>
-                                                    <rect x="6" y="6" width="12" height="12" ry="2" fill="currentColor" stroke="none" />
-                                                </svg>
-                                            </div>
-                                            <div class="vision-icon" al-on.click="appData.fn.canvasZoomDefault(appData)" title="<?php esc_html_e('Zoom default', 'vision'); ?>">
-                                                <svg class="lucide lucide-expand" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="m21 21-6-6m6 6v-4.8m0 4.8h-4.8"/>
-                                                    <path d="m3 16.2v4.8h4.8m-4.8 0 6-6"/>
-                                                    <path d="m21 7.8v-4.8h-4.8m4.8 0-6 6"/>
-                                                    <path d="M3 7.8V3m0 0h4.8M3 3l6 6"/>
-                                                </svg>
-                                            </div>
-                                            <div class="vision-icon" al-on.click="appData.fn.canvasMoveDefault(appData)" title="<?php esc_html_e('Move default', 'vision'); ?>">
-                                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="m12 9v-7m0 7-3.4041-3.3841m3.4041 3.3841 3.3841-3.4041"/>
-                                                    <path d="m18.399 15.384-3.4041-3.3841 3.3841-3.4041m-3.3841 3.4041h7.0051"/>
-                                                    <path d="m5.5959 8.6159 3.4041 3.3841-3.3841 3.4041m3.3841-3.4041h-7"/>
-                                                    <path d="m15.404 18.384-3.4041-3.3841-3.3841 3.4041m3.3841-3.4041v7"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div id="vision-layers-canvas-wrap" class="vision-layers-canvas-wrap" al-on.mousedown="appData.fn.onMoveCanvasStart(appData, $event)">
-                                            <div id="vision-layers-canvas" class="vision-layers-canvas">
-                                                <div id="vision-layers-image" class="vision-layers-image"></div>
-                                                <div class="vision-layers-stage">
-                                                    <div class="vision-layer"
-                                                         tabindex="1"
-                                                         al-on.click="appData.fn.onLayerClick(appData, layer)"
-                                                         al-on.keydown="appData.fn.onLayerKeyDown(appData, layer, $event, $element)"
-                                                         al-attr.class.vision-active="appData.fn.isLayerActive(appData, layer)"
-                                                         al-attr.class.vision-hidden="!layer.visible"
-                                                         al-attr.class.vision-lock="layer.lock"
-                                                         al-attr.class.vision-layer-link="layer.type == 'link'"
-                                                         al-attr.class.vision-layer-text="layer.type == 'text'"
-                                                         al-attr.class.vision-layer-image="layer.type == 'image'"
-                                                         al-attr.class.vision-layer-svg="layer.type == 'svg'"
-                                                         al-style.top="appData.fn.getLayerStyle(appData, layer, 'y')"
-                                                         al-style.left="appData.fn.getLayerStyle(appData, layer, 'x')"
-                                                         al-style.width="appData.fn.getLayerStyle(appData, layer, 'width')"
-                                                         al-style.height="appData.fn.getLayerStyle(appData, layer, 'height')"
-                                                         al-style.transform="appData.fn.getLayerStyle(appData, layer, 'angle')"
-                                                         al-repeat="layer in appData.config.layers"
-                                                         al-init="appData.fn.initLayer(appData, layer, $element)"
-                                                    >
-                                                        <div class="vision-layer-inner"
-                                                             spellcheck="false"
-                                                             al-style.border-radius="appData.fn.getLayerStyle(appData, layer, 'border-radius')"
-                                                             al-style.background-color="appData.fn.getLayerStyle(appData, layer, 'background-color')"
-                                                             al-style.background-image="appData.fn.getLayerStyle(appData, layer, 'background-image')"
-                                                             al-style.background-size="appData.fn.getLayerStyle(appData, layer, 'background-size')"
-                                                             al-style.background-repeat="appData.fn.getLayerStyle(appData, layer, 'background-repeat')"
-                                                             al-style.background-position="appData.fn.getLayerStyle(appData, layer, 'background-position')"
-                                                             al-style.color="appData.fn.getLayerStyle(appData, layer, 'color')"
-                                                             al-style.font-family="appData.fn.getLayerStyle(appData, layer, 'font-family')"
-                                                             al-style.font-size="appData.fn.getLayerStyle(appData, layer, 'font-size')"
-                                                             al-style.line-height="appData.fn.getLayerStyle(appData, layer, 'line-height')"
-                                                             al-style.text-align="appData.fn.getLayerStyle(appData, layer, 'text-align')"
-                                                             al-style.letter-spacing="appData.fn.getLayerStyle(appData, layer, 'letter-spacing')"
-                                                             al-init="appData.fn.initLayerInner(appData, layer, $element)"
+                                            <div id="vision-layers-canvas-wrap" class="vision-layers-canvas-wrap" al-on.mousedown="appData.fn.onMoveCanvasStart(appData, $event)">
+                                                <div id="vision-layers-canvas" class="vision-layers-canvas">
+                                                    <div id="vision-layers-image" class="vision-layers-image"></div>
+                                                    <div class="vision-layers-stage">
+                                                        <div class="vision-layer"
+                                                             tabindex="1"
+                                                             al-on.click="appData.fn.onLayerClick(appData, layer)"
+                                                             al-on.keydown="appData.fn.onLayerKeyDown(appData, layer, $event, $element)"
+                                                             al-attr.class.vision-active="appData.fn.isLayerActive(appData, layer)"
+                                                             al-attr.class.vision-hidden="!layer.visible"
+                                                             al-attr.class.vision-lock="layer.lock"
+                                                             al-attr.class.vision-layer-link="layer.type == 'link'"
+                                                             al-attr.class.vision-layer-text="layer.type == 'text'"
+                                                             al-attr.class.vision-layer-image="layer.type == 'image'"
+                                                             al-attr.class.vision-layer-svg="layer.type == 'svg'"
+                                                             al-style.top="appData.fn.getLayerStyle(appData, layer, 'y')"
+                                                             al-style.left="appData.fn.getLayerStyle(appData, layer, 'x')"
+                                                             al-style.width="appData.fn.getLayerStyle(appData, layer, 'width')"
+                                                             al-style.height="appData.fn.getLayerStyle(appData, layer, 'height')"
+                                                             al-style.transform="appData.fn.getLayerStyle(appData, layer, 'angle')"
+                                                             al-repeat="layer in appData.config.layers"
+                                                             al-init="appData.fn.initLayer(appData, layer, $element)"
                                                         >
+                                                            <div class="vision-layer-inner"
+                                                                 spellcheck="false"
+                                                                 al-style.border-radius="appData.fn.getLayerStyle(appData, layer, 'border-radius')"
+                                                                 al-style.background-color="appData.fn.getLayerStyle(appData, layer, 'background-color')"
+                                                                 al-style.background-image="appData.fn.getLayerStyle(appData, layer, 'background-image')"
+                                                                 al-style.background-size="appData.fn.getLayerStyle(appData, layer, 'background-size')"
+                                                                 al-style.background-repeat="appData.fn.getLayerStyle(appData, layer, 'background-repeat')"
+                                                                 al-style.background-position="appData.fn.getLayerStyle(appData, layer, 'background-position')"
+                                                                 al-style.color="appData.fn.getLayerStyle(appData, layer, 'color')"
+                                                                 al-style.font-family="appData.fn.getLayerStyle(appData, layer, 'font-family')"
+                                                                 al-style.font-size="appData.fn.getLayerStyle(appData, layer, 'font-size')"
+                                                                 al-style.line-height="appData.fn.getLayerStyle(appData, layer, 'line-height')"
+                                                                 al-style.text-align="appData.fn.getLayerStyle(appData, layer, 'text-align')"
+                                                                 al-style.letter-spacing="appData.fn.getLayerStyle(appData, layer, 'letter-spacing')"
+                                                                 al-init="appData.fn.initLayerInner(appData, layer, $element)"
+                                                            >
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -356,7 +364,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                     </div>
                                     <div class="vision-data" al-attr.class.vision-active="appData.ui.rightSidebarTabs.layer">
                                         <div al-if="appData.ui.activeLayer == null">
-                                            <div class="vision-info"><?php esc_html_e('Please, select a layer to view settings', 'vision'); ?></div>
+                                            <div class="vision-info"><?php esc_html_e('Please select a layer to access settings', 'vision'); ?></div>
                                         </div>
                                         <div al-if="appData.ui.activeLayer != null">
                                             <div class="vision-block-list">
@@ -691,7 +699,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                     </div>
                                     <div class="vision-data" al-attr.class.vision-active="appData.ui.rightSidebarTabs.tooltip">
                                         <div class="vision-data-block" al-attr.class.vision-active="appData.ui.activeLayer == null">
-                                            <div class="vision-info"><?php esc_html_e('Please, select a layer to view settings', 'vision'); ?></div>
+                                            <div class="vision-info"><?php esc_html_e('Please select a layer to access settings', 'vision'); ?></div>
                                         </div>
                                         <div class="vision-data-block" al-attr.class.vision-active="appData.ui.activeLayer != null">
                                             <div class="vision-block-list">
@@ -869,7 +877,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                     </div>
                                     <div class="vision-data" al-attr.class.vision-active="appData.ui.rightSidebarTabs.popover">
                                         <div class="vision-data-block" al-attr.class.vision-active="appData.ui.activeLayer == null">
-                                            <div class="vision-info"><?php esc_html_e('Please, select a layer to view settings', 'vision'); ?></div>
+                                            <div class="vision-info"><?php esc_html_e('Please select a layer to access settings', 'vision'); ?></div>
                                         </div>
                                         <div class="vision-data-block" al-attr.class.vision-active="appData.ui.activeLayer != null">
                                             <div class="vision-block-list">

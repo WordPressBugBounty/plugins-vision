@@ -79,8 +79,6 @@ class Vision_List_Table_Items extends WP_List_Table {
 			case 'modified':
 			case 'id':
 				return $item[$column_name];
-			default:
-				return print_r($item, true);
 		}
 	}
 	
