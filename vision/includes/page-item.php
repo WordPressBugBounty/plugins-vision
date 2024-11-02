@@ -64,7 +64,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                     <div class="vision-section" al-attr.class.vision-active="appData.ui.tabs.builder">
                         <div class="vision-stage">
                             <div class="vision-builder">
-                                <div class="vision-left-sidebar-panel" al-attr.class.vision-hidden="!appData.ui.builder.leftSidebar" al-style.width="appData.ui.builder.leftSidebarWidth">
+                                <div class="vision-left-sidebar-panel" al-attr.class.vision-collapsed="!appData.ui.builder.leftSidebar" al-style.width="appData.ui.builder.leftSidebarWidth">
                                     <div class="vision-sidebar-resizer" al-on.mousedown="appData.fn.onSidebarResizeStart(appData, $event, 'left')">
                                         <div class="vision-sidebar-hide" al-on.click="appData.fn.toggleSidebarPanel(appData, 'left')">
                                             <i class="icon icon-chevron-left" al-if="appData.ui.builder.leftSidebar"></i>
@@ -237,7 +237,15 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                     </div>
                                 </div>
                                 <div class="vision-main-panel vision-center">
-                                    <div al-attr.class.vision-hidden="appData.config.image.url != null">
+                                    <div class="vision-map-blank" al-attr.class.vision-hidden="appData.config.image.url != null">
+                                        <div class="vision-map-button" al-on.click="appData.fn.selectImage(appData, appData.rootScope, appData.config.image)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M16 5h6"/><path d="M19 2v6"/>
+                                                <path d="M21 11.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7.5"/>
+                                                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                                                <circle cx="9" cy="9" r="2"/>
+                                            </svg>
+                                        </div>
                                         <div class="vision-info"><?php esc_html_e('Please set a map image if you want to create layers on it', 'vision'); ?></div>
                                     </div>
                                     <div al-attr.class.vision-hidden="appData.config.image.url == null">
@@ -350,7 +358,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                         </div>
                                     </div>
                                 </div>
-                                <div class="vision-right-sidebar-panel" al-attr.class.vision-hidden="!appData.ui.builder.rightSidebar" al-style.width="appData.ui.builder.rightSidebarWidth">
+                                <div class="vision-right-sidebar-panel" al-attr.class.vision-collapsed="!appData.ui.builder.rightSidebar" al-style.width="appData.ui.builder.rightSidebarWidth">
                                     <div class="vision-sidebar-resizer" al-on.mousedown="appData.fn.onSidebarResizeStart(appData, $event, 'right')">
                                         <div class="vision-sidebar-hide" al-on.click="appData.fn.toggleSidebarPanel(appData, 'right')">
                                             <i class="icon icon-chevron-right" al-if="appData.ui.builder.rightSidebar"></i>

@@ -41,6 +41,7 @@ class Vision_Builder {
 			load_plugin_textdomain('vision', false, dirname(dirname(plugin_basename(__FILE__))) . '/languages/');
 			
 			add_action('admin_menu', [$this, 'admin_menu']);
+            add_filter('submenu_file', [$this, 'admin_menu_highlight'], 10, 2);
             add_action('admin_footer', [$this, 'admin_footer']);
 			add_action('admin_notices', [$this, 'admin_notices']);
 			add_action('in_admin_header', [$this, 'in_admin_header']);
@@ -552,6 +553,17 @@ class Vision_Builder {
         
 	}
 
+    function admin_menu_highlight( $submenu_file, $parent_file ) {
+        $page = sanitize_key( filter_input(INPUT_GET, 'page', FILTER_DEFAULT ) );
+        if ( in_array( $page, [ 'vision_item' ] ) ) {
+            $id = sanitize_key( filter_input(INPUT_GET, 'id', FILTER_DEFAULT ) );
+            if ( !empty( $id ) ) {
+                $submenu_file = 'vision';
+            }
+        }
+        return $submenu_file;
+    }
+
     function admin_footer() {
         if(get_current_screen() && get_current_screen()->base !== 'plugins') {
             return;
@@ -617,6 +629,7 @@ class Vision_Builder {
 
 			wp_enqueue_style('vision_admin', $plugin_url . 'assets/css/admin.css', [], VISION_PLUGIN_VERSION, 'all' );
             wp_enqueue_style('vision_lucide', $plugin_url . 'assets/vendor/lucide/lucide.css', [], VISION_PLUGIN_VERSION, 'all' );
+
 			wp_enqueue_script('vision_admin', $plugin_url . 'assets/js/admin.js', ['jquery'], VISION_PLUGIN_VERSION, false );
 			
 			// global settings to help ajax work
@@ -647,9 +660,11 @@ class Vision_Builder {
 			$upload_dir = wp_upload_dir();
 
 			wp_enqueue_style('vision_admin', $plugin_url . 'assets/css/admin.css', [], VISION_PLUGIN_VERSION, 'all' );
+            wp_enqueue_style('vision_notify', $plugin_url . 'assets/css/notify.css', [], VISION_PLUGIN_VERSION, 'all' );
 			wp_enqueue_style('vision_lucide', $plugin_url . 'assets/vendor/lucide/lucide.css', [], VISION_PLUGIN_VERSION, 'all' );
 			wp_enqueue_style('vision_vision_effects', $plugin_url . 'assets/css/vision-effects.css', [], VISION_PLUGIN_VERSION, 'all' );
 
+            wp_enqueue_script('vision_notify', $plugin_url . 'assets/js/notify.js', ['jquery'], VISION_PLUGIN_VERSION, false );
             wp_enqueue_script('vision_ace', $plugin_url . 'assets/vendor/ace/ace.js', [], VISION_PLUGIN_VERSION, false );
 			wp_enqueue_script('vision_url', $plugin_url . 'assets/vendor/url/url.js', [], VISION_PLUGIN_VERSION, false );
 			wp_enqueue_script('vision_admin', $plugin_url . 'assets/js/admin.js', ['jquery'], VISION_PLUGIN_VERSION, false );
