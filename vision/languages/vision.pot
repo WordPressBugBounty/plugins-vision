@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Vision\n"
-"POT-Creation-Date: 2024-10-31 11:24+0300\n"
+"POT-Creation-Date: 2024-11-19 12:20+0300\n"
 "PO-Revision-Date: 2022-12-18 14:38+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,72 +22,78 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: *.js\n"
 
-#: includes/list-table-items.php:115 includes/list-table-items.php:316
+#: includes/list-table-items.php:113 includes/list-table-items.php:314
 msgid "Restore"
 msgstr ""
 
-#: includes/list-table-items.php:129 includes/list-table-items.php:317
+#: includes/list-table-items.php:127 includes/list-table-items.php:315
 msgid "Delete Permanently"
 msgstr ""
 
-#: includes/list-table-items.php:143
+#: includes/list-table-items.php:141
 msgid "Edit"
 msgstr ""
 
-#: includes/list-table-items.php:157 includes/list-table-items.php:322
+#: includes/list-table-items.php:155 includes/list-table-items.php:320
 msgid "Duplicate"
 msgstr ""
 
-#: includes/list-table-items.php:171 includes/list-table-items.php:323
+#: includes/list-table-items.php:169 includes/list-table-items.php:321
 msgid "Move to Trash"
 msgstr ""
 
-#: includes/list-table-items.php:182 includes/page-item.php:52
+#: includes/list-table-items.php:180 includes/page-item.php:52
 msgid "Preview"
 msgstr ""
 
-#: includes/list-table-items.php:275
+#: includes/list-table-items.php:273
 msgid "All"
 msgstr ""
 
-#: includes/list-table-items.php:276
+#: includes/list-table-items.php:274
 msgid "Mine"
 msgstr ""
 
-#: includes/list-table-items.php:277
+#: includes/list-table-items.php:275
 msgid "Trash"
 msgstr ""
 
-#: includes/list-table-items.php:286 includes/page-item.php:41
-#: includes/page-item.php:379
+#: includes/list-table-items.php:284 includes/page-item.php:41
+#: includes/page-item.php:387
 msgid "Title"
 msgstr ""
 
-#: includes/list-table-items.php:287
+#: includes/list-table-items.php:285
 msgid "Active"
 msgstr ""
 
-#: includes/list-table-items.php:288 includes/page-item.php:61
+#: includes/list-table-items.php:286 includes/page-item.php:61
 msgid "Shortcode"
 msgstr ""
 
-#: includes/list-table-items.php:289
+#: includes/list-table-items.php:287
 msgid "Author"
 msgstr ""
 
-#: includes/list-table-items.php:290
+#: includes/list-table-items.php:288
 msgid "Editor"
 msgstr ""
 
-#: includes/list-table-items.php:291
+#: includes/list-table-items.php:289
 msgid "Created"
 msgstr ""
 
-#: includes/list-table-items.php:292
+#: includes/list-table-items.php:290
 msgid "Modified"
 msgstr ""
 
-#: includes/list-table-items.php:359
+#: includes/list-table-items.php:353 includes/plugin.php:673
+#: includes/plugin.php:881
+msgid ""
+"You can create only 3 maps. If you need more, upgrade to the pro version."
+msgstr ""
+
+#: includes/list-table-items.php:371
 msgid "[Duplicate] "
 msgstr ""
 
@@ -165,7 +171,7 @@ msgstr ""
 msgid "Custom JS"
 msgstr ""
 
-#: includes/page-item.php:75 includes/page-item.php:373
+#: includes/page-item.php:75 includes/page-item.php:381
 msgid "General"
 msgstr ""
 
@@ -174,7 +180,7 @@ msgid "Layers"
 msgstr ""
 
 #: includes/page-item.php:81 includes/page-settings.php:13
-#: includes/plugin.php:553
+#: includes/plugin.php:554
 msgid "Settings"
 msgstr ""
 
@@ -195,8 +201,8 @@ msgid "Map image"
 msgstr ""
 
 #: includes/page-item.php:96 includes/page-item.php:99
-#: includes/page-item.php:155 includes/page-item.php:589
-#: includes/page-item.php:635
+#: includes/page-item.php:155 includes/page-item.php:597
+#: includes/page-item.php:643
 msgid "Select an image"
 msgstr ""
 
@@ -220,7 +226,7 @@ msgstr ""
 msgid "The container width will be auto calculated"
 msgstr ""
 
-#: includes/page-item.php:122 includes/page-item.php:423
+#: includes/page-item.php:122 includes/page-item.php:431
 msgid "Auto width"
 msgstr ""
 
@@ -240,7 +246,7 @@ msgstr ""
 msgid "The container height will be auto calculated"
 msgstr ""
 
-#: includes/page-item.php:134 includes/page-item.php:437
+#: includes/page-item.php:134 includes/page-item.php:445
 msgid "Auto height"
 msgstr ""
 
@@ -256,18 +262,18 @@ msgstr ""
 msgid "Background color in hexadecimal format (#fff or #555555)"
 msgstr ""
 
-#: includes/page-item.php:146 includes/page-item.php:602
-#: includes/page-item.php:648
+#: includes/page-item.php:146 includes/page-item.php:610
+#: includes/page-item.php:656
 msgid "Background color"
 msgstr ""
 
-#: includes/page-item.php:151 includes/page-item.php:585
-#: includes/page-item.php:631
+#: includes/page-item.php:151 includes/page-item.php:593
+#: includes/page-item.php:639
 msgid "Sets a background image (jpeg or png format)"
 msgstr ""
 
-#: includes/page-item.php:152 includes/page-item.php:586
-#: includes/page-item.php:632
+#: includes/page-item.php:152 includes/page-item.php:594
+#: includes/page-item.php:640
 msgid "Background image"
 msgstr ""
 
@@ -275,38 +281,38 @@ msgstr ""
 msgid "Select a background image"
 msgstr ""
 
-#: includes/page-item.php:164 includes/page-item.php:616
-#: includes/page-item.php:662
+#: includes/page-item.php:164 includes/page-item.php:624
+#: includes/page-item.php:670
 msgid "Specifies a size of the background image"
 msgstr ""
 
-#: includes/page-item.php:165 includes/page-item.php:617
-#: includes/page-item.php:663
+#: includes/page-item.php:165 includes/page-item.php:625
+#: includes/page-item.php:671
 msgid "Background size"
 msgstr ""
 
-#: includes/page-item.php:170 includes/page-item.php:606
-#: includes/page-item.php:652
+#: includes/page-item.php:170 includes/page-item.php:614
+#: includes/page-item.php:660
 msgid "How the background image will be repeated"
 msgstr ""
 
-#: includes/page-item.php:171 includes/page-item.php:607
-#: includes/page-item.php:653
+#: includes/page-item.php:171 includes/page-item.php:615
+#: includes/page-item.php:661
 msgid "Background repeat"
 msgstr ""
 
-#: includes/page-item.php:176 includes/page-item.php:621
-#: includes/page-item.php:667
+#: includes/page-item.php:176 includes/page-item.php:629
+#: includes/page-item.php:675
 msgid "Sets a starting position of the background image"
 msgstr ""
 
-#: includes/page-item.php:177 includes/page-item.php:622
-#: includes/page-item.php:668
+#: includes/page-item.php:177 includes/page-item.php:630
+#: includes/page-item.php:676
 msgid "Background position"
 msgstr ""
 
-#: includes/page-item.php:178 includes/page-item.php:623
-#: includes/page-item.php:669
+#: includes/page-item.php:178 includes/page-item.php:631
+#: includes/page-item.php:677
 msgid "Example: 50% 50%"
 msgstr ""
 
@@ -314,8 +320,8 @@ msgstr ""
 msgid "Sets additional css classes to the container"
 msgstr ""
 
-#: includes/page-item.php:183 includes/page-item.php:692
-#: includes/page-item.php:834 includes/page-item.php:1037
+#: includes/page-item.php:183 includes/page-item.php:700
+#: includes/page-item.php:842 includes/page-item.php:1045
 msgid "Extra CSS classes"
 msgstr ""
 
@@ -339,15 +345,15 @@ msgstr ""
 msgid "Please set a map image to access settings"
 msgstr ""
 
-#: includes/page-item.php:208 includes/page-item.php:256
+#: includes/page-item.php:208 includes/page-item.php:264
 msgid "copy"
 msgstr ""
 
-#: includes/page-item.php:209 includes/page-item.php:257
+#: includes/page-item.php:209 includes/page-item.php:265
 msgid "move up"
 msgstr ""
 
-#: includes/page-item.php:210 includes/page-item.php:258
+#: includes/page-item.php:210 includes/page-item.php:266
 msgid "move down"
 msgstr ""
 
@@ -371,546 +377,546 @@ msgstr ""
 msgid "lock/unlock"
 msgstr ""
 
-#: includes/page-item.php:241
+#: includes/page-item.php:249
 msgid "Please set a map image if you want to create layers on it"
 msgstr ""
 
-#: includes/page-item.php:247
+#: includes/page-item.php:255
 msgid "Prev layer"
 msgstr ""
 
-#: includes/page-item.php:248
+#: includes/page-item.php:256
 msgid "Next layer"
 msgstr ""
 
-#: includes/page-item.php:251
+#: includes/page-item.php:259
 msgid "add link"
 msgstr ""
 
-#: includes/page-item.php:252
+#: includes/page-item.php:260
 msgid "add text"
 msgstr ""
 
-#: includes/page-item.php:253
+#: includes/page-item.php:261
 msgid "add image"
 msgstr ""
 
-#: includes/page-item.php:263
+#: includes/page-item.php:271
 msgid "Zoom in"
 msgstr ""
 
-#: includes/page-item.php:272
+#: includes/page-item.php:280
 msgid "Zoom out"
 msgstr ""
 
-#: includes/page-item.php:279
+#: includes/page-item.php:287
 msgid "Zoom fit"
 msgstr ""
 
-#: includes/page-item.php:288
+#: includes/page-item.php:296
 msgid "Zoom default"
 msgstr ""
 
-#: includes/page-item.php:296
+#: includes/page-item.php:304
 msgid "Move default"
 msgstr ""
 
-#: includes/page-item.php:361
+#: includes/page-item.php:369
 msgid "Layer"
 msgstr ""
 
-#: includes/page-item.php:362
+#: includes/page-item.php:370
 msgid "Tooltip"
 msgstr ""
 
-#: includes/page-item.php:363
+#: includes/page-item.php:371
 msgid "Popover"
 msgstr ""
 
-#: includes/page-item.php:367 includes/page-item.php:702
-#: includes/page-item.php:880
+#: includes/page-item.php:375 includes/page-item.php:710
+#: includes/page-item.php:888
 msgid "Please select a layer to access settings"
 msgstr ""
 
-#: includes/page-item.php:378
+#: includes/page-item.php:386
 msgid "Set layer title"
 msgstr ""
 
-#: includes/page-item.php:384
+#: includes/page-item.php:392
 msgid ""
 "Sets a layer id (allow numbers, chars & specials: \"_\",\"-\"). Should be "
 "unique and not empty."
 msgstr ""
 
-#: includes/page-item.php:385
+#: includes/page-item.php:393
 msgid "Id"
 msgstr ""
 
-#: includes/page-item.php:391
+#: includes/page-item.php:399
 msgid "Generate a new ID"
 msgstr ""
 
-#: includes/page-item.php:397
+#: includes/page-item.php:405
 msgid "Set layer position"
 msgstr ""
 
-#: includes/page-item.php:400
+#: includes/page-item.php:408
 msgid "X [px]"
 msgstr ""
 
-#: includes/page-item.php:404
+#: includes/page-item.php:412
 msgid "Y [px]"
 msgstr ""
 
-#: includes/page-item.php:411
+#: includes/page-item.php:419
 msgid "Set layer size"
 msgstr ""
 
-#: includes/page-item.php:414 includes/page-item.php:798
-#: includes/page-item.php:1000
+#: includes/page-item.php:422 includes/page-item.php:806
+#: includes/page-item.php:1008
 msgid "Width [px]"
 msgstr ""
 
-#: includes/page-item.php:428
+#: includes/page-item.php:436
 msgid "Height [px]"
 msgstr ""
 
-#: includes/page-item.php:445
+#: includes/page-item.php:453
 msgid "Set layer angle"
 msgstr ""
 
-#: includes/page-item.php:446
+#: includes/page-item.php:454
 msgid "Angle [deg]"
 msgstr ""
 
-#: includes/page-item.php:454 includes/page-item.php:708
-#: includes/page-item.php:886
+#: includes/page-item.php:462 includes/page-item.php:716
+#: includes/page-item.php:894
 msgid "Data"
 msgstr ""
 
-#: includes/page-item.php:459
+#: includes/page-item.php:467
 msgid "Adds a specific url to the layer"
 msgstr ""
 
-#: includes/page-item.php:460 includes/page-item.php:461
+#: includes/page-item.php:468 includes/page-item.php:469
 msgid "URL"
 msgstr ""
 
-#: includes/page-item.php:467
+#: includes/page-item.php:475
 msgid "Open url in a new window"
 msgstr ""
 
-#: includes/page-item.php:475
+#: includes/page-item.php:483
 msgid "Set the \"nofollow\" tag"
 msgstr ""
 
-#: includes/page-item.php:481
+#: includes/page-item.php:489
 msgid "Adds the inner content data to the layer (shortcodes can be used too)"
 msgstr ""
 
-#: includes/page-item.php:482
+#: includes/page-item.php:490
 msgid "Content data"
 msgstr ""
 
-#: includes/page-item.php:487
+#: includes/page-item.php:495
 msgid ""
 "Adds a specific string data to the layer, if we want to use it in custom "
 "code later"
 msgstr ""
 
-#: includes/page-item.php:488
+#: includes/page-item.php:496
 msgid "User data"
 msgstr ""
 
-#: includes/page-item.php:496 includes/page-item.php:740
-#: includes/page-item.php:918
+#: includes/page-item.php:504 includes/page-item.php:748
+#: includes/page-item.php:926
 msgid "Appearance"
 msgstr ""
 
-#: includes/page-item.php:503
+#: includes/page-item.php:511
 msgid "The layer size depends on the image size, it scales with the image"
 msgstr ""
 
-#: includes/page-item.php:504 includes/page-item.php:778
-#: includes/page-item.php:980
+#: includes/page-item.php:512 includes/page-item.php:786
+#: includes/page-item.php:988
 msgid "Zoom with map"
 msgstr ""
 
-#: includes/page-item.php:508
+#: includes/page-item.php:516
 msgid "The layer is never the target of mouse events"
 msgstr ""
 
-#: includes/page-item.php:509
+#: includes/page-item.php:517
 msgid "No events"
 msgstr ""
 
-#: includes/page-item.php:517
+#: includes/page-item.php:525
 msgid "Normal color in hexadecimal format (#fff or #555555)"
 msgstr ""
 
-#: includes/page-item.php:518
+#: includes/page-item.php:526
 msgid "Normal color"
 msgstr ""
 
-#: includes/page-item.php:523
+#: includes/page-item.php:531
 msgid "Hover color in hexadecimal format (#fff or #555555)"
 msgstr ""
 
-#: includes/page-item.php:524
+#: includes/page-item.php:532
 msgid "Hover color"
 msgstr ""
 
-#: includes/page-item.php:529
+#: includes/page-item.php:537
 msgid "Sets a radius (5px or 50%)"
 msgstr ""
 
-#: includes/page-item.php:530
+#: includes/page-item.php:538
 msgid "Radius"
 msgstr ""
 
-#: includes/page-item.php:531
+#: includes/page-item.php:539
 msgid "Example: 10px"
 msgstr ""
 
-#: includes/page-item.php:537
+#: includes/page-item.php:545
 msgid "Add text"
 msgstr ""
 
-#: includes/page-item.php:538 includes/page-item.php:539
+#: includes/page-item.php:546 includes/page-item.php:547
 msgid "Text"
 msgstr ""
 
-#: includes/page-item.php:543
+#: includes/page-item.php:551
 msgid "Specifies a font of the text"
 msgstr ""
 
-#: includes/page-item.php:544
+#: includes/page-item.php:552
 msgid "Font"
 msgstr ""
 
-#: includes/page-item.php:549
+#: includes/page-item.php:557
 msgid "Text color in hexadecimal format (#fff or #555555)"
 msgstr ""
 
-#: includes/page-item.php:550
+#: includes/page-item.php:558
 msgid "Text color"
 msgstr ""
 
-#: includes/page-item.php:557
+#: includes/page-item.php:565
 msgid "Sets the text size in px"
 msgstr ""
 
-#: includes/page-item.php:558
+#: includes/page-item.php:566
 msgid "Text size [px]"
 msgstr ""
 
-#: includes/page-item.php:559 includes/page-item.php:564
+#: includes/page-item.php:567 includes/page-item.php:572
 msgid "Example: 18"
 msgstr ""
 
-#: includes/page-item.php:562
+#: includes/page-item.php:570
 msgid "Sets the text line height in px"
 msgstr ""
 
-#: includes/page-item.php:563
+#: includes/page-item.php:571
 msgid "Line height [px]"
 msgstr ""
 
-#: includes/page-item.php:572
+#: includes/page-item.php:580
 msgid "Specifies the horizontal alignment of the text"
 msgstr ""
 
-#: includes/page-item.php:573
+#: includes/page-item.php:581
 msgid "Text align"
 msgstr ""
 
-#: includes/page-item.php:577
+#: includes/page-item.php:585
 msgid "Specifies the spacing behavior between text characters"
 msgstr ""
 
-#: includes/page-item.php:578
+#: includes/page-item.php:586
 msgid "Letter spacing [px]"
 msgstr ""
 
-#: includes/page-item.php:579
+#: includes/page-item.php:587
 msgid "Example: 1"
 msgstr ""
 
-#: includes/page-item.php:601 includes/page-item.php:647
+#: includes/page-item.php:609 includes/page-item.php:655
 msgid "Sets a background color"
 msgstr ""
 
-#: includes/page-item.php:677
+#: includes/page-item.php:685
 msgid "Set svg file"
 msgstr ""
 
-#: includes/page-item.php:678
+#: includes/page-item.php:686
 msgid "File"
 msgstr ""
 
-#: includes/page-item.php:681
+#: includes/page-item.php:689
 msgid "Select a file"
 msgstr ""
 
-#: includes/page-item.php:691
+#: includes/page-item.php:699
 msgid "Set additional css classes to the layer"
 msgstr ""
 
-#: includes/page-item.php:714
+#: includes/page-item.php:722
 msgid "Enable/disable tooltip for the selected layer"
 msgstr ""
 
-#: includes/page-item.php:715
+#: includes/page-item.php:723
 msgid "Enable tooltip"
 msgstr ""
 
-#: includes/page-item.php:748
+#: includes/page-item.php:756
 msgid "Specifies a tooltip event trigger"
 msgstr ""
 
-#: includes/page-item.php:749 includes/page-item.php:941
-#: includes/page-item.php:951
+#: includes/page-item.php:757 includes/page-item.php:949
+#: includes/page-item.php:959
 msgid "Trigger"
 msgstr ""
 
-#: includes/page-item.php:753
+#: includes/page-item.php:761
 msgid "Specifies a tooltip placement"
 msgstr ""
 
-#: includes/page-item.php:754 includes/page-item.php:956
+#: includes/page-item.php:762 includes/page-item.php:964
 msgid "Placement"
 msgstr ""
 
-#: includes/page-item.php:761
+#: includes/page-item.php:769
 msgid "Set tooltip offset"
 msgstr ""
 
-#: includes/page-item.php:764 includes/page-item.php:966
+#: includes/page-item.php:772 includes/page-item.php:974
 msgid "Offset top [px]"
 msgstr ""
 
-#: includes/page-item.php:768 includes/page-item.php:970
+#: includes/page-item.php:776 includes/page-item.php:978
 msgid "Offset left [px]"
 msgstr ""
 
-#: includes/page-item.php:777
+#: includes/page-item.php:785
 msgid "The tooltip size depends on the image size"
 msgstr ""
 
-#: includes/page-item.php:782
+#: includes/page-item.php:790
 msgid ""
 "Determines if the tooltip is placed within the viewport as best it can be if "
 "there is not enough space"
 msgstr ""
 
-#: includes/page-item.php:783 includes/page-item.php:985
+#: includes/page-item.php:791 includes/page-item.php:993
 msgid "Smart"
 msgstr ""
 
-#: includes/page-item.php:792 includes/page-item.php:994
+#: includes/page-item.php:800 includes/page-item.php:1002
 msgid ""
 "If true, the tooltip width will be taken from CSS rules, dont forget to "
 "define them"
 msgstr ""
 
-#: includes/page-item.php:793 includes/page-item.php:995
+#: includes/page-item.php:801 includes/page-item.php:1003
 msgid "Width from CSS"
 msgstr ""
 
-#: includes/page-item.php:797
+#: includes/page-item.php:805
 msgid "Specifies a tooltip width"
 msgstr ""
 
-#: includes/page-item.php:799 includes/page-item.php:1001
+#: includes/page-item.php:807 includes/page-item.php:1009
 msgid "auto"
 msgstr ""
 
-#: includes/page-item.php:805 includes/page-item.php:820
+#: includes/page-item.php:813 includes/page-item.php:828
 msgid "The tooltip will be shown immediately once the instance is created"
 msgstr ""
 
-#: includes/page-item.php:806 includes/page-item.php:821
-#: includes/page-item.php:1009 includes/page-item.php:1024
+#: includes/page-item.php:814 includes/page-item.php:829
+#: includes/page-item.php:1017 includes/page-item.php:1032
 msgid "Show on init"
 msgstr ""
 
-#: includes/page-item.php:814
+#: includes/page-item.php:822
 msgid "Enable/disable tooltip follow the cursor as you hover over the layer"
 msgstr ""
 
-#: includes/page-item.php:815 includes/page-item.php:1018
+#: includes/page-item.php:823 includes/page-item.php:1026
 msgid "Follow the cursor"
 msgstr ""
 
-#: includes/page-item.php:825
+#: includes/page-item.php:833
 msgid "The tooltip won't hide when you hover over or click on them"
 msgstr ""
 
-#: includes/page-item.php:826 includes/page-item.php:1029
+#: includes/page-item.php:834 includes/page-item.php:1037
 msgid "Interactive"
 msgstr ""
 
-#: includes/page-item.php:833
+#: includes/page-item.php:841
 msgid "Set additional css classes to the tooltip"
 msgstr ""
 
-#: includes/page-item.php:841
+#: includes/page-item.php:849
 msgid ""
 "Select a show animation effect for the tooltip from the list or write your "
 "own"
 msgstr ""
 
-#: includes/page-item.php:842
+#: includes/page-item.php:850
 msgid "Show animation"
 msgstr ""
 
-#: includes/page-item.php:848 includes/page-item.php:860
+#: includes/page-item.php:856 includes/page-item.php:868
 msgid "Select an effect"
 msgstr ""
 
-#: includes/page-item.php:853
+#: includes/page-item.php:861
 msgid ""
 "Select a hide animation effect for the tooltip from the list or write your "
 "own"
 msgstr ""
 
-#: includes/page-item.php:854
+#: includes/page-item.php:862
 msgid "Hide animation"
 msgstr ""
 
-#: includes/page-item.php:868
+#: includes/page-item.php:876
 msgid "Set animation duration for show and hide effects"
 msgstr ""
 
-#: includes/page-item.php:869
+#: includes/page-item.php:877
 msgid "Duration [ms]"
 msgstr ""
 
-#: includes/page-item.php:892
+#: includes/page-item.php:900
 msgid "Enable/disable popover for the selected layer"
 msgstr ""
 
-#: includes/page-item.php:893
+#: includes/page-item.php:901
 msgid "Enable popover"
 msgstr ""
 
-#: includes/page-item.php:926
+#: includes/page-item.php:934
 msgid "Specifies a popover desktop type"
 msgstr ""
 
-#: includes/page-item.php:927
+#: includes/page-item.php:935
 msgid "Desktop type"
 msgstr ""
 
-#: includes/page-item.php:931
+#: includes/page-item.php:939
 msgid "Specifies a popover mobile type"
 msgstr ""
 
-#: includes/page-item.php:932
+#: includes/page-item.php:940
 msgid "Mobile type"
 msgstr ""
 
-#: includes/page-item.php:940
+#: includes/page-item.php:948
 msgid "Specifies the event trigger of the popover"
 msgstr ""
 
-#: includes/page-item.php:950
+#: includes/page-item.php:958
 msgid "Specifies a popover event trigger"
 msgstr ""
 
-#: includes/page-item.php:955
+#: includes/page-item.php:963
 msgid "Specifies a popover placement"
 msgstr ""
 
-#: includes/page-item.php:963
+#: includes/page-item.php:971
 msgid "Set popover offset"
 msgstr ""
 
-#: includes/page-item.php:979
+#: includes/page-item.php:987
 msgid "The popover size depends on the image size"
 msgstr ""
 
-#: includes/page-item.php:984
+#: includes/page-item.php:992
 msgid ""
 "Determines if the popover is placed within the viewport as best it can be if "
 "there is not enough space"
 msgstr ""
 
-#: includes/page-item.php:999
+#: includes/page-item.php:1007
 msgid "Specifies the width of the popover"
 msgstr ""
 
-#: includes/page-item.php:1008 includes/page-item.php:1023
+#: includes/page-item.php:1016 includes/page-item.php:1031
 msgid "The popover will be shown immediately once the instance is created"
 msgstr ""
 
-#: includes/page-item.php:1017
+#: includes/page-item.php:1025
 msgid "Enable/disable popover follow the cursor as you hover over the layer"
 msgstr ""
 
-#: includes/page-item.php:1028
+#: includes/page-item.php:1036
 msgid "The popover won't hide when you hover over or click on them"
 msgstr ""
 
-#: includes/page-item.php:1036
+#: includes/page-item.php:1044
 msgid "Set additional css classes to the popover"
 msgstr ""
 
-#: includes/page-item.php:1055
+#: includes/page-item.php:1063
 msgid "Enable/disable custom styles"
 msgstr ""
 
-#: includes/page-item.php:1061
+#: includes/page-item.php:1069
 msgid "Enable styles"
 msgstr ""
 
-#: includes/page-item.php:1077
+#: includes/page-item.php:1085
 msgid "Enable/disable custom javascript code"
 msgstr ""
 
-#: includes/page-item.php:1083
+#: includes/page-item.php:1091
 msgid "Enable javascript code"
 msgstr ""
 
-#: includes/page-item.php:1098
+#: includes/page-item.php:1106
 msgid ""
 "Use a shortcode like the one below, copy and paste it into a post or page."
 msgstr ""
 
-#: includes/page-item.php:1102
+#: includes/page-item.php:1110
 msgid "Standard shortcode"
 msgstr ""
 
-#: includes/page-item.php:1108
+#: includes/page-item.php:1116
 msgid "Copy to clipboard"
 msgstr ""
 
-#: includes/page-item.php:1113
+#: includes/page-item.php:1121
 msgid ""
 "Next to that you can also add a few optional arguments to your shortcode:"
 msgstr ""
 
-#: includes/page-item.php:1117
+#: includes/page-item.php:1125
 msgid "Variable"
 msgstr ""
 
-#: includes/page-item.php:1118
+#: includes/page-item.php:1126
 msgid "Value"
 msgstr ""
 
-#: includes/page-item.php:1122
+#: includes/page-item.php:1130
 msgid "item ID"
 msgstr ""
 
-#: includes/page-item.php:1126
+#: includes/page-item.php:1134
 msgid "slug identifier"
 msgstr ""
 
-#: includes/page-item.php:1130
+#: includes/page-item.php:1138
 msgid "custom CSS class"
 msgstr ""
 
-#: includes/page-items.php:14 includes/plugin.php:551
+#: includes/page-items.php:14 includes/plugin.php:552
 msgid "All Items"
 msgstr ""
 
@@ -932,6 +938,15 @@ msgstr ""
 
 #: includes/page-settings.php:47
 msgid "Information"
+msgstr ""
+
+#: includes/page-settings.php:51
+msgid ""
+"You are using a lite version of our mapping software. It allows you to "
+"create only 3 interactive maps. With the lite version you can easily create "
+"and customize interactive maps according to your needs. If you need "
+"additional mapping capabilities in the future, you can always upgrade to the "
+"pro version."
 msgstr ""
 
 #: includes/page-settings.php:56
@@ -980,98 +995,91 @@ msgstr ""
 msgid "Delete all data"
 msgstr ""
 
-#: includes/plugin.php:299
+#: includes/plugin.php:300
 msgid "Error: invalid vision identifier attribute"
 msgstr ""
 
-#: includes/plugin.php:425
+#: includes/plugin.php:426
 msgid "Error: the vision item can’t be found"
 msgstr ""
 
-#: includes/plugin.php:505
+#: includes/plugin.php:506
 msgid "The plugin upload directory could not be created"
 msgstr ""
 
-#: includes/plugin.php:506 includes/plugin.php:516
+#: includes/plugin.php:507 includes/plugin.php:517
 msgid "Please run the following commands in order to make the directory"
 msgstr ""
 
-#: includes/plugin.php:515
+#: includes/plugin.php:516
 msgid ""
 "The plugin upload directory is not writable, therefore the css and js files "
 "cannot be saved."
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-#: includes/plugin.php:550 includes/plugin.php:551 includes/plugin.php:552
-#: includes/plugin.php:553 includes/plugin.php:555
+#: includes/plugin.php:551 includes/plugin.php:552 includes/plugin.php:553
+#: includes/plugin.php:554 includes/plugin.php:556
 msgid "Vision"
 msgstr ""
 
-#: includes/plugin.php:552
+#: includes/plugin.php:553
 msgid "Add New"
 msgstr ""
 
-#: includes/plugin.php:555
+#: includes/plugin.php:556
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: includes/plugin.php:629 includes/plugin.php:666 includes/plugin.php:737
+#: includes/plugin.php:642 includes/plugin.php:697 includes/plugin.php:766
 msgid "Available only in Pro version"
 msgstr ""
 
-#: includes/plugin.php:633 includes/plugin.php:674 includes/plugin.php:740
+#: includes/plugin.php:646 includes/plugin.php:705 includes/plugin.php:769
 msgid "Uncaught Error"
 msgstr ""
 
-#: includes/plugin.php:667
+#: includes/plugin.php:698
 msgid "Custom js code error"
 msgstr ""
 
-#: includes/plugin.php:668
+#: includes/plugin.php:699
 msgid "The layer ID should be unique"
 msgstr ""
 
-#: includes/plugin.php:808 includes/plugin.php:890
+#: includes/plugin.php:837 includes/plugin.php:919
 msgid "The item was successfully updated"
 msgstr ""
 
-#: includes/plugin.php:811 includes/plugin.php:893
+#: includes/plugin.php:840 includes/plugin.php:922
 msgid "The operation failed, can't update item"
 msgstr ""
 
-#: includes/plugin.php:815 includes/plugin.php:924 includes/plugin.php:1216
-#: includes/plugin.php:1222
+#: includes/plugin.php:844 includes/plugin.php:953 includes/plugin.php:1245
+#: includes/plugin.php:1251
 msgid "The operation failed"
 msgstr ""
 
-#: includes/plugin.php:852
-msgid ""
-"The operation failed, you can create only one item. To create more, buy the "
-"pro version."
-msgstr ""
-
-#: includes/plugin.php:915
+#: includes/plugin.php:944
 msgid "The item was successfully created"
 msgstr ""
 
-#: includes/plugin.php:918
+#: includes/plugin.php:947
 msgid "The operation failed, can't create item"
 msgstr ""
 
-#: includes/plugin.php:962
+#: includes/plugin.php:991
 msgid "The settings were successfully updated"
 msgstr ""
 
-#: includes/plugin.php:965
+#: includes/plugin.php:994
 msgid "The operation failed, can't update settings"
 msgstr ""
 
-#: includes/plugin.php:1240
+#: includes/plugin.php:1269
 msgid "The operation failed, can't delete data"
 msgstr ""
 
-#: includes/plugin.php:1273
+#: includes/plugin.php:1302
 msgid "All data deleted"
 msgstr ""
 
@@ -1124,6 +1132,10 @@ msgstr ""
 
 #: templates/feedback.php:51
 msgid "Skip & Deactivate"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Vision - Interactive Image Map Builder"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

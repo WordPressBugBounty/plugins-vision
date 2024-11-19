@@ -656,6 +656,22 @@ class Vision_Builder {
 	function admin_menu_page_item() {
 		$page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
 		if($page==='vision_item') {
+            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+            if ( VISION_PLUGIN_PLAN == 'lite' && !$id ) {
+                global $wpdb;
+                $table = $wpdb->prefix . VISION_PLUGIN_NAME;
+
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+                $count = $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
+
+                if ( $count >= 3 ) {
+                    echo '<div class="notice notice-error is-dismissible">';
+                    echo '<p>Vision: ' . esc_html__('You can create only 3 maps. If you need more, upgrade to the pro version.', 'vision') . '</p>';
+                    echo '</div>';
+                    return;
+                }
+            }
+
 			$plugin_url = plugin_dir_url(dirname(__FILE__));
 			$upload_dir = wp_upload_dir();
 
@@ -684,9 +700,7 @@ class Vision_Builder {
 				'ajax_nonce' => wp_create_nonce('vision_ajax'),
 				'ajax_msg_error' => esc_html__('Uncaught Error', 'vision') //Look at the console (F12 or Ctrl+Shift+I, Console tab) for more information
 			];
-			
-			$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-			
+
 			$globals['ajax_action_get'] = $this->ajax_action_settings_get;
 			$globals['ajax_action_update'] = $this->ajax_action_item_update;
 			$globals['ajax_action_modal'] = $this->ajax_action_modal;
@@ -714,7 +728,7 @@ class Vision_Builder {
 					$globals['config'] = unserialize($item->data); // json_encode(unserialize($item->data)) problem with double quotes
 				}
 			} else {
-				// new item
+                // new item
 				$item = (object) [
 					'author' => get_current_user_id(),
 					'editor' => get_current_user_id(),
@@ -853,15 +867,15 @@ class Vision_Builder {
 			$itemConfig = json_decode($inputConfig);
 			$flag = true;
 			
-			if(VISION_PLUGIN_PLAN == 'lite' && !$inputId ) {
+			if( VISION_PLUGIN_PLAN == 'lite' && !$inputId ) {
                 // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-				$rowcount = $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
-				
-				if(!($rowcount == 0 || ($rowcount == 1 && $inputId))) {
-					$flag = false;
-					$error = true;
-					$data['msg'] = esc_html__('The operation failed, you can create only one item. To create more, buy the pro version.', 'vision');
-				}
+				$count = $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
+
+                if ( $count >= 3 ) {
+                    $flag = false;
+                    $error = true;
+                    $data['msg'] = esc_html__('You can create only 3 maps. If you need more, upgrade to the pro version.', 'vision');
+                }
 			}
 			
 			if($flag) {

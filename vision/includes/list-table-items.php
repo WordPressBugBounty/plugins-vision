@@ -342,9 +342,21 @@ class Vision_List_Table_Items extends WP_List_Table {
 	}
 	
 	function process_copy_action($id) {
-		global $wpdb;
-		$table = $wpdb->prefix . VISION_PLUGIN_NAME;
-		$author = get_current_user_id();
+        global $wpdb;
+        $table = $wpdb->prefix . VISION_PLUGIN_NAME;
+        $author = get_current_user_id();
+
+        if( VISION_PLUGIN_PLAN == 'lite' ) {
+            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+            $count = $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
+
+            if ($count >= 3) {
+                echo '<div class="notice notice-error is-dismissible">';
+                echo '<p>Vision: ' . esc_html__('You can create only 3 maps. If you need more, upgrade to the pro version.', 'vision') . '</p>';
+                echo '</div>';
+                return;
+            }
+        }
 
         // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$sql = $wpdb->prepare("SELECT * FROM {$table} WHERE id=%d AND NOT deleted", $id);
