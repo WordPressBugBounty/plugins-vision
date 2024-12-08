@@ -203,7 +203,10 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                             <div class="vision-info"><?php esc_html_e('Please set a map image to access settings', 'vision'); ?></div>
                                         </div>
                                         <div class="vision-layers-wrap" al-if="appData.config.image.url != null">
-                                            <div class="vision-layers-toolbar">
+                                            <div al-if="appData.config.layers && appData.config.layers.length == 0">
+                                                <div class="vision-info"><?php esc_html_e('To create a new layer, use the top toolbar of the canvas, which includes link, text, and image controls', 'vision'); ?></div>
+                                            </div>
+                                            <div class="vision-layers-toolbar" al-if="appData.config.layers && appData.config.layers.length !== 0">
                                                 <div class="vision-left-panel" al-attr.class.vision-hidden="appData.ui.activeLayer == null">
                                                     <i class="icon icon-copy" al-on.click="appData.fn.copyLayer(appData)" title="<?php esc_html_e('copy', 'vision'); ?>"></i>
                                                     <i class="icon icon-arrow-up-from-line" al-on.click="appData.fn.updownLayer(appData, 'down')" title="<?php esc_html_e('move up', 'vision'); ?>"></i>
@@ -233,7 +236,6 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="vision-main-panel vision-center">
