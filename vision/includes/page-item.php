@@ -258,9 +258,10 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                                     <i class="icon icon-chevron-right" al-on.click="appData.fn.nextLayer(appData)" title="<?php esc_html_e('Next layer', 'vision'); ?>"></i>
                                                 </div>
                                                 <div class="vision-layers-toolbar">
-                                                    <i class="icon icon-link" al-attr.class.vision-active="appData.tools.activeTool == 'link'" al-on.click="appData.fn.addLayerLink(appData)" title="<?php esc_html_e('add link', 'vision'); ?>"></i>
-                                                    <i class="icon icon-type" al-attr.class.vision-active="appData.tools.activeTool == 'text'" al-on.click="appData.fn.addLayerText(appData)" title="<?php esc_html_e('add text', 'vision'); ?>"></i>
-                                                    <i class="icon icon-image" al-attr.class.vision-active="appData.tools.activeTool == 'image'" al-on.click="appData.fn.addLayerImage(appData)" title="<?php esc_html_e('add image', 'vision'); ?>"></i>
+                                                    <i class="icon icon-hand" al-attr.class.vision-active="appData.tools.activeTool == 'move'" al-on.click="appData.fn.moveCanvas(appData)" title="<?php esc_html_e('Move canvas or use "Ctrl + Left Mouse Click" instead', 'vision'); ?>"></i>
+                                                    <i class="icon icon-link" al-attr.class.vision-active="appData.tools.activeTool == 'link'" al-on.click="appData.fn.addLayerLink(appData)" title="<?php esc_html_e('Add link', 'vision'); ?>"></i>
+                                                    <i class="icon icon-type" al-attr.class.vision-active="appData.tools.activeTool == 'text'" al-on.click="appData.fn.addLayerText(appData)" title="<?php esc_html_e('Add text', 'vision'); ?>"></i>
+                                                    <i class="icon icon-image" al-attr.class.vision-active="appData.tools.activeTool == 'image'" al-on.click="appData.fn.addLayerImage(appData)" title="<?php esc_html_e('Add image', 'vision'); ?>"></i>
                                                 </div>
                                                 <div class="vision-layers-toolbar" al-attr.class.vision-hidden="appData.ui.activeLayer == null">
                                                     <i class="icon icon-copy" al-on.click="appData.fn.copyLayer(appData)" title="<?php esc_html_e('copy', 'vision'); ?>"></i>
