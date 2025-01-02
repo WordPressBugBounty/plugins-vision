@@ -4,7 +4,7 @@ Tags: image maps, infographics, floor plan, interactive images, hotspots
 Requires at least: 4.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.9.4
+Stable tag: 1.9.5
 License: GPLv3
 
 Empower your site with interactive visuals! Our plugin seamlessly transforms static images into engaging media, enabling publishers and bloggers.
@@ -127,6 +127,9 @@ You’re done. Enjoy.
 
 
 == Changelog ==
+
+= 1.9.5 =
+* Mod: added check for values returned by `json_decode` to enhance data handling.
 
 = 1.9.4 =
 * Mod: move canvas mode

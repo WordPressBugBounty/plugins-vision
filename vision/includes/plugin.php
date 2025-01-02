@@ -878,6 +878,12 @@ class Vision_Builder {
                     $data['msg'] = esc_html__('You can create only 3 maps. If you need more, upgrade to the pro version.', 'vision');
                 }
 			}
+
+            if( $itemData === NULL || $itemConfig === NULL ) {
+                $flag = false;
+                $error = true;
+                $data['msg'] = esc_html__('Error decoding JSON: ' . json_last_error_msg(), 'vision');
+            }
 			
 			if($flag) {
 				$itemConfig->modified = current_time('mysql', 1);
@@ -966,31 +972,37 @@ class Vision_Builder {
 		$error = false;
 		$data = [];
 		$config = filter_input(INPUT_POST, 'config', FILTER_UNSAFE_RAW);
-		
-		if(check_ajax_referer('vision_ajax', 'nonce', false)) {
-			$settings_key = 'vision_settings';
-			$settings_value = serialize(json_decode($config));
-			$result = false;
-			
-			if(get_option($settings_key) == false) {
-				$autoload = 'no';
-				$result = add_option($settings_key, $settings_value, "", $autoload);
-			} else {
-				$old_settings_value = get_option($settings_key);
-				if($old_settings_value === $settings_value) {
-					$result = true;
-				} else {
-					$result = update_option($settings_key, $settings_value);
-				}
-			}
-			
-			if($result) {
-				$data['msg'] = esc_html__('The settings were successfully updated', 'vision');
-			} else {
-				$error = true;
-				$data['msg'] = esc_html__('The operation failed, can\'t update settings', 'vision');
-			}
-		}
+        $config = json_decode($config);
+
+        if($config !== NULL) {
+            if (check_ajax_referer('vision_ajax', 'nonce', false)) {
+                $settings_key = 'vision_settings';
+                $settings_value = serialize($config);
+                $result = false;
+
+                if (get_option($settings_key) == false) {
+                    $autoload = 'no';
+                    $result = add_option($settings_key, $settings_value, "", $autoload);
+                } else {
+                    $old_settings_value = get_option($settings_key);
+                    if ($old_settings_value === $settings_value) {
+                        $result = true;
+                    } else {
+                        $result = update_option($settings_key, $settings_value);
+                    }
+                }
+
+                if ($result) {
+                    $data['msg'] = esc_html__('The settings were successfully updated', 'vision');
+                } else {
+                    $error = true;
+                    $data['msg'] = esc_html__('The operation failed, can\'t update settings', 'vision');
+                }
+            }
+        } else {
+            $error = true;
+            $data['msg'] = esc_html__('Error decoding JSON: ' . json_last_error_msg(), 'vision');
+        }
 		
 		if($error) {
 			wp_send_json_error($data);
