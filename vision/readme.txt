@@ -4,7 +4,7 @@ Tags: image maps, infographics, floor plan, interactive images, hotspots
 Requires at least: 4.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.9.5
+Stable tag: 1.9.6
 License: GPLv3
 
 Empower your site with interactive visuals! Our plugin seamlessly transforms static images into engaging media, enabling publishers and bloggers.
@@ -13,8 +13,10 @@ Empower your site with interactive visuals! Our plugin seamlessly transforms sta
 
 Vision Interactive is a lightweight and rich-feature plugin helps you enhance images with additional information and links. With this plugin you are able to easily annotate images with text, shapes and icons, draw attention to areas and features on images. You can then use them in posts that empower publishers and bloggers to create more engaging content. It provides an easy way for you to convert a static image into the online interactive media brochures or booklets, image maps, immersive storytelling in seconds. The plugin can be deployed easily and runs on all modern browsers and mobile devices.
 
-🔥 [**VISION PRO**](https://1.envato.market/getvision) 🔥
-[youtube https://www.youtube.com/watch?v=NoQCkmznF4E]
+📋 [**DEMO & DESCRIPTION**](https://avirtum.com/vision-interactive-image-map-builder-for-wordpress/) 📋
+🔥 [**DON’T DELAY, BE PRO TODAY!!!**](https://1.envato.market/getvision) 🔥
+
+[youtube https://youtu.be/7fl_WDXLKdc]
 
 *Note: the video tutorial above also uses a WordPress media folder management **plugin iFolders**, you can learn more at this [link](https://wordpress.org/plugins/ifolders/).*
 
@@ -127,6 +129,9 @@ You’re done. Enjoy.
 
 
 == Changelog ==
+
+= 1.9.6 =
+* Fix: "@" tag for custom styles
 
 = 1.9.5 =
 * Mod: added check for values returned by `json_decode` to enhance data handling.

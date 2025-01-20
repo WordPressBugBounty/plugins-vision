@@ -406,7 +406,7 @@ class Vision_Builder {
             echo '</div>' . PHP_EOL;
 
             $css = $this->getMainCss($itemData, $id) . ($itemData->customCSS->active ? $itemData->customCSS->data : '');
-            $css = preg_replace('/[^\/\\\\a-zA-Z0-9\s\_\%\=\[\]\(\)\{\}\:\;\.\,\#\$\-\"\'\!]/', '', $css);
+            $css = preg_replace('/[^\/\\\\a-zA-Z0-9\s\_\%\=\[\]\(\)\{\}\:\;\.\,\#\$\-\"\'\!@]/', '', $css);
 
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             echo '<style>' . $css . '</style>';
