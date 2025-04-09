@@ -2,9 +2,9 @@
 Contributors: Avirtum
 Tags: image maps, infographics, floor plan, interactive images, hotspots
 Requires at least: 4.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.9.6
+Stable tag: 1.9.7
 License: GPLv3
 
 Empower your site with interactive visuals! Our plugin seamlessly transforms static images into engaging media, enabling publishers and bloggers.
@@ -129,6 +129,9 @@ You’re done. Enjoy.
 
 
 == Changelog ==
+
+= 1.9.7 =
+* Fix: resolved 403 errors occurring when strict HTTP standards enforcement is enabled
 
 = 1.9.6 =
 * Fix: "@" tag for custom styles

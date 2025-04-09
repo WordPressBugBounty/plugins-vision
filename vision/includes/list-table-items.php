@@ -350,9 +350,9 @@ class Vision_List_Table_Items extends WP_List_Table {
             // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             $count = $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
 
-            if ($count >= 3) {
+            if ($count >= 1) {
                 echo '<div class="notice notice-error is-dismissible">';
-                echo '<p>Vision: ' . esc_html__('You can create only 3 maps. If you need more, upgrade to the pro version.', 'vision') . '</p>';
+                echo '<p>Vision: ' . esc_html__('You can create only 1 map. If you need more, upgrade to the pro version.', 'vision') . '</p>';
                 echo '</div>';
                 return;
             }

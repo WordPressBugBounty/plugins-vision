@@ -48,7 +48,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                 </div>
                                 <div class="vision-control">
                                     <div class="vision-note">
-                                        <?php esc_html_e('You are using a lite version of our mapping software. It allows you to create only 3 interactive maps. With the lite version you can easily create and customize interactive maps according to your needs. If you need additional mapping capabilities in the future, you can always upgrade to the pro version.', 'vision'); ?>
+                                        <?php esc_html_e('You are using a lite version of our mapping software. It allows you to create only 1 interactive map. With the lite version you can easily create and customize interactive map according to your needs. If you need additional mapping capabilities in the future, you can always upgrade to the pro version.', 'vision'); ?>
                                     </div>
                                 </div>
                                 
