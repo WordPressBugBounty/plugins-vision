@@ -324,26 +324,27 @@ class Vision_Builder {
 				$this->embedLoader(true, $version);
 			}
 
-			ob_start(); // turn on buffering
 
-            echo '<!-- vision begin -->' . PHP_EOL;
-            echo '<div ';
-            echo (property_exists($itemData, 'containerId') && $itemData->containerId ? 'id="' . esc_attr($itemData->containerId) . '" ':'');
-            echo 'class="vision-map vision-map-' . esc_attr($id . ($class ? ' ' . $class : '')) . '"';
-            echo 'data-json-src="'. esc_url_raw( rest_url( VISION_PLUGIN_REST_URL ) ) . '/item/' . esc_attr($item->id) . ($preview ? '?preview=1' : '') . '" ';
-            echo 'data-item-id="' . esc_attr($item->id) . '" ';
-            echo 'tabindex="1" ';
-            echo '>' . PHP_EOL;
+            $output = '';
+
+            $output .= '<!-- vision begin -->';
+            $output .= '<div ';
+            $output .= (property_exists($itemData, 'containerId') && $itemData->containerId ? 'id="' . esc_attr($itemData->containerId) . '" ':'');
+            $output .= 'class="vision-map vision-map-' . esc_attr($id . ($class ? ' ' . $class : '')) . '"';
+            $output .= 'data-json-src="'. esc_url_raw( rest_url( VISION_PLUGIN_REST_URL ) ) . '/item/' . esc_attr($item->id) . ($preview ? '?preview=1' : '') . '" ';
+            $output .= 'data-item-id="' . esc_attr($item->id) . '" ';
+            $output .= 'tabindex="1" ';
+            $output .= '>';
                 if (property_exists($itemData, 'image')) {
                     $upload_dir = wp_upload_dir();
                     $imageUrl = ($itemData->image->relative ? $upload_dir['baseurl'] : '') . $itemData->image->url;
-                    echo "<img src='" . esc_url($imageUrl). "' class='vision-img-placeholder' width='100%'>";
+                    $output .= "<img src='" . esc_url( $imageUrl ) . "' class='vision-img-placeholder' width='100%'>";
                 }
 
                 //=============================================
                 // STORE BEGIN
-                echo '<div class="vision-store" style="display:none;">' . PHP_EOL;
-                echo '<div class="vision-layers-data">' . PHP_EOL;
+                $output .= '<div class="vision-store" style="display:none;">';
+                $output .= '<div class="vision-layers-data">';
 				foreach($itemData->layers as $layerKey => $layer) {
 					if(!$layer->visible) {
 						continue;
@@ -351,23 +352,23 @@ class Vision_Builder {
 					
 					//=============================================
 					// LAYER BEGIN
-                    echo '<div class="vision-layer" data-layer-id="' . esc_attr($layer->id) . '">';
+                    $output .= '<div class="vision-layer" data-layer-id="' . esc_attr($layer->id) . '">';
 					
 					if($layer->contentData) {
-                        echo do_shortcode($layer->contentData);
+                        $output .= do_shortcode($layer->contentData);
 					}
 					
 					if($layer->type == 'text') {
-                        echo wp_kses_post($layer->text->data);
+                        $output .= wp_kses_post($layer->text->data);
 					}
 
-                    echo '</div>' . PHP_EOL;
+                    $output .= '</div>';
 					// LAYER END
 					//=============================================
 				}
-                echo '</div>' . PHP_EOL;
+                $output .= '</div>';
 
-                echo '<div class="vision-tooltips-data">' . PHP_EOL;
+                $output .= '<div class="vision-tooltips-data">';
 				foreach($itemData->layers as $layerKey => $layer) {
 					if(!$layer->visible) {
 						continue;
@@ -375,15 +376,15 @@ class Vision_Builder {
 					
 					//=============================================
 					// TOOLTIP BEGIN
-                    echo '<div class="vision-data" data-layer-id="' . esc_attr($layer->id) . '">';
-                    echo do_shortcode($layer->tooltip->data);
-                    echo '</div>' . PHP_EOL;
+                    $output .= '<div class="vision-data" data-layer-id="' . esc_attr($layer->id) . '">';
+                    $output .= do_shortcode($layer->tooltip->data);
+                    $output .= '</div>';
 					// TOOLTIP END
 					//=============================================
 				}
-                echo '</div>' . PHP_EOL;
+                $output .= '</div>';
 
-                echo '<div class="vision-popovers-data">' . PHP_EOL;
+                $output .= '<div class="vision-popovers-data">';
 				foreach($itemData->layers as $layerKey => $layer) {
 					if(!$layer->visible) {
 						continue;
@@ -391,30 +392,27 @@ class Vision_Builder {
 					
 					//=============================================
 					// POPOVER BEGIN
-                    echo '<div class="vision-data" data-layer-id="' . esc_attr($layer->id) . '">';
-                    echo do_shortcode($layer->popover->data);
-                    echo '</div>' . PHP_EOL;
+                    $output .= '<div class="vision-data" data-layer-id="' . esc_attr($layer->id) . '">';
+                    $output .= do_shortcode($layer->popover->data);
+                    $output .= '</div>';
 					// POPOVER END
 					//=============================================
 				}
-                echo '</div>' . PHP_EOL;
+                $output .= '</div>';
 
-                echo '</div>' . PHP_EOL;
+                $output .= '</div>';
 				// STORE END
 				//=============================================
 
-            echo '</div>' . PHP_EOL;
+            $output .= '</div>';
 
             $css = $this->getMainCss($itemData, $id) . ($itemData->customCSS->active ? $itemData->customCSS->data : '');
             $css = preg_replace('/[^\/\\\\a-zA-Z0-9\s\_\%\=\[\]\(\)\{\}\:\;\.\,\#\$\-\"\'\!@]/', '', $css);
 
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo '<style>' . $css . '</style>';
+            $output .= '<style>' . $css . '</style>';
 
-            echo '<!-- vision end -->' . PHP_EOL;
-
-			$output = ob_get_contents(); // get the buffered content into a var
-			ob_end_clean(); // clean buffer
+            $output .= '<!-- vision end -->';
 
             return $output;
 		}
