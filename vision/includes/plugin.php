@@ -217,18 +217,18 @@ class Vision_Builder {
 		
 		// create main css
 		$main_css = '';
-		$main_css .= '.vision-map-' . $itemId . ' {' . PHP_EOL;
+		$main_css .= '.vision-map-' . $itemId . ' {';
 		
-		$main_css .= (!$this->IsNullOrEmptyString($itemData->background->color) ? 'background-color:' . $itemData->background->color . ';' . PHP_EOL : '');
+		$main_css .= (!$this->IsNullOrEmptyString($itemData->background->color) ? 'background-color:' . $itemData->background->color . ';' : '');
 		if(!$this->IsNullOrEmptyString($itemData->background->image->url)) {
 			$imageUrl = ($itemData->background->image->relative ? $upload_dir['baseurl'] : '') . $itemData->background->image->url;
-			$main_css .= 'background-image:url(' . $imageUrl . ');' . PHP_EOL;
+			$main_css .= 'background-image:url(' . $imageUrl . ');';
 		}
-		$main_css .= ($itemData->background->size ? 'background-size:' . $itemData->background->size . ';' . PHP_EOL : '');
-		$main_css .= ($itemData->background->repeat ? 'background-repeat:' . $itemData->background->repeat . ';' . PHP_EOL : '');
-		$main_css .= ($itemData->background->position ? 'background-position:' . $itemData->background->position . ';' . PHP_EOL : '');
+		$main_css .= ($itemData->background->size ? 'background-size:' . $itemData->background->size . ';' : '');
+		$main_css .= ($itemData->background->repeat ? 'background-repeat:' . $itemData->background->repeat . ';' : '');
+		$main_css .= ($itemData->background->position ? 'background-position:' . $itemData->background->position . ';' : '');
 		
-		$main_css .= '}' . PHP_EOL;
+		$main_css .= '}';
 		
 		$layerId = 0;
 		foreach($itemData->layers as $layerKey => $layer) {
@@ -240,46 +240,46 @@ class Vision_Builder {
 			$layerSelector = '.vision-map-' . $itemId . ' .vision-layers [data-layer-id="' . $layer->id . '"] .vision-body';
 			
 			// main
-			$main_css .= $layerSelector . ' {' . PHP_EOL;
+			$main_css .= $layerSelector . ' {';
 			switch($layer->type) {
 				case 'link': {
-					$main_css .= ($layer->link->normalColor ? 'background-color:' . $layer->link->normalColor . ';' . PHP_EOL : '');
-					$main_css .= ($layer->link->radius != NULL ? 'border-radius:' . $layer->link->radius . ';' . PHP_EOL : '');
+					$main_css .= ($layer->link->normalColor ? 'background-color:' . $layer->link->normalColor . ';' : '');
+					$main_css .= ($layer->link->radius != NULL ? 'border-radius:' . $layer->link->radius . ';' : '');
 				} break;
 				case 'image': {
-					$main_css .= (!$this->IsNullOrEmptyString($layer->image->background->color) ? 'background-color:' . $layer->image->background->color . ';' . PHP_EOL : '');
+					$main_css .= (!$this->IsNullOrEmptyString($layer->image->background->color) ? 'background-color:' . $layer->image->background->color . ';' : '');
 					if(!$this->IsNullOrEmptyString($layer->image->background->file->url)) {
 						$imageUrl = ($layer->image->background->file->relative ? $upload_dir['baseurl'] : '') . $layer->image->background->file->url;
-						$main_css .= 'background-image:url(' . $imageUrl . ');' . PHP_EOL;
+						$main_css .= 'background-image:url(' . $imageUrl . ');';
 					}
-					$main_css .= ($layer->image->background->size ? 'background-size:' . $layer->image->background->size . ';' . PHP_EOL : '');
-					$main_css .= ($layer->image->background->repeat ? 'background-repeat:' . $layer->image->background->repeat . ';' . PHP_EOL : '');
-					$main_css .= ($layer->image->background->position ? 'background-position:' . $layer->image->background->position . ';' . PHP_EOL : '');
+					$main_css .= ($layer->image->background->size ? 'background-size:' . $layer->image->background->size . ';' : '');
+					$main_css .= ($layer->image->background->repeat ? 'background-repeat:' . $layer->image->background->repeat . ';' : '');
+					$main_css .= ($layer->image->background->position ? 'background-position:' . $layer->image->background->position . ';' : '');
 				} break;
 				case 'text': {
-					$main_css .= (!$this->IsNullOrEmptyString($layer->text->background->color) ? 'background-color:' . $layer->text->background->color . ';' . PHP_EOL : '');
+					$main_css .= (!$this->IsNullOrEmptyString($layer->text->background->color) ? 'background-color:' . $layer->text->background->color . ';' : '');
 					if(!$this->IsNullOrEmptyString($layer->text->background->file->url)) {
 						$imageUrl = ($layer->text->background->file->relative ? $upload_dir['baseurl'] : '') . $layer->text->background->file->url;
-						$main_css .= 'background-image:url(' . $imageUrl . ');' . PHP_EOL;
+						$main_css .= 'background-image:url(' . $imageUrl . ');';
 					}
-					$main_css .= ($layer->text->background->size ? 'background-size:' . $layer->text->background->size . ';' . PHP_EOL : '');
-					$main_css .= ($layer->text->background->repeat ? 'background-repeat:' . $layer->text->background->repeat . ';' . PHP_EOL : '');
-					$main_css .= ($layer->text->background->position ? 'background-position:' . $layer->text->background->position . ';' . PHP_EOL : '');
+					$main_css .= ($layer->text->background->size ? 'background-size:' . $layer->text->background->size . ';' : '');
+					$main_css .= ($layer->text->background->repeat ? 'background-repeat:' . $layer->text->background->repeat . ';' : '');
+					$main_css .= ($layer->text->background->position ? 'background-position:' . $layer->text->background->position . ';' : '');
 					
-					$main_css .= ($layer->text->font ? 'font-family:"' . str_replace('+', ' ', $layer->text->font) . '",sans-serif;' . PHP_EOL : '');
-					$main_css .= ($layer->text->color ? 'color:' . $layer->text->color . ';' . PHP_EOL : '');
-					$main_css .= ($layer->text->size != NULL ? 'font-size:' . $layer->text->size . 'px;' . PHP_EOL : '');
-					$main_css .= ($layer->text->lineHeight != NULL ? 'line-height:' . $layer->text->lineHeight . 'px;' . PHP_EOL : '');
-					$main_css .= ($layer->text->align ? 'text-align:' . $layer->text->align . ';' . PHP_EOL : '');
-					$main_css .= ($layer->text->letterSpacing != NULL ? 'letter-spacing:' . $layer->text->letterSpacing . 'px;' . PHP_EOL : '');
+					$main_css .= ($layer->text->font ? 'font-family:"' . str_replace('+', ' ', $layer->text->font) . '",sans-serif;' : '');
+					$main_css .= ($layer->text->color ? 'color:' . $layer->text->color . ';' : '');
+					$main_css .= ($layer->text->size != NULL ? 'font-size:' . $layer->text->size . 'px;' : '');
+					$main_css .= ($layer->text->lineHeight != NULL ? 'line-height:' . $layer->text->lineHeight . 'px;' : '');
+					$main_css .= ($layer->text->align ? 'text-align:' . $layer->text->align . ';' : '');
+					$main_css .= ($layer->text->letterSpacing != NULL ? 'letter-spacing:' . $layer->text->letterSpacing . 'px;' : '');
 				} break;
 			}
-			$main_css .= '}' . PHP_EOL;
+			$main_css .= '}';
 			
 			if($layer->type == 'link') {
-				$main_css .= $layerSelector . ':hover {' . PHP_EOL;
-				$main_css .= ($layer->link->hoverColor ? 'background-color:' . $layer->link->hoverColor . ';' . PHP_EOL : '');
-				$main_css .= '}' . PHP_EOL;
+				$main_css .= $layerSelector . ':hover {';
+				$main_css .= ($layer->link->hoverColor ? 'background-color:' . $layer->link->hoverColor . ';' : '');
+				$main_css .= '}';
 			}
 		}
 		
@@ -324,10 +324,8 @@ class Vision_Builder {
 				$this->embedLoader(true, $version);
 			}
 
-
             $output = '';
 
-            $output .= '<!-- vision begin -->';
             $output .= '<div ';
             $output .= (property_exists($itemData, 'containerId') && $itemData->containerId ? 'id="' . esc_attr($itemData->containerId) . '" ':'');
             $output .= 'class="vision-map vision-map-' . esc_attr($id . ($class ? ' ' . $class : '')) . '"';
@@ -338,26 +336,24 @@ class Vision_Builder {
                 if (property_exists($itemData, 'image')) {
                     $upload_dir = wp_upload_dir();
                     $imageUrl = ($itemData->image->relative ? $upload_dir['baseurl'] : '') . $itemData->image->url;
-                    $output .= "<img src='" . esc_url( $imageUrl ) . "' class='vision-img-placeholder' width='100%'>";
+                    $output .= '<div class="vision-img-placeholder"><img src="' . esc_url( $imageUrl ) . '" width="100%"></div>';
                 }
-
                 //=============================================
                 // STORE BEGIN
                 $output .= '<div class="vision-store" style="display:none;">';
+
                 $output .= '<div class="vision-layers-data">';
 				foreach($itemData->layers as $layerKey => $layer) {
 					if(!$layer->visible) {
 						continue;
 					}
-					
 					//=============================================
 					// LAYER BEGIN
                     $output .= '<div class="vision-layer" data-layer-id="' . esc_attr($layer->id) . '">';
-					
+
 					if($layer->contentData) {
                         $output .= do_shortcode($layer->contentData);
 					}
-					
 					if($layer->type == 'text') {
                         $output .= wp_kses_post($layer->text->data);
 					}
@@ -373,7 +369,6 @@ class Vision_Builder {
 					if(!$layer->visible) {
 						continue;
 					}
-					
 					//=============================================
 					// TOOLTIP BEGIN
                     $output .= '<div class="vision-data" data-layer-id="' . esc_attr($layer->id) . '">';
@@ -389,17 +384,16 @@ class Vision_Builder {
 					if(!$layer->visible) {
 						continue;
 					}
-					
 					//=============================================
-					// POPOVER BEGIN
+				    // POPOVER BEGIN
                     $output .= '<div class="vision-data" data-layer-id="' . esc_attr($layer->id) . '">';
                     $output .= do_shortcode($layer->popover->data);
                     $output .= '</div>';
 					// POPOVER END
 					//=============================================
 				}
-                $output .= '</div>';
 
+                $output .= '</div>';
                 $output .= '</div>';
 				// STORE END
 				//=============================================
@@ -412,7 +406,8 @@ class Vision_Builder {
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             $output .= '<style>' . $css . '</style>';
 
-            $output .= '<!-- vision end -->';
+            $output = preg_replace('/\s+/', ' ', $output);
+            $output = force_balance_tags( $output );
 
             return $output;
 		}

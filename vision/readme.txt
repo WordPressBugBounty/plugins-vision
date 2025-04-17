@@ -4,7 +4,7 @@ Tags: image maps, infographics, floor plan, interactive images, hotspots
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.9.8
+Stable tag: 1.9.9
 License: GPLv3
 
 Empower your site with interactive visuals! Our plugin seamlessly transforms static images into engaging media, enabling publishers and bloggers.
@@ -129,6 +129,9 @@ You’re done. Enjoy.
 
 
 == Changelog ==
+
+= 1.9.9 =
+* Fix: inserting unwanted tags into the content via wpautop()
 
 = 1.9.8 =
 * Fix: inserting unwanted tags into the content via wpautop()
