@@ -1,8 +1,8 @@
 <?php
 defined('ABSPATH') || exit;
 
-$list_table = new Vision_List_Table_Items();
-$list_table->prepare_items();
+$vision_list_table = new Vision_List_Table_Items();
+$vision_list_table->prepare_items();
 ?>
 <!-- vision app -->
 <div class="vision-root" id="vision-app-items">
@@ -18,14 +18,14 @@ $list_table->prepare_items();
 		</div>
 	</div>
 	<div class="vision-app">
-		<?php $list_table->views(); ?>
+		<?php $vision_list_table->views(); ?>
 		<form method="post">
-			<?php $list_table->search_box(esc_html__('Search Items', 'vision'),'item'); ?>
+			<?php $vision_list_table->search_box(esc_html__('Search Items', 'vision'),'item'); ?>
 			<input type="hidden" name="page" value="<?php
                 // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated
                 echo sanitize_key( filter_var( wp_unslash( $_REQUEST['page'] ), FILTER_DEFAULT ) ) ?>
             ">
-			<?php $list_table->display() ?>
+			<?php $vision_list_table->display() ?>
 		</form>
 	</div>
 </div>

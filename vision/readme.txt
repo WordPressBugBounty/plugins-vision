@@ -1,10 +1,10 @@
 === Vision - Interactive Image Map Builder ===
 Contributors: Avirtum
 Tags: image maps, infographics, floor plan, interactive images, hotspots
-Requires at least: 4.0
-Tested up to: 6.8
+Requires at least: 4.6
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.9.9
+Stable tag: 1.10.0
 License: GPLv3
 
 Empower your site with interactive visuals! Our plugin seamlessly transforms static images into engaging media, enabling publishers and bloggers.
@@ -130,8 +130,14 @@ You’re done. Enjoy.
 
 == Changelog ==
 
+= 1.10.0 =
+* New: ability to change the author of an item directly from the items list
+
+= 1.9.10 =
+* Mod: save data with chunks
+
 = 1.9.9 =
-* Fix: inserting unwanted tags into the content via wpautop()
+* Mod: UI
 
 = 1.9.8 =
 * Fix: inserting unwanted tags into the content via wpautop()

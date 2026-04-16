@@ -730,7 +730,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
 
                                                         <div class="vision-control">
                                                             <?php
-                                                            $settings = [
+                                                            $vision_settings = [
                                                                 'tinymce' => true,
                                                                 'textarea_name' => 'vision-tooltip-text',
                                                                 'wpautop' => false,
@@ -740,7 +740,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                                                 'teeny' => true,
                                                                 'quicktags' => true
                                                             ];
-                                                            wp_editor('','vision-tooltip-editor', $settings);
+                                                            wp_editor('','vision-tooltip-editor', $vision_settings);
                                                             ?>
                                                         </div>
                                                     </div>
@@ -908,7 +908,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
 
                                                         <div class="vision-control">
                                                             <?php
-                                                            $settings = [
+                                                            $vision_settings = [
                                                                 'tinymce' => true,
                                                                 'textarea_name' => 'vision-popover-text',
                                                                 'wpautop' => false,
@@ -918,7 +918,7 @@ $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
                                                                 'teeny' => true,
                                                                 'quicktags' => true
                                                             ];
-                                                            wp_editor('','vision-popover-editor', $settings);
+                                                            wp_editor('','vision-popover-editor', $vision_settings);
                                                             ?>
                                                         </div>
                                                     </div>

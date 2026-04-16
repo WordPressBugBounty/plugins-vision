@@ -8,9 +8,8 @@ class Vision_Deactivator {
 		global $wpdb;
 		$table = $wpdb->prefix . VISION_PLUGIN_NAME;
 
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$sql = "SELECT COUNT(*) FROM {$table}";
-		$count = $wpdb->get_var($sql);
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$count = $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" );
         // phpcs:enable
 		
 		if($count > 0) {
@@ -20,9 +19,8 @@ class Vision_Deactivator {
 		// delete all if our tables are empty
 		$table = $wpdb->prefix . VISION_PLUGIN_NAME;
 
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$sql = "DROP TABLE IF EXISTS {$table}";
-		$wpdb->query($sql);
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange
+		$wpdb->query( "DROP TABLE IF EXISTS {$table}" );
         // phpcs:enable
 		
 		delete_option('vision_db_version');

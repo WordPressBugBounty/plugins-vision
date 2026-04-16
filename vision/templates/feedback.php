@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-$reasons = [
+$vision_reasons = [
     "no_longer_needed" => [
         "label" => esc_html__("I do not need this plugin anymore", 'vision')
     ],
@@ -33,14 +33,14 @@ $reasons = [
         <div class="vision-data">
             <p class="vision-description"><?php esc_html_e("Before you deactivate Vision could you let us know why? Your feedback will help us improve the product, please tell us why did you decide to deactivate Vision. Thank you!", 'vision'); ?></p>
             <div class="vision-fields">
-            <?php foreach($reasons as $key => $value) { ?>
+            <?php foreach($vision_reasons as $vision_key => $vision_value) { ?>
                 <div class="vision-field">
-                    <label><input type="radio" name="vision-reason" <?php if ( $key === "temporary" ) echo 'checked'; ?> value="<?php echo esc_attr($key); ?>"><?php echo esc_attr($value["label"]); ?></label>
-                    <?php if(isset($value["input"])) { ?>
-                        <input type="text" name="reason-<?php echo esc_attr($key); ?>" placeholder="<?php echo esc_attr($value["input"]); ?>">
+                    <label><input type="radio" name="vision-reason" <?php if ( $vision_key === "temporary" ) echo 'checked'; ?> value="<?php echo esc_attr($vision_key); ?>"><?php echo esc_attr($vision_value["label"]); ?></label>
+                    <?php if(isset($vision_value["input"])) { ?>
+                        <input type="text" name="reason-<?php echo esc_attr($vision_key); ?>" placeholder="<?php echo esc_attr($vision_value["input"]); ?>">
                     <?php } ?>
-                    <?php if(isset($value["text"])) { ?>
-                        <p><?php echo esc_html($value["text"]); ?></p>
+                    <?php if(isset($vision_value["text"])) { ?>
+                        <p><?php echo esc_html($vision_value["text"]); ?></p>
                     <?php } ?>
                 </div>
             <?php } ?>

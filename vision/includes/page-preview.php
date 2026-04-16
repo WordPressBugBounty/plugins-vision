@@ -1,16 +1,16 @@
 <?php
 defined('ABSPATH') || exit;
 
-$plugin_url = plugin_dir_url(dirname(__FILE__));
+$vision_plugin_url = plugin_dir_url(dirname(__FILE__));
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
     <?php
-    wp_enqueue_style('vision-lucide', $plugin_url . 'assets/vendor/lucide/lucide.css', [], VISION_PLUGIN_VERSION, 'all' );
-    wp_enqueue_style('vision-preview', $plugin_url . 'assets/css/preview.css', [], VISION_PLUGIN_VERSION);
-    wp_enqueue_script('vision-preview', $plugin_url . 'assets/js/preview.js', ['jquery'], VISION_PLUGIN_VERSION, false);
-    wp_enqueue_script('vision-loader', $plugin_url . 'assets/js/loader.js', ['jquery'], VISION_PLUGIN_VERSION, false);
+    wp_enqueue_style('vision-lucide', $vision_plugin_url . 'assets/vendor/lucide/lucide.css', [], VISION_PLUGIN_VERSION, 'all' );
+    wp_enqueue_style('vision-preview', $vision_plugin_url . 'assets/css/preview.css', [], VISION_PLUGIN_VERSION);
+    wp_enqueue_script('vision-preview', $vision_plugin_url . 'assets/js/preview.js', ['jquery'], VISION_PLUGIN_VERSION, false);
+    wp_enqueue_script('vision-loader', $vision_plugin_url . 'assets/js/loader.js', ['jquery'], VISION_PLUGIN_VERSION, false);
     wp_localize_script('vision-loader', 'vision_globals', $this->getLoaderGlobals($this->vision_map_version));
     wp_head();
     ?>

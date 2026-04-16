@@ -183,7 +183,7 @@ class Vision_List_Table_Items extends WP_List_Table {
 			}
 			
 			return sprintf('<a href="?page=%1$s&id=%2$s" class="row-title">%3$s</a> %4$s',
-                'vision_item',
+        'vision_item',
 				$item['id'],
 				$item['title'],
 				$this->row_actions($actions)
@@ -214,19 +214,54 @@ class Vision_List_Table_Items extends WP_List_Table {
 	}
 	
 	function column_author($item) {
-		$page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
-		$args = [
-			'page' => $page,
-			'author' => $item['author']
-		];
-		$url = add_query_arg($args, 'admin.php');
-		
-		return sprintf(
-			'<a href="%1$s">%2$s</a>',
-			esc_url( $url ),
-			get_the_author_meta('display_name', $item['author'])
-		);
-	}
+    $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
+    $args = [
+      'page'   => $page,
+      'author' => $item['author']
+    ];
+    $url = add_query_arg($args, 'admin.php');
+
+    $actions = [];
+    $select_html = '';
+    
+    if (current_user_can('manage_options') || get_current_user_id() == $item['author']) {
+        $actions['edit'] = sprintf(
+            '<a href="#" class="vision-edit-author" data-item-id="%1$s">%2$s</a>',
+            $item['id'],
+            esc_html__('Edit', 'vision')
+        );
+
+        $users   = get_users(['fields' => ['ID', 'display_name']]);
+        $options = '';
+        foreach ($users as $u) {
+            $options .= sprintf(
+                '<option value="%d"%s>%s</option>',
+                esc_attr($u->ID),
+                selected($u->ID, $item['author'], false),
+                esc_html($u->display_name)
+            );
+        }
+        $select_html = sprintf(
+            '<div class="vision-author-edit-form" data-item-id="%d" style="display:none;">'
+            . '<select class="vision-author-select">%s</select> '
+            . '<button type="button" class="button vision-author-save">%s</button> '
+            . '<button type="button" class="button vision-author-cancel">%s</button>'
+            . '</div>',
+            $item['id'],
+            $options,
+            esc_html__('OK', 'vision'),
+            esc_html__('Cancel', 'vision')
+        );
+    }
+
+    return sprintf(
+        '<a href="%1$s" class="row-author">%2$s</a> %3$s %4$s',
+        esc_url($url),
+        get_the_author_meta('display_name', $item['author']),
+        $this->row_actions($actions),
+        $select_html
+    );
+  }
 	
 	function column_editor($item) {
 		$page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
@@ -633,9 +668,9 @@ class Vision_List_Table_Items extends WP_List_Table {
             // phpcs:enable
 		}
 
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$this->items = $wpdb->get_results($sql, 'ARRAY_A');
-		$total_items = $wpdb->query($sql_total_items);
+        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
+		$this->items = $wpdb->get_results( $sql, 'ARRAY_A' );
+		$total_items = $wpdb->query( $sql_total_items );
         // phpcs:enable
 
 		$this->set_pagination_args([

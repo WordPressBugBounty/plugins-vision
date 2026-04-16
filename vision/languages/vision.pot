@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Vision\n"
-"POT-Creation-Date: 2025-04-09 13:32+0300\n"
+"POT-Creation-Date: 2026-04-16 15:31+0300\n"
 "PO-Revision-Date: 2022-12-18 14:38+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,23 +22,23 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: *.js\n"
 
-#: includes/list-table-items.php:113 includes/list-table-items.php:314
+#: includes/list-table-items.php:113 includes/list-table-items.php:349
 msgid "Restore"
 msgstr ""
 
-#: includes/list-table-items.php:127 includes/list-table-items.php:315
+#: includes/list-table-items.php:127 includes/list-table-items.php:350
 msgid "Delete Permanently"
 msgstr ""
 
-#: includes/list-table-items.php:141
+#: includes/list-table-items.php:141 includes/list-table-items.php:231
 msgid "Edit"
 msgstr ""
 
-#: includes/list-table-items.php:155 includes/list-table-items.php:320
+#: includes/list-table-items.php:155 includes/list-table-items.php:355
 msgid "Duplicate"
 msgstr ""
 
-#: includes/list-table-items.php:169 includes/list-table-items.php:321
+#: includes/list-table-items.php:169 includes/list-table-items.php:356
 msgid "Move to Trash"
 msgstr ""
 
@@ -46,54 +46,63 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: includes/list-table-items.php:273
+#: includes/list-table-items.php:252 includes/modal-confirm.php:15
+#: includes/modal-hide-effects.php:139 includes/modal-show-effects.php:136
+msgid "OK"
+msgstr ""
+
+#: includes/list-table-items.php:253
+msgid "Cancel"
+msgstr ""
+
+#: includes/list-table-items.php:308
 msgid "All"
 msgstr ""
 
-#: includes/list-table-items.php:274
+#: includes/list-table-items.php:309
 msgid "Mine"
 msgstr ""
 
-#: includes/list-table-items.php:275
+#: includes/list-table-items.php:310
 msgid "Trash"
 msgstr ""
 
-#: includes/list-table-items.php:284 includes/page-item.php:41
+#: includes/list-table-items.php:319 includes/page-item.php:41
 #: includes/page-item.php:390
 msgid "Title"
 msgstr ""
 
-#: includes/list-table-items.php:285
+#: includes/list-table-items.php:320
 msgid "Active"
 msgstr ""
 
-#: includes/list-table-items.php:286 includes/page-item.php:61
+#: includes/list-table-items.php:321 includes/page-item.php:61
 msgid "Shortcode"
 msgstr ""
 
-#: includes/list-table-items.php:287
+#: includes/list-table-items.php:322
 msgid "Author"
 msgstr ""
 
-#: includes/list-table-items.php:288
+#: includes/list-table-items.php:323
 msgid "Editor"
 msgstr ""
 
-#: includes/list-table-items.php:289
+#: includes/list-table-items.php:324
 msgid "Created"
 msgstr ""
 
-#: includes/list-table-items.php:290
+#: includes/list-table-items.php:325
 msgid "Modified"
 msgstr ""
 
-#: includes/list-table-items.php:355 includes/plugin.php:674
-#: includes/plugin.php:882
+#: includes/list-table-items.php:390 includes/plugin.php:772
+#: includes/plugin.php:996 includes/plugin.php:1202
 msgid ""
 "You can create only 1 map. If you need more, upgrade to the pro version."
 msgstr ""
 
-#: includes/list-table-items.php:369
+#: includes/list-table-items.php:404
 msgid "[Duplicate] "
 msgstr ""
 
@@ -104,11 +113,6 @@ msgstr ""
 #: includes/modal-confirm.php:14 includes/modal-hide-effects.php:138
 #: includes/modal-show-effects.php:135
 msgid "Close"
-msgstr ""
-
-#: includes/modal-confirm.php:15 includes/modal-hide-effects.php:139
-#: includes/modal-show-effects.php:136
-msgid "OK"
 msgstr ""
 
 #: includes/modal-hide-effects.php:8
@@ -180,7 +184,7 @@ msgid "Layers"
 msgstr ""
 
 #: includes/page-item.php:81 includes/page-settings.php:13
-#: includes/plugin.php:554
+#: includes/plugin.php:646
 msgid "Settings"
 msgstr ""
 
@@ -922,7 +926,7 @@ msgstr ""
 msgid "custom CSS class"
 msgstr ""
 
-#: includes/page-items.php:14 includes/plugin.php:552
+#: includes/page-items.php:14 includes/plugin.php:644
 msgid "All Items"
 msgstr ""
 
@@ -949,8 +953,8 @@ msgstr ""
 #: includes/page-settings.php:51
 msgid ""
 "You are using a lite version of our mapping software. It allows you to "
-"create only 1 interactive maps. With the lite version you can easily create "
-"and customize interactive maps according to your needs. If you need "
+"create only 1 interactive map. With the lite version you can easily create "
+"and customize interactive map according to your needs. If you need "
 "additional mapping capabilities in the future, you can always upgrade to the "
 "pro version."
 msgstr ""
@@ -1001,96 +1005,116 @@ msgstr ""
 msgid "Delete all data"
 msgstr ""
 
-#: includes/plugin.php:300
+#: includes/plugin.php:395
 msgid "Error: invalid vision identifier attribute"
 msgstr ""
 
-#: includes/plugin.php:426
+#: includes/plugin.php:514
 msgid "Error: the vision item can’t be found"
 msgstr ""
 
-#: includes/plugin.php:506
+#: includes/plugin.php:596
 msgid "The plugin upload directory could not be created"
 msgstr ""
 
-#: includes/plugin.php:507 includes/plugin.php:517
+#: includes/plugin.php:597 includes/plugin.php:607
 msgid "Please run the following commands in order to make the directory"
 msgstr ""
 
-#: includes/plugin.php:516
+#: includes/plugin.php:606
 msgid ""
 "The plugin upload directory is not writable, therefore the css and js files "
 "cannot be saved."
 msgstr ""
 
-#: includes/plugin.php:551 includes/plugin.php:552 includes/plugin.php:553
-#: includes/plugin.php:554 includes/plugin.php:556
+#: includes/plugin.php:643 includes/plugin.php:644 includes/plugin.php:645
+#: includes/plugin.php:646 includes/plugin.php:648
 msgid "Vision"
 msgstr ""
 
-#: includes/plugin.php:553
+#: includes/plugin.php:645
 msgid "Add New"
 msgstr ""
 
-#: includes/plugin.php:556
+#: includes/plugin.php:648
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: includes/plugin.php:642 includes/plugin.php:698 includes/plugin.php:767
+#: includes/plugin.php:738 includes/plugin.php:796 includes/plugin.php:878
 msgid "Available only in Pro version"
 msgstr ""
 
-#: includes/plugin.php:646 includes/plugin.php:706 includes/plugin.php:770
+#: includes/plugin.php:742 includes/plugin.php:804 includes/plugin.php:881
 msgid "Uncaught Error"
 msgstr ""
 
-#: includes/plugin.php:699
+#: includes/plugin.php:797
 msgid "Custom js code error"
 msgstr ""
 
-#: includes/plugin.php:700
+#: includes/plugin.php:798
 msgid "The layer ID should be unique"
 msgstr ""
 
-#: includes/plugin.php:838 includes/plugin.php:926
+#: includes/plugin.php:840
+msgid "You do not have permission to edit this item."
+msgstr ""
+
+#: includes/plugin.php:951 includes/plugin.php:1040 includes/plugin.php:1241
 msgid "The item was successfully updated"
 msgstr ""
 
-#: includes/plugin.php:841 includes/plugin.php:929
+#: includes/plugin.php:954 includes/plugin.php:1043 includes/plugin.php:1244
 msgid "The operation failed, can't update item"
 msgstr ""
 
-#: includes/plugin.php:845 includes/plugin.php:960 includes/plugin.php:1258
-#: includes/plugin.php:1264
+#: includes/plugin.php:958 includes/plugin.php:1075 includes/plugin.php:1567
+#: includes/plugin.php:1573
 msgid "The operation failed"
 msgstr ""
 
-#: includes/plugin.php:889 includes/plugin.php:1008
-msgid "Error decoding JSON: "
-msgstr ""
-
-#: includes/plugin.php:951
+#: includes/plugin.php:1066 includes/plugin.php:1267
 msgid "The item was successfully created"
 msgstr ""
 
-#: includes/plugin.php:954
+#: includes/plugin.php:1069 includes/plugin.php:1270
 msgid "The operation failed, can't create item"
 msgstr ""
 
-#: includes/plugin.php:1000
+#: includes/plugin.php:1308
 msgid "The settings were successfully updated"
 msgstr ""
 
-#: includes/plugin.php:1003
+#: includes/plugin.php:1311
 msgid "The operation failed, can't update settings"
 msgstr ""
 
-#: includes/plugin.php:1282
+#: includes/plugin.php:1592
 msgid "The operation failed, can't delete data"
 msgstr ""
 
-#: includes/plugin.php:1315
+#: includes/plugin.php:1625
 msgid "All data deleted"
+msgstr ""
+
+#: includes/plugin.php:1669
+msgid "Invalid user"
+msgstr ""
+
+#: includes/plugin.php:1695
+msgid "Author changed successfully"
+msgstr ""
+
+#: includes/plugin.php:1698
+msgid "Failed to update author"
+msgstr ""
+
+#: includes/plugin.php:1702
+msgid "You do not have permission to edit this item"
+msgstr ""
+
+#: includes/plugin.php:1707
+msgid "Security check failed"
 msgstr ""
 
 #: templates/feedback.php:6
