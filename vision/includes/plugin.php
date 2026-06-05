@@ -151,7 +151,16 @@ class Vision_Builder
       [
         'methods' => 'GET',
         'callback' => [$this, 'rest_api_get_item'],
-        'permission_callback' => [$this, 'rest_api_permissions_check']
+        'permission_callback' => '__return_true',
+      ]
+    );
+
+    register_rest_route(
+      VISION_PLUGIN_REST_URL, 
+      '/preview/(?P<id>\d+)', [
+        'methods' => 'GET',
+        'callback' => [$this, 'rest_api_get_preview'],
+        'permission_callback' => function() { return is_user_logged_in(); },
       ]
     );
   }
@@ -159,7 +168,6 @@ class Vision_Builder
   function rest_api_get_item($request)
   {
     $id = intval($request->get_param('id'));
-    $preview = boolval($request->get_param('preview'));
 
     global $wpdb;
     $table = $wpdb->prefix . VISION_PLUGIN_NAME;
@@ -172,24 +180,40 @@ class Vision_Builder
     $config = null;
     if ($item->active) {
       $config = unserialize($item->config);
-    } else if ($preview) {
-      $user = wp_get_current_user();
-      $allowed_roles = $this->getAllowedRoles();
-
-      if (array_intersect($allowed_roles, $user->roles) || current_user_can('manage_options')) {
-        $config = unserialize($item->config);
-      }
     }
 
     if ($config) {
       return new WP_REST_Response($config);
     }
+
     return new WP_REST_Response(null, 404);
   }
 
-  function rest_api_permissions_check()
+  function rest_api_get_preview($request)
   {
-    return true;
+    $id = intval($request->get_param('id'));
+
+    global $wpdb;
+    $table = $wpdb->prefix . VISION_PLUGIN_NAME;
+
+    // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+    $sql = $wpdb->prepare("SELECT * FROM {$table} WHERE id=%d AND NOT deleted", $id);
+    $item = $wpdb->get_row($sql, OBJECT);
+    // phpcs:enable
+
+    if (!$item) {
+      return new WP_REST_Response(null, 404);
+    }
+
+    $user = wp_get_current_user();
+    $allowed_roles = $this->getAllowedRoles();
+
+    if (array_intersect($allowed_roles, $user->roles) || current_user_can('manage_options')) {
+      $config = unserialize($item->config);
+      return new WP_REST_Response($config);
+    }
+
+    return new WP_REST_Response(null, 403);
   }
 
   function filesystem_method()
@@ -424,7 +448,13 @@ class Vision_Builder
       $output .= '<div ';
       $output .= (property_exists($itemData, 'containerId') && $itemData->containerId ? 'id="' . esc_attr($itemData->containerId) . '" ' : '');
       $output .= 'class="vision-map vision-map-' . esc_attr($id . ($class ? ' ' . $class : '')) . '"';
-      $output .= 'data-json-src="' . esc_url_raw(rest_url(VISION_PLUGIN_REST_URL)) . '/item/' . esc_attr($item->id) . ($preview ? '?preview=1' : '') . '" ';
+      
+      $json_src = esc_url_raw(rest_url(VISION_PLUGIN_REST_URL)) . '/item/' . esc_attr($item->id);
+      if ($preview == 1) {
+        $json_src = esc_url_raw(rest_url(VISION_PLUGIN_REST_URL)) . '/preview/' . esc_attr($item->id);
+      }
+      $output .= 'data-json-src="' . $json_src . '" ';
+      
       $output .= 'data-item-id="' . esc_attr($item->id) . '" ';
       $output .= 'tabindex="1" ';
       $output .= '>';
@@ -756,6 +786,11 @@ class Vision_Builder
     if ($page === 'vision_item') {
       $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
+      $plugin_url = plugin_dir_url(dirname(__FILE__));
+      $upload_dir = wp_upload_dir();
+
+      wp_enqueue_style('vision_admin', $plugin_url . 'assets/css/admin.css', [], VISION_PLUGIN_VERSION, 'all');
+
       if (VISION_PLUGIN_PLAN == 'lite' && !$id) {
         global $wpdb;
         $table = $wpdb->prefix . VISION_PLUGIN_NAME;
@@ -764,17 +799,11 @@ class Vision_Builder
         $count = $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
 
         if ($count >= 1) {
-          echo '<div class="notice notice-error is-dismissible">';
           echo '<p>Vision: ' . esc_html__('You can create only 1 map. If you need more, upgrade to the pro version.', 'vision') . '</p>';
-          echo '</div>';
           return;
         }
       }
 
-      $plugin_url = plugin_dir_url(dirname(__FILE__));
-      $upload_dir = wp_upload_dir();
-
-      wp_enqueue_style('vision_admin', $plugin_url . 'assets/css/admin.css', [], VISION_PLUGIN_VERSION, 'all');
       wp_enqueue_style('vision_notify', $plugin_url . 'assets/css/notify.css', [], VISION_PLUGIN_VERSION, 'all');
       wp_enqueue_style('vision_lucide', $plugin_url . 'assets/vendor/lucide/lucide.css', [], VISION_PLUGIN_VERSION, 'all');
       wp_enqueue_style('vision_vision_effects', $plugin_url . 'assets/css/vision-effects.css', [], VISION_PLUGIN_VERSION, 'all');
@@ -832,9 +861,7 @@ class Vision_Builder
         if ($item) {
           $current_user_id = get_current_user_id();
           if (!current_user_can('manage_options') && $current_user_id != $item->author) {
-            echo '<div>';
             echo '<p>' . esc_html__('You do not have permission to edit this item.', 'vision') . '</p>';
-            echo '</div>';
             return;
           }
         }

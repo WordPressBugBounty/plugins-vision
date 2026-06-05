@@ -1,11 +1,12 @@
 === Vision - Interactive Image Map Builder ===
 Contributors: Avirtum
 Tags: image maps, infographics, floor plan, interactive images, hotspots
-Requires at least: 4.6
-Tested up to: 6.9
+Requires at least: 6.0
+Tested up to: 7.0
+Stable tag: 1.11.0
 Requires PHP: 7.4
-Stable tag: 1.10.0
 License: GPLv3
+License URI: https://gnu.org
 
 Empower your site with interactive visuals! Our plugin seamlessly transforms static images into engaging media, enabling publishers and bloggers.
 
@@ -83,6 +84,13 @@ Vision is the ultimate tool for anyone seeking to enhance their online presence,
 * The purpose of our folder manager plugin is to help organize the WordPress media library, pages, posts, and custom post types.
 
 
+###🔥 Check out other best WordPress Plugins
+[**HappyVR**](https://wordpress.org/plugins/happyvr/) – virtual tour builder and 360 panorama viewer for WordPress
+[**MediaCommander**](https://wordpress.org/plugins/mediacommander/) – bring folders to media, posts, and pages
+[**NinjaDraw**](https://wordpress.org/plugins/ninjadraw/) – create diagrams, sketches & visual workflows
+[**PicPoints**](https://wordpress.org/plugins/picpoints/) - create interactive images and multi-level floor plans in minutes
+
+
 == Screenshots ==
 
 1. Interactive image map builder
@@ -130,180 +138,183 @@ You’re done. Enjoy.
 
 == Changelog ==
 
+= 1.11.0
+* Fixed: resolved 403 errors on the frontend caused by expired REST API nonces
+
 = 1.10.0 =
-* New: ability to change the author of an item directly from the items list
+* Added: ability to change the author of an item directly from the items list
 
 = 1.9.10 =
-* Mod: save data with chunks
+* Changed: save data with chunks
 
 = 1.9.9 =
-* Mod: UI
+* Changed: UI
 
 = 1.9.8 =
-* Fix: inserting unwanted tags into the content via wpautop()
+* Fixed: inserting unwanted tags into the content via wpautop()
 
 = 1.9.7 =
-* Fix: resolved 403 errors occurring when strict HTTP standards enforcement is enabled
+* Fixed: resolved 403 errors occurring when strict HTTP standards enforcement is enabled
 
 = 1.9.6 =
-* Fix: "@" tag for custom styles
+* Fixed: "@" tag for custom styles
 
 = 1.9.5 =
-* Mod: added check for values returned by `json_decode` to enhance data handling.
+* Changed: added check for values returned by `json_decode` to enhance data handling.
 
 = 1.9.4 =
-* Mod: move canvas mode
+* Changed: move canvas mode
 
 = 1.9.3 =
-* Fix: "!important" tag for custom styles
-* Mod: UI
+* Fixed: "!important" tag for custom styles
+* Changed: UI
 
 = 1.9.2 =
-* Mod: notify messages
-* Mod: UI
+* Changed: notify messages
+* Changed: UI
 
 = 1.9.1 =
-* Fix: admin menu highlight
-* Fix: collapse side panels
-* Mod: notify messages
-* Mod: UI
+* Fixed: admin menu highlight
+* Fixed: collapse side panels
+* Changed: notify messages
+* Changed: UI
 
 = 1.9.0 =
-* Mod: UI
+* Changed: UI
 
 = 1.8.6 =
-* Fix: style sanitization, missed some special characters
+* Fixed: style sanitization, missed some special characters
 
 = 1.8.5 =
-* Fix: style sanitization
+* Fixed: style sanitization
 
 = 1.8.4 =
-* Mod: added input control to edit text layer data
-* Mod: move canvas (ctrl + left mouse button or middle mouse button)
-* Mod: added inline integration for main and custom map styles
+* Changed: added input control to edit text layer data
+* Changed: move canvas (ctrl + left mouse button or middle mouse button)
+* Changed: added inline integration for main and custom map styles
 
 = 1.8.3 =
-* Mod: redesigned the interface for better usability
+* Changed: redesigned the interface for better usability
 
 = 1.8.2 =
-* Fix: preview mode
-* Fix: layer ordering (up & down actions)
+* Fixed: preview mode
+* Fixed: layer ordering (up & down actions)
 
 = 1.8.1 =
-* Fix: code compatibility with WordPress Coding Standards
-* Fix: editing data within a text block
+* Fixed: code compatibility with WordPress Coding Standards
+* Fixed: editing data within a text block
 
 = 1.8.0 =
-* Mod: block transformation has become more intuitive and user-friendly
-* Mod: the layer info box has been moved
-* Mod: user interface improvements
-* Fix: item list ordering
+* Changed: block transformation has become more intuitive and user-friendly
+* Changed: the layer info box has been moved
+* Changed: user interface improvements
+* Fixed: item list ordering
 
 = 1.7.4 =
-* Mod: show main image before load item config
+* Changed: show main image before load item config
 
 = 1.7.3 =
-* Fix: rest api endpoints of third-party plugins stop working
+* Fixed: rest api endpoints of third-party plugins stop working
 
 = 1.7.2 =
-* Fix: unauthorized access to view deactivated items
+* Fixed: unauthorized access to view deactivated items
 
 = 1.7.1 =
-* Fix: the plugin doesn't show items with empty titles
+* Fixed: the plugin doesn't show items with empty titles
 
 = 1.7.0 =
-* Fix: constant FILTER_SANITIZE_STRING is deprecated
+* Fixed: constant FILTER_SANITIZE_STRING is deprecated
 
 = 1.6.2 =
-* Fix: missing feedback files
+* Fixed: missing feedback files
 
 = 1.6.1 =
-* Mod: returned to json files as item config
-* New: feedback form
+* Changed: returned to json files as item config
+* Added: feedback form
 
 = 1.6.0 =
-* Mod: cancel the use of json files to store the item config
+* Changed: cancel the use of json files to store the item config
 
 = 1.5.7 =
-* Mod: close popovers on esc
+* Changed: close popovers on esc
 
 = 1.5.6 =
-* Fix: $wpdb->prepare calls
+* Fixed: $wpdb->prepare calls
 
 = 1.5.5 =
-* Fix: incorrect text field output
+* Fixed: incorrect text field output
 
 = 1.5.4 =
-* Fix: prevent cross-site scripting (XSS) from shortcode
-* Mod: polish the code
+* Fixed: prevent cross-site scripting (XSS) from shortcode
+* Changed: polish the code
 
 = 1.5.3 =
-* Fix: unexpected output during activation
+* Fixed: unexpected output during activation
 
 = 1.5.2 =
-* Fix: prevent cross-site scripting (XSS) from input form
+* Fixed: prevent cross-site scripting (XSS) from input form
 
 = 1.5.1 =
-* Fix: layer triggers 'hover' & 'focus'
+* Fixed: layer triggers 'hover' & 'focus'
 
 = 1.5.0 =
-* New: 'nofollow' attribute for the layer link type
+* Added: 'nofollow' attribute for the layer link type
 
 = 1.4.4 =
-* New: shortcode attribute 'slug'
-* Mod: frontend API
+* Added: shortcode attribute 'slug'
+* Changed: frontend API
 
 = 1.4.3 =
-* Fix: website under HTTPS (secured with SSL certificate), but scene images are under HTTP (unsecured)
-* New: search item box, trash support
-* New: support Emoji
+* Fixed: website under HTTPS (secured with SSL certificate), but scene images are under HTTP (unsecured)
+* Added: search item box, trash support
+* Added: support Emoji
 
 = 1.4.2 =
-* New: auto width & height options
-* New: the layer content data can be edited
+* Added: auto width & height options
+* Added: the layer content data can be edited
 
 = 1.4.1 =
-* Fix: text layer type was not displayed
+* Fixed: text layer type was not displayed
 
 = 1.4.0 =
-* Fix: loader is called only once on a page
-* New: edit roles with access to the plugin
-* Mod: items pagination view
+* Fixed: loader is called only once on a page
+* Added: edit roles with access to the plugin
+* Changed: items pagination view
 
 = 1.3.0 =
-* New: improved user interface
-* New: changed markup for frontend
+* Added: improved user interface
+* Added: changed markup for frontend
 
 = 1.2.3 =
-* Fix: cannot edit item due json parse error with double quotes
+* Fixed: cannot edit item due json parse error with double quotes
 
 = 1.2.2 =
-* Fix: links do not work on firefox
+* Fixed: links do not work on firefox
 
 = 1.2.1 =
-* Fix: tooltips do not show up sometimes
+* Fixed: tooltips do not show up sometimes
 
 = 1.2.0 =
-* New: users have access to items, depending on their privileges and roles
-* Fix: popover inbox flickering on hover
-* Fix: markup template for inbox & lightbox popover
+* Added: users have access to items, depending on their privileges and roles
+* Fixed: popover inbox flickering on hover
+* Fixed: markup template for inbox & lightbox popover
 
 = 1.1.1 =
-* New: item last modified date in the config
+* Added: item last modified date in the config
 
 = 1.1.0 =
-* Fix: updated custom code editor (Ctrl + F)
-* New: can set an url for each layer
-* New: can set a userData for each layer
-* New: preview mode
-* New: color picker
+* Fixed: updated custom code editor (Ctrl + F)
+* Added: can set an url for each layer
+* Added: can set a userData for each layer
+* Added: preview mode
+* Added: color picker
 
 = 1.0.2 =
-* Fix: can't save a big config
+* Fixed: can't save a big config
 
 = 1.0.1 =
-* New: next & prev layer navigation
-* Fix: light theme
+* Added: next & prev layer navigation
+* Fixed: light theme
 
 = 1.0.0 =
 * Initial release
