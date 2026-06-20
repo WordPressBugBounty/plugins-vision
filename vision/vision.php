@@ -3,7 +3,7 @@
  * Plugin Name:       Vision - Interactive Image Map Builder
  * Plugin URI:        https://1.envato.market/getvision
  * Description:       Vision is a lightweight and rich-feature plugin helps you create great interactive image maps.
- * Version:           1.11.0
+ * Version:           1.12.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Avirtum
@@ -16,7 +16,7 @@
 defined('ABSPATH') || exit;
 
 define('VISION_PLUGIN_NAME', 'vision');
-define('VISION_PLUGIN_VERSION', '1.11.0');
+define('VISION_PLUGIN_VERSION', '1.12.0');
 define('VISION_DB_VERSION', '1.1.0');
 define('VISION_SHORTCODE_NAME', 'vision');
 define('VISION_PLUGIN_BASE_NAME', plugin_basename(__FILE__));

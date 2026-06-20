@@ -14,6 +14,7 @@ class Vision_Builder
   private $ajax_action_delete_data = NULL;
   private $ajax_action_modal = NULL;
   private $ajax_action_change_author = NULL;
+  private $ajax_action_picpoints_promo = NULL;
 
   private $vision_map_id = null;
   private $vision_map_version = null;
@@ -48,6 +49,7 @@ class Vision_Builder
       $this->ajax_action_delete_data = 'vision_ajax_delete_data';
       $this->ajax_action_modal = 'vision_ajax_modal';
       $this->ajax_action_change_author = 'vision_ajax_change_author';
+      $this->ajax_action_picpoints_promo = 'vision_ajax_picpoints_promo';
 
       load_plugin_textdomain('vision', false, dirname(dirname(plugin_basename(__FILE__))) . '/languages/');
 
@@ -55,6 +57,7 @@ class Vision_Builder
       add_filter('submenu_file', [$this, 'admin_menu_highlight'], 10, 2);
       add_action('admin_footer', [$this, 'admin_footer']);
       add_action('admin_notices', [$this, 'admin_notices']);
+      add_action('admin_notices', [$this, 'admin_notices_picpoints']);
       add_action('in_admin_header', [$this, 'in_admin_header']);
       add_action('wp_loaded', [$this, 'page_redirects']);
 
@@ -68,6 +71,7 @@ class Vision_Builder
       add_action('wp_ajax_' . $this->ajax_action_delete_data, [$this, 'ajax_delete_data']);
       add_action('wp_ajax_' . $this->ajax_action_modal, [$this, 'ajax_modal']);
       add_action('wp_ajax_' . $this->ajax_action_change_author, [$this, 'ajax_change_author']);
+      add_action('wp_ajax_' . $this->ajax_action_picpoints_promo, [$this, 'ajax_picpoints_promo']);
     } else {
       add_shortcode(VISION_SHORTCODE_NAME, [$this, 'shortcode']);
     }
@@ -645,6 +649,137 @@ class Vision_Builder
   }
 
   /**
+   * PicPoints promo notice
+   */
+  function admin_notices_picpoints()
+  {
+    if (!current_user_can('manage_options')) {
+      return;
+    }
+
+    $promo = get_option('vision_picpoints_promo');
+    if (!is_array($promo)) {
+      $promo = ['status' => 'active', 'remind_at' => 0];
+    }
+
+    $status = isset($promo['status']) ? $promo['status'] : 'active';
+    $remind_at = isset($promo['remind_at']) ? (int) $promo['remind_at'] : 0;
+
+    if ($status === 'dismissed') {
+      return;
+    }
+    if ($status === 'remind' && time() < $remind_at) {
+      return;
+    }
+
+    wp_enqueue_script('jquery');
+
+    $nonce = wp_create_nonce('vision_ajax');
+    $ajax_url = esc_url(admin_url('admin-ajax.php'));
+
+    echo '<div class="notice notice-info vision-picpoints-notice" style="position:relative;">';
+    echo '<p style="font-weight:600;font-size:14px;margin:10px 0 0 0;">';
+    echo esc_html__('To our amazing Vision community!', 'vision');
+    echo '</p>';
+    echo '<p style="font-weight:600;font-size:14px;margin:0 0 10px 0;">';
+    echo esc_html__('We are proud to introduce PicPoints, our next-generation interactive image map builder. 🚀', 'vision');
+    echo '</p>';
+    echo '<p style="margin-bottom:10px;">';
+    echo esc_html__('We built PicPoints from the ground up on modern web standards to solve old, frustrating layout problems once and for all.', 'vision');
+    echo '</p>';
+    echo '<p style="margin-bottom:10px;">';
+    echo esc_html__('Why you’ll love it:', 'vision');
+    echo '</p>';
+    echo '<p style="margin-left:10px;">';
+    echo esc_html__('🛡️ Zero Conflict: Full CSS/JS isolation (Shadow DOM) ensures your maps look perfect without messing up your website theme.', 'vision');
+    echo '</p>';
+    echo '<p style="margin-left:10px;">';
+    echo esc_html__('🎨 Figma-Like Vector Editor: Draw, customize, and place markers & polygons with a powerful, intuitive, and modern editor interface.', 'vision');
+    echo '</p>';
+    echo '<p style="margin-left:10px;">';
+    echo esc_html__('⚡ Pro-Grade Performance: Optimized to handle heavy multi-level floor plans or highly engaging shoppable lookbooks flawlessly.', 'vision');
+    echo '</p>';
+    echo '<p style="margin-top:40px;display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;">';
+    echo '<span style="display:flex;gap:8px;flex-wrap:wrap;">';
+    echo '<a href="https://wordpress.org/plugins/picpoints/" target="_blank" rel="noopener" class="button button-primary button-vision-picpoints-promo">Try Free Version</a>';
+    echo '<a href="https://checkout.freemius.com/product/30659/?billing_cycle=annual&billing_cycle_selector=list&coupon=vision35" target="_blank" rel="noopener" class="button button-primary button-vision-picpoints-promo" style="background:#8e44ad;border-color:#8e44ad;">Get 35% OFF for PRO</a>';
+    echo '</span>';
+    echo '<span style="display:flex;gap:8px;flex-wrap:wrap;">';
+    echo '<button type="button" class="button button-vision-picpoints-remind">' . esc_html__('Remind me later', 'vision') . '</button>';
+    echo '<button type="button" class="button button-vision-picpoints-dismiss">' . esc_html__('No, thanks', 'vision') . '</button>';
+    echo '</span>';
+    echo '</p>';
+    echo '</div>';
+
+    // Inline JS
+    echo '<script>
+    (function($){
+      $(function(){
+        var $notice = $(".vision-picpoints-notice");
+        var ajaxUrl = ' . wp_json_encode($ajax_url) . ';
+        var nonce = ' . wp_json_encode($nonce) . ';
+
+        function sendAction(action){
+          $.post(ajaxUrl, {
+            action: "vision_ajax_picpoints_promo",
+            nonce: nonce,
+            promo_action: action
+          });
+        }
+
+        $notice.on("click", ".button-vision-picpoints-dismiss", function(){
+          sendAction("dismiss");
+          $notice.slideUp(function(){ $notice.remove(); });
+        });
+
+        $notice.on("click", ".button-vision-picpoints-remind", function(){
+          sendAction("remind");
+          $notice.slideUp(function(){ $notice.remove(); });
+        });
+
+        $notice.on("click", ".button-vision-picpoints-promo", function(){
+          $notice.slideUp(function(){ $notice.remove(); });
+        });
+      });
+    })(jQuery);
+    </script>';
+  }
+
+  /**
+  * Ajax: handle PicPoints promo action (dismiss / remind)
+  */
+  function ajax_picpoints_promo()
+  {
+    if (!check_ajax_referer('vision_ajax', 'nonce', false)) {
+      wp_send_json_error(['msg' => esc_html__('The operation failed', 'vision')]);
+    }
+
+    if (!current_user_can('manage_options')) {
+      wp_send_json_error(['msg' => esc_html__('Permission denied', 'vision')]);
+    }
+
+    $action = sanitize_key(filter_input(INPUT_POST, 'promo_action'));
+    $now = time();
+
+    if ($action === 'dismiss') {
+      update_option('vision_picpoints_promo', [
+        'status'    => 'dismissed',
+        'remind_at' => 0,
+      ], false);
+    } elseif ($action === 'remind') {
+      update_option('vision_picpoints_promo', [
+        'status'    => 'remind',
+        'remind_at' => $now + MONTH_IN_SECONDS,
+      ], false);
+    } else {
+      wp_send_json_error(['msg' => esc_html__('Invalid action', 'vision')]);
+    }
+
+    wp_send_json_success(['msg' => 'ok']);
+    wp_die();
+  }
+
+  /**
    * Fires at the beginning of the content section in an admin page
    */
   function in_admin_header()
@@ -658,6 +793,7 @@ class Vision_Builder
     remove_all_actions('admin_notices');
     remove_all_actions('all_admin_notices');
     add_action('admin_notices', [$this, 'admin_notices']);
+    add_action('admin_notices', [$this, 'admin_notices_picpoints']);
   }
 
   /**

@@ -3,7 +3,7 @@ Contributors: Avirtum
 Tags: image maps, infographics, floor plan, interactive images, hotspots
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 1.11.0
+Stable tag: 1.12.0
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://gnu.org
@@ -12,6 +12,15 @@ Empower your site with interactive visuals! Our plugin seamlessly transforms sta
 
 == Description ==
 
+### 📢 Note from the Developer
+To our amazing **Vision** community! We are proud to introduce **[PicPoints](https://wordpress.org/plugins/picpoints/)** - our next-generation interactive image map builder. 
+
+It is built on modern web standards to solve old layout problems once and for all. It features full **CSS/JS isolation (Shadow DOM)** to prevent theme conflicts, a powerful **Figma-like vector editor**, and enhanced performance for multi-level floor plans or shoppable lookbooks.
+ 
+🎁 **[Check out PicPoints and download it for FREE!](https://wordpress.org/plugins/picpoints/)**
+
+
+= Vision – Interactive Image Map Builder =
 Vision Interactive is a lightweight and rich-feature plugin helps you enhance images with additional information and links. With this plugin you are able to easily annotate images with text, shapes and icons, draw attention to areas and features on images. You can then use them in posts that empower publishers and bloggers to create more engaging content. It provides an easy way for you to convert a static image into the online interactive media brochures or booklets, image maps, immersive storytelling in seconds. The plugin can be deployed easily and runs on all modern browsers and mobile devices.
 
 📋 [**DEMO & DESCRIPTION**](https://avirtum.com/vision-interactive-image-map-builder-for-wordpress/) 📋
@@ -138,7 +147,10 @@ You’re done. Enjoy.
 
 == Changelog ==
 
-= 1.11.0
+= 1.12.0 =
+* Added: promotional notice introducing PicPoints
+
+= 1.11.0 =
 * Fixed: resolved 403 errors on the frontend caused by expired REST API nonces
 
 = 1.10.0 =
