@@ -1,12 +1,12 @@
-=== Vision - Interactive Image Map Builder ===
+=== Vision - Interactive Image Map with Hotspots Builder ===
 Contributors: Avirtum
 Tags: image maps, infographics, floor plan, interactive images, hotspots
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 1.12.0
+Stable tag: 1.12.1
 Requires PHP: 7.4
 License: GPLv3
-License URI: https://gnu.org
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Empower your site with interactive visuals! Our plugin seamlessly transforms static images into engaging media, enabling publishers and bloggers.
 
@@ -146,6 +146,9 @@ You’re done. Enjoy.
 
 
 == Changelog ==
+
+= 1.12.1 =
+* Fixed: frontend 403 errors on expired REST API nonces (completes the 1.11.0 fix)
 
 = 1.12.0 =
 * Added: promotional notice introducing PicPoints

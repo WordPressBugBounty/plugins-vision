@@ -657,6 +657,11 @@ class Vision_Builder
       return;
     }
 
+    $page = sanitize_key(filter_input(INPUT_GET, 'page', FILTER_DEFAULT));
+    if (!($page === 'vision' || $page === 'vision_item' || $page === 'vision_settings')) {
+      return;
+    }
+
     $promo = get_option('vision_picpoints_promo');
     if (!is_array($promo)) {
       $promo = ['status' => 'active', 'remind_at' => 0];
@@ -678,7 +683,11 @@ class Vision_Builder
     $ajax_url = esc_url(admin_url('admin-ajax.php'));
 
     echo '<div class="notice notice-info vision-picpoints-notice" style="position:relative;">';
-    echo '<p style="font-weight:600;font-size:14px;margin:10px 0 0 0;">';
+
+    echo '<div style="display:flex;gap:100px;padding:10px 0;">';
+
+    echo '<div style="max-width:600px;">';
+    echo '<p style="font-weight:600;font-size:14px;">';
     echo esc_html__('To our amazing Vision community!', 'vision');
     echo '</p>';
     echo '<p style="font-weight:600;font-size:14px;margin:0 0 10px 0;">';
@@ -688,18 +697,25 @@ class Vision_Builder
     echo esc_html__('We built PicPoints from the ground up on modern web standards to solve old, frustrating layout problems once and for all.', 'vision');
     echo '</p>';
     echo '<p style="margin-bottom:10px;">';
-    echo esc_html__('Why you’ll love it:', 'vision');
+    echo esc_html__('Why you will love it:', 'vision');
     echo '</p>';
-    echo '<p style="margin-left:10px;">';
-    echo esc_html__('🛡️ Zero Conflict: Full CSS/JS isolation (Shadow DOM) ensures your maps look perfect without messing up your website theme.', 'vision');
+    echo '<p>';
+    echo esc_html__('✅ Easy-to-use editor - place markers, draw shapes and add polygons just like in Figma.', 'vision');
     echo '</p>';
-    echo '<p style="margin-left:10px;">';
-    echo esc_html__('🎨 Figma-Like Vector Editor: Draw, customize, and place markers & polygons with a powerful, intuitive, and modern editor interface.', 'vision');
+    echo '<p>';
+    echo esc_html__("✅ No theme conflicts - your maps always look perfect and won't break your site's design.", 'vision');
     echo '</p>';
-    echo '<p style="margin-left:10px;">';
-    echo esc_html__('⚡ Pro-Grade Performance: Optimized to handle heavy multi-level floor plans or highly engaging shoppable lookbooks flawlessly.', 'vision');
+    echo '<p>';
+    echo esc_html__('✅ Fast & smooth - works flawlessly even with large floor plans or interactive product catalogs.', 'vision');
     echo '</p>';
-    echo '<p style="margin-top:40px;display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;">';
+    echo '</div>';
+
+    echo '<style>@media(max-width:1279px){.vision-mod-hide{display:none!important}}</style>';
+    echo '<iframe class="vision-mod-hide" style="padding:10px; box-sizing: border-box; border-radius:5px; box-shadow: 0 0 2px rgba(0, 0, 0, .7); height:240px; width:auto; aspect-ratio:16/9;" src="https://www.youtube.com/embed/_HStw93NAf8" frameborder="0" allow="encrypted-media; web-share" allowfullscreen></iframe>';
+
+    echo '</div>';
+
+    echo '<p style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;">';
     echo '<span style="display:flex;gap:8px;flex-wrap:wrap;">';
     echo '<a href="https://wordpress.org/plugins/picpoints/" target="_blank" rel="noopener" class="button button-primary button-vision-picpoints-promo">Try Free Version</a>';
     echo '<a href="https://checkout.freemius.com/product/30659/?billing_cycle=annual&billing_cycle_selector=list&coupon=vision35" target="_blank" rel="noopener" class="button button-primary button-vision-picpoints-promo" style="background:#8e44ad;border-color:#8e44ad;">Get 35% OFF for PRO</a>';
